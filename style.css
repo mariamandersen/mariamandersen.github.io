@@ -1,0 +1,661 @@
+/* ================================
+   DARK • WARM MAROON • CLEAN
+=================================== */
+:root {
+  --bg:        #3F2924;
+  --surface:   #4A312B;
+  --surface-2: #583B34;
+
+  --text:  #F6F1EC;
+  --muted: #D8CDC3;
+  --line:  #6A443E;
+
+  --accent: #9A5543;
+  --accent-contrast: #0B0A09;
+
+  --shadow: 0 10px 30px rgba(0,0,0,.25);
+  --radius: 18px;
+  --maxw: 1040px;
+
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Helvetica Neue", sans-serif;
+  --h1: clamp(1.6rem, 2.5vw, 2rem);
+  --h2: clamp(1.35rem, 2.2vw, 1.7rem);
+  --lead: clamp(1.02rem, 1.7vw, 1.2rem);
+  --measure: 68ch;
+
+  --gutter: clamp(24px, 6vw, 88px);
+
+  /* Dot-rail */
+  --rail-dot: 7px;
+  --rail-ring: 2px;
+  --rail-pad: 10px;
+  --rail-gap: 10px;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+html:focus-within { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(1000px 680px at 50% -180px, rgba(154,85,67,.12), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font: 16px/1.7 var(--font);
+}
+
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--accent) 85%, white 15%);
+  outline-offset: 3px; border-radius: 8px;
+}
+
+.container { width: min(100%, var(--maxw)); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* Skip link */
+.skip-link {
+  position: absolute; left: -999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+}
+.skip-link:focus {
+  position: fixed; left: 16px; top: 16px; z-index: 1001;
+  background: var(--accent); color: var(--accent-contrast);
+  padding: .6rem .8rem; border-radius: 10px;
+}
+
+/* Sticky header (glass) */
+header {
+  position: sticky; top: 0; z-index: 1000;
+  background: color-mix(in oklab, var(--bg) 80%, transparent);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+header .bar {
+  display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 10px;
+  padding: .5rem 0;
+}
+header h1 { margin: 0; font-size: var(--h1); letter-spacing: .2px; }
+header p  { margin: 2px 0 0; color: var(--muted); font-size: .98rem; }
+
+/* Nav (desktop ≥900px) */
+.nav { display: none; gap: 12px; align-items: center; }
+.nav a {
+  color: var(--muted); text-decoration: none;
+  padding: .25rem .5rem; border-radius: 999px; border: 1px solid transparent;
+  font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+}
+.nav a:hover, .nav a:focus-visible { border-color: var(--line); color: var(--text); }
+@media (min-width: 900px) { .nav { display: flex; } }
+
+/* Language toggle */
+.language-toggle { display: inline-flex; gap: 6px; align-items: center; }
+.language-toggle .sep { color: var(--muted); opacity: .6; }
+.language-toggle button {
+  background: transparent; color: var(--muted);
+  border: 2px solid transparent; font-weight: 700;
+  padding: .25rem .45rem; border-radius: 10px; cursor: pointer;
+}
+.language-toggle button[aria-pressed="true"] { color: var(--text); text-decoration: underline; }
+.language-toggle button:hover, .language-toggle button:focus-visible { border-color: var(--line); }
+
+/* Mobile menu button */
+.menu-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: color-mix(in oklab, var(--surface) 85%, black 15%);
+  color: var(--text);
+  cursor: pointer;
+}
+.menu-toggle .icon-close { display: none; }
+.menu-toggle[aria-expanded="true"] .icon-burger { display: none; }
+.menu-toggle[aria-expanded="true"] .icon-close  { display: block; }
+@media (min-width: 900px) { .menu-toggle { display: none; } }
+
+/* Mobile drop-down */
+.mobile-menu {
+  position: absolute; left: 0; right: 0; top: 100%;
+  background: color-mix(in oklab, var(--bg) 92%, black 8%);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 16px 36px rgba(0,0,0,.25);
+  padding: 10px 0; z-index: 1000;
+}
+.mobile-list { display: grid; gap: 2px; padding: 6px 12px 10px; }
+.mobile-list a {
+  display: block; padding: 12px 10px; border-radius: 10px;
+  color: var(--text); text-decoration: none;
+}
+.mobile-list a:hover, .mobile-list a:focus-visible {
+  background: color-mix(in oklab, var(--surface) 85%, black 15%);
+  outline: none;
+}
+@media (min-width: 900px) { .mobile-menu { display: none !important; } }
+
+/* Main + section sizing */
+main { padding-block: 10px 64px; }
+
+/* Hero with photo left */
+.hero { min-height: 70svh; display: grid; place-items: center; }
+.hero-grid {
+  display: grid; gap: clamp(16px, 3vw, 36px); align-items: center;
+}
+.hero-photo {
+  overflow: hidden; border-radius: 18px; border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--surface) 85%, black 15%);
+  box-shadow: 0 10px 30px rgba(0,0,0,.28);
+  aspect-ratio: 4 / 5; max-width: 520px; justify-self: center;
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-copy { padding: 0; }
+.hero .lead { margin-top: .5rem; color: var(--muted); max-width: var(--measure); }
+@media (min-width: 980px) {
+  .hero-grid { grid-template-columns: 1fr 1.1fr; }
+  .hero-photo { justify-self: start; }
+}
+@media (max-width: 979.98px) { .hero { min-height: unset; } }
+
+/* Sections */
+.intro, .project {
+  position: relative;
+  min-height: 92svh;
+  display: grid; align-content: center; gap: 10px;
+  width: min(100%, var(--maxw)); margin: 22px auto;
+  padding: clamp(18px, 2.8vw, 28px);
+  background: transparent; border: none; box-shadow: none;
+  scroll-margin-top: 84px;
+}
+.project p, .hero .lead { max-width: var(--measure); }
+.project h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); font-weight: 700; line-height: 1.15; margin: 0 0 .35rem; }
+.kicker { color: var(--muted); text-transform: uppercase; letter-spacing: .12em; font-size: .95rem; margin: .1rem 0 1.25rem; }
+
+/* Alternate undertone every other section */
+#content-no .project:nth-of-type(even),
+#content-en .project:nth-of-type(even) {
+  background: color-mix(in oklab, var(--surface-2) 12%, transparent);
+}
+
+/* Desktop layout: text left, visuals right (default) */
+.project { gap: clamp(14px, 3vw, 40px); }
+@media (min-width: 980px) {
+  .project { grid-template-columns: 1.2fr 1fr; align-items: start; }
+  .project > *:not(.media):not(.carousel) { grid-column: 1; }
+  .project > .media, .project > .carousel { grid-column: 2; align-self: start; }
+}
+
+/* Mockup placeholders */
+.media { display: grid; gap: 12px; margin-top: 8px; }
+@media (min-width: 860px) { .media { grid-template-columns: 1fr 1fr; } }
+.mock {
+  position: relative; display: block; border-radius: 16px; border: 1px solid #6A443E !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.14)),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 12px, transparent 12px 24px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.32); overflow: hidden;
+}
+.mock.browser { aspect-ratio: 16 / 10; border-radius: 12px; }
+.mock.browser::before {
+  content: ""; position: absolute; left: 0; top: 0; right: 0; height: 32px;
+  background:
+    radial-gradient(circle at 26px 50%, #ff5f57 5px, transparent 6px),
+    radial-gradient(circle at 48px 50%, #febc2e 5px, transparent 6px),
+    radial-gradient(circle at 70px 50%, #28c840 5px, transparent 6px),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.12));
+  border-bottom: 1px solid var(--line);
+}
+.mock.laptop { aspect-ratio: 16 / 10; border-radius: 12px; }
+.mock.laptop::before {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 6px;
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.3));
+}
+.mock.phone { aspect-ratio: 9 / 19.5; border-radius: 28px; }
+.mock.phone::before {
+  content: ""; position: absolute; left: 50%; transform: translateX(-50%); top: 8px;
+  width: 38%; height: 8px; border-radius: 10px; background: rgba(255,255,255,.15);
+}
+figure { margin: 0; }
+figcaption { margin-top: 6px; color: var(--muted); font-size: .95rem; }
+
+/* ===========================
+   DOT RAIL (desktop only)
+=========================== */
+.rail{
+  position: fixed;
+  right: clamp(10px, 1.6vw, 20px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--rail-gap);
+  z-index: 900;
+}
+.rail a{
+  position: relative;
+  width: 0; height: 0;
+  padding: var(--rail-pad);
+  border: 0;
+  background: transparent;
+  border-radius: 999px;
+  display: inline-block;
+  box-sizing: content-box;
+  outline: none;
+}
+.rail a::before{
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: var(--rail-dot); height: var(--rail-dot);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: transparent;
+  border: var(--rail-ring) solid var(--muted);
+  transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.rail a:hover::before,
+.rail a:focus-visible::before{ border-color: var(--accent); }
+.rail a[aria-current="true"]::before,
+.rail a.active::before{
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 32%, transparent);
+}
+@media (max-width: 1280px), (pointer: coarse) {
+  .rail { display: none !important; }
+}
+
+/* Animations */
+.fade-in { opacity: 1; transform: none; }
+.has-io .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 600ms ease-out, transform 600ms ease-out; }
+.has-io .fade-in.appear { opacity: 1; transform: translateY(0); }
+
+/* ===========================
+   CAROUSEL – base
+=========================== */
+.carousel { position: relative; margin-top: 8px; }
+.carousel-viewport {
+  position: relative;          /* for offsetLeft-beregning */
+  z-index: 1;                  /* under knappene */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: color-mix(in oklab, var(--surface) 88%, black 12%);
+  padding: 12px;
+}
+.slide { scroll-snap-align: start; }
+.slide img, .slide .mock-img {
+  display: block; width: 100%; height: auto;
+  border-radius: 16px; border: 1px solid #6A443E; box-shadow: 0 8px 22px rgba(0,0,0,.32);
+}
+
+/* Piltaster */
+.car-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--surface) 85%, black 15%);
+  color: var(--text);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0,0,0,.28);
+  z-index: 4;
+}
+.car-prev{ left: -8px; }
+.car-next{ right: -8px; }
+.car-btn:disabled{ opacity: .45; cursor: not-allowed; }
+
+/* Dots */
+.dots{ display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
+.dots button{
+  width: 8px; height: 8px; border-radius: 50%;
+  border: 1px solid var(--muted);
+  background: transparent;
+}
+.dots button[aria-current="true"]{
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Android-telefon mock for skjermbilder */
+.phone-mock{
+  --bezel: 12px;
+  width: clamp(220px, 26vw, 320px);
+  aspect-ratio: 9 / 19.5;
+  border-radius: 28px;
+  border: 1px solid #6A443E;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.2)),
+    #111;
+  box-shadow: 0 8px 22px rgba(0,0,0,.35);
+  padding: var(--bezel);
+  position: relative;
+  overflow: hidden;
+}
+.phone-mock::before{
+  content:"";
+  position:absolute; top:8px; left:50%;
+  width:8px; height:8px; transform:translateX(-50%);
+  border-radius:50%; background:#000;
+  box-shadow:0 0 0 2px rgba(255,255,255,.12);
+}
+.phone-mock > img{
+  display:block; width:100%; height:100%;
+  object-fit: cover;
+  border-radius: calc(26px - var(--bezel) + 2px);
+  border:1px solid rgba(0,0,0,.35);
+}
+
+/* Mindre luft i prosesskort */
+.process-step{ gap: clamp(12px, 1.6vw, 18px); padding: clamp(16px, 2vw, 22px); }
+@media (min-width: 900px){
+  .process-step{ grid-template-columns: minmax(300px, 42%) 1fr; }
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--line);
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  padding: 22px 0; text-align: center; color: var(--muted);
+}
+footer p { margin: .35rem 0; }
+footer a { color: var(--muted); }
+
+/* Hidden dev reset button */
+#resetLang {
+  display: none; margin-top: 1rem; background: #3a332e; color: #fff;
+  border: none; padding: 0.5rem 1rem; border-radius: 10px; cursor: pointer;
+}
+#resetLang:hover { background: #4a413b; }
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .intro, .project { margin: 16px 12px; padding: 14px; min-height: 92svh; }
+}
+
+/* Keep hidden truly hidden */
+[hidden]{ display:none !important; }
+
+/* =========================================
+   SKYBOUND PROCESS – full width & no overlap
+========================================= */
+#proj-rocket-no.project,
+#proj-rocket-en.project{
+  display: block;
+  width: 100%;
+  max-width: none;
+  padding-left:  var(--gutter);
+  padding-right: var(--gutter);
+}
+#proj-rocket-no.project > *,
+#proj-rocket-en.project > *{
+  grid-column: 1 / -1 !important;
+}
+
+/* Focus ring for keyboard on viewport */
+.carousel-viewport:focus-visible{
+  outline:2px solid color-mix(in oklab, var(--accent) 85%, white 15%);
+  outline-offset:4px; border-radius:14px;
+}
+
+/* --- Ett-bilde-karusell (Skybound) --- */
+.phone-carousel .carousel-viewport{
+  overflow: hidden;        /* ingen swipe */
+  scroll-snap-type: none;  /* slå av snap */
+  display: block;          /* ikke grid/flex */
+  width: fit-content;
+  margin-inline: auto;
+  padding: 8px;
+}
+
+/* Mindre telefonramme og kompakte piltaster */
+.phone-carousel .phone-mock{ width: clamp(200px, 22vw, 280px); }
+.phone-carousel .car-btn{ width: 30px; height: 30px; z-index: 4; }
+.phone-carousel .car-prev{ left: -12px; }
+.phone-carousel .car-next{ right: -12px; }
+
+/* Maksbredde for enkeltbilder i prosessen (utenfor phone-mock) */
+.process .step-media > img,
+.process .step-media > figure > img{
+  max-width: 560px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-inline: auto;
+}
+
+/* Generell øvre grense for .mock-bokser */
+.mock{ max-width: 720px; width: 100%; margin-inline: auto; }
+
+/* --- 5: Figma v1 – karusell venstre, tekst høyre --- */
+
+/* Sørg for at hvert prosesskort faktisk er grid */
+.process-step{
+  display: grid;
+  align-items: start;
+}
+
+/* To kolonner på desktop: bilde/karusell til venstre, tekst til høyre */
+@media (min-width: 980px){
+  .process-step{
+    grid-template-columns: minmax(260px, 0.9fr) 1fr;
+    column-gap: clamp(16px, 2.8vw, 36px);
+  }
+  #figma-v1 .step-media{ grid-column: 1; justify-self: start; }
+  #figma-v1 .step-copy { grid-column: 2; }
+}
+
+/* Gjør selve karusellen smalere og venstrejustert i sin kolonne */
+#figma-v1 .step-media .carousel{
+  max-width: 460px;     /* justér 420–520px etter smak */
+  margin: 0;            /* ikke sentrer */
+}
+#figma-v1 .phone-carousel .carousel-viewport{
+  margin-inline: 0;     /* overstyrer tidligere auto-sentrering */
+}
+
+/* Litt strammere “telefon”-ramme i denne seksjonen */
+#figma-v1 .phone-mock{
+  width: clamp(200px, 21vw, 260px);
+}
+
+/* Steg 5: mindre avstand mellom bilde (karusell) og tekst */
+@media (min-width: 980px){
+  #figma-v1.process-step{
+    /* smalere spalteavstand */
+    column-gap: clamp(10px, 1.2vw, 20px);
+    /* litt strammere sidepolstring i selve kortet */
+    padding-left: 0;
+    padding-right: 0;
+    /* litt smalere venstre kolonne slik at ting står nærmere */
+    grid-template-columns: minmax(240px, 0.8fr) 1fr; /* var 0.9fr */
+  }
+  #figma-v1 .step-media{ margin-right: 0; }
+  #figma-v1 .step-copy { margin-left: 0; }
+}
+
+/* Karusellen i steg 5 – behold den venstrejustert og kompakt */
+#figma-v1 .step-media .carousel{ margin: 0; max-width: 440px; } /* juster 400–480px etter smak */
+#figma-v1 .phone-carousel .carousel-viewport{ margin-inline: 0; }
+
+/* Steg 5 – strammere avstand (bilde venstre, tekst høyre) */
+@media (min-width: 980px){
+  #figma-v1.process-step{
+    /* Venstre kolonne = akkurat så bred som karusellen */
+    grid-template-columns: max-content 1fr; /* i stedet for 42% */
+    column-gap: clamp(8px, 0.8vw, 14px);
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #figma-v1 .step-media{ margin: 0; }
+  #figma-v1 .step-copy{ margin: 0; }
+
+  /* Litt smalere karusell for å komme enda nærmere teksten */
+  #figma-v1 .step-media .carousel{
+    margin: 0;
+    max-width: 380px; /* juster 340–420px etter smak */
+  }
+}
+
+/* 1) + 2) side-by-side med lite luft */
+.forste_innsikt{
+  display: grid;
+  gap: clamp(10px, 1.4vw, 18px);
+  margin-top: 6px;
+}
+@media (min-width: 980px){
+  .forste_innsikt{
+    grid-template-columns: 1fr 1fr;  /* to like brede kolonner */
+    align-items: start;
+  }
+}
+
+/* Tighter padding/typografi i disse to kortene */
+.forste_innsikt .process-step{
+  padding: clamp(10px, 1vw, 16px);
+}
+.forste_innsikt .step-copy{ margin: 0; }
+.forste_innsikt .step-copy h3{ margin: 0 0 .4rem; }
+.forste_innsikt .step-copy p{ margin: .25rem 0; }
+
+/* La tekst fylle hele kolonnebredden i 1) + 2) */
+.forste_innsikt .step-copy,
+.forste_innsikt .step-copy p{
+  max-width: none;
+}
+
+/* (valgfritt) litt strammere vertikal rytme der også */
+.forste_innsikt .step-copy p{ margin: .25rem 0; }
+
+/* --- 1) + 2): to kolonner for hele blokka, full bredde på tekst --- */
+.forste_innsikt{
+  display: grid;
+  gap: clamp(12px, 1.6vw, 22px);
+}
+
+@media (min-width: 980px){
+  .forste_innsikt{
+    grid-template-columns: 1fr 1fr; /* 2 like brede kort */
+    align-items: start;
+  }
+}
+
+/* Hvert “prosesskort” her er ren tekst → ikke reserver mediekolonne */
+.forste_innsikt .process-step{
+  display: block;            /* overstyr ev. grid-oppsett fra .process-step */
+}
+
+/* Fjern linjelengde-begrensning for disse tekstene */
+.forste_innsikt .step-copy,
+.forste_innsikt .step-copy p{
+  max-width: none !important; /* trumfer .project p { max-width: var(--measure) } */
+}
+
+/* =========================================
+   SKYBOUND (rakett) – kompakt layout
+   Lim dette HELT nederst i style.css
+========================================= */
+
+/* Tving seksjonen til naturlig høyde (ikke 92svh) */
+#proj-rocket-no.project { min-height: auto; }
+
+/* Strammere prosesskort */
+#proj-rocket-no .process .process-step{
+  padding: clamp(10px, 1.2vw, 16px);
+}
+
+/* Mindre luft mellom avsnitt i teksten */
+#proj-rocket-no .process .step-copy p{
+  margin: .35rem 0;
+}
+
+/* Gjør mediakolonnen smalere på desktop – mer plass til tekst */
+@media (min-width: 980px){
+  #proj-rocket-no .process .process-step{
+    grid-template-columns: minmax(240px, 0.75fr) 1fr; /* var ~0.9fr/42% */
+    column-gap: clamp(12px, 1.4vw, 24px);
+  }
+}
+
+/* Bilder/figurer i Skybound litt mindre enn før */
+#proj-rocket-no .process .step-media > img,
+#proj-rocket-no .process .mock{
+  max-width: 520px;     /* var 560px – juster 480–540 etter smak */
+}
+
+/* Litt strammere bildetekst */
+#proj-rocket-no .process figcaption{
+  margin-top: 4px;
+  font-size: .9rem;
+  opacity: .9;
+}
+
+/* Figma-karusellen (steg 4) – hold den kompakt og tett på teksten */
+#figma-v1 .step-media .carousel{ max-width: 380px; margin: 0; }
+#figma-v1 .phone-mock{ width: clamp(190px, 20vw, 250px); }
+@media (min-width: 980px){
+  #figma-v1.process-step{
+    grid-template-columns: max-content 1fr;
+    column-gap: clamp(8px, .9vw, 16px);
+    padding-left: 0; padding-right: 0;
+  }
+}
+
+/* 1) + 2) blokka – behold kompakt typografi og full bredde i kolonnene */
+.forste_innsikt .process-step{ padding: clamp(10px, 1vw, 16px); }
+.forste_innsikt .step-copy,
+.forste_innsikt .step-copy p{ max-width: none !important; }
+.forste_innsikt .step-copy p{ margin: .25rem 0; }
+
+/* Høyre kolonne = to tekstblokker under hverandre */
+#figma-v1 .copy-stack{
+  display: grid;
+  gap: clamp(8px, 1vw, 14px);
+  align-content: start;
+}
+#figma-v1 .copy-stack .step-copy{ margin: 0; }
+#figma-v1 .copy-stack .step-copy p{ margin: .35rem 0; }
+
+/* Venstre = karusell, høyre = tekst-stack (stram spalteavstand) */
+@media (min-width: 980px){
+  #figma-v1.process-step{
+    grid-template-columns: max-content 1fr;
+    column-gap: clamp(8px, 1.1vw, 18px);
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #figma-v1 .step-media .carousel{
+    max-width: 380px;   /* finjuster 340–420px om du vil */
+    margin: 0;
+  }
+  #figma-v1 .phone-mock{
+    width: clamp(200px, 21vw, 260px);
+  }
+  #figma-v1 .phone-carousel .carousel-viewport{
+    margin-inline: 0;
+  }
+}
+
+/* Tekstene under hverandre ved siden av karusellen */
+#figma-v1 .copy-stack{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;           /* mindre vertikal luft mellom 4 og 5 */
+}
+#figma-v1 .copy-stack .step-copy{ margin: 0; }
+
+/* (valgfritt) en diskret skillelinje mellom 4 og 5 */
+#figma-v1 .copy-stack .step-copy + .step-copy{
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+@media (min-width: 980px){
+  #figma-v1 .copy-stack{ gap: 8px; }
+}
+

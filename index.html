@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="no" class="no-js has-io">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maria Malmstedt Andersen – UX-designer</title>
+
+  <!-- Inter -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Skip-links -->
+  <a class="skip-link" href="#main" data-lang="no">Hopp til innhold</a>
+  <a class="skip-link" href="#main" data-lang="en" hidden>Skip to content</a>
+
+  <header>
+    <div class="container bar">
+      <div class="brand">
+        <h1>Maria Malmstedt Andersen</h1>
+      </div>
+
+      <!-- Desktop nav (≥900px) -->
+      <nav class="nav" aria-label="Innhold" data-lang="no">
+        <a href="#proj-rocket-no">Rakett</a>
+        <a href="#proj-medball-no">Meditasjonsball</a>
+        <a href="#proj-echo-no">Ekko-kamre</a>
+      </nav>
+      <nav class="nav" aria-label="Contents" data-lang="en" hidden>
+        <a href="#proj-rocket-en">Rocket</a>
+        <a href="#proj-medball-en">Meditation ball</a>
+        <a href="#proj-echo-en">Echo Chambers</a>
+      </nav>
+
+      <!-- Language toggle -->
+      <div class="language-toggle" role="group" aria-label="Språk / Language">
+        <button id="btn-en" type="button" aria-pressed="false" aria-label="Switch to English">EN</button>
+        <span aria-hidden="true" class="sep">|</span>
+        <button id="btn-no" type="button" aria-pressed="true" aria-label="Bytt til norsk">NO</button>
+      </div>
+
+      <!-- Mobile menu button (<900px) -->
+      <button id="menuToggle" class="menu-toggle" type="button"
+              aria-expanded="false" aria-controls="mobileMenu"
+              aria-label="Meny">
+        <!-- burger -->
+        <svg class="icon-burger" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <!-- close -->
+        <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile drop-down -->
+    <div id="mobileMenu" class="mobile-menu" hidden>
+      <nav class="mobile-list" aria-label="Meny" data-lang="no">
+        <a href="#proj-rocket-no">Rakett</a>
+        <a href="#proj-medball-no">Meditasjonsball</a>
+        <a href="#proj-echo-no">Ekko-kamre</a>
+      </nav>
+      <nav class="mobile-list" aria-label="Menu" data-lang="en" hidden>
+        <a href="#proj-rocket-en">Rocket Planner</a>
+        <a href="#proj-medball-en">Meditation Ball</a>
+        <a href="#proj-echo-en">Echo Chambers</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero section fade-in">
+      <div class="container hero-grid">
+        <figure class="hero-photo">
+          <img src="images/me.jpeg"
+               alt="Portrett av Maria Malmstedt Andersen"
+               width="900" height="1200" loading="eager" />
+        </figure>
+
+        <div class="card hero-copy">
+          <h2 data-lang="no">Hei! Mitt navn er Maria.</h2>
+          <h2 data-lang="en" hidden>Hi! My name is Maria.</h2>
+
+          <p class="lead" data-lang="no">
+            Som UX-designer vektlegger jeg prosess: innsikt → problemforståelse → konsept → prototyping → testing → læring.
+            Her er utvalgte case-studier som forklarer <em>hvorfor</em> beslutningene ble tatt, ikke bare hva som ble bygget.
+          </p>
+          <p class="lead" data-lang="en" hidden>
+            As a UX designer I emphasize process: research → problem framing → concept → prototyping → testing → learning.
+            These case studies highlight <em>why</em> decisions were made, not just what was built.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== NORWEGIAN =================== -->
+    <section id="content-no" lang="no">
+      <!-- 1. Rocket Launch Planner (NO) -->
+      <section class="project fade-in" id="proj-rocket-no">
+        <h2>Skybound – Planleggingsapp for rakettoppskytning</h2>
+        <p class="kicker">IN2000 – vår 2025 </p>
+        <p>
+          Jeg var <strong>UX-ansvarlig</strong> i et tverrfaglig team på seks. Startet med kravspesifikasjon fra PortalSpace, men trengte raskt mer innsikt i faktisk brukskontekst og behov.
+          Gjennom intervju, workshops og iterativ prototyping landet vi på en løsning som gjorde det raskere og tryggere å finne riktig oppskytningstidspunkt for en rakett.
+        </p>
+
+        <!-- ===== SKYBOUND PROSESS (NO) ===== -->
+        <section class="process" aria-label="Skybound – designprosess">
+          <section class="forste_innsikt" aria-label="Innsikt og brukerforståelse">
+            <!-- 1: Krav → innsikt -->
+            <section class="process-step">
+              <div class="step-copy">
+                <h3>1. Kravspesifikasjon → behov for ekte innsikt</h3>
+                <p>Prosjektet startet med en predefinert kravspesifikasjon definert av PortalSpace</p>
+                <p><strong>Jeg gjorde:</strong> Gikk gjennom predefinert kravspesifikasjon og skilte antakelser fra oppgaver.</p>
+                <p><strong>Hvorfor:</strong> Unngå å designe for hypotetiske behov.</p>
+                <p><strong>Hva jeg lærte:</strong> Krav beskriver ofte løsninger, ikke problemer – avklar behov tidlig.</p>
+              </div>
+            </section>
+
+            <!-- 2: Intervju -->
+            <section class="process-step">
+              <div class="step-copy">
+                <h3>2. Semistrukturert intervju</h3>
+                <p><strong>Jeg gjorde:</strong> Semistrukturert intervju med engasjert deltaker fra PortalSpace som ble vår hovedbruker.</p>
+                <p><strong>Hvorfor:</strong> For å forstå brukskontekst, behov og faktiske mål.</p>
+                <p><strong>Hva jeg lærte:</strong> En tilgjengelig hovedbruker gir kontinuerlig validering. Kravspesifikasjon gir mye innsikt, men et supplerende intervju gir bedre forståelse for faktisk bruk.</p>
+              </div>
+            </section>
+          
+          </section>
+
+          <!-- 3: Syntese + Crazy-8 -->
+          <section class="process-step">
+            <figure class="step-media">
+              <img src="images/skybound/crazy8workshop.png" alt="Crazy-8 workshop med raske papirskisser i teamet">
+              <figcaption>Crazy-8 workshop i teamet</figcaption>
+            </figure>
+            <div class="step-copy">
+              <h3>3. Syntese + Crazy-8</h3>
+              <p><strong>Jeg gjorde:</strong> Kodet funn, delte innsikt og fasiliterte Crazy-8 workshop innad i teamet for felles forståelse.</p>
+              <p><strong>Hvorfor:</strong> Raskt utforske IA, navigasjon og flows sammen.</p>
+              <p><strong>Hva jeg lærte:</strong> Felles skissing skaper eierskap og enighet.</p>
+            </div>
+          </section>
+
+          <!-- 4: Figma v1 – KARUSELL venstre, to tekstblokker høyre -->
+          <section class="process-step" id="figma-v1">
+            <div class="step-media">
+              <div class="carousel phone-carousel" aria-label="Figma prototype v1 – skjermer">
+                <!-- Venstre pil -->
+                <button class="car-btn car-prev" type="button" aria-label="Forrige">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </button>
+
+                <!-- Viewport -->
+                <div class="carousel-viewport" tabindex="0">
+                  <figure class="slide">
+                    <div class="phone-mock">
+                      <img src="images/skybound/Green screen.png" alt="Grønn skjerm – klar for oppskyting" />
+                    </div>
+                  </figure>
+                  <figure class="slide" hidden>
+                    <div class="phone-mock">
+                      <img src="images/skybound/Yellow screen 2.png" alt="Gul skjerm – vurder forhold" />
+                    </div>
+                  </figure>
+                  <figure class="slide" hidden>
+                    <div class="phone-mock">
+                      <img src="images/skybound/Red screen 2.png" alt="Rød skjerm – ikke anbefalt" />
+                    </div>
+                  </figure>
+                  <figure class="slide" hidden>
+                    <div class="phone-mock">
+                      <img src="images/skybound/Vaar detaljer skjerm test2.png" alt="Værdetaljer" />
+                    </div>
+                  </figure>
+                  <figure class="slide" hidden>
+                    <div class="phone-mock">
+                      <img src="images/skybound/Vaar detaljer skjerm test24.png" alt="Værdetaljer – alternativer" />
+                    </div>
+                  </figure>
+                  <figure class="slide" hidden>
+                    <div class="phone-mock">
+                      <img src="images/skybound/Menyskjerm 2.png" alt="Meny – navigasjon" />
+                    </div>
+                  </figure>
+                  <figure class="slide" hidden>
+                    <div class="phone-mock">
+                      <img src="images/skybound/Launch window and launch site.png" alt="Launch window og oppskytingssted" />
+                    </div>
+                  </figure>
+                </div>
+
+                <!-- Høyre pil -->
+                <button class="car-btn car-next" type="button" aria-label="Neste">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </button>
+
+                <!-- Dots -->
+                <div class="dots" role="tablist" aria-label="Bilder i karusell">
+                  <button aria-label="Gå til bilde 1" type="button"></button>
+                  <button aria-label="Gå til bilde 2" type="button"></button>
+                  <button aria-label="Gå til bilde 3" type="button"></button>
+                  <button aria-label="Gå til bilde 4" type="button"></button>
+                  <button aria-label="Gå til bilde 5" type="button"></button>
+                  <button aria-label="Gå til bilde 6" type="button"></button>
+                  <button aria-label="Gå til bilde 7" type="button"></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- HØYRE KOLONNE: to tekstblokker under hverandre -->
+            <div class="copy-stack">
+              <div class="step-copy">
+                <h3>4. Figma prototype v1</h3>
+                <p><strong>Jeg gjorde:</strong> Oversatte papirskisser til en klikkbar mobilprototype i Figma og presenterte for teamet.</p>
+                <p><strong>Hvorfor:</strong> Visualisere skjermtilstander tidlig for å avdekke hull i flyt og ordlyd før brukertest.</p>
+                <p><strong>Hva jeg lærte:</strong> Selv en enkel, klikkbar prototyp avslører antakelser raskt – den ga oss diskusjoner om navigasjon og begreper.</p>
+              </div>
+
+              <div class="step-copy">
+                <h3>5. Workshop: papir + prototype</h3>
+                <p><strong>Jeg gjorde:</strong> Lot brukeren teste, skissere og kommentere på utskrifter og i prototypen.</p>
+                <p><strong>Hvorfor:</strong> Lav- og høy-fi sammen gir ærlige tilbakemeldinger på begrep og flyt.</p>
+                <p><strong>Hva jeg lærte:</strong> Navigasjonen ble bedre når brukeren “tegnet over”.</p>
+              </div>
+            </div>
+          </section>
+
+
+          <!-- 6: Interaktiv flow v2 -->
+          <section class="process-step">
+            <figure class="step-media">
+              <img src="images/skybound/interaktiv_protoype_skybound.png" alt="Interaktiv Figma-flow (v2)">
+              <figcaption>Interaktiv Figma-flow (v2)</figcaption>
+            </figure>
+            <div class="step-copy">
+              <h3>6. Interaktiv Figma-flow</h3>
+              <p><strong>Jeg gjorde:</strong> Oppdaterte prototypen med realistiske overganger/tilstander.</p>
+              <p><strong>Hvorfor:</strong> Mer rettferdig test av grensesnitt, brukervennlighet og oppgaveløsing.</p>
+              <p><strong>Hva jeg lærte:</strong> Å teste å navigere i appen viser om navigasjon fungerer som tiltenkt.</p>
+            </div>
+          </section>
+
+          <!-- 7: Geriljatest -->
+          <section class="process-step">
+            <div class="step-copy">
+              <h3>7. Geriljatest</h3>
+              <p><strong>Jeg gjorde:</strong> Korte oppgaver med folk uten domenekunnskap.</p>
+              <p><strong>Hvorfor:</strong> Testing av intuitivitet og første klikk. Er applikasjonen enkel å navigere for førstegangsbrukere?</p>
+              <p><strong>Hva jeg lærte:</strong> Friske øyne avslører hvor vi må forenkle. Hovedpoenget med appen var å forenkle og gjøre planlegging mer effektivt. Da må navigasjonen være så enkel som mulig, slippe unødvendige trykk.</p>
+            </div>
+          </section>
+
+          <!-- 8: Samarbeid utviklere -->
+          <section class="process-step">
+            <div class="step-copy">
+              <h3>8. Tett samarbeid med utviklere</h3>
+              <p><strong>Jeg gjorde:</strong> Delte innsikt, vi prioriterte sammen, kvalitetssikret tilstander/feil gjennom hvert steg av prosessen.</p>
+              <p><strong>Hvorfor:</strong> Minimere design-gjeld og kode-rewrites.</p>
+              <p><strong>Hva jeg lærte:</strong> Små avklaringer tidlig sparer store endringer senere. Å involvere hele teamet i hele prosessen gir en felles forståelse for løsningen samt gjensidig læring. Alle var med på alt, jeg kodet programmerte dersom jeg hadde tid til det. Slik fikk jeg også tilhørighet til selve koden.</p>
+            </div>
+          </section>
+
+          <!-- 9: Systemtest -->
+          <section class="process-step">
+            <div class="step-copy">
+              <h3>9. Systemtest & oppsummering</h3>
+              <p><strong>Jeg gjorde:</strong> Da prototyper var ferdig testet, funksjonalitet ble implementert i appen. Lot hovedbruker teste implementert funksjonalitet mot realistiske scenarioer.</p>
+              <p><strong>Hvorfor:</strong> Verifisere at beslutningsstøtten oppleves rask og trygg.</p>
+              <p><strong>Hva jeg lærte:</strong> Grundig designprosess tidlig kan gi mindre endringer i sluttfasen. Ettersom vi hadde jevnlig testet prototyper, kunne vi være relativt sikre på at den tiltenkte designet på appen skulle fungere optimalt i forhold til brukerbehov.</p>
+            </div>
+          </section>
+
+        </section>
+        <!-- ===== /SKYBOUND PROSESS ===== -->
+      </section>
+
+      <!-- 2. Meditasjonsball (NO) -->
+      <section class="project fade-in" id="proj-medball-no">
+        <h2>Meditasjonsball – IN1060</h2>
+        <p class="kicker">Taktilt grensesnitt som guider pust med lys og haptikk.</p>
+        <p>
+          Vi utforsket hvordan et fysisk grensesnitt kan støtte ro og tilstedeværelse. Jeg bidro med prototyping og interaksjonsdesign i et team på fire.
+          Tester viste at lys fungerer som metronom, mens for sterk haptikk forstyrrer opplevelsen.
+        </p>
+
+        <div class="media">
+          <figure>
+            <div class="mock phone" aria-hidden="true"></div>
+            <figcaption data-lang="no">Lysrytme som pustemetronom</figcaption>
+          </figure>
+          <figure>
+            <div class="mock laptop" aria-hidden="true"></div>
+            <figcaption data-lang="no">Prototypen i testoppsett</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 3. Ekko-kamre (NO) -->
+      <section class="project fade-in" id="proj-echo-no">
+        <h2>Ekko-kamre og demokrati – IN3010</h2>
+        <p class="kicker">Installasjon som gjør algoritmisk polarisering synlig og følbart.</p>
+        <p>
+          Vi undersøkte hvordan algoritmisk polarisering kan gjøres synlig og følbart. Jeg hadde ansvar for konsept, interaksjon og etikk.
+          Med gigamapping og speculative design bygget vi en installasjon med feeds, lyd og plakatvegg.
+        </p>
+
+        <div class="media">
+          <figure>
+            <div class="mock browser" aria-hidden="true"></div>
+            <figcaption data-lang="no">Feed-vegg i installasjonen</figcaption>
+          </figure>
+          <figure>
+            <div class="mock laptop" aria-hidden="true"></div>
+            <figcaption data-lang="no">Plakatvegg / konsept</figcaption>
+          </figure>
+        </div>
+      </section>
+    </section>
+    <!-- =================== /NORWEGIAN =================== -->
+
+    <!-- =================== ENGLISH (brief) =================== -->
+    <section id="content-en" lang="en" hidden>
+      <section class="project fade-in" id="proj-rocket-en">
+        <h2>Rocket Launch Planner – PortalSpace (IN2000)</h2>
+        <p class="kicker">Weather-based decision support for rocket launches.</p>
+        <p>
+          I led UX. Starting from a spec, we interviewed a primary user, ran a Crazy-8, iterated Figma prototypes, and validated via workshops and guerrilla tests.
+          The result emphasized speed and clarity for selecting a safe launch window.
+        </p>
+      </section>
+
+      <section class="project fade-in" id="proj-medball-en">
+        <h2>Meditation Ball – IN1060</h2>
+        <p class="kicker">A tactile interface guiding breathing with light and haptics.</p>
+        <p>Exploration of calm technology; I contributed prototyping and interaction design.</p>
+      </section>
+
+      <section class="project fade-in" id="proj-echo-en">
+        <h2>Echo Chambers & Democracy – IN3010</h2>
+        <p class="kicker">Making algorithmic polarization visible and tangible.</p>
+        <p>Concept, interaction and ethics for a multi-modal installation.</p>
+      </section>
+    </section>
+    <!-- =================== /ENGLISH =================== -->
+
+    <!-- Dot rail (desktop) -->
+    <nav class="rail" aria-label="Sekjoner" data-lang="no">
+      <a href="#proj-rocket-no" aria-label="Rocket Planner"></a>
+      <a href="#proj-medball-no" aria-label="Meditasjonsball"></a>
+      <a href="#proj-echo-no" aria-label="Ekko-kamre"></a>
+    </nav>
+    <nav class="rail" aria-label="Sections" data-lang="en" hidden>
+      <a href="#proj-rocket-en" aria-label="Rocket Planner"></a>
+      <a href="#proj-medball-en" aria-label="Meditation Ball"></a>
+      <a href="#proj-echo-en" aria-label="Echo Chambers"></a>
+    </nav>
+  </main>
+
+  <footer>
+    <p data-lang="no">Kontakt: <a href="mailto:mariam300802@gmail.com">mariam300802@gmail.com</a></p>
+    <p data-lang="en" hidden>Contact: <a href="mailto:mariam300802@gmail.com">mariam300802@gmail.com</a></p>
+
+    <p>
+      <a href="https://www.linkedin.com/in/maria-malmstedt-andersen/" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a href="https://github.com/mariamandersen" target="_blank" rel="noopener">GitHub</a> ·
+      <a data-lang="no" href="files/CV_MariaMAndersen.pdf" download="Maria-Malmstedt-Andersen-CV.pdf">Last ned CV</a>
+      <a data-lang="en" href="files/CV_MariaMAndersen.pdf" download="Maria-Malmstedt-Andersen-CV.pdf" hidden>Download CV</a>
+    </p>
+
+    <small>© <span id="copyright-year"></span> Maria Malmstedt Andersen</small>
+
+    <!-- Hidden dev button (hold Alt to show) -->
+    <button id="resetLang" type="button">Reset language preference</button>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
