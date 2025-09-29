@@ -85,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let fadeObserver = null;
 
   function setupFadeIn() {
-    // 1) Merk det som allerede er i viewport som "appear" for å unngå at det fader UT
     const allFade = document.querySelectorAll('.fade-in');
     allFade.forEach(el => {
       if (el.closest('[hidden]')) return;
@@ -95,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // 2) (Re)start observer
     if (fadeObserver) { fadeObserver.disconnect(); fadeObserver = null; }
 
     const supportsIO = 'IntersectionObserver' in window;
@@ -105,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // `has-io` er allerede på <html> fra start; skader ikke å sikre den her:
     document.documentElement.classList.add('has-io');
 
     fadeObserver = new IntersectionObserver((entries, obs) => {
@@ -117,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-    // Observer bare de som ikke allerede har appear
     allFade.forEach(el => {
       if (!el.closest('[hidden]') && !el.classList.contains('appear')) {
         fadeObserver.observe(el);
@@ -142,8 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setPressed(isEn);
     try { localStorage.setItem('preferredLanguage', isEn ? 'en' : 'no'); } catch {}
 
-    activateRail();   // rail må peke på riktige seksjoner
-    setupFadeIn();    // re-init fade-in når språk byttes
+    activateRail();
+    setupFadeIn();
+    flagStepsWithMedia(); // sikre .has-media også etter språkbytte
   }
 
   const savedLang = (() => { try { return localStorage.getItem('preferredLanguage'); } catch { return null; } })();
@@ -242,6 +239,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   document.querySelectorAll('.carousel').forEach(initCarousel);
+
+  /* ------------------------------
+     Flag steps that have media (fallback for browsers w/o :has)
+  --------------------------------*/
+  function flagStepsWithMedia(){
+    document.querySelectorAll('#proj-rocket-no .process-step').forEach(step => {
+      step.classList.toggle('has-media', !!step.querySelector('.step-media'));
+    });
+  }
+  flagStepsWithMedia();
+
+  /* Merk alle prosess-steg som har media (bilde/karusell) */
+  function tagProcessSteps() {
+    document
+      .querySelectorAll('#proj-rocket-no .process .process-step')
+      .forEach(step => {
+        const has = !!step.querySelector('.step-media');
+        step.classList.toggle('has-media', has);
+        step.classList.toggle('no-media', !has);
+      });
+  }
+  tagProcessSteps();
+
 
   /* ------------------------------
      Copyright-år
