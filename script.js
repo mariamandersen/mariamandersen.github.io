@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------
-     Fade-in via IO (ingen “fade OUT”)
+     Fade-in via IO (no fade out)
   --------------------------------*/
   let fadeObserver = null;
 
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------
-     Språk
+     Language toggle
   --------------------------------*/
   function setPressed(isEn) {
     if (btnEn) btnEn.setAttribute('aria-pressed', String(isEn));
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     activateRail();
     setupFadeIn();
-    flagStepsWithMedia(); // sikre .has-media også etter språkbytte
+    flagStepsWithMedia(); // ensure .has-media after language switch
   }
 
   const savedLang = (() => { try { return localStorage.getItem('preferredLanguage'); } catch { return null; } })();
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnNo) btnNo.addEventListener('click', () => setLanguage('no'));
 
   /* ------------------------------
-     Mobilmeny
+     Mobile menu
   --------------------------------*/
   const menuToggle = document.getElementById('menuToggle');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------------------
-     KARUSELL (ett-bilde-modus)
+     Carousel (single-image mode)
   --------------------------------*/
   function initCarousel(carousel) {
     const viewport = carousel.querySelector('.carousel-viewport');
@@ -242,29 +242,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ------------------------------
      Flag steps that have media (fallback for browsers w/o :has)
+     Applies to BOTH languages.
   --------------------------------*/
   function flagStepsWithMedia(){
-    document.querySelectorAll('#proj-rocket-no .process-step').forEach(step => {
-      step.classList.toggle('has-media', !!step.querySelector('.step-media'));
-    });
-  }
-  flagStepsWithMedia();
-
-  /* Merk alle prosess-steg som har media (bilde/karusell) */
-  function tagProcessSteps() {
-    document
-      .querySelectorAll('#proj-rocket-no .process .process-step')
-      .forEach(step => {
+    ['#proj-rocket-no', '#proj-rocket-en'].forEach(rootSel => {
+      document.querySelectorAll(`${rootSel} .process .process-step`).forEach(step => {
         const has = !!step.querySelector('.step-media');
         step.classList.toggle('has-media', has);
         step.classList.toggle('no-media', !has);
       });
+    });
   }
-  tagProcessSteps();
-
+  flagStepsWithMedia();
 
   /* ------------------------------
-     Copyright-år
+     Copyright year
   --------------------------------*/
   const cy = document.getElementById('copyright-year');
   if (cy) cy.textContent = String(new Date().getFullYear());

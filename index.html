@@ -155,7 +155,7 @@
           </section>
 
           <!-- D: Figma v1 – KARUSELL høyre -->
-          <section class="process-step" id="figma-v1">
+          <section class="process-step" id="figma-v1-no">
             <div class="step-copy">
               <h3>Figma prototype v1</h3>
               <p><strong>Jeg gjorde:</strong> Oversatte papirskisser til en klikkbar mobilprototype i Figma og presenterte for teamet.</p>
@@ -333,23 +333,196 @@
     </section>
     <!-- =================== /NORWEGIAN =================== -->
 
-    <!-- =================== ENGLISH (brief) =================== -->
+    <!-- =================== ENGLISH (detailed) =================== -->
     <section id="content-en" lang="en" hidden>
+      <!-- 1. Rocket Launch Planner (EN) -->
       <section class="project fade-in" id="proj-rocket-en">
-        <h2>Rocket Launch Planner – PortalSpace (IN2000)</h2>
-        <p class="kicker">Weather-based decision support for rocket launches.</p>
+        <h2>Skybound – Rocket Launch Planner</h2>
+        <p class="kicker">IN2000 – Spring 2025</p>
         <p>
-          I led UX. Starting from a spec, we interviewed a primary user, ran a Crazy-8, iterated Figma prototypes, and validated via workshops and guerrilla tests.
-          The result emphasized speed and clarity for selecting a safe launch window.
+          I was the <strong>UX lead</strong> in a cross-functional team of six. We started from a client spec (PortalSpace) but quickly needed
+          deeper insight into real context and needs. Through interviews, workshops and iterative prototyping we arrived at a solution
+          that made it faster and safer to find an optimal launch window.
         </p>
+
+        <!-- ===== SKYBOUND PROCESS (EN) ===== -->
+        <section class="process process--timeline" aria-label="Skybound – design process">
+          <section class="forste_innsikt" aria-label="Research and understanding">
+            <!-- A: Spec → insight -->
+            <section class="process-step">
+              <div class="step-copy">
+                <h3>Specification → need for real insight</h3>
+                <p>The project began with a predefined specification from PortalSpace.</p>
+                <p><strong>What I did:</strong> Reviewed the spec and separated assumptions from tasks.</p>
+                <p><strong>Why:</strong> Avoid designing for hypothetical needs.</p>
+                <p><strong>What I learned:</strong> Specs often describe solutions, not problems — clarify needs early.</p>
+              </div>
+            </section>
+
+            <!-- B: Interview -->
+            <section class="process-step">
+              <div class="step-copy">
+                <h3>Semi-structured interview</h3>
+                <p><strong>What I did:</strong> Interviewed an engaged PortalSpace participant who became our primary user.</p>
+                <p><strong>Why:</strong> Understand context, needs and goals.</p>
+                <p><strong>What I learned:</strong> An accessible primary user enables continuous validation; the spec is useful, but interviews deepen real understanding.</p>
+              </div>
+            </section>
+          </section>
+
+          <!-- C: Synthesis + Crazy-8 -->
+          <section class="process-step">
+            <figure class="step-media">
+              <img src="images/skybound/crazy8workshop.png" alt="Crazy-8 workshop with quick team sketches">
+              <figcaption>Crazy-8 workshop</figcaption>
+            </figure>
+            <div class="step-copy">
+              <h3>Synthesis + Crazy-8</h3>
+              <p><strong>What I did:</strong> Coded findings, shared insights and facilitated a Crazy-8 session for shared understanding.</p>
+              <p><strong>Why:</strong> Quickly explore IA, navigation and flows together.</p>
+              <p><strong>What I learned:</strong> Sketching together builds ownership and alignment.</p>
+            </div>
+          </section>
+
+          <!-- D: Figma v1 – CAROUSEL right -->
+          <section class="process-step" id="figma-v1-en">
+            <div class="step-copy">
+              <h3>Figma prototype v1</h3>
+              <p><strong>What I did:</strong> Turned paper sketches into a clickable mobile prototype and presented it to the team.</p>
+              <p><strong>Why:</strong> Visualize early to uncover gaps in flows and wording before usability testing.</p>
+              <p><strong>What I learned:</strong> Even a simple clickable prototype quickly exposes assumptions — great for discussing navigation and concepts.</p>
+            </div>
+
+            <div class="step-media">
+              <div class="carousel phone-carousel" aria-label="Figma prototype v1 – screens">
+                <button class="car-btn car-prev" type="button" aria-label="Previous">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </button>
+
+                <div class="carousel-viewport" tabindex="0">
+                  <figure class="slide">
+                    <div class="phone-mock">
+                      <img src="images/skybound/Green screen.png" alt="Green screen – ready to launch" />
+                    </div>
+                  </figure>
+                  <figure class="slide" hidden>
+                    <div class="phone-mock">
+                      <img src="images/skybound/Yellow screen 2.png" alt="Yellow screen – consider conditions" />
+                    </div>
+                  </figure>
+                  <figure class="slide" hidden>
+                    <div class="phone-mock">
+                      <img src="images/skybound/Red screen 2.png" alt="Red screen – not recommended" />
+                    </div>
+                  </figure>
+                  <figure class="slide" hidden>
+                    <div class="phone-mock">
+                      <img src="images/skybound/Vaar detaljer skjerm test2.png" alt="Weather details" />
+                    </div>
+                  </figure>
+                  <figure class="slide" hidden>
+                    <div class="phone-mock">
+                      <img src="images/skybound/Vaar detaljer skjerm test24.png" alt="Weather details – alternatives" />
+                    </div>
+                  </figure>
+                  <figure class="slide" hidden>
+                    <div class="phone-mock">
+                      <img src="images/skybound/Menyskjerm 2.png" alt="Menu – navigation" />
+                    </div>
+                  </figure>
+                  <figure class="slide" hidden>
+                    <div class="phone-mock">
+                      <img src="images/skybound/Launch window and launch site.png" alt="Launch window and site" />
+                    </div>
+                  </figure>
+                </div>
+
+                <button class="car-btn car-next" type="button" aria-label="Next">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </button>
+
+                <div class="dots" role="tablist" aria-label="Carousel images">
+                  <button aria-label="Go to image 1" type="button"></button>
+                  <button aria-label="Go to image 2" type="button"></button>
+                  <button aria-label="Go to image 3" type="button"></button>
+                  <button aria-label="Go to image 4" type="button"></button>
+                  <button aria-label="Go to image 5" type="button"></button>
+                  <button aria-label="Go to image 6" type="button"></button>
+                  <button aria-label="Go to image 7" type="button"></button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- E: Workshop paper + prototype (TEXT ONLY) -->
+          <section class="process-step">
+            <div class="step-copy">
+              <h3>Workshop: paper + prototype</h3>
+              <p><strong>What I did:</strong> Let the user test, sketch and annotate on printouts and in the prototype.</p>
+              <p><strong>Why:</strong> Low- and high-fi together trigger honest feedback on terms and flows.</p>
+              <p><strong>What I learned:</strong> Navigation improved when the user “drew over” screens.</p>
+            </div>
+          </section>
+
+          <!-- F: Interactive flow v2 -->
+          <section class="process-step">
+            <figure class="step-media">
+              <img src="images/skybound/interaktiv_protoype_skybound.png" alt="Interactive Figma flow (v2)">
+              <figcaption>Interactive Figma flow (v2)</figcaption>
+            </figure>
+            <div class="step-copy">
+              <h3>Interactive Figma flow</h3>
+              <p><strong>What I did:</strong> Updated the prototype with realistic transitions/states.</p>
+              <p><strong>Why:</strong> Fairer test of interface, usability and task success.</p>
+              <p><strong>What I learned:</strong> Testing navigation shows whether the structure works as intended.</p>
+            </div>
+          </section>
+
+          <!-- G: Guerrilla test -->
+          <section class="process-step">
+            <div class="step-copy">
+              <h3>Guerrilla test</h3>
+              <p><strong>What I did:</strong> Short tasks with people without domain knowledge.</p>
+              <p><strong>Why:</strong> Validate intuitiveness and first-click. Is the app easy to navigate for first-time users?</p>
+              <p><strong>What I learned:</strong> Fresh eyes reveal where to simplify; navigation must be minimal to speed planning.</p>
+            </div>
+          </section>
+
+          <!-- H: Collaboration with devs -->
+          <section class="process-step">
+            <div class="step-copy">
+              <h3>Close collaboration with developers</h3>
+              <p><strong>What I did:</strong> Shared insights, co-prioritized, and quality-checked states/errors throughout the process.</p>
+              <p><strong>Why:</strong> Minimize design debt and code rewrites.</p>
+              <p><strong>What I learned:</strong> Early clarifications prevent big changes later; involving the whole team builds shared understanding.</p>
+            </div>
+          </section>
+
+          <!-- I: System test -->
+          <section class="process-step">
+            <div class="step-copy">
+              <h3>System test & wrap-up</h3>
+              <p><strong>What I did:</strong> When prototypes were validated, functionality was implemented and tested by the primary user on realistic scenarios.</p>
+              <p><strong>Why:</strong> Verify that the decision support feels fast and safe.</p>
+              <p><strong>What I learned:</strong> Thorough early process reduced late changes; iterative testing increased confidence in fit.</p>
+            </div>
+          </section>
+        </section>
+        <!-- ===== /SKYBOUND PROCESS (EN) ===== -->
       </section>
 
+      <!-- 2. Meditation Ball (EN) -->
       <section class="project fade-in" id="proj-medball-en">
         <h2>Meditation Ball – IN1060</h2>
         <p class="kicker">A tactile interface guiding breathing with light and haptics.</p>
         <p>Exploration of calm technology; I contributed prototyping and interaction design.</p>
       </section>
 
+      <!-- 3. Echo Chambers (EN) -->
       <section class="project fade-in" id="proj-echo-en">
         <h2>Echo Chambers & Democracy – IN3010</h2>
         <p class="kicker">Making algorithmic polarization visible and tangible.</p>

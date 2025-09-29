@@ -13,6 +13,9 @@
   --lead:clamp(1.02rem,1.7vw,1.2rem);
   --measure:68ch; --gutter:clamp(24px,6vw,88px);
   --rail-dot:7px; --rail-ring:2px; --rail-pad:10px; --rail-gap:10px;
+
+  /* One knob to size the media column (both NO & EN) */
+  --media-w: clamp(300px, 32vw, 440px);
 }
 
 /* Base */
@@ -303,282 +306,333 @@ footer a{ color:var(--muted); }
 }
 #proj-rocket-no.project > *, #proj-rocket-en.project > *{ grid-column:1 / -1 !important; }
 
-/* Focus ring for keyboard on viewport */
-.carousel-viewport:focus-visible{
-  outline:2px solid color-mix(in oklab, var(--accent) 85%, white 15%);
-  outline-offset:4px; border-radius:14px;
-}
-
-/* Single-image carousel look */
-.phone-carousel .carousel-viewport{ overflow:hidden; scroll-snap-type:none; display:block; width:fit-content; margin-inline:auto; padding:8px; }
-.phone-carousel .phone-mock{ width:clamp(200px,22vw,280px); }
-.phone-carousel .car-btn{ width:30px; height:30px; z-index:4; }
-.phone-carousel .car-prev{ left:-12px; } .phone-carousel .car-next{ right:-12px; }
-
-/* Media sizing in process */
-.process .step-media > img,
-.process .step-media > figure > img{ max-width:560px; width:100%; height:auto; display:block; margin-inline:auto; }
-.mock{ max-width:720px; width:100%; margin-inline:auto; }
-
-/* SKYBOUND compact tweaks */
-#proj-rocket-no.project{ min-height:auto; }
-#proj-rocket-no .process .process-step{ padding:clamp(10px,1.2vw,16px); }
-#proj-rocket-no .process .step-copy p{ margin:.35rem 0; }
-@media (min-width:980px){
-  #proj-rocket-no .process .process-step{
-    grid-template-columns:minmax(240px,0.75fr) 1fr; column-gap:clamp(12px,1.4vw,24px);
-  }
-}
-#proj-rocket-no .process .step-media > img,
-#proj-rocket-no .process .mock{ max-width:520px; }
-#proj-rocket-no .process figcaption{ margin-top:4px; font-size:.9rem; opacity:.9; }
-
-/* Figma carousel size */
-#figma-v1 .step-media .carousel{ max-width:380px; margin:0; }
-#figma-v1 .phone-mock{ width:clamp(190px,20vw,250px); }
-
-/* Timeline skin */
-#proj-rocket-no .process.process--timeline{
+/* Timeline skin (applies to both languages) */
+#proj-rocket-no .process.process--timeline,
+#proj-rocket-en .process.process--timeline{
   counter-reset: sb-step; display:grid; gap:clamp(12px,1.6vw,18px);
 }
-#proj-rocket-no .process.process--timeline .process-step{
+#proj-rocket-no .process.process--timeline .process-step,
+#proj-rocket-en .process.process--timeline .process-step{
   position:relative;
   background:color-mix(in oklab, var(--surface) 58%, black 42%);
   border:1px solid color-mix(in oklab, var(--line) 80%, black 20%);
   border-radius:16px; box-shadow:0 10px 26px rgba(0,0,0,.22);
   padding:clamp(16px,2vw,22px);
 }
-#proj-rocket-no .process.process--timeline .process-step::after{
+#proj-rocket-no .process.process--timeline .process-step::after,
+#proj-rocket-en .process.process--timeline .process-step::after{
   content:""; position:absolute; left:-20px; top:0; bottom:0; width:2px; border-radius:2px;
   background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 80%, black 20%), color-mix(in oklab, var(--accent) 20%, transparent));
 }
-#proj-rocket-no .process.process--timeline .process-step::before{
+#proj-rocket-no .process.process--timeline .process-step::before,
+#proj-rocket-en .process.process--timeline .process-step::before{
   counter-increment: sb-step; content: counter(sb-step);
   position:absolute; left:-34px; top:14px; width:28px; height:28px; border-radius:999px;
   display:grid; place-items:center; background:var(--accent); color:var(--accent-contrast);
   font-weight:800; font-size:.9rem; letter-spacing:.02em; box-shadow:0 6px 16px rgba(0,0,0,.3);
 }
-#proj-rocket-no .process.process--timeline .step-copy h3{
+#proj-rocket-no .process.process--timeline .step-copy h3,
+#proj-rocket-en .process.process--timeline .step-copy h3{
   margin-top:0; display:flex; align-items:baseline; gap:8px;
 }
-#proj-rocket-no .process.process--timeline .step-copy h3::after{
+#proj-rocket-no .process.process--timeline .step-copy h3::after,
+#proj-rocket-en .process.process--timeline .step-copy h3::after{
   content:""; flex:1; height:1px; background:var(--line); opacity:.45;
 }
-#proj-rocket-no .process.process--timeline .step-copy p > strong{
+#proj-rocket-no .process.process--timeline .step-copy p > strong,
+#proj-rocket-en .process.process--timeline .step-copy p > strong{
   display:inline-block; background:color-mix(in oklab, var(--accent) 22%, black 78%);
   color:var(--text);
   border:1px solid color-mix(in oklab, var(--accent) 35%, black 65%);
   padding:.05rem .45rem; margin-right:.35rem; border-radius:6px; font-weight:700; letter-spacing:.01em;
 }
-#proj-rocket-no .process.process--timeline .step-media img,
-#proj-rocket-no .process.process--timeline .phone-mock{ border-color:color-mix(in oklab, var(--line) 78%, black 22%); box-shadow:0 8px 22px rgba(0,0,0,.32); }
-#proj-rocket-no .process.process--timeline figcaption{ font-size:.9rem; opacity:.9; margin-top:6px; }
-
-/* ===== Two-column logic (only when there is media) ===== */
-
-/* Prefer :has() when available */
-@supports selector(:has(*)){
-  @media (min-width:980px){
-    #proj-rocket-no .process.process--timeline .process-step:has(.step-media){
-      display:grid; grid-template-columns:1fr minmax(260px,0.9fr);
-      column-gap:clamp(14px,2.2vw,32px); align-items:start;
-    }
-    #proj-rocket-no .process.process--timeline .process-step:not(:has(.step-media)){
-      display:block;
-    }
-    #proj-rocket-no .process.process--timeline .process-step:has(.step-media) .step-copy,
-    #proj-rocket-no .process.process--timeline .process-step:has(.step-media) .copy-stack{ grid-column:1; }
-    #proj-rocket-no .process.process--timeline .process-step:has(.step-media) .step-media{ grid-column:2; justify-self:start; }
-  }
-}
-
-/* Fallback when :has() is not supported (JS adds .has-media) */
-@media (min-width:980px){
-  #proj-rocket-no .process-step.has-media{
-    display:grid !important;
-    grid-template-columns:1fr minmax(260px,0.9fr) !important;
-    column-gap:clamp(14px,2.2vw,32px); align-items:start;
-  }
-  #proj-rocket-no .process-step.has-media .step-copy,
-  #proj-rocket-no .process-step.has-media .copy-stack{ grid-column:1 !important; }
-  #proj-rocket-no .process-step.has-media .step-media{ grid-column:2 !important; justify-self:start; }
-  #proj-rocket-no .process-step:not(.has-media){ display:block !important; }
-}
-
-/* ===============================
-   SKYBOUND – fast, responsiv mediabredde + justering
-   Lim dette helt nederst i style.css
-================================= */
-
-/* Én variabel styrer bredde for bilder/karusell i høyre kolonne */
-:root{
-  --media-w: clamp(300px, 32vw, 440px); /* juster her ved behov (min, ideal, max) */
-}
-
-/* 1) To kolonner: tekst | media med fast (responsiv) mediabredde */
-@supports selector(:has(*)){
-  @media (min-width: 980px){
-    #proj-rocket-no .process.process--timeline .process-step:has(.step-media){
-      grid-template-columns: 1fr var(--media-w) !important;
-      align-items: start;
-    }
-  }
-}
-/* Fallback for nettlesere uten :has() – JS setter .has-media */
-@media (min-width: 980px){
-  #proj-rocket-no .process-step.has-media{
-    grid-template-columns: 1fr var(--media-w) !important;
-    align-items: start;
-  }
-}
-
-/* 2) Tving alt inni mediakolonnen til samme bredde og venstrejustering */
-#proj-rocket-no .process .step-media{ justify-self: start; }
-#proj-rocket-no .process .step-media > img,
-#proj-rocket-no .process .step-media > figure > img{
-  display: block;
-  width: var(--media-w);
-  max-width: 100%;
-  height: auto;
-  margin: 0;              /* ikke sentrer */
-  object-fit: contain;    /* unngå “sprik” hvis dimensjoner varierer */
-}
-
-/* Karuseller og “telefon-ramme” matcher samme bredde */
-#proj-rocket-no .process .step-media .carousel{
-  width: var(--media-w);
-  max-width: 100%;
-  margin: 0;              /* venstrejustert */
-}
-#proj-rocket-no .process .step-media .phone-mock{
-  width: 100%;            /* fyll karusell-bredden */
-  max-width: 100%;
-}
-
-/* Litt strammere cap-tekst og luft */
-#proj-rocket-no .process .step-media figcaption{
-  margin-top: 6px;
-  line-height: 1.35;
-  opacity: .9;
-}
-
-/* (valgfritt) gjør mediakolonnen bittelitt smalere på veldig brede skjermer */
-@media (min-width: 1400px){
-  :root{ --media-w: clamp(300px, 26vw, 420px); }
-}
-
-/* ===============================
-   SKYBOUND – robust to-kolonne + lik mediabredde
-   (class-basert, funker uten :has)
-================================= */
-
-/* Én spak for mediabredde */
-:root{ --media-w: clamp(300px, 30vw, 420px); }
-
-/* To kolonner KUN når steget faktisk har media */
-@media (min-width: 980px){
-  #proj-rocket-no .process .process-step.has-media{
-    display: grid !important;
-    grid-template-columns: 1fr var(--media-w) !important; /* tekst | media */
-    column-gap: clamp(14px, 2vw, 28px);
-    align-items: start;
-  }
-  /* Rena tekststeg: én kolonne */
-  #proj-rocket-no .process .process-step.no-media{
-    display: block !important;
-  }
-}
-
-/* Tving alt inni mediakolonnen til samme bredde og venstrejustering */
-#proj-rocket-no .process .step-media{
-  justify-self: start;
-  width: var(--media-w);
-  max-width: 100%;
-}
-#proj-rocket-no .process .step-media > img,
-#proj-rocket-no .process .step-media > figure > img{
-  display: block;
-  width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
-  margin: 0 !important;
-  object-fit: contain;
-}
-
-/* Karusell/telefon-mock samme bredde */
-#proj-rocket-no .process .step-media .carousel{
-  width: var(--media-w) !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-}
-#proj-rocket-no .process .step-media .phone-mock{
-  width: 100% !important;
-  max-width: 100% !important;
-}
-
-/* Nøytraliser sentrering fra generelle .mock-regler i denne seksjonen */
-#proj-rocket-no .process .step-media .mock{
-  margin: 0 !important;
-}
-
-/* Litt strammere caption */
-#proj-rocket-no .process .step-media figcaption{
-  margin-top: 6px; line-height: 1.35; opacity: .9;
-}
-
-/* Valgfritt: gjør mediakolonnen litt smalere på kjempestore skjermer */
-@media (min-width: 1400px){
-  :root{ --media-w: clamp(300px, 26vw, 400px); }
+#proj-rocket-no .process.process--timeline figcaption,
+#proj-rocket-en .process.process--timeline figcaption{
+  font-size:.9rem; opacity:.9; margin-top:6px;
 }
 
 /* ===========================
-   SKYBOUND – FIX: media og tekst på samme linje
-   (gjelder alle steg i tidslinjen, inkl. Interaktiv Figma-flow og Crazy-8)
+   Two-column logic + fixed media width
+   (works for NO & EN, with :has and fallback)
 =========================== */
 
-:root { --media-w: clamp(300px, 32vw, 460px); } /* justér ved behov */
+/* Desktop: text | media  */
+@supports selector(:has(*)){
+  @media (min-width:980px){
+    #proj-rocket-no .process.process--timeline .process-step:has(.step-media),
+    #proj-rocket-en .process.process--timeline .process-step:has(.step-media){
+      display:grid !important;
+      grid-template-columns: 1fr var(--media-w) !important;
+      column-gap: clamp(14px, 2vw, 28px);
+      align-items:start;
+    }
+    #proj-rocket-no .process.process--timeline .process-step:has(.step-media) .step-copy,
+    #proj-rocket-en .process.process--timeline .process-step:has(.step-media) .step-copy{
+      grid-column:1 !important; grid-row:1 !important;
+    }
+    #proj-rocket-no .process.process--timeline .process-step:has(.step-media) .step-media,
+    #proj-rocket-en .process.process--timeline .process-step:has(.step-media) .step-media{
+      grid-column:2 !important; grid-row:1 !important; justify-self:start !important;
+      width:var(--media-w); max-width:100%;
+    }
+    /* Text-only steps remain single-column */
+    #proj-rocket-no .process.process--timeline .process-step:not(:has(.step-media)),
+    #proj-rocket-en .process.process--timeline .process-step:not(:has(.step-media)){
+      display:block !important;
+    }
+  }
+}
 
-/* Desktop: to kolonner og lås begge i rad 1 */
+/* Fallback when :has() is not supported (JS adds .has-media / .no-media) */
+@media (min-width:980px){
+  #proj-rocket-no .process .process-step.has-media,
+  #proj-rocket-en .process .process-step.has-media{
+    display:grid !important;
+    grid-template-columns: 1fr var(--media-w) !important;
+    column-gap:clamp(14px,2vw,28px); align-items:start;
+  }
+  #proj-rocket-no .process .process-step.has-media .step-copy,
+  #proj-rocket-en .process .process-step.has-media .step-copy{
+    grid-column:1 !important; grid-row:1 !important;
+  }
+  #proj-rocket-no .process .process-step.has-media .step-media,
+  #proj-rocket-en .process .process-step.has-media .step-media{
+    grid-column:2 !important; grid-row:1 !important; justify-self:start !important;
+    width:var(--media-w); max-width:100%;
+  }
+  #proj-rocket-no .process .process-step.no-media,
+  #proj-rocket-en .process .process-step.no-media{
+    display:block !important;
+  }
+}
+
+/* Make everything inside media column align and size consistently */
+#proj-rocket-no .process .step-media,
+#proj-rocket-en .process .step-media{
+  justify-self:start;
+}
+#proj-rocket-no .process .step-media > img,
+#proj-rocket-no .process .step-media > figure > img,
+#proj-rocket-en .process .step-media > img,
+#proj-rocket-en .process .step-media > figure > img{
+  display:block; width:100% !important; max-width:100% !important; height:auto !important; margin:0 !important; object-fit:contain;
+}
+#proj-rocket-no .process .step-media .carousel,
+#proj-rocket-en .process .step-media .carousel{
+  width:100% !important; max-width:100% !important; margin:0 !important;
+}
+#proj-rocket-no .process .step-media .phone-mock,
+#proj-rocket-en .process .step-media .phone-mock{
+  width:100% !important; max-width:100% !important;
+}
+
+/* Section-specific fine-tuning for figma v1 (both languages) */
+#figma-v1-no .step-media .carousel,
+#figma-v1-en .step-media .carousel{
+  max-width: 100%;
+}
+#figma-v1-no,
+#figma-v1-en{
+  --media-w: clamp(280px, 28vw, 380px);
+}
+
+/* Reduce minimum height for rocket sections to fit content naturally */
+#proj-rocket-no.project,
+#proj-rocket-en.project{
+  min-height: auto;
+}
+
+/* Optional: cap media height on huge screens to avoid overflow */
+@media (min-width:980px){
+  #proj-rocket-no .process .step-media,
+  #proj-rocket-en .process .step-media{
+    max-height: 78vh; overflow: hidden;
+  }
+  #proj-rocket-no .process .step-media img,
+  #proj-rocket-en .process .step-media img{
+    max-height: 78vh; height: auto;
+  }
+}
+
+/* Slightly smaller captions */
+#proj-rocket-no .process .step-media figcaption,
+#proj-rocket-en .process .step-media figcaption{
+  margin-top:6px; line-height:1.35; opacity:.9;
+}
+
+/* === FIX: vis hele mock-upen i karusellen (ingen cropping) === */
+#proj-rocket-no .phone-mock > img,
+#proj-rocket-en .phone-mock > img{
+  object-fit: contain !important;   /* var cover */
+  background: #000;                 /* “letterboxing” når proporsjonene ikke matcher */
+}
+
+/* Ikke klipp mediakolonnen – la hele telefonramma være synlig */
+@media (min-width:980px){
+  #proj-rocket-no .process .step-media,
+  #proj-rocket-en .process .step-media{
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
+
+/* Karusell-viewport: tillat at phone-mock får hele høyden sin */
+.phone-carousel .carousel-viewport{
+  overflow: visible; /* var hidden */
+}
+
+/* === Phone-mock: større skjermflate uten cropping === */
+
+/* 1) Stram inn bezelen (mer plass til skjermen) */
+#proj-rocket-no .phone-mock,
+#proj-rocket-en .phone-mock{
+  --bezel: 6px; /* var 12px */
+}
+@media (min-width:1100px){
+  #proj-rocket-no .phone-mock,
+  #proj-rocket-en .phone-mock{ --bezel: 8px; }
+}
+
+/* 2) La skjermbildet fylle mer av flaten (ingen kant) */
+#proj-rocket-no .phone-mock > img,
+#proj-rocket-en .phone-mock > img{
+  object-fit: contain !important;     /* vis hele mockupen */
+  border: 0 !important;               /* fjern indre kant som “spiser” plass */
+  border-radius: calc(26px - var(--bezel)) !important;
+  background: #000;
+}
+
+/* 3) Gjør selve telefonen litt større på desktop hvis den føltes liten */
+@media (min-width:980px){
+  :root{ --media-w: clamp(320px, 34vw, 480px); } /* var ~380–460px */
+}
+
+/* === PHONE-MOCK: la bildet styre høyden (ingen cropping, større skjerm) === */
+
+/* 1) Slå av fast aspect-ratio på telefon-ramma (både NO og EN) */
+#proj-rocket-no .phone-mock,
+#proj-rocket-en .phone-mock{
+  aspect-ratio: auto !important;   /* var 9 / 19.5 */
+  width: 100%;                      /* fyll mediakolonnen */
+  padding: 8px;                     /* smal bezel = større skjermflate */
+}
+
+/* 2) Bildet skal bestemme høyden – ingen “cover”-cropping */
+#proj-rocket-no .phone-mock > img,
+#proj-rocket-en .phone-mock > img{
+  display: block;
+  width: 100% !important;
+  height: auto !important;          /* kritisk: lar høyden vokse naturlig */
+  object-fit: contain !important;   /* vis hele mockupen */
+  border: 0 !important;             /* ikke “spis” plass */
+  border-radius: calc(26px - 8px);  /* matcher ytre hjørner, juster ved behov */
+  background: #000;                 /* “skjerm”-bakgrunn */
+}
+
+/* 3) Sørg for at mediakolonnen har en forutsigbar bredde */
+:root{ --media-w: clamp(320px, 34vw, 480px); }  /* juster etter smak */
+
 @media (min-width: 980px){
-  #proj-rocket-no .process.process--timeline .process-step{
+  /* Tekst | media (både norsk og engelsk prosess-seksjoner) */
+  #proj-rocket-no .process .process-step.has-media,
+  #proj-rocket-en .process .process-step.has-media{
     display: grid !important;
-    grid-template-columns: 1fr var(--media-w) !important; /* tekst | media */
+    grid-template-columns: 1fr var(--media-w) !important;
     column-gap: clamp(14px, 2vw, 28px);
     align-items: start;
   }
-
-  /* TVING posisjonene → samme rad uansett DOM-rekkefølge */
-  #proj-rocket-no .process.process--timeline .process-step .step-copy{
-    grid-column: 1 !important;
-    grid-row: 1 !important;
+  /* Lås posisjonene uansett DOM-rekkefølge */
+  #proj-rocket-no .process .process-step .step-copy,
+  #proj-rocket-en .process .process-step .step-copy{
+    grid-column: 1 !important; grid-row: 1 !important;
   }
-  #proj-rocket-no .process.process--timeline .process-step .step-media{
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-    justify-self: start !important;
-    width: var(--media-w) !important;
-    max-width: 100% !important;
+  #proj-rocket-no .process .process-step .step-media,
+  #proj-rocket-en .process .process-step .step-media{
+    grid-column: 2 !important; grid-row: 1 !important; justify-self: start !important;
+    width: var(--media-w) !important; max-width: 100% !important;
+  }
+  /* Karusellen og innholdet skal følge samme bredde */
+  #proj-rocket-no .process .step-media .carousel,
+  #proj-rocket-en .process .step-media .carousel{
+    width: var(--media-w) !important; max-width: 100% !important; margin: 0 !important;
   }
 }
 
-/* Ens bredde for bilder/karusell/telefon-mock inne i mediakolonnen */
-#proj-rocket-no .process.process--timeline .step-media > img,
-#proj-rocket-no .process.process--timeline .step-media > figure > img,
-#proj-rocket-no .process.process--timeline .step-media .carousel{
-  width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
+/* Nøytraliser eventuell sentrering som krymper bredden i denne seksjonen */
+#proj-rocket-no .process .step-media .mock,
+#proj-rocket-en .process .step-media .mock{
   margin: 0 !important;
 }
-#proj-rocket-no .process.process--timeline .phone-mock{
+
+/* === FIX: keep phone tall & narrow (NO + EN), like before === */
+
+/* 1) Phone mock: lock to real device ratio/width */
+#proj-rocket-no .phone-carousel .phone-mock,
+#proj-rocket-en .phone-carousel .phone-mock{
+  aspect-ratio: 9 / 19.5 !important;          /* tall device shape */
+  width: clamp(190px, 20vw, 250px) !important; /* same scale as before */
+  padding: 12px !important;                    /* bezel */
+}
+
+/* 2) Image fills the screen area (no letterboxing, no squish) */
+#proj-rocket-no .phone-carousel .phone-mock > img,
+#proj-rocket-en .phone-carousel .phone-mock > img{
   width: 100% !important;
-  max-width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;                /* fills the screen */
+  border-radius: calc(26px - 12px + 2px) !important;
 }
 
-/* (valgfritt) litt strammere bildetekst */
-#proj-rocket-no .process.process--timeline .step-media figcaption{
-  margin-top: 6px; line-height: 1.35; opacity: .9;
+/* 3) Keep the one-image carousel compact (don’t let it stretch wide) */
+#proj-rocket-no .phone-carousel .carousel,
+#proj-rocket-en .phone-carousel .carousel{
+  max-width: none !important;
+  margin: 0 !important;
+}
+#proj-rocket-no .phone-carousel .carousel-viewport,
+#proj-rocket-en .phone-carousel .carousel-viewport{
+  display: block !important;
+  width: fit-content !important;               /* shrink-wrap to phone */
+  margin-inline: 0 !important;
+  padding: 8px !important;
 }
 
-#figma-v1 { --media-w: clamp(280px, 28vw, 380px); }
+/* (optional) If you want the phone a touch larger, bump the max here: */
+/* #proj-rocket-no .phone-carousel .phone-mock,
+   #proj-rocket-en .phone-carousel .phone-mock{ width: clamp(200px, 22vw, 280px) !important; } */
 
+   /* === Android Compact (Figma) – nøyaktig ratio + fleksibel fit === */
+
+/* 1) Sett nøyaktig device-ratio (Figma Android Compact ~ 412×892) */
+:root{
+  --android-compact-ratio: 412 / 892;  /* ≈ 9 / 19.5 */
+  --phone-fit: cover;                  /* bytt til 'contain' hvis du vil se absolutt hele skjermen */
+}
+
+/* 2) Lås mockupen til den ratioen i både NO og EN */
+#proj-rocket-no .phone-carousel .phone-mock,
+#proj-rocket-en .phone-carousel .phone-mock{
+  aspect-ratio: var(--android-compact-ratio) !important;
+  width: clamp(190px, 20vw, 250px) !important; /* justér max om du vil ha den større */
+  padding: 12px !important;                     /* bezel */
+}
+
+/* 3) Bildet inni: velg om det skal fylle (cover) eller alltid vise alt (contain) */
+#proj-rocket-no .phone-carousel .phone-mock > img,
+#proj-rocket-en .phone-carousel .phone-mock > img{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: var(--phone-fit) !important;   /* cover = fyll, contain = hele skjermen */
+  border-radius: calc(26px - 12px + 2px) !important;
+}
+
+/* 4) Karusellen skal “krympe” rundt telefonen (ikke strekke bredden) */
+#proj-rocket-no .phone-carousel .carousel,
+#proj-rocket-en .phone-carousel .carousel{ margin: 0 !important; }
+#proj-rocket-no .phone-carousel .carousel-viewport,
+#proj-rocket-en .phone-carousel .carousel-viewport{
+  display: block !important;
+  width: fit-content !important;
+  margin-inline: 0 !important;
+  padding: 8px !important;
+}
