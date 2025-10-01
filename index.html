@@ -292,26 +292,205 @@
         <!-- ===== /SKYBOUND PROSESS ===== -->
       </section>
 
-      <!-- 2. Meditasjonsball (NO) -->
+      <!-- 2. Meditasjonsball (NO) – PROSESSFOKUS: LÆRING FRA PROSESSEN -->
       <section class="project fade-in" id="proj-medball-no">
         <h2>Meditasjonsball – IN1060</h2>
-        <p class="kicker">Taktilt grensesnitt som guider pust med lys og haptikk.</p>
+        <p class="kicker">Samspill mellom form og funksjon → skjermfri, taktil veileder for pust.</p>
         <p>
-          Vi utforsket hvordan et fysisk grensesnitt kan støtte ro og tilstedeværelse. Jeg bidro med prototyping og interaksjonsdesign i et team på fire.
-          Tester viste at lys fungerer som metronom, mens for sterk haptikk forstyrrer opplevelsen.
+          <strong>Rolle:</strong> Prototyping (Arduino/Neopixel), interaksjonsdesign, research & test.
+          <strong>Kontekst:</strong> IN1060 (vår 2022) • <strong>Målgruppe:</strong> unge voksne (20–30) nye i meditasjon.
+          <a href="https://www.uio.no/studier/emner/matnat/ifi/IN1060/v22/prosjekter-var-2022/connection/" target="_blank" rel="noopener">Prosjektside (UiO)</a>.
         </p>
 
-        <div class="media">
-          <figure>
-            <div class="mock phone" aria-hidden="true"></div>
-            <figcaption data-lang="no">Lysrytme som pustemetronom</figcaption>
-          </figure>
-          <figure>
-            <div class="mock laptop" aria-hidden="true"></div>
-            <figcaption data-lang="no">Prototypen i testoppsett</figcaption>
-          </figure>
-        </div>
+        <section class="process process--timeline" aria-label="Meditasjonsball – designprosess">
+
+          <!-- 0. Oppstart -->
+          <section class="process-step">
+            <div class="step-copy">
+              <h3>Oppstart: «Samspill mellom form og funksjon»</h3>
+              <p><strong>Jeg gjorde:</strong> Samlet gruppen og etablerte at eneste ramme var temaet – alt annet måtte vi definere.</p>
+              <p><strong>Hvorfor:</strong> Felles forståelse før løsning.</p>
+              <p><strong>Hva jeg lærte (prosess):</strong> En tidlig <em>problemformulering + suksesskriterier</em> og en enkel <em>beslutningslogg</em> gjør prosjektet styrbart.</p>
+            </div>
+          </section>
+
+          <!-- 1. Brainstorm → fokus på pust -->
+          <section class="process-step">
+            <figure class="step-media">
+              <div class="carousel" aria-label="Brainstorm">
+                <button class="car-btn car-prev" type="button" aria-label="Forrige">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+                <div class="carousel-viewport" tabindex="0">
+                  <figure class="slide">
+                    <img src="images/medball/brainstorm-form-function.png" alt="Første idémyldring rundt samspill mellom form og funksjon">
+                  </figure>
+                  <figure class="slide" hidden>
+                    <img src="images/medball/ideas-board.png" alt="Idéveggen vi landet på før videre fokus på pust">
+                  </figure>
+                </div>
+                <button class="car-btn car-next" type="button" aria-label="Neste">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+                <div class="dots" role="tablist" aria-label="Bilder i karusell"><button></button><button></button></div>
+              </div>
+            </figure>
+            <div class="step-copy">
+              <h3>Brainstorm → fokus: pust</h3>
+              <p><strong>Jeg gjorde:</strong> Ledet fri brainstorming; samlet stikkord og assosiasjoner.</p>
+              <p><strong>Hvorfor:</strong> Utforske bredt før vi forplikter oss.</p>
+              <p><strong>Hva jeg lærte (prosess):</strong> Et tydelig «How might we…?» gir en klar akse for senere konvergering.</p>
+            </div>
+          </section>
+
+          <!-- 2. Moodboard + domenekunnskap -->
+          <section class="process-step">
+            <div class="step-copy">
+              <h3>Moodboard + domenekartlegging</h3>
+              <p><strong>Jeg gjorde:</strong> Lagde moodboard (ro/hav/varme farger) og samlet grunnleggende begreper om meditasjon/breathwork.</p>
+              <p><strong>Hvorfor:</strong> Etablere felles visuell tone og språk.</p>
+              <p><strong>Hva jeg lærte (prosess):</strong> Et lett tilgjengelig <em>referansebibliotek</em> (moodboard/notater) forkorter diskusjoner og reduserer omkamper.</p>
+            </div>
+            <figure class="step-media">
+              <img src="images/medball/moodboard-ocean.png" alt="Moodboard: hav, varme toner, rolig lys">
+              <figcaption>Look & feel for ro, fokus og varme.</figcaption>
+            </figure>
+          </section>
+
+          <!-- 3. Målgruppe: diverge → converge -->
+          <section class="process-step">
+            <figure class="step-media">
+              <img src="images/medball/target-map.png" alt="Affinity-diagram for målgrupper og behov">
+              <figcaption>Affinity-diagram for målgrupper.</figcaption>
+            </figure>
+            <div class="step-copy">
+              <h3>Målgruppe (Double Diamond)</h3>
+              <p><strong>Jeg gjorde:</strong> Brainstormet målgrupper → grupperte i affinity-diagram → snevret inn.</p>
+              <p><strong>Hvorfor:</strong> Gi konseptet en tydelig adressat.</p>
+              <p><strong>Hva jeg lærte (prosess):</strong> Å <em>gjøre antakelser eksplisitte</em> i et affinity-diagram gjør konvergeringen raskere og bedre begrunnet.</p>
+            </div>
+          </section>
+
+          <!-- 4. Brukerinnsikt: pilot → intervju → koding -->
+          <section class="process-step">
+            <div class="step-copy">
+              <h3>Brukerinnsikt: pilot → intervju → koding</h3>
+              <p><strong>Jeg gjorde:</strong> Pilotintervju for å teste guide → hovedintervjuer → kodet funn.</p>
+              <p><strong>Hvorfor:</strong> De-risk metode og bygge sporbarhet fra data til beslutning.</p>
+              <p><strong>Hva jeg lærte (prosess):</strong> <em>Minipilot</em> sparer tid; tidlig koding av data gir <em>traceability</em> videre i prosjektet.</p>
+            </div>
+            <figure class="step-media">
+              <img src="images/medball/research-stickyboard.png" alt="Kodede innsikter fra intervjuer">
+              <figcaption>Strukturert innsikt → klarere beslutninger.</figcaption>
+            </figure>
+          </section>
+
+          <!-- 5. Idéworkshop (diverge) → avstemning (converge) -->
+          <section class="process-step">
+            <figure class="step-media">
+              <img src="images/medball/metaphors-bubbles-wave.png" alt="Skisser: bobler og bølge-metaforer, dot-vote">
+              <figcaption>Idéworkshop med skisser + dot-vote.</figcaption>
+            </figure>
+            <div class="step-copy">
+              <h3>Idéworkshop → avstemning (Double Diamond)</h3>
+              <p><strong>Jeg gjorde:</strong> Fasiliterte skisseworkshop (divergerende) og dot-vote (konvergerende) på tydelige kriterier.</p>
+              <p><strong>Hvorfor:</strong> Eierskap i teamet og bedre beslutninger.</p>
+              <p><strong>Hva jeg lærte (prosess):</strong> Klare <em>konvergeringskriterier</em> (problempass, gjennomførbarhet, klarhet) gjør valg raske og lite kontroversielle. Vi landet på «Omsorgsball», «Romsystem», «Liten reminder» som retninger.</p>
+            </div>
+          </section>
+
+          <!-- 6. Look & feel -->
+          <section class="process-step">
+            <div class="step-copy">
+              <h3>Look & feel-workshop</h3>
+              <p><strong>Jeg gjorde:</strong> Testet farge/tempo/materiale og formstørrelser med målgruppen.</p>
+              <p><strong>Hvorfor:</strong> Validere uttrykk før bygging.</p>
+              <p><strong>Hva jeg lærte (prosess):</strong> Å <em>teste én variabel om gangen</em> (f.eks. bare tempo) gir renere signaler og kortere iterasjoner.</p>
+            </div>
+            <figure class="step-media">
+              <img src="images/medball/form-testing.png" alt="Look & feel: grep, størrelse, materiale">
+              <figcaption>Kontrollerte variabler = tydeligere funn.</figcaption>
+            </figure>
+          </section>
+
+          <!-- 7. Prototyping v1: lys som metronom -->
+          <section class="process-step">
+            <figure class="step-media">
+              <div class="carousel" aria-label="Prototype v1">
+                <button class="car-btn car-prev" type="button" aria-label="Forrige">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+                <div class="carousel-viewport" tabindex="0">
+                  <figure class="slide">
+                    <img src="images/medball/arduino-lead.png" alt="Arduino + Neopixel på breadboard">
+                  </figure>
+                  <figure class="slide" hidden>
+                    <img src="images/medball/ball-led-blue.png" alt="Kule med blått lys">
+                  </figure>
+                  <figure class="slide" hidden>
+                    <img src="images/medball/ball-led-purple.png" alt="Kule med lilla lys">
+                  </figure>
+                </div>
+                <button class="car-btn car-next" type="button" aria-label="Neste">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+                <div class="dots" role="tablist" aria-label="Bilder i karusell"><button></button><button></button><button></button></div>
+              </div>
+            </figure>
+            <div class="step-copy">
+              <h3>Prototype v1 – pust med lys</h3>
+              <p><strong>Jeg gjorde:</strong> Bygget Arduino/Neopixel-prototype med jevn inn–hold–ut og «pustesirkel».</p>
+              <p><strong>Hvorfor:</strong> «Bygg for å tenke» og korte feedbacksløyfer.</p>
+              <p><strong>Hva jeg lærte (prosess):</strong> <em>Riktig fidelitet</em> (akkurat-passende) gjør det lett å kaste/bygge nytt uten å miste fart.</p>
+            </div>
+          </section>
+
+          <!-- 8. Tidsbasert påminnelse -->
+          <section class="process-step">
+            <div class="step-copy">
+              <h3>Tidsbasert påminnelse</h3>
+              <p><strong>Jeg gjorde:</strong> Hypotese: økende lysstyrke jo lenger siden siste økt.</p>
+              <p><strong>Hvorfor:</strong> Trene vane uten mobilvarsler.</p>
+              <p><strong>Hva jeg lærte (prosess):</strong> Å formulere <em>testbare hypoteser</em> («Vi tror… fordi… vi vet at… når…») forenkler evaluering og neste beslutning.</p>
+            </div>
+            <figure class="step-media">
+              <img src="images/medball/breath-cycles.png" alt="Kurver for pusterytme og påminnelse">
+              <figcaption>Hypotese → eksperiment → beslutning.</figcaption>
+            </figure>
+          </section>
+
+          <!-- 9. Brukertest → iterasjoner -->
+          <section class="process-step">
+            <figure class="step-media">
+              <img src="images/medball/feedback-v1.png" alt="Oppsummerte tilbakemeldinger fra test">
+              <figcaption>Stram feedback, korte loops.</figcaption>
+            </figure>
+            <div class="step-copy">
+              <h3>Brukertest → iterasjoner</h3>
+              <p><strong>Jeg gjorde:</strong> Små, hyppige justeringer (tempo, farge, form).</p>
+              <p><strong>Hvorfor:</strong> Minimere risiko for store omkonstruksjoner.</p>
+              <p><strong>Hva jeg lærte (prosess):</strong> <em>Korte iterasjonssløyfer</em> med «scope freeze» per runde slår store, sjeldne ombygginger.</p>
+            </div>
+          </section>
+
+          <!-- 10. Resultat -->
+          <section class="process-step">
+            <figure class="step-media">
+              <img src="images/medball/final-demo.png" alt="Endelig demo med varmt lys og rolig uttrykk">
+              <figcaption>Artefakt = dokumentert prosess i fysisk form.</figcaption>
+            </figure>
+            <div class="step-copy">
+              <h3>Resultat</h3>
+              <p><strong>Jeg gjorde:</strong> Leverte en skjermfri, håndholdt kule som visualiserer pust og minner diskret over tid.</p>
+              <p><strong>Hvorfor:</strong> Redusere distraksjon og støtte jevn, kroppslig rytme.</p>
+              <p><strong>Hva jeg lærte (prosess):</strong> En enkel <em>prosessmal</em> (ramme → divergere → konvergere → prototype → test → beslutning) er gjenbrukbar i nye prosjekter.</p>
+            </div>
+          </section>
+
+        </section>
       </section>
+
+
 
       <!-- 3. Ekko-kamre (NO) -->
       <section class="project fade-in" id="proj-echo-no">
@@ -524,8 +703,19 @@
       <!-- 2. Meditation Ball (EN) -->
       <section class="project fade-in" id="proj-medball-en">
         <h2>Meditation Ball – IN1060</h2>
-        <p class="kicker">A tactile interface guiding breathing with light and haptics.</p>
-        <p>Exploration of calm technology; I contributed prototyping and interaction design.</p>
+        <p class="kicker">Screen-free, tactile breathing aid – light as a metronome, gentle haptics.</p>
+        <p>
+          <strong>Role:</strong> Prototyping (Arduino/LED), interaction design, user testing. 
+          <strong>Context:</strong> IN1060 (Spring 2022) • <strong>Target:</strong> young adults new to meditation. 
+          <a href="https://www.uio.no/studier/emner/matnat/ifi/IN1060/v22/prosjekter-var-2022/connection/" target="_blank" rel="noopener">Project page (UiO)</a>.
+        </p>
+
+        <ul>
+          <li><strong>Problem:</strong> People want a calm breathing habit but get distracted by screens/notifications.</li>
+          <li><strong>Approach:</strong> Screen-free object guiding inhale–hold–exhale through light; touch sensor to start/stop.</li>
+          <li><strong>My deliverables:</strong> Light logic, Neopixel prototypes, time-since-last-session reminder, testing and iterations.</li>
+        </ul>
+
       </section>
 
       <!-- 3. Echo Chambers (EN) -->
@@ -535,6 +725,7 @@
         <p>Concept, interaction and ethics for a multi-modal installation.</p>
       </section>
     </section>
+    
     <!-- =================== /ENGLISH =================== -->
 
     <!-- Dot rail (desktop) -->

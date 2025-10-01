@@ -636,3 +636,169 @@ footer a{ color:var(--muted); }
   margin-inline: 0 !important;
   padding: 8px !important;
 }
+
+/* ================================
+   MEDITASJONSBALL – timeline-skin
+   (speiler Skybound-stilen)
+================================ */
+
+/* Full bredde-seksjon som hos Skybound */
+#proj-medball-no.project,
+#proj-medball-en.project{
+  display:block;
+  width:100%;
+  max-width:none;
+  padding-left:var(--gutter);
+  padding-right:var(--gutter);
+  min-height:auto;
+}
+#proj-medball-no.project > *,
+#proj-medball-en.project > *{
+  grid-column:1 / -1 !important;
+}
+
+/* Timeline-kort: nummer, linje, kortlook */
+#proj-medball-no .process.process--timeline,
+#proj-medball-en .process.process--timeline{
+  counter-reset: mb-step;
+  display:grid;
+  gap:clamp(12px,1.6vw,18px);
+}
+
+#proj-medball-no .process.process--timeline .process-step,
+#proj-medball-en .process.process--timeline .process-step{
+  position:relative;
+  background:color-mix(in oklab, var(--surface) 58%, black 42%);
+  border:1px solid color-mix(in oklab, var(--line) 80%, black 20%);
+  border-radius:16px;
+  box-shadow:0 10px 26px rgba(0,0,0,.22);
+  padding:clamp(16px,2vw,22px);
+}
+
+/* Venstremarg: vertikal linje */
+#proj-medball-no .process.process--timeline .process-step::after,
+#proj-medball-en .process.process--timeline .process-step::after{
+  content:"";
+  position:absolute; left:-20px; top:0; bottom:0; width:2px; border-radius:2px;
+  background:linear-gradient(180deg,
+    color-mix(in oklab, var(--accent) 80%, black 20%),
+    color-mix(in oklab, var(--accent) 20%, transparent));
+}
+
+/* Nummerbadge */
+#proj-medball-no .process.process--timeline .process-step::before,
+#proj-medball-en .process.process--timeline .process-step::before{
+  counter-increment: mb-step; content: counter(mb-step);
+  position:absolute; left:-34px; top:14px; width:28px; height:28px; border-radius:999px;
+  display:grid; place-items:center;
+  background:var(--accent); color:var(--accent-contrast);
+  font-weight:800; font-size:.9rem; letter-spacing:.02em;
+  box-shadow:0 6px 16px rgba(0,0,0,.3);
+}
+
+/* Tittel-linje og markering av nøkkelord */
+#proj-medball-no .process.process--timeline .step-copy h3,
+#proj-medball-en .process.process--timeline .step-copy h3{
+  margin-top:0; display:flex; align-items:baseline; gap:8px;
+}
+#proj-medball-no .process.process--timeline .step-copy h3::after,
+#proj-medball-en .process.process--timeline .step-copy h3::after{
+  content:""; flex:1; height:1px; background:var(--line); opacity:.45;
+}
+#proj-medball-no .process.process--timeline .step-copy p > strong,
+#proj-medball-en .process.process--timeline .step-copy p > strong{
+  display:inline-block;
+  background:color-mix(in oklab, var(--accent) 22%, black 78%);
+  color:var(--text);
+  border:1px solid color-mix(in oklab, var(--accent) 35%, black 65%);
+  padding:.05rem .45rem; margin-right:.35rem; border-radius:6px; font-weight:700;
+}
+
+/* Bildetekster litt mindre */
+#proj-medball-no .process.process--timeline figcaption,
+#proj-medball-en .process.process--timeline figcaption{
+  font-size:.9rem; opacity:.9; margin-top:6px; line-height:1.35;
+}
+
+/* ================================
+   To-kolonne-layout for steg med media
+   (med :has fallback via .has-media klassen)
+================================ */
+
+/* Moderne: bruk :has for å splitte til 1fr | media-kolonne */
+@supports selector(:has(*)){
+  @media (min-width:980px){
+    #proj-medball-no .process.process--timeline .process-step:has(.step-media),
+    #proj-medball-en .process.process--timeline .process-step:has(.step-media){
+      display:grid !important;
+      grid-template-columns: 1fr var(--media-w) !important;
+      column-gap: clamp(14px, 2vw, 28px);
+      align-items:start;
+    }
+    #proj-medball-no .process.process--timeline .process-step:has(.step-media) .step-copy,
+    #proj-medball-en .process.process--timeline .process-step:has(.step-media) .step-copy{
+      grid-column:1 !important; grid-row:1 !important;
+    }
+    #proj-medball-no .process.process--timeline .process-step:has(.step-media) .step-media,
+    #proj-medball-en .process.process--timeline .process-step:has(.step-media) .step-media{
+      grid-column:2 !important; grid-row:1 !important; justify-self:start !important;
+      width:var(--media-w); max-width:100%;
+    }
+    /* Tekst-only steg holder seg énspaltet */
+    #proj-medball-no .process.process--timeline .process-step:not(:has(.step-media)),
+    #proj-medball-en .process.process--timeline .process-step:not(:has(.step-media)){
+      display:block !important;
+    }
+  }
+}
+
+/* Fallback (JS legger .has-media/.no-media i gamle browsere) */
+@media (min-width:980px){
+  #proj-medball-no .process .process-step.has-media,
+  #proj-medball-en .process .process-step.has-media{
+    display:grid !important;
+    grid-template-columns: 1fr var(--media-w) !important;
+    column-gap:clamp(14px,2vw,28px); align-items:start;
+  }
+  #proj-medball-no .process .process-step.has-media .step-copy,
+  #proj-medball-en .process .process-step.has-media .step-copy{
+    grid-column:1 !important; grid-row:1 !important;
+  }
+  #proj-medball-no .process .process-step.has-media .step-media,
+  #proj-medball-en .process .process-step.has-media .step-media{
+    grid-column:2 !important; grid-row:1 !important; justify-self:start !important;
+    width:var(--media-w) !important; max-width:100% !important;
+  }
+  #proj-medball-no .process .process-step.no-media,
+  #proj-medball-en .process .process-step.no-media{
+    display:block !important;
+  }
+}
+
+/* Konsistent media-sizing i kolonnen */
+#proj-medball-no .process .step-media,
+#proj-medball-en .process .step-media{ justify-self:start; }
+#proj-medball-no .process .step-media > img,
+#proj-medball-no .process .step-media > figure > img,
+#proj-medball-en .process .step-media > img,
+#proj-medball-en .process .step-media > figure > img{
+  display:block; width:100% !important; max-width:100% !important; height:auto !important;
+  object-fit:contain; margin:0 !important; border-radius:16px; border:1px solid #6A443E;
+  box-shadow:0 8px 22px rgba(0,0,0,.32);
+}
+#proj-medball-no .process .step-media .carousel,
+#proj-medball-en .process .step-media .carousel{
+  width:100% !important; max-width:100% !important; margin:0 !important;
+}
+
+/* Valgfritt: cap høyde på kjempeskjermer så det ikke renner ut */
+@media (min-width:980px){
+  #proj-medball-no .process .step-media,
+  #proj-medball-en .process .step-media{
+    max-height:78vh; overflow:hidden;
+  }
+  #proj-medball-no .process .step-media img,
+  #proj-medball-en .process .step-media img{
+    max-height:78vh; height:auto;
+  }
+}

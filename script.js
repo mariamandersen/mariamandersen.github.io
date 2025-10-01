@@ -244,15 +244,18 @@ document.addEventListener('DOMContentLoaded', () => {
      Flag steps that have media (fallback for browsers w/o :has)
      Applies to BOTH languages.
   --------------------------------*/
+  // I script.js – oppdater denne listen:
   function flagStepsWithMedia(){
-    ['#proj-rocket-no', '#proj-rocket-en'].forEach(rootSel => {
-      document.querySelectorAll(`${rootSel} .process .process-step`).forEach(step => {
-        const has = !!step.querySelector('.step-media');
-        step.classList.toggle('has-media', has);
-        step.classList.toggle('no-media', !has);
+    ['#proj-rocket-no', '#proj-rocket-en', '#proj-medball-no', '#proj-medball-en']
+      .forEach(rootSel => {
+        document.querySelectorAll(`${rootSel} .process .process-step`).forEach(step => {
+          const has = !!step.querySelector('.step-media');
+          step.classList.toggle('has-media', has);
+          step.classList.toggle('no-media', !has);
+        });
       });
-    });
   }
+
   flagStepsWithMedia();
 
   /* ------------------------------
