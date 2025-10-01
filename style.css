@@ -14,7 +14,7 @@
   --measure:68ch; --gutter:clamp(24px,6vw,88px);
   --rail-dot:7px; --rail-ring:2px; --rail-pad:10px; --rail-gap:10px;
 
-  /* One knob to size the media column (both NO & EN) */
+  /* Media-kolonne (NO & EN) */
   --media-w: clamp(300px, 32vw, 440px);
 }
 
@@ -134,7 +134,7 @@ main{ padding-block:10px 64px; }
 }
 @media (max-width:979.98px){ .hero{ min-height:unset; } }
 
-/* Sections */
+/* Sections (grunnoppsett) */
 .intro, .project{
   position:relative; min-height:92svh;
   display:grid; align-content:center; gap:10px;
@@ -147,7 +147,7 @@ main{ padding-block:10px 64px; }
 .project h2{ font-size:clamp(1.6rem,3.2vw,2.2rem); font-weight:700; line-height:1.15; margin:0 0 .35rem; }
 .kicker{ color:var(--muted); text-transform:uppercase; letter-spacing:.12em; font-size:.95rem; margin:.1rem 0 1.25rem; }
 
-/* Alternate undertone */
+/* Alternate undertone (deaktivert senere for lys tema) */
 #content-no .project:nth-of-type(even),
 #content-en .project:nth-of-type(even){
   background:color-mix(in oklab, var(--surface-2) 12%, transparent);
@@ -306,7 +306,7 @@ footer a{ color:var(--muted); }
 }
 #proj-rocket-no.project > *, #proj-rocket-en.project > *{ grid-column:1 / -1 !important; }
 
-/* Timeline skin (applies to both languages) */
+/* Timeline skin (dark base, overstyres i lys tema) */
 #proj-rocket-no .process.process--timeline,
 #proj-rocket-en .process.process--timeline{
   counter-reset: sb-step; display:grid; gap:clamp(12px,1.6vw,18px);
@@ -351,12 +351,7 @@ footer a{ color:var(--muted); }
   font-size:.9rem; opacity:.9; margin-top:6px;
 }
 
-/* ===========================
-   Two-column logic + fixed media width
-   (works for NO & EN, with :has and fallback)
-=========================== */
-
-/* Desktop: text | media  */
+/* Two-column logic + fallback */
 @supports selector(:has(*)){
   @media (min-width:980px){
     #proj-rocket-no .process.process--timeline .process-step:has(.step-media),
@@ -375,15 +370,12 @@ footer a{ color:var(--muted); }
       grid-column:2 !important; grid-row:1 !important; justify-self:start !important;
       width:var(--media-w); max-width:100%;
     }
-    /* Text-only steps remain single-column */
     #proj-rocket-no .process.process--timeline .process-step:not(:has(.step-media)),
     #proj-rocket-en .process.process--timeline .process-step:not(:has(.step-media)){
       display:block !important;
     }
   }
 }
-
-/* Fallback when :has() is not supported (JS adds .has-media / .no-media) */
 @media (min-width:980px){
   #proj-rocket-no .process .process-step.has-media,
   #proj-rocket-en .process .process-step.has-media{
@@ -405,12 +397,8 @@ footer a{ color:var(--muted); }
     display:block !important;
   }
 }
-
-/* Make everything inside media column align and size consistently */
 #proj-rocket-no .process .step-media,
-#proj-rocket-en .process .step-media{
-  justify-self:start;
-}
+#proj-rocket-en .process .step-media{ justify-self:start; }
 #proj-rocket-no .process .step-media > img,
 #proj-rocket-no .process .step-media > figure > img,
 #proj-rocket-en .process .step-media > img,
@@ -421,282 +409,138 @@ footer a{ color:var(--muted); }
 #proj-rocket-en .process .step-media .carousel{
   width:100% !important; max-width:100% !important; margin:0 !important;
 }
-#proj-rocket-no .process .step-media .phone-mock,
-#proj-rocket-en .process .step-media .phone-mock{
-  width:100% !important; max-width:100% !important;
-}
-
-/* Section-specific fine-tuning for figma v1 (both languages) */
 #figma-v1-no .step-media .carousel,
-#figma-v1-en .step-media .carousel{
-  max-width: 100%;
-}
-#figma-v1-no,
-#figma-v1-en{
-  --media-w: clamp(280px, 28vw, 380px);
-}
+#figma-v1-en .step-media .carousel{ max-width:100%; }
+#figma-v1-no, #figma-v1-en{ --media-w: clamp(280px, 28vw, 380px); }
 
-/* Reduce minimum height for rocket sections to fit content naturally */
-#proj-rocket-no.project,
-#proj-rocket-en.project{
-  min-height: auto;
-}
-
-/* Optional: cap media height on huge screens to avoid overflow */
+/* Rocket tweaks */
+#proj-rocket-no.project, #proj-rocket-en.project{ min-height:auto; }
 @media (min-width:980px){
   #proj-rocket-no .process .step-media,
-  #proj-rocket-en .process .step-media{
-    max-height: 78vh; overflow: hidden;
-  }
+  #proj-rocket-en .process .step-media{ max-height:78vh; overflow:hidden; }
   #proj-rocket-no .process .step-media img,
-  #proj-rocket-en .process .step-media img{
-    max-height: 78vh; height: auto;
-  }
+  #proj-rocket-en .process .step-media img{ max-height:78vh; height:auto; }
 }
-
-/* Slightly smaller captions */
 #proj-rocket-no .process .step-media figcaption,
-#proj-rocket-en .process .step-media figcaption{
-  margin-top:6px; line-height:1.35; opacity:.9;
-}
+#proj-rocket-en .process .step-media figcaption{ margin-top:6px; line-height:1.35; opacity:.9; }
 
-/* === FIX: vis hele mock-upen i karusellen (ingen cropping) === */
+/* Phone mock – justeringer */
 #proj-rocket-no .phone-mock > img,
-#proj-rocket-en .phone-mock > img{
-  object-fit: contain !important;   /* var cover */
-  background: #000;                 /* “letterboxing” når proporsjonene ikke matcher */
-}
-
-/* Ikke klipp mediakolonnen – la hele telefonramma være synlig */
+#proj-rocket-en .phone-mock > img{ object-fit: contain !important; background:#000; }
 @media (min-width:980px){
   #proj-rocket-no .process .step-media,
-  #proj-rocket-en .process .step-media{
-    max-height: none !important;
-    overflow: visible !important;
-  }
+  #proj-rocket-en .process .step-media{ max-height:none !important; overflow:visible !important; }
 }
-
-/* Karusell-viewport: tillat at phone-mock får hele høyden sin */
-.phone-carousel .carousel-viewport{
-  overflow: visible; /* var hidden */
-}
-
-/* === Phone-mock: større skjermflate uten cropping === */
-
-/* 1) Stram inn bezelen (mer plass til skjermen) */
-#proj-rocket-no .phone-mock,
-#proj-rocket-en .phone-mock{
-  --bezel: 6px; /* var 12px */
-}
+.phone-carousel .carousel-viewport{ overflow:visible; }
+#proj-rocket-no .phone-mock, #proj-rocket-en .phone-mock{ --bezel:6px; }
 @media (min-width:1100px){
-  #proj-rocket-no .phone-mock,
-  #proj-rocket-en .phone-mock{ --bezel: 8px; }
+  #proj-rocket-no .phone-mock, #proj-rocket-en .phone-mock{ --bezel:8px; }
 }
-
-/* 2) La skjermbildet fylle mer av flaten (ingen kant) */
 #proj-rocket-no .phone-mock > img,
 #proj-rocket-en .phone-mock > img{
-  object-fit: contain !important;     /* vis hele mockupen */
-  border: 0 !important;               /* fjern indre kant som “spiser” plass */
-  border-radius: calc(26px - var(--bezel)) !important;
-  background: #000;
+  border:0 !important; border-radius:calc(26px - var(--bezel)) !important; background:#000;
 }
-
-/* 3) Gjør selve telefonen litt større på desktop hvis den føltes liten */
+@media (min-width:980px){ :root{ --media-w: clamp(320px, 34vw, 480px); } }
+#proj-rocket-no .phone-mock, #proj-rocket-en .phone-mock{
+  aspect-ratio:auto !important; width:100%; padding:8px;
+}
+#proj-rocket-no .phone-mock > img,
+#proj-rocket-en .phone-mock > img{
+  width:100% !important; height:auto !important; object-fit:contain !important;
+  border:0 !important; border-radius:calc(26px - 8px); background:#000;
+}
+:root{ --media-w: clamp(320px, 34vw, 480px); }
 @media (min-width:980px){
-  :root{ --media-w: clamp(320px, 34vw, 480px); } /* var ~380–460px */
-}
-
-/* === PHONE-MOCK: la bildet styre høyden (ingen cropping, større skjerm) === */
-
-/* 1) Slå av fast aspect-ratio på telefon-ramma (både NO og EN) */
-#proj-rocket-no .phone-mock,
-#proj-rocket-en .phone-mock{
-  aspect-ratio: auto !important;   /* var 9 / 19.5 */
-  width: 100%;                      /* fyll mediakolonnen */
-  padding: 8px;                     /* smal bezel = større skjermflate */
-}
-
-/* 2) Bildet skal bestemme høyden – ingen “cover”-cropping */
-#proj-rocket-no .phone-mock > img,
-#proj-rocket-en .phone-mock > img{
-  display: block;
-  width: 100% !important;
-  height: auto !important;          /* kritisk: lar høyden vokse naturlig */
-  object-fit: contain !important;   /* vis hele mockupen */
-  border: 0 !important;             /* ikke “spis” plass */
-  border-radius: calc(26px - 8px);  /* matcher ytre hjørner, juster ved behov */
-  background: #000;                 /* “skjerm”-bakgrunn */
-}
-
-/* 3) Sørg for at mediakolonnen har en forutsigbar bredde */
-:root{ --media-w: clamp(320px, 34vw, 480px); }  /* juster etter smak */
-
-@media (min-width: 980px){
-  /* Tekst | media (både norsk og engelsk prosess-seksjoner) */
   #proj-rocket-no .process .process-step.has-media,
   #proj-rocket-en .process .process-step.has-media{
-    display: grid !important;
-    grid-template-columns: 1fr var(--media-w) !important;
-    column-gap: clamp(14px, 2vw, 28px);
-    align-items: start;
+    display:grid !important; grid-template-columns:1fr var(--media-w) !important;
+    column-gap:clamp(14px, 2vw, 28px); align-items:start;
   }
-  /* Lås posisjonene uansett DOM-rekkefølge */
   #proj-rocket-no .process .process-step .step-copy,
-  #proj-rocket-en .process .process-step .step-copy{
-    grid-column: 1 !important; grid-row: 1 !important;
-  }
+  #proj-rocket-en .process .process-step .step-copy{ grid-column:1 !important; grid-row:1 !important; }
   #proj-rocket-no .process .process-step .step-media,
   #proj-rocket-en .process .process-step .step-media{
-    grid-column: 2 !important; grid-row: 1 !important; justify-self: start !important;
-    width: var(--media-w) !important; max-width: 100% !important;
+    grid-column:2 !important; grid-row:1 !important; justify-self:start !important;
+    width:var(--media-w) !important; max-width:100% !important;
   }
-  /* Karusellen og innholdet skal følge samme bredde */
   #proj-rocket-no .process .step-media .carousel,
   #proj-rocket-en .process .step-media .carousel{
-    width: var(--media-w) !important; max-width: 100% !important; margin: 0 !important;
+    width:var(--media-w) !important; max-width:100% !important; margin:0 !important;
   }
 }
-
-/* Nøytraliser eventuell sentrering som krymper bredden i denne seksjonen */
 #proj-rocket-no .process .step-media .mock,
-#proj-rocket-en .process .step-media .mock{
-  margin: 0 !important;
-}
+#proj-rocket-en .process .step-media .mock{ margin:0 !important; }
 
-/* === FIX: keep phone tall & narrow (NO + EN), like before === */
-
-/* 1) Phone mock: lock to real device ratio/width */
+/* Tall & narrow device */
 #proj-rocket-no .phone-carousel .phone-mock,
 #proj-rocket-en .phone-carousel .phone-mock{
-  aspect-ratio: 9 / 19.5 !important;          /* tall device shape */
-  width: clamp(190px, 20vw, 250px) !important; /* same scale as before */
-  padding: 12px !important;                    /* bezel */
+  aspect-ratio:9 / 19.5 !important; width:clamp(190px, 20vw, 250px) !important; padding:12px !important;
 }
-
-/* 2) Image fills the screen area (no letterboxing, no squish) */
 #proj-rocket-no .phone-carousel .phone-mock > img,
 #proj-rocket-en .phone-carousel .phone-mock > img{
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;                /* fills the screen */
-  border-radius: calc(26px - 12px + 2px) !important;
+  width:100% !important; height:100% !important; object-fit:cover !important;
+  border-radius:calc(26px - 12px + 2px) !important;
 }
-
-/* 3) Keep the one-image carousel compact (don’t let it stretch wide) */
 #proj-rocket-no .phone-carousel .carousel,
-#proj-rocket-en .phone-carousel .carousel{
-  max-width: none !important;
-  margin: 0 !important;
-}
+#proj-rocket-en .phone-carousel .carousel{ max-width:none !important; margin:0 !important; }
 #proj-rocket-no .phone-carousel .carousel-viewport,
 #proj-rocket-en .phone-carousel .carousel-viewport{
-  display: block !important;
-  width: fit-content !important;               /* shrink-wrap to phone */
-  margin-inline: 0 !important;
-  padding: 8px !important;
+  display:block !important; width:fit-content !important; margin-inline:0 !important; padding:8px !important;
 }
 
-/* (optional) If you want the phone a touch larger, bump the max here: */
-/* #proj-rocket-no .phone-carousel .phone-mock,
-   #proj-rocket-en .phone-carousel .phone-mock{ width: clamp(200px, 22vw, 280px) !important; } */
-
-   /* === Android Compact (Figma) – nøyaktig ratio + fleksibel fit === */
-
-/* 1) Sett nøyaktig device-ratio (Figma Android Compact ~ 412×892) */
+/* Android Compact ratio */
 :root{
-  --android-compact-ratio: 412 / 892;  /* ≈ 9 / 19.5 */
-  --phone-fit: cover;                  /* bytt til 'contain' hvis du vil se absolutt hele skjermen */
+  --android-compact-ratio: 412 / 892;
+  --phone-fit: cover;
 }
-
-/* 2) Lås mockupen til den ratioen i både NO og EN */
 #proj-rocket-no .phone-carousel .phone-mock,
 #proj-rocket-en .phone-carousel .phone-mock{
-  aspect-ratio: var(--android-compact-ratio) !important;
-  width: clamp(190px, 20vw, 250px) !important; /* justér max om du vil ha den større */
-  padding: 12px !important;                     /* bezel */
+  aspect-ratio:var(--android-compact-ratio) !important;
+  width:clamp(190px, 20vw, 250px) !important; padding:12px !important;
 }
-
-/* 3) Bildet inni: velg om det skal fylle (cover) eller alltid vise alt (contain) */
 #proj-rocket-no .phone-carousel .phone-mock > img,
 #proj-rocket-en .phone-carousel .phone-mock > img{
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: var(--phone-fit) !important;   /* cover = fyll, contain = hele skjermen */
-  border-radius: calc(26px - 12px + 2px) !important;
+  width:100% !important; height:100% !important; object-fit:var(--phone-fit) !important;
+  border-radius:calc(26px - 12px + 2px) !important;
 }
-
-/* 4) Karusellen skal “krympe” rundt telefonen (ikke strekke bredden) */
 #proj-rocket-no .phone-carousel .carousel,
-#proj-rocket-en .phone-carousel .carousel{ margin: 0 !important; }
+#proj-rocket-en .phone-carousel .carousel{ margin:0 !important; }
 #proj-rocket-no .phone-carousel .carousel-viewport,
 #proj-rocket-en .phone-carousel .carousel-viewport{
-  display: block !important;
-  width: fit-content !important;
-  margin-inline: 0 !important;
-  padding: 8px !important;
+  display:block !important; width:fit-content !important; margin-inline:0 !important; padding:8px !important;
 }
 
 /* ================================
-   MEDITASJONSBALL – timeline-skin
-   (speiler Skybound-stilen)
+   MEDITASJONSBALL – (dark base før lys tema)
 ================================ */
-
-/* Full bredde-seksjon som hos Skybound */
 #proj-medball-no.project,
 #proj-medball-en.project{
-  display:block;
-  width:100%;
-  max-width:none;
-  padding-left:var(--gutter);
-  padding-right:var(--gutter);
-  min-height:auto;
+  display:block; width:100%; max-width:none;
+  padding-left:var(--gutter); padding-right:var(--gutter); min-height:auto;
 }
-#proj-medball-no.project > *,
-#proj-medball-en.project > *{
-  grid-column:1 / -1 !important;
-}
-
-/* Timeline-kort: nummer, linje, kortlook */
+#proj-medball-no.project > *, #proj-medball-en.project > *{ grid-column:1 / -1 !important; }
 #proj-medball-no .process.process--timeline,
-#proj-medball-en .process.process--timeline{
-  counter-reset: mb-step;
-  display:grid;
-  gap:clamp(12px,1.6vw,18px);
-}
-
+#proj-medball-en .process.process--timeline{ counter-reset: mb-step; display:grid; gap:clamp(12px,1.6vw,18px); }
 #proj-medball-no .process.process--timeline .process-step,
 #proj-medball-en .process.process--timeline .process-step{
   position:relative;
   background:color-mix(in oklab, var(--surface) 58%, black 42%);
   border:1px solid color-mix(in oklab, var(--line) 80%, black 20%);
-  border-radius:16px;
-  box-shadow:0 10px 26px rgba(0,0,0,.22);
+  border-radius:16px; box-shadow:0 10px 26px rgba(0,0,0,.22);
   padding:clamp(16px,2vw,22px);
 }
-
-/* Venstremarg: vertikal linje */
 #proj-medball-no .process.process--timeline .process-step::after,
 #proj-medball-en .process.process--timeline .process-step::after{
-  content:"";
-  position:absolute; left:-20px; top:0; bottom:0; width:2px; border-radius:2px;
-  background:linear-gradient(180deg,
-    color-mix(in oklab, var(--accent) 80%, black 20%),
-    color-mix(in oklab, var(--accent) 20%, transparent));
+  content:""; position:absolute; left:-20px; top:0; bottom:0; width:2px; border-radius:2px;
+  background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 80%, black 20%), color-mix(in oklab, var(--accent) 20%, transparent));
 }
-
-/* Nummerbadge */
 #proj-medball-no .process.process--timeline .process-step::before,
 #proj-medball-en .process.process--timeline .process-step::before{
-  counter-increment: mb-step; content: counter(mb-step);
+  counter-increment: mb-step; content:counter(mb-step);
   position:absolute; left:-34px; top:14px; width:28px; height:28px; border-radius:999px;
-  display:grid; place-items:center;
-  background:var(--accent); color:var(--accent-contrast);
-  font-weight:800; font-size:.9rem; letter-spacing:.02em;
-  box-shadow:0 6px 16px rgba(0,0,0,.3);
+  display:grid; place-items:center; background:var(--accent); color:var(--accent-contrast);
+  font-weight:800; font-size:.9rem; letter-spacing:.02em; box-shadow:0 6px 16px rgba(0,0,0,.3);
 }
-
-/* Tittel-linje og markering av nøkkelord */
 #proj-medball-no .process.process--timeline .step-copy h3,
 #proj-medball-en .process.process--timeline .step-copy h3{
   margin-top:0; display:flex; align-items:baseline; gap:8px;
@@ -707,33 +551,20 @@ footer a{ color:var(--muted); }
 }
 #proj-medball-no .process.process--timeline .step-copy p > strong,
 #proj-medball-en .process.process--timeline .step-copy p > strong{
-  display:inline-block;
-  background:color-mix(in oklab, var(--accent) 22%, black 78%);
-  color:var(--text);
-  border:1px solid color-mix(in oklab, var(--accent) 35%, black 65%);
+  display:inline-block; background:color-mix(in oklab, var(--accent) 22%, black 78%);
+  color:var(--text); border:1px solid color-mix(in oklab, var(--accent) 35%, black 65%);
   padding:.05rem .45rem; margin-right:.35rem; border-radius:6px; font-weight:700;
 }
-
-/* Bildetekster litt mindre */
 #proj-medball-no .process.process--timeline figcaption,
-#proj-medball-en .process.process--timeline figcaption{
-  font-size:.9rem; opacity:.9; margin-top:6px; line-height:1.35;
-}
+#proj-medball-en .process.process--timeline figcaption{ font-size:.9rem; opacity:.9; margin-top:6px; line-height:1.35; }
 
-/* ================================
-   To-kolonne-layout for steg med media
-   (med :has fallback via .has-media klassen)
-================================ */
-
-/* Moderne: bruk :has for å splitte til 1fr | media-kolonne */
+/* Two-column + fallback (samme som rocket) */
 @supports selector(:has(*)){
   @media (min-width:980px){
     #proj-medball-no .process.process--timeline .process-step:has(.step-media),
     #proj-medball-en .process.process--timeline .process-step:has(.step-media){
-      display:grid !important;
-      grid-template-columns: 1fr var(--media-w) !important;
-      column-gap: clamp(14px, 2vw, 28px);
-      align-items:start;
+      display:grid !important; grid-template-columns:1fr var(--media-w) !important;
+      column-gap:clamp(14px, 2vw, 28px); align-items:start;
     }
     #proj-medball-no .process.process--timeline .process-step:has(.step-media) .step-copy,
     #proj-medball-en .process.process--timeline .process-step:has(.step-media) .step-copy{
@@ -744,20 +575,16 @@ footer a{ color:var(--muted); }
       grid-column:2 !important; grid-row:1 !important; justify-self:start !important;
       width:var(--media-w); max-width:100%;
     }
-    /* Tekst-only steg holder seg énspaltet */
     #proj-medball-no .process.process--timeline .process-step:not(:has(.step-media)),
     #proj-medball-en .process.process--timeline .process-step:not(:has(.step-media)){
       display:block !important;
     }
   }
 }
-
-/* Fallback (JS legger .has-media/.no-media i gamle browsere) */
 @media (min-width:980px){
   #proj-medball-no .process .process-step.has-media,
   #proj-medball-en .process .process-step.has-media{
-    display:grid !important;
-    grid-template-columns: 1fr var(--media-w) !important;
+    display:grid !important; grid-template-columns:1fr var(--media-w) !important;
     column-gap:clamp(14px,2vw,28px); align-items:start;
   }
   #proj-medball-no .process .process-step.has-media .step-copy,
@@ -770,12 +597,8 @@ footer a{ color:var(--muted); }
     width:var(--media-w) !important; max-width:100% !important;
   }
   #proj-medball-no .process .process-step.no-media,
-  #proj-medball-en .process .process-step.no-media{
-    display:block !important;
-  }
+  #proj-medball-en .process .process-step.no-media{ display:block !important; }
 }
-
-/* Konsistent media-sizing i kolonnen */
 #proj-medball-no .process .step-media,
 #proj-medball-en .process .step-media{ justify-self:start; }
 #proj-medball-no .process .step-media > img,
@@ -786,19 +609,222 @@ footer a{ color:var(--muted); }
   object-fit:contain; margin:0 !important; border-radius:16px; border:1px solid #6A443E;
   box-shadow:0 8px 22px rgba(0,0,0,.32);
 }
-#proj-medball-no .process .step-media .carousel,
-#proj-medball-en .process .step-media .carousel{
-  width:100% !important; max-width:100% !important; margin:0 !important;
-}
-
-/* Valgfritt: cap høyde på kjempeskjermer så det ikke renner ut */
 @media (min-width:980px){
   #proj-medball-no .process .step-media,
-  #proj-medball-en .process .step-media{
-    max-height:78vh; overflow:hidden;
-  }
+  #proj-medball-en .process .step-media{ max-height:78vh; overflow:hidden; }
   #proj-medball-no .process .step-media img,
-  #proj-medball-en .process .step-media img{
-    max-height:78vh; height:auto;
-  }
+  #proj-medball-en .process .step-media img{ max-height:78vh; height:auto; }
 }
+
+/* =========================================
+   LIGHT CONTENT THEME + BROWN FRAME
+========================================= */
+
+/* Lys “paper”-palett */
+:root{
+  --paper:   #FBF7F3;
+  --paper-2: #F6EFE8;
+  --ink:     #1A1411;
+  --ink-muted:#5B4A42;
+  --line-lite: color-mix(in oklab, var(--ink) 20%, white 80%);
+  --shadow-lite: 0 8px 20px rgba(0,0,0,.10);
+  --frame-gap: clamp(14px, 2.4vw, 26px);
+  --card-radius: 18px;
+}
+
+/* Deaktivér mørk undertone */
+#content-no .project:nth-of-type(even),
+#content-en .project:nth-of-type(even){ background:transparent !important; }
+
+/* Prosjektseksjon som “lyst kort” med brun marg (via pseudo-element) */
+.project{
+  background:transparent !important;
+  position:relative;
+  padding:var(--frame-gap);
+  color:var(--ink);
+}
+.project::before{
+  content:"";
+  position:absolute;
+  inset:var(--frame-gap);
+  background:var(--paper);
+  border:1px solid var(--line-lite);
+  border-radius:var(--card-radius);
+  box-shadow:var(--shadow-lite);
+  z-index:0;
+}
+.project > *{ position:relative; z-index:1; }
+.project p, .project li, .project .kicker, .project figcaption{ color:var(--ink-muted); }
+
+/* Timeline-steg: fjern indre “kort” for ren, sammenhengende bakgrunn */
+#proj-rocket-no .process.process--timeline .process-step,
+#proj-rocket-en .process.process--timeline .process-step,
+#proj-medball-no .process.process--timeline .process-step,
+#proj-medball-en .process.process--timeline .process-step{
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  padding:clamp(10px,1.6vw,14px) !important;
+}
+#proj-rocket-no .process.process--timeline,
+#proj-rocket-en .process.process--timeline,
+#proj-medball-no .process.process--timeline,
+#proj-medball-en .process.process--timeline{
+  gap:clamp(16px, 2.2vw, 26px) !important;
+}
+
+/* Timeline-linje + nummerchips beholdes */
+#proj-rocket-no .process.process--timeline .process-step::after,
+#proj-rocket-en .process.process--timeline .process-step::after,
+#proj-medball-no .process.process--timeline .process-step::after,
+#proj-medball-en .process.process--timeline .process-step::after{
+  left:-20px; width:2px; border-radius:2px;
+  background:linear-gradient(180deg,
+    color-mix(in oklab, var(--accent) 60%, transparent),
+    color-mix(in oklab, var(--accent) 20%, transparent)) !important;
+}
+#proj-rocket-no .process.process--timeline .process-step::before,
+#proj-rocket-en .process.process--timeline .process-step::before,
+#proj-medball-no .process.process--timeline .process-step::before,
+#proj-medball-en .process.process--timeline .process-step::before{
+  background:var(--accent) !important;
+  color:var(--accent-contrast) !important;
+  box-shadow:0 6px 14px rgba(0,0,0,.18) !important;
+}
+
+/* Tittellinje og chips på lys bakgrunn */
+#proj-rocket-no .process.process--timeline .step-copy h3::after,
+#proj-rocket-en .process.process--timeline .step-copy h3::after,
+#proj-medball-no .process.process--timeline .step-copy h3::after,
+#proj-medball-en .process.process--timeline .step-copy h3::after{
+  background:var(--line-lite) !important; opacity:.6 !important;
+}
+#proj-rocket-no .process.process--timeline .step-copy p > strong,
+#proj-rocket-en .process.process--timeline .step-copy p > strong,
+#proj-medball-no .process.process--timeline .step-copy p > strong,
+#proj-medball-en .process.process--timeline .step-copy p > strong{
+  background:color-mix(in oklab, var(--accent) 12%, white 88%) !important;
+  color:var(--ink) !important;
+  border:1px solid color-mix(in oklab, var(--accent) 25%, white 75%) !important;
+}
+#proj-rocket-no .process.process--timeline figcaption,
+#proj-rocket-en .process.process--timeline figcaption,
+#proj-medball-no .process.process--timeline figcaption,
+#proj-medball-en .process.process--timeline figcaption{
+  color:var(--ink-muted) !important; opacity:.95 !important;
+}
+
+/* Media/karusell-kant i lys tema */
+#proj-rocket-no .process .step-media > img,
+#proj-rocket-en .process .step-media > img,
+#proj-medball-no .process .step-media > img,
+#proj-medball-en .process .step-media > img{
+  border-color:var(--line-lite) !important;
+  box-shadow:0 6px 18px rgba(0,0,0,.12) !important;
+}
+#proj-rocket-no .process .step-media .carousel-viewport,
+#proj-rocket-en .process .step-media .carousel-viewport,
+#proj-medball-no .process .step-media .carousel-viewport,
+#proj-medball-en .process .step-media .carousel-viewport{
+  background:color-mix(in oklab, var(--paper-2) 85%, white 15%) !important;
+  border-color:var(--line-lite) !important;
+}
+
+/* Lenker på lys kort */
+.project a{ color:var(--accent); }
+.project a:hover{ text-decoration:underline; text-underline-offset:2px; }
+
+/* Mock-rammer på lys bakgrunn */
+.mock{ border-color:var(--line-lite) !important; }
+
+/* Gi ekstra luft for fullbredde-seksjoner slik at margs-rammen vises */
+#proj-rocket-no.project,
+#proj-rocket-en.project,
+#proj-medball-no.project,
+#proj-medball-en.project{
+  padding-left:calc(var(--gutter) + var(--frame-gap));
+  padding-right:calc(var(--gutter) + var(--frame-gap));
+}
+@media (max-width:560px){ :root{ --frame-gap:10px; } }
+
+/* =========================================
+   FIX: Meditasjonsball – fjern dobbel hvit ramme
+   (bruk kun global .project::before-kortet)
+========================================= */
+#proj-medball-no.project,
+#proj-medball-en.project{
+  background:transparent !important;   /* fjern indre ark */
+  border:0 !important;
+  box-shadow:none !important;
+  color:var(--ink);                    /* tekst på det lyse kortet */
+}
+#proj-medball-no.project::before,
+#proj-medball-en.project::before{
+  background:var(--paper);
+  border:1px solid var(--line-lite);
+  border-radius:var(--card-radius);
+  box-shadow:var(--shadow-lite);
+}
+/* Sekundærtekst & bildekanter følger lys tema (arver reglene over) */
+
+/* Ekstra vertikal padding inni prosjektkortet */
+:root{
+  --card-pad-y: clamp(18px, 2.6vw, 36px); /* juster etter smak */
+}
+
+/* behold brun marg på sidene, men gi mer luft topp/bunn */
+.project{
+  /* var: padding: var(--frame-gap);  */
+  padding: var(--frame-gap);
+  padding-block: calc(var(--frame-gap) + var(--card-pad-y));
+}
+
+/* Fullbredde-seksjoner beholder eksisterende side-padding/marg */
+#proj-rocket-no.project,
+#proj-rocket-en.project,
+#proj-medball-no.project,
+#proj-medball-en.project{
+  padding-left: calc(var(--gutter) + var(--frame-gap));
+  padding-right: calc(var(--gutter) + var(--frame-gap));
+}
+
+/* === Patch: hero crop + carousel arrows above frame === */
+
+/* 1) Crop hero photo (adjust the 18% to taste) */
+.hero-photo img{
+  object-fit: cover;
+  object-position: 50% 18%;  /* center horizontally, a bit higher vertically */
+}
+
+/* 2) Make sure slideshow arrows aren't clipped or behind the card frame */
+.process .step-media{ overflow: visible !important; }  /* stop clipping in steps */
+.carousel{ z-index: 2; }                               /* above project ::before */
+.car-btn{ z-index: 5; }                                /* arrows above everything */
+
+/* In case any viewport is clipping the buttons on specific carousels */
+.carousel-viewport{ overflow: visible; }               /* safe default */
+
+/* HERO – tighter crop + slightly higher focus */
+.hero-photo{
+  aspect-ratio: 3 / 4;               /* was 4/5 – tighter */
+  max-width: 520px;                  /* keep your width cap */
+  overflow:hidden;
+}
+.hero-photo img{
+  width:100%; height:100%;
+  object-fit: cover;
+  object-position: 50% 32%;          /* move crop upward a bit */
+  transform: scale(1.5);            /* tiny zoom for tighter framing */
+}
+
+/* Echo – små typografiske detaljer */
+.doc-meta{
+  margin-top: 10px;
+  font-size: .95rem;
+  color: var(--ink-muted);
+}
+.doc-meta a{ color: var(--accent); text-decoration: none; }
+.doc-meta a:hover{ text-decoration: underline; }
+
+/* Hvis du senere vil ha bilder/video i echo-seksjonen, arver de allerede
+   kant/skyggeregler fra lys-temaet, så ingen ekstra CSS trengs. */
