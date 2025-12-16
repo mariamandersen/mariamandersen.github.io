@@ -292,7 +292,7 @@ figcaption{ margin-top:6px; color:var(--muted); font-size:.95rem; }
   border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,.18); padding:clamp(14px,1.8vw,20px);
 }
 .project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process.process--timeline .process-step::after{
-  content:""; position:absolute; right:-20px; top:0; bottom:0; width:2px; border-radius:2px;
+  content:""; position:absolute; left:-20px; top:0; bottom:0; width:2px; border-radius:2px;
   background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 80%, black 20%), color-mix(in oklab, var(--accent) 20%, transparent));
 }
 .project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process.process--timeline .process-step::before{
@@ -302,18 +302,31 @@ figcaption{ margin-top:6px; color:var(--muted); font-size:.95rem; }
   font-weight:800; font-size:.9rem; letter-spacing:.02em; box-shadow:0 6px 16px rgba(0,0,0,.3);
 }
 
-/* Two-column: media on the LEFT, copy on the RIGHT */
+/* Two-column: text on the LEFT, media on the RIGHT (match medball/rocket) */
 @supports selector(:has(*)){
   @media (min-width:980px){
     .project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process.process--timeline .process-step:has(.step-media){
-      display:grid !important; grid-template-columns: var(--media-w) 1fr !important; column-gap:clamp(14px,2vw,28px); align-items:start;
+      display:grid !important; grid-template-columns: 1fr var(--media-w) !important; column-gap:clamp(14px,2vw,28px); align-items:start;
     }
     .project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process.process--timeline .process-step:has(.step-media) .step-media{
-      grid-column:1 !important; grid-row:1 !important; justify-self:start !important; width:var(--media-w); max-width:100%;
+      grid-column:2 !important; grid-row:1 !important; justify-self:start !important; width:var(--media-w); max-width:100%;
     }
     .project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process.process--timeline .process-step:has(.step-media) .step-copy{
-      grid-column:2 !important; grid-row:1 !important;
+      grid-column:1 !important; grid-row:1 !important;
     }
+  }
+}
+
+/* Fallback for browsers without :has(): JS adds .has-media class to steps, apply same layout */
+@media (min-width:980px){
+  .project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process .process-step.has-media{
+    display:grid !important; grid-template-columns: 1fr var(--media-w) !important; column-gap:clamp(14px,2vw,28px); align-items:start;
+  }
+  .project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process .process-step.has-media .step-copy{
+    grid-column:1 !important; grid-row:1 !important;
+  }
+  .project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process .process-step.has-media .step-media{
+    grid-column:2 !important; grid-row:1 !important; justify-self:start !important; width:var(--media-w); max-width:100%;
   }
 }
 
