@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
   --------------------------------*/
   // I script.js – oppdater denne listen:
   function flagStepsWithMedia(){
-    ['#proj-rocket-no', '#proj-rocket-en', '#proj-medball-no', '#proj-medball-en']
+    ['#proj-rocket-no', '#proj-rocket-en', '#proj-medball-no', '#proj-medball-en', '#proj-echo-no', '#proj-echo-en']
       .forEach(rootSel => {
         document.querySelectorAll(`${rootSel} .process .process-step`).forEach(step => {
           const has = !!step.querySelector('.step-media');
