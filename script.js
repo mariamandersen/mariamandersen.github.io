@@ -266,6 +266,22 @@ document.addEventListener('DOMContentLoaded', () => {
   flagStepsWithMedia();
 
   /* ------------------------------
+     Hero compact mode for very small screens
+     Adds/removes .hero--compact on the <section class="hero"> element
+     so CSS can hide the image when viewport is too short or narrow.
+  --------------------------------*/
+  function updateHeroCompact(){
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    const smallHeight = window.innerHeight < 520;
+    const narrow = window.innerWidth < 380;
+    if (smallHeight || narrow) hero.classList.add('hero--compact'); else hero.classList.remove('hero--compact');
+  }
+  updateHeroCompact();
+  window.addEventListener('resize', updateHeroCompact);
+  window.addEventListener('orientationchange', updateHeroCompact);
+
+  /* ------------------------------
      Copyright year
   --------------------------------*/
   const cy = document.getElementById('copyright-year');
