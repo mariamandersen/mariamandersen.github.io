@@ -13,9 +13,11 @@
   --lead:clamp(1.02rem,1.7vw,1.2rem);
   --measure:68ch; --gutter:clamp(24px,6vw,88px);
   --rail-dot:7px; --rail-ring:2px; --rail-pad:10px; --rail-gap:10px;
+  --card-pad: clamp(16px, 2.2vw, 28px);
 
   /* Media-kolonne (NO & EN) */
   --media-w: clamp(300px, 32vw, 440px);
+
 }
 
 /* Base */
@@ -276,6 +278,46 @@ figcaption{ margin-top:6px; color:var(--muted); font-size:.95rem; }
 .process-step{ display:grid; align-items:start; gap:clamp(12px,1.6vw,18px); padding:clamp(16px,2vw,22px); }
 @media (min-width:900px){ .process-step{ grid-template-columns:minmax(300px,42%) 1fr; } }
 
+/* =========================================
+   GLOBAL TIMELINE SKIN (for newer projects)
+   Applies numbering + left-aligned media for projects
+   that don't use the Rocket / Medball / Echo custom skin.
+========================================= */
+.project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process.process--timeline{
+  counter-reset: step; display:grid; gap:clamp(12px,1.6vw,18px);
+}
+.project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process.process--timeline .process-step{
+  position:relative; background:color-mix(in oklab, var(--surface) 58%, black 42%);
+  border:1px solid color-mix(in oklab, var(--line) 80%, black 20%);
+  border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,.18); padding:clamp(14px,1.8vw,20px);
+}
+.project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process.process--timeline .process-step::after{
+  content:""; position:absolute; right:-20px; top:0; bottom:0; width:2px; border-radius:2px;
+  background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 80%, black 20%), color-mix(in oklab, var(--accent) 20%, transparent));
+}
+.project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process.process--timeline .process-step::before{
+  counter-increment: step; content: counter(step);
+  position:absolute; left:-34px; top:14px; width:28px; height:28px; border-radius:999px;
+  display:grid; place-items:center; background:var(--accent); color:var(--accent-contrast);
+  font-weight:800; font-size:.9rem; letter-spacing:.02em; box-shadow:0 6px 16px rgba(0,0,0,.3);
+}
+
+/* Two-column: media on the LEFT, copy on the RIGHT */
+@supports selector(:has(*)){
+  @media (min-width:980px){
+    .project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process.process--timeline .process-step:has(.step-media){
+      display:grid !important; grid-template-columns: var(--media-w) 1fr !important; column-gap:clamp(14px,2vw,28px); align-items:start;
+    }
+    .project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process.process--timeline .process-step:has(.step-media) .step-media{
+      grid-column:1 !important; grid-row:1 !important; justify-self:start !important; width:var(--media-w); max-width:100%;
+    }
+    .project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process.process--timeline .process-step:has(.step-media) .step-copy{
+      grid-column:2 !important; grid-row:1 !important;
+    }
+  }
+}
+
+
 /* Footer */
 footer{
   border-top:1px solid var(--line);
@@ -288,11 +330,6 @@ footer a{ color:var(--muted); }
 /* Hidden dev reset button */
 #resetLang{ display:none; margin-top:1rem; background:#3a332e; color:#fff; border:none; padding:.5rem 1rem; border-radius:10px; cursor:pointer; }
 #resetLang:hover{ background:#4a413b; }
-
-/* Mobile tweaks */
-@media (max-width:600px){
-  .intro, .project{ margin:16px 12px; padding:14px; min-height:92svh; }
-}
 
 /* Keep hidden truly hidden */
 [hidden]{ display:none !important; }
@@ -439,6 +476,19 @@ footer a{ color:var(--muted); }
 #proj-rocket-no .phone-mock > img,
 #proj-rocket-en .phone-mock > img{
   border:0 !important; border-radius:calc(26px - var(--bezel)) !important; background:#000;
+}
+
+/* Apply phone-carousel layout rules globally so phone-style sliders behave consistently
+   across all project sections (not just Skybound). */
+.phone-carousel .phone-mock{
+  --bezel:8px; aspect-ratio:9/19.5 !important; width:clamp(190px,20vw,250px) !important; padding:12px !important;
+}
+.phone-carousel .phone-mock > img{
+  width:100% !important; height:100% !important; object-fit:cover !important;
+  border-radius:calc(26px - 12px + 2px) !important; background:#000;
+}
+.phone-carousel .carousel-viewport{
+  display:block !important; width:fit-content !important; margin-inline:0 !important; padding:8px !important;
 }
 @media (min-width:980px){ :root{ --media-w: clamp(320px, 34vw, 480px); } }
 #proj-rocket-no .phone-mock, #proj-rocket-en .phone-mock{
@@ -882,3 +932,86 @@ footer a{ color:var(--muted); }
 /* Update script.js to flag echo steps with media */
 /* Add this to the flagStepsWithMedia() function in script.js: */
 /* '#proj-echo-no', '#proj-echo-en' */
+
+.tldr {
+  border-left: 3px solid var(--accent);
+  padding: 0.75rem 1rem;
+  margin: 1.25rem 0 2rem;
+  background: rgba(0,0,0,0.03);
+  max-width: 60ch;
+}
+
+.tldr strong {
+  display: block;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.project.project--card{
+  background:transparent !important;
+  position:relative;
+  padding:var(--frame-gap);
+  color:var(--ink);
+}
+.project.project--card::before{
+  content:"";
+  position:absolute;
+  inset:var(--frame-gap);
+  background:var(--paper);
+  border:1px solid var(--line-lite);
+  border-radius:var(--card-radius);
+  box-shadow:var(--shadow-lite);
+  z-index:0;
+}
+.project.project--card > *{ position:relative; z-index:1; }
+.project.project--card p,
+.project.project--card li,
+.project.project--card .kicker,
+.project.project--card figcaption{ color:var(--ink-muted); }
+
+.project.project--card .tldr{
+  background: color-mix(in oklab, var(--paper-2) 85%, white 15%);
+  border-left-color: var(--accent);
+  color: var(--ink);
+}
+.project.project--card .tldr p{ color: var(--ink-muted); }
+
+.intro, .project{
+  width:100%;
+  max-width:none;
+  margin:22px 0;
+  padding-left:var(--gutter);
+  padding-right:var(--gutter);
+}
+
+/* Mobil: seksjonen fullbredde, kortet beholder ramme */
+@media (max-width:600px){
+  .intro, .project{
+    margin:16px 0;                 /* fjern side-margin */
+    padding-left:var(--gutter);     /* behold global gutter */
+    padding-right:var(--gutter);
+    padding-top:14px;
+    padding-bottom:14px;
+    min-height:92svh;
+  }
+  :root{ 
+    --gutter: 12px;
+    --card-pad: 14px;
+  }   /* eller 10px */
+}
+
+/* Slå av fade-in/scroll-anim helt */
+html.has-io .fade-in{
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Indre padding kun for de nye kortseksjonene */
+.project.project--card > :not(.process):not(.media):not(.carousel){
+  padding: var(--card-pad);
+}
+
+.project .tldr{
+  margin: var(--card-pad);
+}

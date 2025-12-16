@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         links.forEach(l => {
           const on = (l === a);
           l.classList.toggle('active', on);
-          l.setAttribute('aria-current', on ? 'true' : 'false');
+          l.setAttribute('aria-current', on ? 'location' : 'false');
         });
         target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       };
@@ -197,12 +197,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 
     function applyVisibility() {
-      slides.forEach((s, i) => { s.hidden = (i !== index); });
+      if (singleMode) {
+        slides.forEach((s, i) => { s.hidden = (i !== index); });
+      } else {
+        slides.forEach(s => { s.hidden = false; });
+      }
     }
+
     function update() {
       if (prevBtn) prevBtn.disabled = index === 0;
       if (nextBtn) nextBtn.disabled = index === slides.length - 1;
       dots.forEach((d, i) => d.setAttribute('aria-current', i === index ? 'true' : 'false'));
+
       applyVisibility();
 
       if (!singleMode) {
@@ -210,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         viewport.scrollTo({ left: x, behavior: 'smooth' });
       }
     }
+
     function goTo(i) { index = clamp(i, 0, slides.length - 1); update(); }
 
     applyVisibility();
@@ -244,16 +251,16 @@ document.addEventListener('DOMContentLoaded', () => {
      Flag steps that have media (fallback for browsers w/o :has)
      Applies to BOTH languages.
   --------------------------------*/
-  // I script.js – oppdater denne listen:
+  // Flag timeline steps that include media.
+  // Previously this used a hard-coded list of project IDs. That required updates
+  // whenever new projects were added. Here we select all .process-step elements
+  // on the page so the behaviour is automatic for any project/language.
   function flagStepsWithMedia(){
-    ['#proj-rocket-no', '#proj-rocket-en', '#proj-medball-no', '#proj-medball-en', '#proj-echo-no', '#proj-echo-en']
-      .forEach(rootSel => {
-        document.querySelectorAll(`${rootSel} .process .process-step`).forEach(step => {
-          const has = !!step.querySelector('.step-media');
-          step.classList.toggle('has-media', has);
-          step.classList.toggle('no-media', !has);
-        });
-      });
+    document.querySelectorAll('.process .process-step').forEach(step => {
+      const has = !!step.querySelector('.step-media');
+      step.classList.toggle('has-media', has);
+      step.classList.toggle('no-media', !has);
+    });
   }
 
   flagStepsWithMedia();
