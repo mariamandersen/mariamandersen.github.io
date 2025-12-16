@@ -131,9 +131,41 @@ main{ padding-block:10px 64px; }
 .hero-copy{ padding:0; }
 .hero .lead{ margin-top:.5rem; color:var(--muted); max-width:var(--measure); }
 .hero-contents{ margin-top:12px; }
-.hero-contents ul{ list-style:none; padding:0; margin:0; display:grid; gap:6px; }
-.hero-contents a{ color:var(--muted); text-decoration:none; }
-.hero-contents a:hover, .hero-contents a:focus-visible{ color:var(--text); text-decoration:underline; }
+.hero-contents ul{ list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+.hero-contents li{ margin:0; }
+
+/* Clickable, accessible hero contents (WCAG / Don Norman: clear affordances + signifiers) */
+.hero-contents a{
+  display:inline-flex; align-items:center; justify-content:space-between;
+  gap:10px; width:100%;
+  padding:.6rem .8rem; min-height:44px; /* meets touch target guidelines */
+  color:var(--muted); text-decoration:none; line-height:1.1;
+  border-radius:10px; border:1px solid transparent; background:transparent;
+  transition: background .12s ease, color .12s ease, transform .08s ease, box-shadow .12s ease;
+}
+.hero-contents a:hover, .hero-contents a:focus-visible{
+  color:var(--text); text-decoration:none;
+  background: color-mix(in oklab, var(--accent) 14%, transparent);
+  transform: translateY(-1px);
+  border-color: color-mix(in oklab, var(--accent) 18%, transparent);
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+}
+.hero-contents a::after{
+  content:"→"; opacity:.95; font-weight:700; margin-left:8px; color:currentColor;
+}
+.hero-contents a:focus-visible{
+  outline:3px solid color-mix(in oklab, var(--accent) 85%, white 15%);
+  outline-offset:4px; border-radius:12px;
+}
+
+/* On narrow screens use a single column and slightly larger targets */
+@media (max-width:600px){
+  .hero-contents ul{ grid-template-columns:1fr; gap:8px; }
+  .hero-contents a{ padding:.7rem .9rem; font-size:1rem; min-height:48px; }
+}
+
+/* Ensure hero intro remains visible when hero enters compact mode */
+.hero--compact .hero-contents{ display:block; margin-top:12px; z-index:2; }
 
 /* Make hero contents compact on small screens */
 @media (max-width:600px){
