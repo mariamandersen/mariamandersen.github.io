@@ -309,6 +309,31 @@ function initProjectPreviews(){
     const peek = document.createElement('div');
     peek.className = 'project-peek';
 
+    const txt = document.createElement('div');
+    txt.className = 'peek-text';
+
+    // Move heading and kicker into the peek TEXT area when they are direct
+    // children of the project scope. If they appear elsewhere, clone them so
+    // we don't break semantics. Putting them inside .peek-text ensures the
+    // title/info sits to the left when the layout is wide.
+    if (heading) {
+      if (heading.parentNode === scope) txt.appendChild(heading);
+      else txt.appendChild(heading.cloneNode(true));
+    }
+    if (kicker) {
+      if (kicker.parentNode === scope) txt.appendChild(kicker);
+      else txt.appendChild(kicker.cloneNode(true));
+    }
+
+    // Build the preview body: include heading, kicker and the next few
+    // content nodes (paragraphs / small blocks) so the preview reads like
+    // a short project summary. We'll stop when we've collected enough text
+    // or hit a safe node-count limit.
+    txt.appendChild(document.createElement('div'));
+    peek.appendChild(txt);
+
+    // If there's a thumbnail, add it after the text so it appears on the
+    // right in wide layouts (text will be on the left).
     if (imgEl) {
       const media = document.createElement('div');
       media.className = 'peek-media';
@@ -318,27 +343,6 @@ function initProjectPreviews(){
       media.appendChild(thumb);
       peek.appendChild(media);
     }
-
-    const txt = document.createElement('div');
-    txt.className = 'peek-text';
-
-    // Move heading and kicker into the peek when they are direct children of the
-    // project scope. If they appear elsewhere, clone them so we don't break semantics.
-    if (heading) {
-      if (heading.parentNode === scope) peek.appendChild(heading);
-      else peek.appendChild(heading.cloneNode(true));
-    }
-    if (kicker) {
-      if (kicker.parentNode === scope) peek.appendChild(kicker);
-      else peek.appendChild(kicker.cloneNode(true));
-    }
-
-    // Build the preview body: include heading, kicker and the next few
-    // content nodes (paragraphs / small blocks) so the preview reads like
-    // a short project summary. We'll stop when we've collected enough text
-    // or hit a safe node-count limit.
-    txt.appendChild(document.createElement('div'));
-    peek.appendChild(txt);
 
     // Insert peek at the top of the scope
     scope.insertBefore(peek, scope.firstChild);

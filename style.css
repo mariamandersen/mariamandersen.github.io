@@ -1305,8 +1305,10 @@ html.has-io .fade-in{
 
 @media (min-width:980px){
   .project-peek{ display:flex; gap:18px; align-items:center; }
-  .project-peek .peek-media{ flex:0 0 var(--media-w); max-width:var(--media-w); }
-  .project-peek .peek-text{ flex:1 1 auto; }
+  .project-peek{ display:flex; gap:18px; align-items:flex-start; }
+  /* Ensure text sits left and image on the right */
+  .project-peek .peek-text{ order:1; flex:1 1 auto; }
+  .project-peek .peek-media{ order:2; flex:0 0 var(--media-w); max-width:var(--media-w); align-self:flex-start; margin-left:12px; }
 }
 
 /* Center mobile menu links and make them more tappable */
