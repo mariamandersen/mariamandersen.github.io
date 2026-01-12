@@ -141,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activateRail();
     setupFadeIn();
     flagStepsWithMedia(); // ensure .has-media after language switch
+      initProjectPreviews(); // ensure previews are present/labels updated after language switch
   }
 
   const savedLang = (() => { try { return localStorage.getItem('preferredLanguage'); } catch { return null; } })();
@@ -264,6 +265,158 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   flagStepsWithMedia();
+
+  function updatePreviewButtonLabels(){
+    const lang = document.documentElement.getAttribute('lang') || 'no';
+    document.querySelectorAll('.read-more').forEach(btn => {
+      const label = btn.querySelector('.read-more-label');
+      if (!label) return;
+      label.textContent = (lang === 'en')
+        ? (btn.dataset.moreEn || 'Read more')
+        : (btn.dataset.moreNo || 'Les mer');
+    });
+  }
+
+  /* ------------------------------
+     Project previews (preview + read-more)
+     - Builds a preview interface for each .project element by keeping the
+       visible summary (prefer .tldr or first paragraph) and moving the rest
+       of the project's children into a collapsible .project-body. Adds an
+       accessible "Read more" button that toggles aria-expanded and hidden.
+  --------------------------------*/
+function initProjectPreviews(){
+  const projects = Array.from(document.querySelectorAll('.project'));
+
+  projects.forEach((proj, idx) => {
+    if (proj.dataset.previewInit === '1') return;
+
+    const scope = proj.querySelector('.project-inner') || proj;
+
+    // Preview-anker = .tldr (foretrukket) ellers første <p>
+    const tldr = scope.querySelector(':scope > .tldr') || scope.querySelector('.tldr');
+    const firstP = scope.querySelector(':scope > p') || scope.querySelector('p');
+    const previewNode = tldr || firstP;
+    if (!previewNode) { proj.dataset.previewInit = '1'; return; }
+
+    // Finn anker som er direkte barn av scope
+    let anchor = previewNode;
+    while (anchor && anchor.parentNode !== scope) anchor = anchor.parentNode;
+    if (!anchor) anchor = previewNode;
+
+    // Lag body og flytt alt etter anchor inn i body
+    const body = document.createElement('div');
+    const bodyId = `project-body-${idx}`;
+    body.className = 'project-body';
+    body.id = bodyId;
+
+    const kids = Array.from(scope.children);
+    const anchorIndex = kids.indexOf(anchor);
+
+    for (let i = anchorIndex + 1; i < kids.length; i++) {
+      body.appendChild(kids[i]);
+    }
+
+    // Ikke lag knapp hvis ingenting å skjule
+    if (!body.children.length) { proj.dataset.previewInit = '1'; return; }
+
+    body.hidden = true;
+
+    // Sett body rett etter preview-anker
+    if (anchor.nextSibling) scope.insertBefore(body, anchor.nextSibling);
+    else scope.appendChild(body);
+
+    // Lag knapp
+    const btn = document.createElement('button');
+    btn.className = 'read-more';
+    btn.type = 'button';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', bodyId);
+    btn.dataset.moreEn = 'Read more';
+    btn.dataset.moreNo = 'Les mer';
+
+    const label = document.createElement('span');
+    label.className = 'read-more-label';
+    btn.appendChild(label);
+
+    // Legg knappen helt nederst i prosjektet (etter inner)
+    // Legg knappen nederst i samme scope som innholdet (project-inner hvis den finnes)
+    if (body.nextSibling) scope.insertBefore(btn, body.nextSibling);
+    else scope.appendChild(btn);
+
+    proj.dataset.previewInit = '1';
+    proj.dataset.hasPreview = '1';
+  });
+
+  updatePreviewButtonLabels();
+}
+
+  // Initialize previews on load
+initProjectPreviews();
+
+  // Delegated handler: ensure clicks / keyboard activation on .read-more work
+  // even if buttons were added later or individual listeners were missed.
+  function toggleProjectByButton(btn){
+  if (!btn) return;
+  const proj = btn.closest('.project');
+  const bodyId = btn.getAttribute('aria-controls');
+  const body = bodyId ? document.getElementById(bodyId) : null;
+  if (!proj || !body) return;
+
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+
+  if (!expanded) {
+  body.style.transition = 'height 320ms ease';
+  body.hidden = false;
+  body.style.height = '0px';
+
+  requestAnimationFrame(() => {
+    body.style.height = body.scrollHeight + 'px';
+  });
+
+  const onEnd = () => {
+    body.style.height = '';
+    body.removeEventListener('transitionend', onEnd);
+  };
+  body.addEventListener('transitionend', onEnd);
+
+  btn.setAttribute('aria-expanded', 'true');
+  proj.classList.add('expanded');
+} else {
+    const h = body.scrollHeight;
+    body.style.height = h + 'px';
+
+    requestAnimationFrame(() => {
+      body.style.transition = 'height 320ms ease';
+      body.style.height = '0px';
+    });
+
+    const onEndClose = () => {
+      body.hidden = true;
+      body.style.height = '';
+      body.removeEventListener('transitionend', onEndClose);
+    };
+
+    body.addEventListener('transitionend', onEndClose);
+    btn.setAttribute('aria-expanded', 'false');
+    proj.classList.remove('expanded');
+  }
+}
+
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest && e.target.closest('.read-more');
+    if (!btn) return;
+    e.preventDefault();
+    toggleProjectByButton(btn);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const btn = e.target.closest && e.target.closest('.read-more');
+    if (!btn) return;
+    e.preventDefault();
+    toggleProjectByButton(btn);
+  });
 
   /* ------------------------------
      Hero compact mode for very small screens

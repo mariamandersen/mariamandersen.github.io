@@ -22,6 +22,9 @@
   <!-- Skip-links -->
   <a class="skip-link" href="#main" data-lang="no">Hopp til innhold</a>
   <a class="skip-link" href="#main" data-lang="en" hidden>Skip to content</a>
+  <!-- Skip directly to hero contents (help keyboard users reach the intro quickly) -->
+  <a class="skip-link" href="#hero-contents-no" data-lang="no">Hopp til introduksjon</a>
+  <a class="skip-link" href="#hero-contents-en" data-lang="en" hidden>Skip to introduction</a>
 
   <header>
     <div class="container bar">
@@ -98,30 +101,35 @@
         </figure>
 
         <div class="card hero-copy">
-          <h2 data-lang="no">Hei! Mitt navn er Maria.</h2>
-          <h2 data-lang="en" hidden>Hi! My name is Maria.</h2>
+          <h2 id="heading-hero-no" data-lang="no">Introduksjon</h2>
+          <h2 id="heading-hero-en" data-lang="en" hidden>Introduction</h2>
           
+          <p class="intro-line" data-lang="no"><strong>Hei!</strong> Mitt navn er Maria.</p>
+          <p class="intro-line" data-lang="en" hidden><strong>Hi!</strong> My name is Maria.</p>
+
           <p class="lead" data-lang="no">Velkommen til porteføljen min. Her finner du utvalgte case-studier som viser innsikt, konsept, prototyping og testing.</p>
           <p class="lead" data-lang="en" hidden>Welcome to my portfolio. Below you'll find selected case studies showing insight, concept, prototyping and testing.</p>
 
-          <nav class="hero-contents" aria-label="Innhold" data-lang="no">
-            <ul>
-              <li><a href="#proj-in5510-no">Eksperimentell deltakende design</a></li>
-              <li><a href="#proj-in5620-no">Interaksjon med AI og autonome systemer</a></li>
-              <li><a href="#proj-in5320-no">Plattformøkosystemer</a></li>
-              <li><a href="#proj-rocket-no">Skybound – planleggingsapp</a></li>
-              <li><a href="#proj-medball-no">Meditasjonsball</a></li>
-              <li><a href="#proj-echo-no">Design for demokrati</a></li>
+          <nav id="hero-contents-no" class="hero-contents" aria-label="Hopp til seksjoner på siden" data-lang="no" aria-describedby="hero-contents-desc-no">
+            <p id="hero-contents-desc-no" class="sr-only">Lenker til hovedseksjoner på siden. Bruk Enter for å gå til valgt seksjon.</p>
+            <ul role="list">
+              <li role="listitem"><a href="#proj-in5510-no" aria-label="Gå til seksjonen: Eksperimentell deltakende design">Eksperimentell deltakende design</a></li>
+              <li role="listitem"><a href="#proj-in5620-no" aria-label="Gå til seksjonen: Interaksjon med AI og autonome systemer">Interaksjon med AI og autonome systemer</a></li>
+              <li role="listitem"><a href="#proj-in5320-no" aria-label="Gå til seksjonen: Plattformøkosystemer">Plattformøkosystemer</a></li>
+              <li role="listitem"><a href="#proj-rocket-no" aria-label="Gå til seksjonen: Skybound planleggingsapp">Skybound – planleggingsapp</a></li>
+              <li role="listitem"><a href="#proj-medball-no" aria-label="Gå til seksjonen: Meditasjonsball">Meditasjonsball</a></li>
+              <li role="listitem"><a href="#proj-echo-no" aria-label="Gå til seksjonen: Design for demokrati">Design for demokrati</a></li>
             </ul>
           </nav>
-          <nav class="hero-contents" aria-label="Contents" data-lang="en" hidden>
-            <ul>
-              <li><a href="#proj-in5510-en">Participatory Design</a></li>
-              <li><a href="#proj-in5620-en">AI and Autonomous Systems</a></li>
-              <li><a href="#proj-in5320-en">Platform Ecosystems</a></li>
-              <li><a href="#proj-rocket-en">Skybound – Planner</a></li>
-              <li><a href="#proj-medball-en">Meditation Ball</a></li>
-              <li><a href="#proj-echo-en">Design for Democracy</a></li>
+          <nav id="hero-contents-en" class="hero-contents" aria-label="Jump to sections on this page" data-lang="en" hidden aria-describedby="hero-contents-desc-en">
+            <p id="hero-contents-desc-en" class="sr-only">Links to main sections on this page. Press Enter to open the selected section.</p>
+            <ul role="list">
+              <li role="listitem"><a href="#proj-in5510-en" aria-label="Go to section: Participatory Design">Participatory Design</a></li>
+              <li role="listitem"><a href="#proj-in5620-en" aria-label="Go to section: AI and Autonomous Systems">AI and Autonomous Systems</a></li>
+              <li role="listitem"><a href="#proj-in5320-en" aria-label="Go to section: Platform Ecosystems">Platform Ecosystems</a></li>
+              <li role="listitem"><a href="#proj-rocket-en" aria-label="Go to section: Skybound Planner">Skybound – Planner</a></li>
+              <li role="listitem"><a href="#proj-medball-en" aria-label="Go to section: Meditation Ball">Meditation Ball</a></li>
+              <li role="listitem"><a href="#proj-echo-en" aria-label="Go to section: Design for Democracy">Design for Democracy</a></li>
             </ul>
           </nav>
         </div>
@@ -132,286 +140,201 @@
     <section id="content-no" lang="no">
 
       <!-- 1. IN5510 - Experimental Participatory Design (NO)-->
-      <section class="project project--card fade-in" id="proj-in5510-no">
-        <h2>Eksperimentell Deltakende Design</h2>
-        <p class="kicker">IN5510 • Universitetet i Oslo • 2025</p>
+      <article class="project project--card fade-in" id="proj-in5510-no" data-has-preview="1" aria-labelledby="heading-in5510-no">
+        <div class="project-inner">
+          <h2 id="heading-in5510-no">Eksperimentell Deltakende Design</h2>
+          <p class="kicker">IN5510 • Universitetet i Oslo • 2025</p>
 
-        <div class="tldr">
-          <strong>TL;DR</strong>
+          <div class="tldr">
+            <strong>TL;DR</strong>
+            <p>
+              Et eksperimentelt deltakende designprosjekt hvor jeg fasiliterte workshops
+              for å utforske makt, roller og samarbeid i en studentorganisasjon.
+              Resultatet var endringer i praksis, felles språk og et spillkonsept – ikke et ferdig produkt.
+            </p>
+          </div>
+
+
           <p>
-            Et eksperimentelt deltakende designprosjekt hvor jeg fasiliterte workshops
-            for å utforske makt, roller og samarbeid i en studentorganisasjon.
-            Resultatet var endringer i praksis, felles språk og et spillkonsept – ikke et ferdig produkt.
+            <strong>Rolle:</strong> Deltakende designer og fasilitator<br>
+            <strong>Samarbeidspartner:</strong> Paragone – studentdrevet kunsthistorisk tidsskrift<br>
+            <strong>Metoder:</strong> Participatory Design, future workshops, collaging, prototyping
           </p>
-        </div>
 
+          <h3>Bakgrunn</h3>
+          <p>
+            Paragone er en frivillig, studentdrevet organisasjon med komplekse roller og varierende
+            engasjement. Medlemmer opplevde uklare forventninger, ujevn arbeidsfordeling og
+            utfordringer knyttet til kommunikasjon og ansvar.
+          </p>
 
-        <p>
-          <strong>Rolle:</strong> Deltakende designer og fasilitator<br>
-          <strong>Samarbeidspartner:</strong> Paragone – studentdrevet kunsthistorisk tidsskrift<br>
-          <strong>Metoder:</strong> Participatory Design, future workshops, collaging, prototyping
-        </p>
+          <h3>Problemstilling</h3>
+          <p>
+            Hvordan kan deltakende design støtte refleksjon, demokratisk deltakelse og
+            organisatorisk utvikling i en frivillig organisasjon – uten å presse frem en
+            teknologisk løsning?
+          </p>
 
-        <h3>Bakgrunn</h3>
-        <p>
-          Paragone er en frivillig, studentdrevet organisasjon med komplekse roller og varierende
-          engasjement. Medlemmer opplevde uklare forventninger, ujevn arbeidsfordeling og
-          utfordringer knyttet til kommunikasjon og ansvar.
-        </p>
+          <h3>Min rolle</h3>
+          <p>
+            Jeg deltok som fasilitator og designer, med ansvar for å planlegge og gjennomføre
+            workshops, velge metoder og materialer, samt kontinuerlig reflektere over makt,
+            agenda-setting og egen designerrolle.
+          </p>
 
-        <h3>Problemstilling</h3>
-        <p>
-          Hvordan kan deltakende design støtte refleksjon, demokratisk deltakelse og
-          organisatorisk utvikling i en frivillig organisasjon – uten å presse frem en
-          teknologisk løsning?
-        </p>
+          <h3>Prosess</h3>
+          <p>
+            Prosjektet bestod av fire workshops strukturert etter future workshop-modellen:
+            <em>kritikk, fantasi og realisering</em>. Vi brukte collaging, LEGO og lavterskel
+            prototyping for å gjøre erfaringer, verdier og organisatoriske utfordringer konkrete
+            og forhandlingsbare.
+          </p>
 
-        <h3>Min rolle</h3>
-        <p>
-          Jeg deltok som fasilitator og designer, med ansvar for å planlegge og gjennomføre
-          workshops, velge metoder og materialer, samt kontinuerlig reflektere over makt,
-          agenda-setting og egen designerrolle.
-        </p>
+          <ul>
+            <li>Collaging for å utforske nåsituasjonen og synliggjøre frustrasjoner og behov</li>
+            <li>Fremtidsmodeller for å artikulere verdier og ønskede organisatoriske praksiser</li>
+            <li>Konseptutvikling og prototyping i fellesskap</li>
+          </ul>
 
-        <h3>Prosess</h3>
-        <p>
-          Prosjektet bestod av fire workshops strukturert etter future workshop-modellen:
-          <em>kritikk, fantasi og realisering</em>. Vi brukte collaging, LEGO og lavterskel
-          prototyping for å gjøre erfaringer, verdier og organisatoriske utfordringer konkrete
-          og forhandlingsbare.
-        </p>
+          <h3>Løsning / Utfall</h3>
+          <p>
+            Utfallet var ikke et ferdig digitalt produkt, men en kombinasjon av organisatoriske
+            innsikter og et spillkonsept utviklet i fellesskap. Spillet fungerte som et
+            <em>design thing</em> – et fysisk verktøy for refleksjon, dialog og felles forståelse
+            av roller og ansvar.
+          </p>
 
-        <ul>
-          <li>Collaging for å utforske nåsituasjonen og synliggjøre frustrasjoner og behov</li>
-          <li>Fremtidsmodeller for å artikulere verdier og ønskede organisatoriske praksiser</li>
-          <li>Konseptutvikling og prototyping i fellesskap</li>
-        </ul>
+          <h3>Resultater</h3>
+          <ul>
+            <li>Tydeligere forventninger og ansvar i organisasjonen</li>
+            <li>Mer inkluderende og refleksive møtestrukturer</li>
+            <li>Økt bevissthet rundt makt og deltakelse</li>
+          </ul>
 
-        <h3>Løsning / Utfall</h3>
-        <p>
-          Utfallet var ikke et ferdig digitalt produkt, men en kombinasjon av organisatoriske
-          innsikter og et spillkonsept utviklet i fellesskap. Spillet fungerte som et
-          <em>design thing</em> – et fysisk verktøy for refleksjon, dialog og felles forståelse
-          av roller og ansvar.
-        </p>
+          <h3>Læring</h3>
+          <p>
+            Prosjektet ga meg erfaring med maktbevisst fasilitering og verdibasert design.
+            En sentral læring var når det er viktig å bevisst avstå fra teknologi for å sikre
+            reell deltakelse, eierskap og demokratisk innflytelse.
+          </p>
+          <p class="doc-meta">
+            <a href="images/in5510/project-report-group-2.pdf" target="_blank" rel="noopener">Last ned prosjekt-rapport (PDF)</a>
+          </p>
 
-        <h3>Resultater</h3>
-        <ul>
-          <li>Tydeligere forventninger og ansvar i organisasjonen</li>
-          <li>Mer inkluderende og refleksive møtestrukturer</li>
-          <li>Økt bevissthet rundt makt og deltakelse</li>
-        </ul>
+          <section class="process process--timeline" aria-label="IN5510 – workshops">
+            <!-- Workshop 1 -->
+            <section class="process-step">
+              <figure class="step-media">
+                <div class="carousel phone-carousel" aria-label="Workshop 1 images">
+                  <button class="car-btn car-prev" type="button" aria-label="Forrige">
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
 
-        <h3>Læring</h3>
-        <p>
-          Prosjektet ga meg erfaring med maktbevisst fasilitering og verdibasert design.
-          En sentral læring var når det er viktig å bevisst avstå fra teknologi for å sikre
-          reell deltakelse, eierskap og demokratisk innflytelse.
-        </p>
-        <p class="doc-meta">
-          <a href="images/in5510/project-report-group-2.pdf" target="_blank" rel="noopener">Last ned prosjekt-rapport (PDF)</a>
-        </p>
+                  <div class="carousel-viewport" tabindex="0">
+                    <figure class="slide">
+                      <img src="images/in5510/workshop1/workshop1-group-exercise-800.png"
+                          srcset="images/in5510/workshop1/workshop1-group-exercise-800.png 800w, images/in5510/workshop1/workshop1-group-exercise-1200.png 1200w, images/in5510/workshop1/workshop1-group-exercise.png 1600w"
+                          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          alt="Workshop 1 – gruppeøvelse 1" width="1084" height="1600" loading="lazy" decoding="async">
+                    </figure>
 
-        <section class="process process--timeline" aria-label="IN5510 – workshops">
-          <section class="process-step">
-            <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Workshop 1 images">
-                <button class="car-btn car-prev" type="button" aria-label="Forrige">
-                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </button>
-                <div class="carousel-viewport" tabindex="0">
-                  <figure class="slide">
-                    <img src="images/in5510/workshop1/workshop1-group-exercise-800.png"
-                         srcset="images/in5510/workshop1/workshop1-group-exercise-800.png 800w, images/in5510/workshop1/workshop1-group-exercise-1200.png 1200w, images/in5510/workshop1/workshop1-group-exercise.png 1600w"
-                         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                         alt="Workshop 1 – gruppeøvelse 1" width="1084" height="1600" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop1/workshop1-sketches-800.png"
-                         srcset="images/in5510/workshop1/workshop1-sketches-800.png 800w, images/in5510/workshop1/workshop1-sketches-1200.png 1200w, images/in5510/workshop1/workshop1-sketches.png 1600w"
-                         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                         alt="Workshop 1 – skisse og notater" width="1026" height="1600" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop1/workshop1-dotvote-800.png"
-                         srcset="images/in5510/workshop1/workshop1-dotvote-800.png 800w, images/in5510/workshop1/workshop1-dotvote-1200.png 1200w, images/in5510/workshop1/workshop1-dotvote.png 1600w"
-                         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                         alt="Workshop 1 – dot-vote og prioritering" width="1138" height="1600" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop1/workshop1-prototyping-800.png"
-                         srcset="images/in5510/workshop1/workshop1-prototyping-800.png 800w, images/in5510/workshop1/workshop1-prototyping-1200.png 1200w, images/in5510/workshop1/workshop1-prototyping.png 1600w"
-                         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    <figure class="slide" hidden>
+                      <img src="images/in5510/workshop1/workshop1-sketches-800.png"
+                          srcset="images/in5510/workshop1/workshop1-sketches-800.png 800w, images/in5510/workshop1/workshop1-sketches-1200.png 1200w, images/in5510/workshop1/workshop1-sketches.png 1600w"
+                          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          alt="Workshop 1 – skisse og notater" width="1026" height="1600" loading="lazy" decoding="async">
+                    </figure>
 
-          <section class="process-step">
-            <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Workshop 3 images">
-                <button class="car-btn car-prev" type="button" aria-label="Previous">
-                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </button>
-                <div class="carousel-viewport" tabindex="0">
-                  <figure class="slide">
-                    <img src="images/in5510/workshop3/part1.png" alt="Workshop 3 – part 1" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop3/part2.png" alt="Workshop 3 – part 2" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop3/part3.png" alt="Workshop 3 – part 3" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop3/part4.png" alt="Workshop 3 – part 4" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop3/part5.png" alt="Workshop 3 – part 5" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop3/workshop3-snap1.png" alt="Workshop 3 – screenshot 1" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop3/workshop3-snap2.png" alt="Workshop 3 – screenshot 2" loading="lazy" decoding="async">
-                  </figure>
+                    <figure class="slide" hidden>
+                      <img src="images/in5510/workshop1/workshop1-dotvote-800.png"
+                          srcset="images/in5510/workshop1/workshop1-dotvote-800.png 800w, images/in5510/workshop1/workshop1-dotvote-1200.png 1200w, images/in5510/workshop1/workshop1-dotvote.png 1600w"
+                          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          alt="Workshop 1 – dot-vote og prioritering" width="1138" height="1600" loading="lazy" decoding="async">
+                    </figure>
+
+                    <figure class="slide" hidden>
+                      <img src="images/in5510/workshop1/workshop1-prototyping-800.png"
+                          srcset="images/in5510/workshop1/workshop1-prototyping-800.png 800w, images/in5510/workshop1/workshop1-prototyping-1200.png 1200w, images/in5510/workshop1/workshop1-prototyping.png 1600w"
+                          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          alt="Workshop 1 – prototyping" width="1600" height="1201" loading="lazy" decoding="async">
+                    </figure>
+                  </div>
+
+                  <button class="car-btn car-next" type="button" aria-label="Neste">
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+
+                  <div class="dots"><button></button><button></button><button></button><button></button></div>
                 </div>
-                <button class="car-btn car-next" type="button" aria-label="Next">
-                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </button>
-                <div class="dots"><button></button><button></button><button></button><button></button><button></button></div>
-              </div>
-              <figcaption>Workshop 3 – activities and notes</figcaption>
-            </figure>
-            <div class="step-copy">
-              <h3>Workshop 3 – facilitation & data collection</h3>
-              <p><strong>What we did:</strong> Ran focused exercises to gather participant experiences and observations.</p>
-              <p><strong>What we learned:</strong> Key patterns and user needs became clearer through field notes and group interaction.</p>
-            </div>
-          </section>
 
-          <section class="process-step">
-            <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Workshop 4 images">
-                <button class="car-btn car-prev" type="button" aria-label="Previous">
-                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </button>
-                <div class="carousel-viewport" tabindex="0">
-                  <figure class="slide">
-                    <img src="images/in5510/workshop4/part1.png" alt="Workshop 4 – part 1" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop4/part2.png" alt="Workshop 4 – part 2" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop4/part3.png" alt="Workshop 4 – part 3" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop4/part4.png" alt="Workshop 4 – part 4" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop4/workshop4-snap1.png" alt="Workshop 4 – screenshot 1" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop4/workshop4-snap2.png" alt="Workshop 4 – screenshot 2" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop4/workshop4-snap3.png" alt="Workshop 4 – screenshot 3" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop4/workshop4-snap4.png" alt="Workshop 4 – screenshot 4" loading="lazy" decoding="async">
-                  </figure>
-                </div>
-                <button class="car-btn car-next" type="button" aria-label="Next">
-                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </button>
-                <div class="dots"><button></button><button></button><button></button><button></button></div>
-              </div>
-              <figcaption>Workshop 4 – plans and wrap-up</figcaption>
-            </figure>
-            <div class="step-copy">
-              <h3>Workshop 4 – synthesis & next steps</h3>
-              <p><strong>What we did:</strong> Synthesised findings, created implementation proposals and a plan for further testing.</p>
-              <p><strong>What we learned:</strong> Clear priorities and concrete next steps for continued work.</p>
-            </div>
-          </section>
-                         alt="Workshop 1 – prototyping" width="1600" height="1201" loading="lazy" decoding="async">
-                  </figure>
-                </div>
-                <button class="car-btn car-next" type="button" aria-label="Neste">
-                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </button>
-                <div class="dots"><button></button><button></button><button></button><button></button></div>
-              </div>
-              <figcaption>Workshop 1 – innsikt, skisser og prioritering</figcaption>
-            </figure>
-            <div class="step-copy">
-              <h3>Workshop 1 – innsikt & idéutvikling</h3>
-              <p><strong>Hva vi gjorde:</strong> Divergerte ideer, skisset og stemte fram prioriterte konsepter.</p>
-              <p><strong>Hva vi lærte:</strong> Tidlige skisser og felles prioritering ga raskt felles forståelse av behov.</p>
-            </div>
-          </section>
+                <figcaption>Workshop 1 – innsikt, skisser og prioritering</figcaption>
+              </figure>
 
-          <section class="process-step">
-            <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Workshop 2 images">
-                <button class="car-btn car-prev" type="button" aria-label="Forrige">
-                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </button>
-                <div class="carousel-viewport" tabindex="0">
-                  <figure class="slide">
-                    <img src="images/in5510/workshop2/workshop2-task-distribution-800.png"
-                         srcset="images/in5510/workshop2/workshop2-task-distribution-800.png 800w, images/in5510/workshop2/workshop2-task-distribution-1200.png 1200w, images/in5510/workshop2/workshop2-task-distribution.png 1600w"
-                         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                         alt="Workshop 2 – oppgavefordeling" width="1208" height="1600" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop2/workshop2-prototype-test-800.png"
-                         srcset="images/in5510/workshop2/workshop2-prototype-test-800.png 800w, images/in5510/workshop2/workshop2-prototype-test-1200.png 1200w, images/in5510/workshop2/workshop2-prototype-test.png 1600w"
-                         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                         alt="Workshop 2 – prototype test" width="1203" height="1600" loading="lazy" decoding="async">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5510/workshop2/workshop2-reflection-800.png"
-                         srcset="images/in5510/workshop2/workshop2-reflection-800.png 800w, images/in5510/workshop2/workshop2-reflection-1200.png 1200w, images/in5510/workshop2/workshop2-reflection.png 1600w"
-                         sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                         alt="Workshop 2 – refleksjon og tilbakemelding" width="1600" height="1043" loading="lazy" decoding="async">
-                  </figure>
-                </div>
-                <button class="car-btn car-next" type="button" aria-label="Neste">
-                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </button>
-                <div class="dots"><button></button><button></button><button></button></div>
+              <div class="step-copy">
+                <h3>Workshop 1 – innsikt & idéutvikling</h3>
+                <p><strong>Hva vi gjorde:</strong> Divergerte ideer, skisset og stemte fram prioriterte konsepter.</p>
+                <p><strong>Hva vi lærte:</strong> Tidlige skisser og felles prioritering ga raskt felles forståelse av behov.</p>
               </div>
-              <figcaption>Workshop 2 – testing og refleksjon</figcaption>
-            </figure>
-            <div class="step-copy">
-              <h3>Workshop 2 – testing & debrief</h3>
-              <p><strong>Hva vi gjorde:</strong> Testet prototyper, samlet tilbakemeldinger og diskuterte etiske og praktiske implikasjoner.</p>
-              <p><strong>Hva vi lærte:</strong> Direkte tilbakemeldinger fra deltakere formet prioriteringene for videre arbeid.</p>
-            </div>
-          </section>
-          
-              <section class="process-step">
-                <figure class="step-media">
-                  <div class="carousel phone-carousel" aria-label="Workshop 3 images">
-                    <button class="car-btn car-prev" type="button" aria-label="Forrige">
-                      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                      </svg>
-                    </button>
+            </section>
+
+            <!-- Workshop 2 -->
+            <section class="process-step">
+              <figure class="step-media">
+                <div class="carousel phone-carousel" aria-label="Workshop 2 images">
+                  <button class="car-btn car-prev" type="button" aria-label="Forrige">
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                  <div class="carousel-viewport" tabindex="0">
+                    <figure class="slide">
+                      <img src="images/in5510/workshop2/workshop2-task-distribution-800.png"
+                          srcset="images/in5510/workshop2/workshop2-task-distribution-800.png 800w, images/in5510/workshop2/workshop2-task-distribution-1200.png 1200w, images/in5510/workshop2/workshop2-task-distribution.png 1600w"
+                          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          alt="Workshop 2 – oppgavefordeling" width="1208" height="1600" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="slide" hidden>
+                      <img src="images/in5510/workshop2/workshop2-prototype-test-800.png"
+                          srcset="images/in5510/workshop2/workshop2-prototype-test-800.png 800w, images/in5510/workshop2/workshop2-prototype-test-1200.png 1200w, images/in5510/workshop2/workshop2-prototype-test.png 1600w"
+                          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          alt="Workshop 2 – prototype test" width="1203" height="1600" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="slide" hidden>
+                      <img src="images/in5510/workshop2/workshop2-reflection-800.png"
+                          srcset="images/in5510/workshop2/workshop2-reflection-800.png 800w, images/in5510/workshop2/workshop2-reflection-1200.png 1200w, images/in5510/workshop2/workshop2-reflection.png 1600w"
+                          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          alt="Workshop 2 – refleksjon og tilbakemelding" width="1600" height="1043" loading="lazy" decoding="async">
+                    </figure>
+                  </div>
+                  <button class="car-btn car-next" type="button" aria-label="Neste">
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                  <div class="dots"><button></button><button></button><button></button></div>
+                </div>
+                <figcaption>Workshop 2 – testing og refleksjon</figcaption>
+              </figure>
+              <div class="step-copy">
+                <h3>Workshop 2 – testing & debrief</h3>
+                <p><strong>Hva vi gjorde:</strong> Testet prototyper, samlet tilbakemeldinger og diskuterte etiske og praktiske implikasjoner.</p>
+                <p><strong>Hva vi lærte:</strong> Direkte tilbakemeldinger fra deltakere formet prioriteringene for videre arbeid.</p>
+              </div>
+            </section>
+
+            <!-- Workshop 3 -->
+            <section class="process-step">
+              <figure class="step-media">
+                <div class="carousel phone-carousel" aria-label="Workshop 3 images">
+                  <button class="car-btn car-prev" type="button" aria-label="Forrige">
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
                     <div class="carousel-viewport" tabindex="0">
                       <figure class="slide">
                         <img src="images/in5510/workshop3/part1.png" alt="Workshop 3 – del 1" loading="lazy" decoding="async">
@@ -436,16 +359,17 @@
                     </button>
                     <div class="dots"><button></button><button></button><button></button><button></button><button></button></div>
                   </div>
-                  <figcaption>Workshop 3 – aktiviteter og notater</figcaption>
-                </figure>
+                <figcaption>Workshop 3 – aktiviteter og notater</figcaption>
+              </figure>
                 <div class="step-copy">
                   <h3>Workshop 3 – fasilitering og datainnsamling</h3>
                   <p><strong>Hva vi gjorde:</strong> Gjennomførte målrettede øvelser for å samle erfaringer og observasjoner fra deltakere.</p>
                   <p><strong>Hva vi lærte:</strong> Sentrale mønstre og brukerbehov ble tydeligere gjennom feltnotater og gruppeinteraksjon.</p>
                 </div>
-              </section>
+            </section>
 
-              <section class="process-step">
+            <!-- Workshop 4 -->
+            <section class="process-step">
                 <figure class="step-media">
                   <div class="carousel phone-carousel" aria-label="Workshop 4 images">
                     <button class="car-btn car-prev" type="button" aria-label="Forrige">
@@ -476,47 +400,53 @@
                   </div>
                   <figcaption>Workshop 4 – planer og oppsummering</figcaption>
                 </figure>
+
                 <div class="step-copy">
                   <h3>Workshop 4 – oppsummering og veien videre</h3>
                   <p><strong>Hva vi gjorde:</strong> Oppsummerte funn, utarbeidet implementeringsforslag og plan for videre testing.</p>
                   <p><strong>Hva vi lærte:</strong> Tydelig prioritering og klare neste steg for videre arbeid.</p>
                 </div>
-              </section>
-        </section>
-      </section>
+            </section>
+          </section>
+        </div>
+      </article>
       <!-- End - Deltakende eksperimentell design -->
 
       <!-- 2. IN5620 - Interaction with AI and autonomous systems (NO)-->
-      <section class="project project--card fade-in" id="proj-in5620-no">
-        <h2>Interaksjon med AI og autonome systemer</h2>
-        <p class="kicker">IN5620 • Universitetet i Oslo • 2025</p>
-        <p>
-          Kort oversikt og pågående arbeid. Innhold og casestudie legges til etter hvert.
-        </p>
+      <article class="project project--card fade-in" id="proj-in5620-no" data-has-preview="1" aria-labelledby="heading-in5620-no">
+        <div class="project-inner">
+          <h2 id="heading-in5620-no">Interaksjon med AI og autonome systemer</h2>
+          <p class="kicker">IN5620 • Universitetet i Oslo • 2025</p>
+          <p>
+            Kort oversikt og pågående arbeid. Innhold og casestudie legges til etter hvert.
+          </p>
 
-        <section class="process process--timeline" aria-label="IN5620 – designprosess">
-          <!-- Placeholder: detailed process will be added here -->
-        </section>
-      </section>
-      <!-- End - Deltakende eksperimentell desing -->
+          <section class="process process--timeline" aria-label="IN5620 – designprosess">
+            <!-- Placeholder: detailed process will be added here -->
+          </section>
+        </div>
+      </article>
+      <!-- End - Interaction with AI and autonomous systems -->
 
       <!-- 3. IN5320 - Development in Platform Ecosystems (NO)-->
-      <section class="project project--card fade-in" id="proj-in5320-no">
-        <h2>Plattformøkosystemer</h2>
-        <p class="kicker">IN5320 • Universitetet i Oslo • 2025</p>
-        <p>
-          Kort oversikt. Eksempler og prosess beskrives her når materialet er klart.
-        </p>
+      <article class="project project--card fade-in" id="proj-in5320-no" data-has-preview="1" aria-labelledby="heading-in5320-no">
+        <div class="project-inner">
+          <h2 id="heading-in5320-no">Plattformøkosystemer</h2>
+          <p class="kicker">IN5320 • Universitetet i Oslo • 2025</p>
+          <p>
+            Kort oversikt. Eksempler og prosess beskrives her når materialet er klart.
+          </p>
 
-        <section class="process process--timeline" aria-label="IN5320 – designprosess">
-          <!-- Placeholder: detailed process will be added here -->
-        </section>
-      </section>
-      <!-- End - Deltakende eksperimentell desing -->
+          <section class="process process--timeline" aria-label="IN5320 – designprosess">
+            <!-- Placeholder: detailed process will be added here -->
+          </section>
+        </div>
+      </article>
+      <!-- End - Development in platform ecosystems -->
 
       <!-- 3. Rocket Launch Planner (NO) -->
-      <section class="project project--card fade-in" id="proj-rocket-no">
-        <h2>Skybound – Planleggingsapp for rakettoppskytning</h2>
+      <article class="project project--card fade-in" id="proj-rocket-no" data-has-preview="1" aria-labelledby="heading-skybound-no">
+        <h2 id="heading-skybound-no">Skybound – Planleggingsapp for rakettoppskytning</h2>
         <p class="kicker">IN2000 – vår 2025</p>
         <p>
           Jeg var <strong>UX-ansvarlig</strong> i et tverrfaglig team på seks. Startet med kravspesifikasjon fra PortalSpace, men trengte raskt mer innsikt i faktisk brukskontekst og behov.
@@ -698,11 +628,11 @@
           </section>
         </section>
         <!-- ===== /SKYBOUND PROSESS ===== -->
-      </section>
+      </article>
 
       <!-- 2. Meditasjonsball (NO) – PROSESSFOKUS: SPRÅK STRAMMET OPP -->
-      <section class="project project--card fade-in" id="proj-medball-no">
-        <h2>Meditasjonsball – IN1060</h2>
+      <article class="project project--card fade-in" id="proj-medball-no" data-has-preview="1" aria-labelledby="heading-medball-no">
+        <h2 id="heading-medball-no">Meditasjonsball – IN1060</h2>
         <p class="kicker">Samspill mellom form og funksjon → skjermfri, taktil veileder for pust.</p>
         <p>
           <strong>Rolle:</strong> Prototyping (Arduino/Neopixel), interaksjonsdesign, research & test.
@@ -896,11 +826,11 @@
           </section>
 
         </section>
-      </section>
+      </article>
 
       <!-- 3. Ekko-kamre (NO) -->
-      <section class="project project--card fade-in" id="proj-echo-no">
-        <h2>Ekko-kamre og demokrati – IN3010</h2>
+      <article class="project project--card fade-in" id="proj-echo-no" data-has-preview="1" aria-labelledby="heading-echo-no">
+        <h2 id="heading-echo-no">Ekko-kamre og demokrati – IN3010</h2>
         <p class="kicker">Installasjon som gjør algoritmisk polarisering synlig og følbart.</p>
         <p>
           Jeg var <strong>ansvarlig for konsept, interaksjon og etikk</strong> i et tverrfaglig team. 
@@ -1070,7 +1000,7 @@
         <p class="doc-meta">
           <a href="files/Rapport_i_IN3010_V_2025.pdf" target="_blank" rel="noopener">Last ned full rapport (PDF)</a>
         </p>
-      </section>
+      </article>
     </section>
     <!-- =================== /NORWEGIAN =================== -->
 
@@ -1078,8 +1008,8 @@
     <section id="content-en" lang="en" hidden>
 
       <!-- 1. IN5510 - Experimental Participatory Design (EN)-->
-      <section class="project project--card fade-in" id="proj-in5510-en">
-        <h2>Experimental Participatory Design</h2>
+      <article class="project project--card fade-in" id="proj-in5510-en" data-has-preview="1" aria-labelledby="heading-in5510-en">
+        <h2 id="heading-in5510-en">Experimental Participatory Design</h2>
         <p class="kicker">IN5510 • University of Oslo • 2025</p>
 
         <div class="tldr">
@@ -1253,42 +1183,51 @@
             </div>
           </section>
         </section>
-       </section>
-    <!-- End -->
+      </article>
+      <!-- End -->
 
-        <!-- 2. IN5620 - Interaction with AI and autonomous systems (EN)-->
-        <section class="project project--card fade-in" id="proj-in5620-en">
-          <h2>Interaction with AI and Autonomous Systems</h2>
-          <p class="kicker">IN5620 • University of Oslo • 2025</p>
-          <p>
-            Short overview. Case content and process will be added here when available.
-          </p>
+      <!-- 2. IN5620 - Interaction with AI and autonomous systems (EN)-->
+      <article class="project project--card fade-in" id="proj-in5620-en" data-has-preview="1" aria-labelledby="heading-in5620-en">
+        <h2 id="heading-in5620-en">Interaction with AI and Autonomous Systems</h2>
+        <p class="kicker">IN5620 • University of Oslo • 2025</p>
+        <p>
+          Short overview. Case content and process will be added here when available.
+        </p>
 
-          <section class="process process--timeline" aria-label="IN5620 – design process">
-            <!-- Placeholder: detailed process will be added here -->
-          </section>
+        <section class="process process--timeline" aria-label="IN5620 – design process">
+          <!-- Placeholder: detailed process will be added here -->
         </section>
-        <!-- End -->
+      </article>
+      <!-- End -->
 
-        <!-- 3. IN5320 - Development in Platform Ecosystems (EN)-->
-        <section class="project project--card fade-in" id="proj-in5320-en">
-          <h2>Development in Platform Ecosystems</h2>
-          <p class="kicker">IN5320 • University of Oslo • 2025</p>
-          <p>
-            Short overview. Examples and process will be added as the material is prepared.
-          </p>
+      <!-- 3. IN5320 - Development in Platform Ecosystems (EN)-->
+      <article class="project project--card fade-in" id="proj-in5320-en" data-has-preview="1" aria-labelledby="heading-in5320-en">
+        <h2 id="heading-in5320-en">Development in Platform Ecosystems</h2>
+        <p class="kicker">IN5320 • University of Oslo • 2025</p>
+        <p>
+          Short overview. Examples and process will be added as the material is prepared.
+        </p>
 
-          <section class="process process--timeline" aria-label="IN5320 – design process">
-            <!-- Placeholder: detailed process will be added here -->
-          </section>
+        <section class="process process--timeline" aria-label="IN5320 – design process">
+          <!-- Placeholder: detailed process will be added here -->
         </section>
-        <!-- End -->
+      </article>
+      <!-- End -->
 
 
-        <!-- 1. Rocket Launch Planner (EN) -->
-        <section class="project project--card fade-in" id="proj-rocket-en">
-          <h2>Skybound – Rocket Launch Planner</h2>
+      <!-- 1. Rocket Launch Planner (EN) -->
+      <article class="project project--card fade-in" id="proj-rocket-en" data-has-preview="1" aria-labelledby="heading-skybound-en">
+        <div class="project-inner">
+          <h2 id="heading-skybound-en">Skybound – Rocket Launch Planner</h2>
           <p class="kicker">IN2000 – Spring 2025</p>
+
+          <div class="tldr">
+            <strong>TL;DR</strong>
+              <p>
+                En app som vurderer værdata og gir grønt/rødt lys for rakettoppskytning.
+              </p>
+          </div>
+
           <p>
             I was the <strong>UX lead</strong> in a cross-functional team of six. We started from a client spec (PortalSpace) but quickly needed
             deeper insight into real context and needs. Through interviews, workshops and iterative prototyping we arrived at a solution
@@ -1465,30 +1404,31 @@
               </div>
             </section>
           </section>
-          <!-- ===== /SKYBOUND PROCESS (EN) ===== -->
-        </section>
+        </div>
+      <!-- ===== /SKYBOUND PROCESS (EN) ===== -->
+      </article>
 
-        <!-- 2. Meditation Ball (EN) -->
-        <section class="project project--card fade-in" id="proj-medball-en">
-          <h2>Meditation Ball – IN1060</h2>
-          <p class="kicker">Screen-free, tactile breathing aid – light as a metronome, gentle haptics.</p>
-          <p>
-            <strong>Role:</strong> Prototyping (Arduino/LED), interaction design, user testing. 
-            <strong>Context:</strong> IN1060 (Spring 2022) • <strong>Target:</strong> young adults new to meditation. 
-            <a href="https://www.uio.no/studier/emner/matnat/ifi/IN1060/v22/prosjekter-var-2022/connection/" target="_blank" rel="noopener">Project page (UiO)</a>.
-          </p>
+      <!-- 2. Meditation Ball (EN) -->
+      <article class="project project--card fade-in" id="proj-medball-en" data-has-preview="1" aria-labelledby="heading-medball-en">
+        <h2 id="heading-medball-en">Meditation Ball – IN1060</h2>
+        <p class="kicker">Screen-free, tactile breathing aid – light as a metronome, gentle haptics.</p>
+        <p>
+          <strong>Role:</strong> Prototyping (Arduino/LED), interaction design, user testing. 
+          <strong>Context:</strong> IN1060 (Spring 2022) • <strong>Target:</strong> young adults new to meditation. 
+          <a href="https://www.uio.no/studier/emner/matnat/ifi/IN1060/v22/prosjekter-var-2022/connection/" target="_blank" rel="noopener">Project page (UiO)</a>.
+        </p>
 
-          <ul>
-            <li><strong>Problem:</strong> People want a calm breathing habit but get distracted by screens/notifications.</li>
-            <li><strong>Approach:</strong> Screen-free object guiding inhale–hold–exhale through light; touch sensor to start/stop.</li>
-            <li><strong>My deliverables:</strong> Light logic, Neopixel prototypes, time-since-last-session reminder, testing and iterations.</li>
-          </ul>
+        <ul>
+          <li><strong>Problem:</strong> People want a calm breathing habit but get distracted by screens/notifications.</li>
+          <li><strong>Approach:</strong> Screen-free object guiding inhale–hold–exhale through light; touch sensor to start/stop.</li>
+          <li><strong>My deliverables:</strong> Light logic, Neopixel prototypes, time-since-last-session reminder, testing and iterations.</li>
+        </ul>
 
-          <section class="process process--timeline" aria-label="Meditation Ball – design process">
-            <!-- Full translated process copied from Norwegian medball section and translated to English -->
-            <!-- 0. Kick-off -->
-            <section class="process-step">
-              <div class="step-copy">
+        <section class="process process--timeline" aria-label="Meditation Ball – design process">
+          <!-- Full translated process copied from Norwegian medball section and translated to English -->
+          <!-- 0. Kick-off -->
+          <section class="process-step">
+            <div class="step-copy">
                 <h3>Kick-off: “Form & function in dialogue”</h3>
                 <p><strong>What I did:</strong> Gathered the team and clarified that the theme was the only constraint – everything else had to be defined by us.</p>
                 <p><strong>Why:</strong> Establish a shared starting point before designing solutions.</p>
@@ -1668,14 +1608,12 @@
                 <p><strong>Process learning:</strong> A simple process template (frame → diverge → converge → prototype → test → decide) proved reusable in new projects.</p>
               </div>
             </section>
+        </section>
+      </article>
 
-          </section>
-
-          </section>
-
-        <!-- 3. Echo Chambers (EN) -->
-        <section class="project project--card fade-in" id="proj-echo-en">
-          <h2>Echo Chambers & Democracy – IN3010</h2>
+      <!-- 3. Echo Chambers (EN) -->
+      <article class="project project--card fade-in" id="proj-echo-en" data-has-preview="1" aria-labelledby="heading-echo-en">
+          <h2 id="heading-echo-en">Echo Chambers & Democracy – IN3010</h2>
           <p class="kicker">Installation making algorithmic polarization visible and tangible.</p>
 
           <p>
@@ -1849,7 +1787,7 @@
             <a href="files/Rapport_i_IN3010_V_2025.pdf" target="_blank" rel="noopener">Download full report (PDF)</a>
           </p>
         </section>
-      </section>
+      </article>
       <!-- =================== /ENGLISH =================== -->
 
     <!-- Dot rail (desktop) -->
