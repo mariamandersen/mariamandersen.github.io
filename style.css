@@ -100,7 +100,8 @@ header p{ margin:2px 0 0; color:var(--muted); font-size:.98rem; }
 .menu-toggle .icon-close{ display:none; }
 .menu-toggle[aria-expanded="true"] .icon-burger{ display:none; }
 .menu-toggle[aria-expanded="true"] .icon-close{ display:block; }
-@media (min-width:900px){ .menu-toggle{ display:none; } }
+/* Keep the menu-toggle visible on all viewports (user requested hamburger always visible) */
+@media (min-width:900px){ .menu-toggle{ display:inline-flex; } }
 
 /* Header controls (language + contacts) */
 .header-controls{ display:inline-flex; gap:12px; align-items:center; }
