@@ -148,6 +148,37 @@ header .bar{ padding-left:56px; padding-right:56px; }
   box-shadow:0 16px 36px rgba(0,0,0,.25);
   padding:10px 0; z-index:1000;
 }
+
+/* Animated open/close for the mobileMenu (also used for the fixed hamburger menu)
+   We override the global [hidden] display:none for this element so we can
+   animate opacity/transform/max-height when the attribute is toggled. */
+.mobile-menu{
+  transition: opacity 260ms ease, transform 260ms ease, max-height 320ms ease;
+  transform-origin: top center;
+  max-height: 0; /* collapsed */
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* When the menu is shown (JS removes the hidden attribute) animate to visible */
+.mobile-menu:not([hidden]){
+  display:block !important; /* override generic [hidden] rule */
+  max-height: 640px; /* large enough for menu contents */
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* When hidden attribute is present, keep it visually collapsed but still
+   renderable so transitions run (we override the generic [hidden] rule above). */
+.mobile-menu[hidden]{
+  display:block !important;
+  max-height: 0 !important;
+  opacity: 0 !important;
+  transform: translateY(-8px) !important;
+  pointer-events: none !important;
+}
 .mobile-list{ display:grid; gap:2px; padding:6px 12px 10px; }
 .mobile-list a{
   display:block; padding:12px 10px; border-radius:10px;
@@ -1264,4 +1295,26 @@ html.has-io .fade-in{
   justify-content:center;
   width:100%;
   margin-top: 1rem;
+}
+
+/* Project peek (sneak preview) — image left, text right on wide screens; stacked on small */
+.project-peek{ display:block; width:100%; margin-bottom:12px; }
+.project-peek .peek-media{ margin-bottom:10px; }
+.project-peek .peek-media img{ display:block; width:100%; height:auto; border-radius:12px; border:1px solid #6A443E; box-shadow:0 8px 22px rgba(0,0,0,.28); }
+.project-peek .peek-text p{ margin:0; color:var(--muted); }
+
+@media (min-width:980px){
+  .project-peek{ display:flex; gap:18px; align-items:center; }
+  .project-peek .peek-media{ flex:0 0 var(--media-w); max-width:var(--media-w); }
+  .project-peek .peek-text{ flex:1 1 auto; }
+}
+
+/* Center mobile menu links and make them more tappable */
+.mobile-list{ display:flex; flex-direction:column; align-items:center; gap:8px; padding:8px 12px; }
+.mobile-list a{ display:inline-block; text-align:center; padding:.6rem .9rem; width:100%; max-width:420px; border-radius:10px; color:var(--muted); text-decoration:none; }
+.mobile-list a:hover, .mobile-list a:focus-visible{ background: color-mix(in oklab, var(--accent) 12%, transparent); color:var(--text); }
+
+/* Ensure mobileMenu can open on large screens (show when not hidden) */
+@media (min-width:900px){
+  .mobile-menu:not([hidden]){ display:block !important; }
 }

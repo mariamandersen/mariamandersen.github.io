@@ -292,56 +292,82 @@ function initProjectPreviews(){
 
     const scope = proj.querySelector('.project-inner') || proj;
 
-    // Preview-anker = .tldr (foretrukket) ellers første <p>
-    const tldr = scope.querySelector(':scope > .tldr') || scope.querySelector('.tldr');
+    // Remove any existing TL;DR blocks — we'll build a visual peek instead
+    const existingTldr = scope.querySelectorAll('.tldr');
+    existingTldr.forEach(n => n.remove());
+
+    // Source text for the peek: first paragraph in the scope
     const firstP = scope.querySelector(':scope > p') || scope.querySelector('p');
-    const previewNode = tldr || firstP;
-    if (!previewNode) { proj.dataset.previewInit = '1'; return; }
+    const textSource = firstP ? firstP.textContent.trim() : '';
 
-    // Finn anker som er direkte barn av scope
-    let anchor = previewNode;
-    while (anchor && anchor.parentNode !== scope) anchor = anchor.parentNode;
-    if (!anchor) anchor = previewNode;
+    // Find a candidate image inside the project to use as thumbnail
+    let imgEl = proj.querySelector('.step-media img, .carousel-viewport img, :scope img');
+    if (imgEl && imgEl.closest('header')) imgEl = null; // avoid hero image if accidentally matched
 
-    // Lag body og flytt alt etter anchor inn i body
+    // Build the peek element (image + short excerpt)
+    const peek = document.createElement('div');
+    peek.className = 'project-peek';
+
+    if (imgEl) {
+      const media = document.createElement('div');
+      media.className = 'peek-media';
+      const thumb = document.createElement('img');
+      thumb.src = imgEl.getAttribute('src');
+      thumb.alt = imgEl.getAttribute('alt') || '';
+      media.appendChild(thumb);
+      peek.appendChild(media);
+    }
+
+    const txt = document.createElement('div');
+    txt.className = 'peek-text';
+    const p = document.createElement('p');
+    // Create a short excerpt (first sentence or 160 chars)
+    let excerpt = '';
+    if (textSource) {
+      const m = textSource.match(/(^[^\.\!\?]+[\.\!\?])/) || [];
+      excerpt = (m[0] || textSource).trim();
+      if (excerpt.length > 160) excerpt = excerpt.slice(0, 157) + '…';
+    }
+    p.textContent = excerpt;
+    txt.appendChild(p);
+    peek.appendChild(txt);
+
+    // Insert peek at the top of the scope (before existing children)
+    scope.insertBefore(peek, scope.firstChild);
+
+    // Now create the collapsible body and move everything after the peek into it
     const body = document.createElement('div');
     const bodyId = `project-body-${idx}`;
     body.className = 'project-body';
     body.id = bodyId;
 
     const kids = Array.from(scope.children);
-    const anchorIndex = kids.indexOf(anchor);
-
+    const anchorIndex = kids.indexOf(peek);
     for (let i = anchorIndex + 1; i < kids.length; i++) {
       body.appendChild(kids[i]);
     }
 
-    // Ikke lag knapp hvis ingenting å skjule
+    // If nothing to hide, don't create the toggle
     if (!body.children.length) { proj.dataset.previewInit = '1'; return; }
 
     body.hidden = true;
+    scope.appendChild(body);
 
-    // Sett body rett etter preview-anker
-    if (anchor.nextSibling) scope.insertBefore(body, anchor.nextSibling);
-    else scope.appendChild(body);
-
-    // Lag knapp
+    // Create the See more / Les mer button
     const btn = document.createElement('button');
     btn.className = 'read-more';
     btn.type = 'button';
     btn.setAttribute('aria-expanded', 'false');
     btn.setAttribute('aria-controls', bodyId);
-    btn.dataset.moreEn = 'Read more';
+    btn.dataset.moreEn = 'See more';
     btn.dataset.moreNo = 'Les mer';
 
     const label = document.createElement('span');
     label.className = 'read-more-label';
     btn.appendChild(label);
 
-    // Legg knappen helt nederst i prosjektet (etter inner)
-    // Legg knappen nederst i samme scope som innholdet (project-inner hvis den finnes)
-    if (body.nextSibling) scope.insertBefore(btn, body.nextSibling);
-    else scope.appendChild(btn);
+    // Append button after the body
+    scope.appendChild(btn);
 
     proj.dataset.previewInit = '1';
     proj.dataset.hasPreview = '1';
