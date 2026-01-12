@@ -1307,8 +1307,11 @@ html.has-io .fade-in{
   .project-peek{ display:flex; gap:18px; align-items:center; }
   .project-peek{ display:flex; gap:18px; align-items:flex-start; }
   /* Ensure text sits left and image on the right */
-  .project-peek .peek-text{ order:1; flex:1 1 auto; }
-  .project-peek .peek-media{ order:2; flex:0 0 var(--media-w); max-width:var(--media-w); align-self:flex-start; margin-left:12px; }
+  .project-peek .peek-text{ order:1; flex:1 1 auto; color:var(--text); }
+  /* Image sits to the right and is vertically centered by default */
+  .project-peek .peek-media{ order:2; flex:0 0 var(--media-w); max-width:var(--media-w); align-self:center; margin-left:12px; }
+  /* If you want the image aligned to the top instead, add .peek-media--top to the element */
+  .project-peek .peek-media.peek-media--top{ align-self:flex-start; }
 }
 
 /* Center mobile menu links and make them more tappable */
