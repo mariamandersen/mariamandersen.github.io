@@ -32,62 +32,73 @@
         <h1>Maria Malmstedt Andersen</h1>
       </div>
 
-      <!-- Desktop nav (≥900px) -->
-      <nav class="nav" aria-label="Innhold" data-lang="no">
-        <a href="#proj-in5510-no">Deltakende design</a>
-        <a href="#proj-in5620-no">AI og autonome systemer</a>
-        <a href="#proj-in5320-no">Plattformøkosystemer</a>
-        <a href="#proj-rocket-no">Værapplikasjon</a>
-        <a href="#proj-medball-no">Meditasjonsball</a>
-        <a href="#proj-echo-no">Design for demokrati</a>
-      </nav>
-      <nav class="nav" aria-label="Contents" data-lang="en" hidden>
-        <a href="#proj-in5510-en">Participatory Design</a>
-        <a href="#proj-in5620-en">AI and Autonomous Systems</a>
-        <a href="#proj-in5320-en">Platform Ecosystems</a>
-        <a href="#proj-rocket-en">Weather app</a>
-        <a href="#proj-medball-en">Meditation ball</a>
-        <a href="#proj-echo-en">Design for Democracy</a>
-      </nav>
+      <!-- Simplified header controls: language toggle + contact links -->
+      <div class="header-controls">
+        <!-- Mobile menu toggle (hamburger) — toggles a compact hero quick-links menu on small screens -->
+        <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+          <svg class="icon-burger" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          </svg>
+          <svg class="icon-close" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          </svg>
+        </button>
 
-      <!-- Language toggle -->
-      <div class="language-toggle" role="group" aria-label="Språk / Language">
-        <button id="btn-en" type="button" aria-pressed="false" aria-label="Switch to English">EN</button>
-        <span aria-hidden="true" class="sep">|</span>
-        <button id="btn-no" type="button" aria-pressed="true" aria-label="Bytt til norsk">NO</button>
+        <!-- Language toggle -->
+        <div class="language-toggle" role="group" aria-label="Språk / Language">
+          <button id="btn-en" type="button" aria-pressed="false" aria-label="Switch to English">EN</button>
+          <span aria-hidden="true" class="sep">|</span>
+          <button id="btn-no" type="button" aria-pressed="true" aria-label="Bytt til norsk">NO</button>
+        </div>
+
+        <!-- Compact icon row for contacts -->
+        <nav class="header-contacts" aria-label="Kontakt / Contact">
+          <a href="mailto:mariam300802@gmail.com" aria-label="Send e-post" title="Send e-post">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M3 6.5v11A2.5 2.5 0 0 0 5.5 20h13a2.5 2.5 0 0 0 2.5-2.5v-11A2.5 2.5 0 0 0 18.5 4h-13A2.5 2.5 0 0 0 3 6.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 6.5l-9 6-9-6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="sr-only">E-post</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/maria-malmstedt-andersen/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="2" y="3" width="20" height="18" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M7 10.5v6M7 8.5v.01M11 16.5v-4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M11 12.5c1.2 0 2 0.8 2 2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <span class="sr-only">LinkedIn</span>
+          </a>
+
+          <a href="https://github.com/mariamandersen" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1 .1.7 1.6.7 1.6.9 1.6 2.4 1.1 3 .8.1-.7.3-1.1.5-1.4-2.7-.3-5.5-1.3-5.5-5.7 0-1.2.4-2.3 1-3.1-.1-.3-.4-1.4.1-2.8 0 0 .8-.3 2.8 1.1a9.6 9.6 0 0 1 5 0c2-1.4 2.8-1.1 2.8-1.1.5 1.4.2 2.5.1 2.8.6.8 1 1.9 1 3.1 0 4.4-2.8 5.4-5.5 5.7.3.3.6.8.6 1.6v2.4c0 .3.2.7.8.6A12 12 0 0 0 12 .5z" fill="currentColor"/>
+            </svg>
+            <span class="sr-only">GitHub</span>
+          </a>
+        </nav>
       </div>
-
-      <!-- Mobile menu button (<900px) -->
-      <button id="menuToggle" class="menu-toggle" type="button"
-              aria-expanded="false" aria-controls="mobileMenu"
-              aria-label="Meny">
-        <!-- burger -->
-        <svg class="icon-burger" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <!-- close -->
-        <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
+    
+    <!-- Compact mobile menu for quick hero jump-links (hidden by default) -->
+    <nav id="mobileMenu" class="mobile-menu" hidden aria-label="Hurtiglenker">
+      <div class="mobile-list">
+        <a href="#proj-in5510-no" data-lang="no">Eksperimentell deltakende design</a>
+        <a href="#proj-in5620-no" data-lang="no">Interaksjon med AI og autonome systemer</a>
+        <a href="#proj-in5320-no" data-lang="no">Plattformøkosystemer</a>
+        <a href="#proj-rocket-no" data-lang="no">Skybound – planleggingsapp</a>
+        <a href="#proj-medball-no" data-lang="no">Meditasjonsball</a>
+        <a href="#proj-echo-no" data-lang="no">Design for demokrati</a>
+        <a href="#proj-in5510-en" data-lang="en" hidden>Participatory Design</a>
+        <a href="#proj-in5620-en" data-lang="en" hidden>AI and Autonomous Systems</a>
+        <a href="#proj-in5320-en" data-lang="en" hidden>Platform Ecosystems</a>
+        <a href="#proj-rocket-en" data-lang="en" hidden>Skybound – Planner</a>
+        <a href="#proj-medball-en" data-lang="en" hidden>Meditation Ball</a>
+        <a href="#proj-echo-en" data-lang="en" hidden>Design for Democracy</a>
+      </div>
+    </nav>
     </div>
 
-    <!-- Mobile drop-down -->
-    <div id="mobileMenu" class="mobile-menu" hidden>
-      <nav class="mobile-list" aria-label="Meny" data-lang="no">
-        <a href="#proj-in5510-no">Deltakende design</a>
-        <a href="#proj-in5620-no">AI og autonome systemer</a>
-        <a href="#proj-in5320-no">Plattformøkosystemer</a>
-        <a href="#proj-rocket-no">Rakett</a>
-        <a href="#proj-medball-no">Meditasjonsball</a>
-        <a href="#proj-echo-no">Ekko-kamre</a>
-      </nav>
-      <nav class="mobile-list" aria-label="Menu" data-lang="en" hidden>
-        <a href="#proj-rocket-en">Rocket Planner</a>
-        <a href="#proj-medball-en">Meditation Ball</a>
-        <a href="#proj-echo-en">Echo Chambers</a>
-      </nav>
-    </div>
+    <!-- Mobile menu removed: header only contains language toggle and contact links as requested -->
   </header>
 
   <main id="main">

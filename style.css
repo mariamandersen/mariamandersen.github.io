@@ -102,6 +102,27 @@ header p{ margin:2px 0 0; color:var(--muted); font-size:.98rem; }
 .menu-toggle[aria-expanded="true"] .icon-close{ display:block; }
 @media (min-width:900px){ .menu-toggle{ display:none; } }
 
+/* Header controls (language + contacts) */
+.header-controls{ display:inline-flex; gap:12px; align-items:center; }
+
+/* Compact icon row for header contacts */
+.header-contacts{ display:inline-flex; gap:8px; align-items:center; margin-left:6px; }
+.header-contacts a{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:36px; height:36px; border-radius:8px; text-decoration:none; color:var(--muted);
+  border:1px solid transparent; background:transparent; padding:4px;
+}
+.header-contacts a:hover, .header-contacts a:focus-visible{
+  color:var(--text); border-color:color-mix(in oklab, var(--line) 60%, transparent);
+  background: color-mix(in oklab, var(--surface) 75%, black 10%);
+}
+.header-contacts a + a{ margin-left:6px; border-left:1px solid rgba(255,255,255,0.04); padding-left:8px; }
+.header-contacts svg{ width:18px; height:18px; display:block; }
+
+/* Mobile menu tweaks: keep a compact look for quick-links */
+.mobile-menu{ padding:8px 10px; }
+.mobile-list a{ font-weight:600; }
+
 /* Mobile drop-down */
 .mobile-menu{
   position:absolute; left:0; right:0; top:100%;
