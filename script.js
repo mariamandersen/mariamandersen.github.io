@@ -333,34 +333,64 @@ function initProjectPreviews(){
       else peek.appendChild(kicker.cloneNode(true));
     }
 
-    // Short excerpt: prefer the first paragraph's first full sentence or a 160-char
-    // truncation as a fallback.
-    const excerptP = document.createElement('p');
-    let excerptText = '';
-    if (firstP) {
-      const textSource = firstP.textContent.trim();
-      const m = textSource.match(/(^[^\.\!\?]+[\.\!\?])/) || [];
-      excerptText = (m[0] || textSource).trim();
-      if (excerptText.length > 160) excerptText = excerptText.slice(0, 157) + '…';
-    }
-    excerptP.textContent = excerptText;
-    txt.appendChild(excerptP);
+    // Build the preview body: include heading, kicker and the next few
+    // content nodes (paragraphs / small blocks) so the preview reads like
+    // a short project summary. We'll stop when we've collected enough text
+    // or hit a safe node-count limit.
+    txt.appendChild(document.createElement('div'));
     peek.appendChild(txt);
 
     // Insert peek at the top of the scope
     scope.insertBefore(peek, scope.firstChild);
 
-    // Create collapsible body: move everything after the peek into the body
+    // Prepare the collapsible body and then move remaining children into it.
     const body = document.createElement('div');
     const bodyId = `project-body-${idx}`;
     body.className = 'project-body';
     body.id = bodyId;
 
+    // Collect children after insertion point. We'll pull the heading/kicker if
+    // they weren't direct children earlier, and then collect subsequent nodes
+    // into the peek until we reach either max nodes or text length threshold.
     const kids = Array.from(scope.children);
     const anchorIndex = kids.indexOf(peek);
-    for (let i = anchorIndex + 1; i < kids.length; i++) {
-      body.appendChild(kids[i]);
+
+    // Helper: append a node into peek's text area
+    function appendToPeek(node){
+      // If it's a heading or kicker and already appended above, skip
+      if (node === heading || node === kicker) return;
+      txt.appendChild(node);
     }
+
+    // Include heading and kicker if they are NOT already direct children moved earlier
+    // (we already moved heading/kicker into peek if they were direct children).
+    // Now gather following nodes into the peek until we reach thresholds.
+    let collectedText = 0;
+    let taken = 0;
+    const MAX_NODES = 8;
+    const MAX_CHARS = 900; // generous preview size to include multiple paragraphs
+
+    for (let i = anchorIndex + 1; i < kids.length; ) {
+      if (taken >= MAX_NODES || collectedText >= MAX_CHARS) break;
+      const node = kids[i];
+      // stop collecting if we hit a large structural section like .process (full timeline)
+      if (node.classList && (node.classList.contains('process') || node.classList.contains('process--timeline'))) break;
+
+      // Move node into peek text area
+      appendToPeek(node);
+
+      // update counters based on node textContent
+      const text = (node.textContent || '').trim();
+      collectedText += Math.min(400, text.length);
+      taken += 1;
+      // Note: since we've removed node from scope by moving it, the kids array shrinks
+      // but we intentionally don't advance i to keep the next element at the same index.
+      kids.splice(i, 1);
+    }
+
+    // After collecting the preview nodes, move any remaining children into the collapsible body
+    const remaining = Array.from(scope.children).slice(anchorIndex + 1);
+    remaining.forEach(n => body.appendChild(n));
 
     // If nothing to hide, leave the peek as-is and mark initialized
     if (!body.children.length) { proj.dataset.previewInit = '1'; proj.dataset.hasPreview = '1'; return; }
