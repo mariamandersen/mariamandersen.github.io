@@ -292,19 +292,20 @@ function initProjectPreviews(){
 
     const scope = proj.querySelector('.project-inner') || proj;
 
-    // Remove any existing TL;DR blocks — we'll build a visual peek instead
-    const existingTldr = scope.querySelectorAll('.tldr');
-    existingTldr.forEach(n => n.remove());
+    // Remove legacy TL;DR blocks if present — we will build a coherent peek
+    scope.querySelectorAll('.tldr').forEach(n => n.remove());
 
-    // Source text for the peek: first paragraph in the scope
+    // Find the nodes we want to surface in the peek: heading, kicker and the
+    // first paragraph (used as a short excerpt). Prefer direct children.
+    const heading = scope.querySelector(':scope > h2') || scope.querySelector('h2');
+    const kicker = scope.querySelector(':scope > .kicker') || scope.querySelector('.kicker');
     const firstP = scope.querySelector(':scope > p') || scope.querySelector('p');
-    const textSource = firstP ? firstP.textContent.trim() : '';
 
-    // Find a candidate image inside the project to use as thumbnail
+    // Candidate thumbnail (if any) — avoid accidentally grabbing site hero images
     let imgEl = proj.querySelector('.step-media img, .carousel-viewport img, :scope img');
-    if (imgEl && imgEl.closest('header')) imgEl = null; // avoid hero image if accidentally matched
+    if (imgEl && imgEl.closest('header')) imgEl = null;
 
-    // Build the peek element (image + short excerpt)
+    // Build peek element
     const peek = document.createElement('div');
     peek.className = 'project-peek';
 
@@ -320,22 +321,36 @@ function initProjectPreviews(){
 
     const txt = document.createElement('div');
     txt.className = 'peek-text';
-    const p = document.createElement('p');
-    // Create a short excerpt (first sentence or 160 chars)
-    let excerpt = '';
-    if (textSource) {
-      const m = textSource.match(/(^[^\.\!\?]+[\.\!\?])/) || [];
-      excerpt = (m[0] || textSource).trim();
-      if (excerpt.length > 160) excerpt = excerpt.slice(0, 157) + '…';
+
+    // Move heading and kicker into the peek when they are direct children of the
+    // project scope. If they appear elsewhere, clone them so we don't break semantics.
+    if (heading) {
+      if (heading.parentNode === scope) peek.appendChild(heading);
+      else peek.appendChild(heading.cloneNode(true));
     }
-    p.textContent = excerpt;
-    txt.appendChild(p);
+    if (kicker) {
+      if (kicker.parentNode === scope) peek.appendChild(kicker);
+      else peek.appendChild(kicker.cloneNode(true));
+    }
+
+    // Short excerpt: prefer the first paragraph's first full sentence or a 160-char
+    // truncation as a fallback.
+    const excerptP = document.createElement('p');
+    let excerptText = '';
+    if (firstP) {
+      const textSource = firstP.textContent.trim();
+      const m = textSource.match(/(^[^\.\!\?]+[\.\!\?])/) || [];
+      excerptText = (m[0] || textSource).trim();
+      if (excerptText.length > 160) excerptText = excerptText.slice(0, 157) + '…';
+    }
+    excerptP.textContent = excerptText;
+    txt.appendChild(excerptP);
     peek.appendChild(txt);
 
-    // Insert peek at the top of the scope (before existing children)
+    // Insert peek at the top of the scope
     scope.insertBefore(peek, scope.firstChild);
 
-    // Now create the collapsible body and move everything after the peek into it
+    // Create collapsible body: move everything after the peek into the body
     const body = document.createElement('div');
     const bodyId = `project-body-${idx}`;
     body.className = 'project-body';
@@ -347,13 +362,13 @@ function initProjectPreviews(){
       body.appendChild(kids[i]);
     }
 
-    // If nothing to hide, don't create the toggle
-    if (!body.children.length) { proj.dataset.previewInit = '1'; return; }
+    // If nothing to hide, leave the peek as-is and mark initialized
+    if (!body.children.length) { proj.dataset.previewInit = '1'; proj.dataset.hasPreview = '1'; return; }
 
     body.hidden = true;
     scope.appendChild(body);
 
-    // Create the See more / Les mer button
+    // Create the Read more / Les mer button
     const btn = document.createElement('button');
     btn.className = 'read-more';
     btn.type = 'button';
@@ -366,7 +381,6 @@ function initProjectPreviews(){
     label.className = 'read-more-label';
     btn.appendChild(label);
 
-    // Append button after the body
     scope.appendChild(btn);
 
     proj.dataset.previewInit = '1';
