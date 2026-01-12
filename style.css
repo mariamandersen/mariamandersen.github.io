@@ -1157,6 +1157,27 @@ html.has-io .fade-in{
   margin: var(--card-pad);
 }
 
+/* Make workshop carousels visually part of the project card (no isolated panel)
+   so slides sit on the same background as the surrounding content. */
+.project .process .process-step .step-media{
+  background: transparent !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+.project .process .process-step .step-media .carousel{
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.project .process .process-step .step-media .carousel-viewport{
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+.project .process .process-step .step-media .slide img{
+  border-radius: 10px; /* match card softness */
+  border: 0 !important;
+}
+
 /* Strong override: ensure projects with previews behave like normal flowing content
    and that the expanded project-body appears above the read-more button. This rule
    is intentionally placed at the end of the stylesheet and uses !important to
