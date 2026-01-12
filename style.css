@@ -103,6 +103,22 @@ header p{ margin:2px 0 0; color:var(--muted); font-size:.98rem; }
 /* Keep the menu-toggle visible on all viewports (user requested hamburger always visible) */
 @media (min-width:900px){ .menu-toggle{ display:inline-flex; } }
 
+/* Float the hamburger in the top-left corner on all viewports */
+.menu-toggle{
+  position:fixed; left:12px; top:12px; z-index:1200;
+  /* keep same visual appearance but slightly smaller when fixed */
+  width:36px; height:36px; transform:none;
+}
+
+/* Position the language toggle in the top-right corner */
+.language-toggle{
+  position:fixed; right:12px; top:12px; z-index:1200;
+  background:transparent; padding:.15rem .4rem; border-radius:8px;
+}
+
+/* Ensure header layout doesn't get crowded by fixed controls */
+header .bar{ padding-left:56px; padding-right:56px; }
+
 /* Header controls (language + contacts) */
 .header-controls{ display:inline-flex; gap:12px; align-items:center; }
 
