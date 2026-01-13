@@ -1135,23 +1135,115 @@ footer a{ color:var(--muted); }
   border-color:var(--line-lite) !important;
 }
 
+/* ==========================
+   IN5510 – match Medball/Echo/Skybound skin
+   Make the process-step boxes transparent and remove inner card styling
+   so IN5510 visually matches the other project sections.
+========================== */
+#proj-in5510-no.project,
+#proj-in5510-en.project{
+  display:block; width:100%; max-width:none;
+  padding-left:var(--gutter); padding-right:var(--gutter); min-height:auto;
+}
+#proj-in5510-no.project > *,
+#proj-in5510-en.project > *{ grid-column:1 / -1 !important; }
+
+#proj-in5510-no .process.process--timeline,
+#proj-in5510-en .process.process--timeline{ counter-reset: in5510-step; display:grid; gap:clamp(12px,1.6vw,18px); }
+
+#proj-in5510-no .process.process--timeline .process-step,
+#proj-in5510-en .process.process--timeline .process-step{
+  position:relative;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  padding:clamp(10px,1.6vw,14px) !important;
+}
+
+#proj-in5510-no .process.process--timeline .process-step::after,
+#proj-in5510-en .process.process--timeline .process-step::after{
+  content:""; position:absolute; left:-20px; top:0; bottom:0; width:2px; border-radius:2px;
+  background:linear-gradient(180deg,
+    color-mix(in oklab, var(--accent) 60%, transparent),
+    color-mix(in oklab, var(--accent) 20%, transparent)) !important;
+}
+
+#proj-in5510-no .process.process--timeline .process-step::before,
+#proj-in5510-en .process.process--timeline .process-step::before{
+  counter-increment: in5510-step; content:counter(in5510-step);
+  position:absolute; left:-34px; top:14px; width:28px; height:28px; border-radius:999px;
+  display:grid; place-items:center; background:var(--accent); color:var(--accent-contrast);
+  font-weight:800; font-size:.9rem; letter-spacing:.02em; box-shadow:0 6px 14px rgba(0,0,0,.18) !important;
+}
+
+#proj-in5510-no .process.process--timeline .step-copy h3::after,
+#proj-in5510-en .process.process--timeline .step-copy h3::after{
+  content:""; flex:1; height:1px; background:var(--line-lite); opacity:.6 !important;
+}
+
+#proj-in5510-no .process.process--timeline .step-copy p > strong,
+#proj-in5510-en .process.process--timeline .step-copy p > strong{
+  display:inline-block; background:color-mix(in oklab, var(--accent) 12%, white 88%) !important;
+  color:var(--ink) !important;
+  border:1px solid color-mix(in oklab, var(--accent) 25%, white 75%) !important;
+  padding:.05rem .45rem; margin-right:.35rem; border-radius:6px; font-weight:700; letter-spacing:.01em;
+}
+
+#proj-in5510-no .process.process--timeline figcaption,
+#proj-in5510-en .process.process--timeline figcaption{
+  color:var(--ink-muted) !important; opacity:.95 !important; margin-top:6px; line-height:1.35;
+}
+
+/* (TL;DR styles removed - tldr blocks intentionally deleted from markup) */
+
+/* Two-column layout (like Echo/Medball) */
+@supports selector(:has(*)){
+  @media (min-width:980px){
+    #proj-in5510-no .process.process--timeline .process-step:has(.step-media),
+    #proj-in5510-en .process.process--timeline .process-step:has(.step-media){
+      display:grid !important;
+      grid-template-columns:1fr var(--media-w) !important;
+      column-gap:clamp(14px, 2vw, 28px); align-items:start;
+    }
+    #proj-in5510-no .process.process--timeline .process-step:has(.step-media) .step-copy,
+    #proj-in5510-en .process.process--timeline .process-step:has(.step-media) .step-copy{
+      grid-column:1 !important; grid-row:1 !important;
+    }
+    #proj-in5510-no .process.process--timeline .process-step:has(.step-media) .step-media,
+    #proj-in5510-en .process.process--timeline .process-step:has(.step-media) .step-media{
+      grid-column:2 !important; grid-row:1 !important; justify-self:start !important;
+      width:var(--media-w); max-width:100%;
+    }
+    #proj-in5510-no .process.process--timeline .process-step:not(:has(.step-media)),
+    #proj-in5510-en .process.process--timeline .process-step:not(:has(.step-media)){
+      display:block !important;
+    }
+  }
+}
+
+@media (min-width:980px){
+  #proj-in5510-no .process .process-step.has-media,
+  #proj-in5510-en .process .process-step.has-media{
+    display:grid !important;
+    grid-template-columns:1fr var(--media-w) !important; column-gap:clamp(14px,2vw,28px); align-items:start;
+  }
+  #proj-in5510-no .process .process-step.has-media .step-copy,
+  #proj-in5510-en .process .process-step.has-media .step-copy{
+    grid-column:1 !important; grid-row:1 !important;
+  }
+  #proj-in5510-no .process .process-step.has-media .step-media,
+  #proj-in5510-en .process .process-step.has-media .step-media{
+    grid-column:2 !important; grid-row:1 !important; justify-self:start !important;
+    width:var(--media-w) !important; max-width:100% !important;
+  }
+  #proj-in5510-no .process .process-step.no-media,
+  #proj-in5510-en .process .process-step.no-media{ display:block !important; }
+}
+
 /* Update script.js to flag echo steps with media */
 /* Add this to the flagStepsWithMedia() function in script.js: */
 /* '#proj-echo-no', '#proj-echo-en' */
 
-.tldr {
-  border-left: 3px solid var(--accent);
-  padding: 0.75rem 1rem;
-  margin: 1.25rem 0 2rem;
-  background: rgba(0,0,0,0.03);
-  max-width: 60ch;
-}
-
-.tldr strong {
-  display: block;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.25rem;
-}
 
 .project.project--card{
   background:transparent !important;
@@ -1175,12 +1267,6 @@ footer a{ color:var(--muted); }
 .project.project--card .kicker,
 .project.project--card figcaption{ color:var(--ink-muted); }
 
-.project.project--card .tldr{
-  background: color-mix(in oklab, var(--paper-2) 85%, white 15%);
-  border-left-color: var(--accent);
-  color: var(--ink);
-}
-.project.project--card .tldr p{ color: var(--ink-muted); }
 
 .intro, .project{
   width:100%;
@@ -1216,14 +1302,7 @@ html.has-io .fade-in{
 .project.project--card .project-inner{
   padding: var(--card-pad);
 }
-.project.project--card .tldr{
-  margin: 1.25rem 0 2rem; /* ikke var(--card-pad) her, ellers dobbel spacing */
-}
-
-
-.project .tldr{
-  margin: var(--card-pad);
-}
+/* TL;DR rules removed */
 
 /* Make workshop carousels visually part of the project card (no isolated panel)
    so slides sit on the same background as the surrounding content. */
@@ -1271,10 +1350,7 @@ html.has-io .fade-in{
   padding: var(--card-pad);
 }
 
-/* TL;DR spacing */
-.project.project--card .tldr{
-  margin: 1.25rem 0 2rem;
-}
+/* TL;DR spacing removed */
 
 /* Collapsible body */
 .project .project-body{
@@ -1656,30 +1732,4 @@ html.has-io .fade-in{
    ("Hva vi gjorde", "Hva vi lærte", osv.)
 =========================== */
 
-/* Treffer typisk struktur: h3 + p/ul rett etter */
-#proj-in5510-no h3 + p,
-#proj-in5510-en h3 + p,
-#proj-in5510-no h3 + ul,
-#proj-in5510-en h3 + ul{
-  background: color-mix(in oklab, var(--paper-2) 85%, white 15%) !important;
-  border-left: 3px solid var(--accent);
-  padding: 0.75rem 1rem;
-  margin: 0.75rem 0 1.5rem;
-  border-radius: 10px;
-  max-width: 65ch;
-}
-
-/* IN5510: tldr-bokser skal matche “card”-prosjektene */
-#proj-in5510-no .tldr,
-#proj-in5510-en .tldr{
-  background: color-mix(in oklab, var(--paper-2) 85%, white 15%) !important;
-  border-left-color: var(--accent) !important;
-  max-width: 60ch; /* matcher din eksisterende tldr */
-}
-
-#proj-in5510-no .tldr strong,
-#proj-in5510-en .tldr strong{
-  display:block;
-  letter-spacing:0.02em;
-  margin-bottom:0.25rem;
-}
+/* IN5510 specific highlight blocks removed so paragraphs follow project styling */

@@ -284,9 +284,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!strong) return;
 
         const t = strong.textContent.trim().toLowerCase();
-        if (keys.some(k => t.startsWith(k))) {
-          p.classList.add('tldr');
-        }
+        // Previously we added a .tldr class to these paragraphs which caused
+        // the beige background styling in the IN5510 section. Don't add the
+        // class automatically — keep markup untouched so CSS-only callouts
+        // remain deliberate in the source.
+        // if (keys.some(k => t.startsWith(k))) {
+        //   p.classList.add('tldr');
+        // }
       });
     });
   }
@@ -408,7 +412,7 @@ function initProjectPreviews(){
       // HARD STOP: aldri dra workshop/prosess-området inn i preview-peeken
       if (node.id && node.id.startsWith('proj-in5510')) break;
       if (node.querySelector && node.querySelector('.process')) break;
-      
+
       // Stop preview before callout boxes (tldr)
       if (node.classList && node.classList.contains('tldr')) break;
 
