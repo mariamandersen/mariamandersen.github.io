@@ -374,8 +374,13 @@ function initProjectPreviews(){
     const MAX_CHARS = 900; // generous preview size to include multiple paragraphs
 
     for (let i = anchorIndex + 1; i < kids.length; ) {
+      
       if (taken >= MAX_NODES || collectedText >= MAX_CHARS) break;
       const node = kids[i];
+      // HARD STOP: aldri dra workshop/prosess-området inn i preview-peeken
+      if (node.id && node.id.startsWith('proj-in5510')) break;
+      if (node.querySelector && node.querySelector('.process')) break;
+
       // stop collecting if we hit a large structural section like .process (full timeline)
       if (node.classList && (node.classList.contains('process') || node.classList.contains('process--timeline'))) break;
 

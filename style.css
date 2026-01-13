@@ -276,7 +276,6 @@ main{ padding-block:10px 64px; }
 .project .project-body{ position:relative; z-index:2; }
 .read-more{ position:relative; z-index:1; }
 
-
 /* Make hero contents compact on small screens */
 @media (max-width:600px){
   /*.hero-contents ul{ grid-template-columns:1fr 1fr; gap:8px; } */
@@ -1362,4 +1361,282 @@ html.has-io .fade-in{
 /* If you use light cards: make preview text use ink-muted, not dark --muted */
 .project.project--card .project-peek .peek-text p{
   color: var(--ink-muted) !important;
+}
+
+/* ===========================
+   IN5510: workshops uten brune kort
+   (lim nederst)
+=========================== */
+
+/* Bytt disse til dine faktiske project-id'er */
+#proj-in5510-no .process .process-step,
+#proj-in5510-en .process .process-step{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;          /* dette fjerner "kort-følelsen" */
+  border-radius: 0 !important;
+}
+
+/* Hvis du har timeline-strek/nummer på disse og vil beholde dem: fjern denne */
+#proj-in5510-no .process .process-step::before,
+#proj-in5510-no .process .process-step::after,
+#proj-in5510-en .process .process-step::before,
+#proj-in5510-en .process .process-step::after{
+  content: none !important;       /* fjerner evt. timeline-chip/linje */
+}
+
+/* Gi heller luft mellom workshopene */
+#proj-in5510-no .process,
+#proj-in5510-en .process{
+  display: grid;
+  gap: 24px;
+}
+
+/* Carousel skal “flyte” på samme bakgrunn som resten */
+#proj-in5510-no .carousel-viewport,
+#proj-in5510-en .carousel-viewport{
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Bildene kan fortsatt ha en pen, lett kant (valgfritt) */
+#proj-in5510-no .slide img,
+#proj-in5510-en .slide img{
+  border-radius: 12px;
+}
+
+/* ===========================
+   IN5510 — match other projects
+   (paste at very bottom)
+=========================== */
+
+/* 1) Sørg for at IN5510 bruker samme card/lyse bakgrunn som andre prosjekter */
+#proj-in5510-no.project,
+#proj-in5510-en.project{
+  /* du bruker allerede project--card-systemet; dette sikrer at det ikke arver "full width + spesialhud" */
+  display:block;
+  width:100%;
+  max-width:none;
+}
+
+/* 2) FJERN brun workshop-wrapper/panel hvis den finnes */
+#proj-in5510-no .workshop-card,
+#proj-in5510-en .workshop-card,
+#proj-in5510-no .brown-card,
+#proj-in5510-en .brown-card{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* 3) La IN5510-prosessen bruke den samme timeline-skinnen (nummer + linje) */
+#proj-in5510-no .process.process--timeline,
+#proj-in5510-en .process.process--timeline{
+  counter-reset: in5510-step;
+  display:grid;
+  gap:clamp(16px, 2.2vw, 26px);
+}
+
+/* “Steg-kortet” skal se ut som de andre på lys bakgrunn */
+#proj-in5510-no .process.process--timeline .process-step,
+#proj-in5510-en .process.process--timeline .process-step{
+  position:relative;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: clamp(10px, 1.6vw, 14px);
+}
+
+/* Tidslinje-stolpen */
+#proj-in5510-no .process.process--timeline .process-step::after,
+#proj-in5510-en .process.process--timeline .process-step::after{
+  content:"";
+  position:absolute;
+  left:-20px; top:0; bottom:0;
+  width:2px; border-radius:2px;
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--accent) 60%, transparent),
+    color-mix(in oklab, var(--accent) 20%, transparent)
+  );
+}
+
+/* Nummer-chip */
+#proj-in5510-no .process.process--timeline .process-step::before,
+#proj-in5510-en .process.process--timeline .process-step::before{
+  counter-increment: in5510-step;
+  content: counter(in5510-step);
+  position:absolute;
+  left:-34px; top:14px;
+  width:28px; height:28px;
+  border-radius:999px;
+  display:grid; place-items:center;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-weight:800;
+  font-size:.9rem;
+  box-shadow:0 6px 14px rgba(0,0,0,.18);
+}
+
+/* 4) Samme to-kolonne: tekst venstre, media/karusell høyre */
+@supports selector(:has(*)){
+  @media (min-width:980px){
+    #proj-in5510-no .process.process--timeline .process-step:has(.step-media),
+    #proj-in5510-en .process.process--timeline .process-step:has(.step-media){
+      display:grid !important;
+      grid-template-columns: 1fr var(--media-w) !important;
+      column-gap: clamp(14px, 2vw, 28px);
+      align-items:start;
+    }
+    #proj-in5510-no .process.process--timeline .process-step:has(.step-media) .step-copy,
+    #proj-in5510-en .process.process--timeline .process-step:has(.step-media) .step-copy{
+      grid-column:1 !important; grid-row:1 !important;
+    }
+    #proj-in5510-no .process.process--timeline .process-step:has(.step-media) .step-media,
+    #proj-in5510-en .process.process--timeline .process-step:has(.step-media) .step-media{
+      grid-column:2 !important; grid-row:1 !important;
+      width: var(--media-w); max-width:100%;
+      justify-self:start !important;
+    }
+  }
+}
+
+/* Fallback (uten :has) – JS legger .has-media */
+@media (min-width:980px){
+  #proj-in5510-no .process .process-step.has-media,
+  #proj-in5510-en .process .process-step.has-media{
+    display:grid !important;
+    grid-template-columns: 1fr var(--media-w) !important;
+    column-gap: clamp(14px, 2vw, 28px);
+    align-items:start;
+  }
+  #proj-in5510-no .process .process-step.has-media .step-copy,
+  #proj-in5510-en .process .process-step.has-media .step-copy{
+    grid-column:1 !important; grid-row:1 !important;
+  }
+  #proj-in5510-no .process .process-step.has-media .step-media,
+  #proj-in5510-en .process .process-step.has-media .step-media{
+    grid-column:2 !important; grid-row:1 !important;
+    width: var(--media-w) !important; max-width:100% !important;
+    justify-self:start !important;
+  }
+}
+
+/* 5) Karusell: tilbake til standard “clean” look (ikke helt transparent) */
+#proj-in5510-no .carousel-viewport,
+#proj-in5510-en .carousel-viewport{
+  border: 1px solid var(--line-lite) !important;
+  border-radius: 16px !important;
+  background: color-mix(in oklab, var(--paper-2) 85%, white 15%) !important;
+  padding: 12px !important;
+  overflow-x: auto !important;
+}
+
+/* Slide-bilder: samme kant/skygging som ellers */
+#proj-in5510-no .slide img,
+#proj-in5510-en .slide img{
+  border-radius: 16px !important;
+  border: 1px solid var(--line-lite) !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12) !important;
+}
+
+/* ===========================
+   IN5510 — match other projects
+   (paste at very bottom)
+=========================== */
+
+/* 1) Fjern evt. "brun wrapper" rundt workshopene (tilpass klassenavn om du har andre) */
+#proj-in5510-no .workshop-card,
+#proj-in5510-en .workshop-card,
+#proj-in5510-no .brown-card,
+#proj-in5510-en .brown-card{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* 2) Sørg for samme to-kolonne: tekst venstre, media høyre */
+@media (min-width:980px){
+  #proj-in5510-no .process .process-step.has-media,
+  #proj-in5510-en .process .process-step.has-media{
+    display:grid !important;
+    grid-template-columns: 1fr var(--media-w) !important;
+    column-gap: clamp(14px, 2vw, 28px);
+    align-items:start;
+  }
+  #proj-in5510-no .process .process-step.has-media .step-copy,
+  #proj-in5510-en .process .process-step.has-media .step-copy{
+    grid-column:1 !important; grid-row:1 !important;
+  }
+  #proj-in5510-no .process .process-step.has-media .step-media,
+  #proj-in5510-en .process .process-step.has-media .step-media{
+    grid-column:2 !important; grid-row:1 !important;
+    width: var(--media-w) !important; max-width:100% !important;
+    justify-self:start !important;
+  }
+}
+
+/* 3) KARUSELL: slå PÅ standard "clean card" look i IN5510 (overstyr transparent-reglene) */
+#proj-in5510-no .step-media .carousel-viewport,
+#proj-in5510-en .step-media .carousel-viewport{
+  background: color-mix(in oklab, var(--paper-2) 85%, white 15%) !important;
+  border: 1px solid var(--line-lite) !important;
+  border-radius: 16px !important;
+  padding: 12px !important;
+  overflow-x: auto !important;
+}
+
+/* Bilde-stil som resten */
+#proj-in5510-no .step-media .slide img,
+#proj-in5510-en .step-media .slide img{
+  border-radius: 16px !important;
+  border: 1px solid var(--line-lite) !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12) !important;
+}
+
+/* 4) Hvis du vil at IN5510 skal ha timeline-nummer+linje (som Rocket/Medball/Echo), gi den samme hud:
+   NB: bytt id-ene under hvis dine heter noe annet */
+#proj-in5510-no .process.process--timeline,
+#proj-in5510-en .process.process--timeline{
+  counter-reset: in5510-step;
+  display:grid;
+  gap: clamp(16px, 2.2vw, 26px);
+}
+#proj-in5510-no .process.process--timeline .process-step,
+#proj-in5510-en .process.process--timeline .process-step{
+  position:relative;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow:none !important;
+  padding: clamp(10px, 1.6vw, 14px) !important;
+}
+#proj-in5510-no .process.process--timeline .process-step::after,
+#proj-in5510-en .process.process--timeline .process-step::after{
+  content:"";
+  position:absolute;
+  left:-20px; top:0; bottom:0;
+  width:2px; border-radius:2px;
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--accent) 60%, transparent),
+    color-mix(in oklab, var(--accent) 20%, transparent)
+  ) !important;
+}
+#proj-in5510-no .process.process--timeline .process-step::before,
+#proj-in5510-en .process.process--timeline .process-step::before{
+  counter-increment: in5510-step;
+  content: counter(in5510-step);
+  position:absolute;
+  left:-34px; top:14px;
+  width:28px; height:28px;
+  border-radius:999px;
+  display:grid; place-items:center;
+  background: var(--accent) !important;
+  color: var(--accent-contrast) !important;
+  font-weight:800; font-size:.9rem;
+  box-shadow:0 6px 14px rgba(0,0,0,.18) !important;
 }
