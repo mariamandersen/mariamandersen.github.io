@@ -517,13 +517,162 @@
       <!-- 3. IN5320 - Development in Platform Ecosystems (NO)-->
       <article class="project project--card fade-in" id="proj-in5320-no" data-has-preview="1" aria-labelledby="heading-in5320-no">
         <div class="project-inner">
-          <h2 id="heading-in5320-no">Plattformøkosystemer</h2>
-          <p class="kicker">IN5320 • Universitetet i Oslo • 2025</p>
-          <p>Kort oversikt. Eksempler og prosess beskrives her når materialet er klart.</p>
 
-          <section class="process process--timeline" aria-label="IN5320 – designprosess">
-            <!-- Placeholder -->
-          </section>
+          <h2>School Inspection Tool for Edutopia</h2>
+          <p class="kicker">IN5320 – Development in Platform Ecosystems · Gruppeprosjekt</p>
+
+          <p>
+            I dette prosjektet designet og prototypet vi en webbasert applikasjon for skoleinspektører
+            i det fiktive landet Edutopia, bygget på DHIS2-plattformen. Målet var å støtte mer
+            sammenhengende skoleinspeksjoner, bedre ressursoversikt og mer informert oppfølging
+            av skoler over tid.
+          </p>
+
+          <!-- PROSESS -->
+          <h3>Prosess</h3>
+
+          <div class="process process--timeline">
+
+            <!-- STEG 1 -->
+            <div class="process-step">
+              <div class="step-copy">
+                <h3>Forstå kontekst og plattform</h3>
+                <p>
+                  Vi startet med å analysere caset rundt skoleinspeksjon i Edutopia og DHIS2 som
+                  nasjonal informasjonsplattform. Et sentralt fokus var å forstå eksisterende
+                  arbeidsflyter, datakvalitetsproblemer og begrensninger knyttet til infrastruktur,
+                  kompetanse og tilgang til internett.
+                </p>
+                <p>
+                  Spesielt viktig var rollen til skoleinspektørene, som både er datainnsamlere,
+                  veiledere og bindeledd mellom skoler og utdanningsmyndigheter.
+                </p>
+              </div>
+            </div>
+
+            <!-- STEG 2 -->
+            <div class="process-step has-media">
+              <div class="step-copy">
+                <h3>Valg av funksjonalitet</h3>
+                <p>
+                  Basert på kravene i oppgaven valgte vi å implementere
+                  <strong>School visit planner</strong> og
+                  <strong>School resource count</strong> som våre to tilleggskrav.
+                </p>
+                <p>
+                  Disse ble valgt fordi de støtter både planlegging før inspeksjon og bedre
+                  beslutningsgrunnlag under og etter skolebesøk, samtidig som de utnytter
+                  eksisterende data i DHIS2 fremfor å introdusere nye datasiloer.
+                </p>
+              </div>
+
+              <div class="step-media">
+                <div class="carousel phone-carousel" aria-label="School Inspection screens">
+                  <button class="car-btn car-prev" type="button" aria-label="Forrige">
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+
+                  <div class="carousel-viewport" tabindex="0">
+                    <figure class="slide">
+                      <div class="laptop-mock">
+                        <img src="images/in5320/inspectionstartpage.jpg" alt="Inspection start page" />
+                      </div>
+                    </figure>
+                    <figure class="slide" hidden>
+                      <div class="laptop-mock">
+                        <img src="images/in5320/map.jpg" alt="Map view of school priorities" />
+                      </div>
+                    </figure>
+                    <figure class="slide" hidden>
+                      <div class="laptop-mock">
+                        <img src="images/in5320/newinspection.jpg" alt="New inspection screen" />
+                      </div>
+                    </figure>
+                    <figure class="slide" hidden>
+                      <div class="laptop-mock">
+                        <img src="images/in5320/schoolpage.jpg" alt="School detail page" />
+                      </div>
+                    </figure>
+                  </div>
+
+                  <button class="car-btn car-next" type="button" aria-label="Neste bilde">
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+
+                  <div class="dots" role="tablist" aria-label="Screens in carousel">
+                    <button type="button" aria-label="Gå til skjerm 1"></button>
+                    <button type="button" aria-label="Gå til skjerm 2"></button>
+                    <button type="button" aria-label="Gå til skjerm 3"></button>
+                    <button type="button" aria-label="Gå til skjerm 4"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEG 3 -->
+            <div class="process-step">
+              <div class="step-copy">
+                <h3>Interaksjons- og informasjonsdesign</h3>
+                <p>
+                  Designet fokuserte på rask oversikt, gjenkjennelige mønstre og tydelige
+                  prioriteringer. Vi brukte tabeller, fargekoding og prosentvise endringer
+                  for å synliggjøre kritiske avvik i ressurser mellom inspeksjoner.
+                </p>
+                <p>
+                  Kartvisning ble brukt i planleggingsfasen for å støtte geografisk oversikt
+                  og prioritering av skoler med størst behov for oppfølging.
+                </p>
+              </div>
+            </div>
+
+            <!-- STEG 4 -->
+            <div class="process-step has-media">
+              <div class="step-copy">
+                <h3>Prototyping og tekniske avveininger</h3>
+                <p>
+                  Løsningen ble utviklet som en DHIS2 web-app med fokus på gjenbruk av
+                  eksisterende datamodeller, organisasjonsenheter og hendelsesprogrammer.
+                </p>
+                <p>
+                  Vi tok bevisste valg om å ikke implementere full offline-støtte, men
+                  designet grensesnittet slik at det gir verdi også ved begrenset eller
+                  ustabil nettverkstilgang.
+                </p>
+                <p>
+                  Fordi løsningen ble bygget ved hjelp av eksisterende DHIS2 UI-komponenter, var
+                  vi ikke avhengige av brukertesting basert på Figma. I stedet ble komponenter
+                  integrert direkte i kodebasen, og interaksjonsdesignbeslutninger ble evaluert
+                  gjennom iterativ testing i et DHIS2-appen.
+                </p>
+              </div>
+
+              <div class="step-media">
+                <img src="images/in5320/map-view.png" alt="Kartvisning av skoler med prioritet">
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RESULTAT -->
+          <h3>Resultat</h3>
+          <ul>
+            <li>En sammenhengende arbeidsflyt for planlegging, inspeksjon og oppfølging</li>
+            <li>Bedre oversikt over ressursendringer gjennom prosentvise sammenligninger</li>
+            <li>Støtte for mer informerte beslutninger basert på eksisterende DHIS2-data</li>
+          </ul>
+
+          <!-- LÆRING -->
+          <h3>Læring</h3>
+          <p>
+            Prosjektet ga innsikt i hvordan designbeslutninger formes av plattformbegrensninger,
+            eksisterende datastrukturer og organisatoriske realiteter. En viktig læring var
+            verdien av å designe for forbedret bruk av data – ikke bare mer datainnsamling.
+          </p>
+
         </div>
       </article>
 
