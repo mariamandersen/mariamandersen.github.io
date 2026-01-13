@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         links.forEach((l, i) => {
           const on = i === best;
           l.classList.toggle('active', on);
-          l.setAttribute('aria-current', on ? 'true' : 'false');
+          l.setAttribute('aria-current', on ? 'location' : 'false');
         });
       };
 
@@ -141,7 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
     activateRail();
     setupFadeIn();
     flagStepsWithMedia(); // ensure .has-media after language switch
-      initProjectPreviews(); // ensure previews are present/labels updated after language switch
+      // initProjectPreviews(); // ensure previews are present/labels updated after language switch
+      updatePreviewButtonLabels();
+
   }
 
   const savedLang = (() => { try { return localStorage.getItem('preferredLanguage'); } catch { return null; } })();
@@ -246,6 +248,10 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('resize', () => update());
     }
   }
+
+  // Initialize previews on load
+  initProjectPreviews();
+
   document.querySelectorAll('.carousel').forEach(initCarousel);
 
   /* ------------------------------
@@ -329,7 +335,6 @@ function initProjectPreviews(){
     // content nodes (paragraphs / small blocks) so the preview reads like
     // a short project summary. We'll stop when we've collected enough text
     // or hit a safe node-count limit.
-    txt.appendChild(document.createElement('div'));
     peek.appendChild(txt);
 
     // If there's a thumbnail, add it after the text so it appears on the
@@ -425,37 +430,38 @@ function initProjectPreviews(){
 }
 
   // Initialize previews on load
-initProjectPreviews();
+  initProjectPreviews();
 
   // Delegated handler: ensure clicks / keyboard activation on .read-more work
   // even if buttons were added later or individual listeners were missed.
   function toggleProjectByButton(btn){
-  if (!btn) return;
-  const proj = btn.closest('.project');
-  const bodyId = btn.getAttribute('aria-controls');
-  const body = bodyId ? document.getElementById(bodyId) : null;
-  if (!proj || !body) return;
+    if (!btn) return;
+    const proj = btn.closest('.project');
+    const bodyId = btn.getAttribute('aria-controls');
+    const body = bodyId ? document.getElementById(bodyId) : null;
+    if (!proj || !body) return;
 
-  const expanded = btn.getAttribute('aria-expanded') === 'true';
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
 
-  if (!expanded) {
-  body.style.transition = 'height 320ms ease';
-  body.hidden = false;
-  body.style.height = '0px';
+    if (!expanded) {
+    body.style.transition = 'height 320ms ease';
+    body.hidden = false;
+    body.style.height = '0px';
 
-  requestAnimationFrame(() => {
-    body.style.height = body.scrollHeight + 'px';
-  });
+    requestAnimationFrame(() => {
+      body.style.height = body.scrollHeight + 'px';
+    });
 
-  const onEnd = () => {
-    body.style.height = '';
-    body.removeEventListener('transitionend', onEnd);
-  };
-  body.addEventListener('transitionend', onEnd);
+    const onEnd = () => {
+      body.style.height = '';
+      body.removeEventListener('transitionend', onEnd);
+    };
+    body.addEventListener('transitionend', onEnd);
 
-  btn.setAttribute('aria-expanded', 'true');
-  proj.classList.add('expanded');
-} else {
+    btn.setAttribute('aria-expanded', 'true');
+    proj.classList.add('expanded');
+    window.dispatchEvent(new Event('resize'));
+  } else {
     const h = body.scrollHeight;
     body.style.height = h + 'px';
 
