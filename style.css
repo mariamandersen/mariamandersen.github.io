@@ -885,6 +885,8 @@ footer a{ color:var(--muted); }
   --shadow-lite: 0 8px 20px rgba(0,0,0,.10);
   --frame-gap: clamp(14px, 2.4vw, 26px);
   --card-radius: 18px;
+  --heading-brown: #3F2924; /* samme som bg / mørk brun */
+
 }
 
 /* Deaktivér mørk undertone */
@@ -1639,4 +1641,45 @@ html.has-io .fade-in{
   color: var(--accent-contrast) !important;
   font-weight:800; font-size:.9rem;
   box-shadow:0 6px 14px rgba(0,0,0,.18) !important;
+}
+
+/* ===========================
+   Project headings — dark brown
+=========================== */
+.project h2, .project h3, .project h4{
+  color: var(--heading-brown) !important;
+  letter-spacing: -0.01em;
+}
+
+/* ===========================
+   IN5510 – info boxes
+   ("Hva vi gjorde", "Hva vi lærte", osv.)
+=========================== */
+
+/* Treffer typisk struktur: h3 + p/ul rett etter */
+#proj-in5510-no h3 + p,
+#proj-in5510-en h3 + p,
+#proj-in5510-no h3 + ul,
+#proj-in5510-en h3 + ul{
+  background: color-mix(in oklab, var(--paper-2) 85%, white 15%) !important;
+  border-left: 3px solid var(--accent);
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0 1.5rem;
+  border-radius: 10px;
+  max-width: 65ch;
+}
+
+/* IN5510: tldr-bokser skal matche “card”-prosjektene */
+#proj-in5510-no .tldr,
+#proj-in5510-en .tldr{
+  background: color-mix(in oklab, var(--paper-2) 85%, white 15%) !important;
+  border-left-color: var(--accent) !important;
+  max-width: 60ch; /* matcher din eksisterende tldr */
+}
+
+#proj-in5510-no .tldr strong,
+#proj-in5510-en .tldr strong{
+  display:block;
+  letter-spacing:0.02em;
+  margin-bottom:0.25rem;
 }

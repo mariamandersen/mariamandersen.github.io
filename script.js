@@ -141,7 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
     activateRail();
     setupFadeIn();
     flagStepsWithMedia(); // ensure .has-media after language switch
+    flagIn5510Callouts();
     updatePreviewButtonLabels();
+    
 
   }
 
@@ -266,6 +268,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   flagStepsWithMedia();
 
+  function flagIn5510Callouts(){
+    const roots = document.querySelectorAll('#proj-in5510-no, #proj-in5510-en');
+    const keys = [
+      'hva vi gjorde',
+      'hva vi lærte',
+      'hva vi fant ut',
+      'utfordringer',
+      'refleksjon'
+    ];
+
+    roots.forEach(root => {
+      root.querySelectorAll('p').forEach(p => {
+        const strong = p.querySelector(':scope > strong');
+        if (!strong) return;
+
+        const t = strong.textContent.trim().toLowerCase();
+        if (keys.some(k => t.startsWith(k))) {
+          p.classList.add('tldr');
+        }
+      });
+    });
+  }
+
+
   function updatePreviewButtonLabels(){
     const lang = document.documentElement.getAttribute('lang') || 'no';
     document.querySelectorAll('.read-more').forEach(btn => {
@@ -293,7 +319,9 @@ function initProjectPreviews(){
     const scope = proj.querySelector('.project-inner') || proj;
 
     // Remove legacy TL;DR blocks if present — we will build a coherent peek
-    scope.querySelectorAll('.tldr').forEach(n => n.remove());
+    // Keep existing TL;DR blocks — they should appear in the preview, not be deleted
+    // (Some projects, like IN5510, use .tldr for "Hva vi gjorde / lærte" callouts)
+
 
     // Find the nodes we want to surface in the peek: heading, kicker and the
     // first paragraph (used as a short excerpt). Prefer direct children.
@@ -380,6 +408,9 @@ function initProjectPreviews(){
       // HARD STOP: aldri dra workshop/prosess-området inn i preview-peeken
       if (node.id && node.id.startsWith('proj-in5510')) break;
       if (node.querySelector && node.querySelector('.process')) break;
+      
+      // Stop preview before callout boxes (tldr)
+      if (node.classList && node.classList.contains('tldr')) break;
 
       // stop collecting if we hit a large structural section like .process (full timeline)
       if (node.classList && (node.classList.contains('process') || node.classList.contains('process--timeline'))) break;
@@ -429,6 +460,7 @@ function initProjectPreviews(){
 }
 
   // Initialize previews on load
+  flagIn5510Callouts();
   initProjectPreviews();
 
   document.querySelectorAll('.carousel').forEach(initCarousel);
