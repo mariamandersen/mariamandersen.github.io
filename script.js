@@ -141,8 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activateRail();
     setupFadeIn();
     flagStepsWithMedia(); // ensure .has-media after language switch
-      // initProjectPreviews(); // ensure previews are present/labels updated after language switch
-      updatePreviewButtonLabels();
+    updatePreviewButtonLabels();
 
   }
 
@@ -248,11 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('resize', () => update());
     }
   }
-
-  // Initialize previews on load
-  initProjectPreviews();
-
-  document.querySelectorAll('.carousel').forEach(initCarousel);
 
   /* ------------------------------
      Flag steps that have media (fallback for browsers w/o :has)
@@ -432,6 +426,8 @@ function initProjectPreviews(){
   // Initialize previews on load
   initProjectPreviews();
 
+  document.querySelectorAll('.carousel').forEach(initCarousel);
+
   // Delegated handler: ensure clicks / keyboard activation on .read-more work
   // even if buttons were added later or individual listeners were missed.
   function toggleProjectByButton(btn){
@@ -479,6 +475,7 @@ function initProjectPreviews(){
     body.addEventListener('transitionend', onEndClose);
     btn.setAttribute('aria-expanded', 'false');
     proj.classList.remove('expanded');
+    window.dispatchEvent(new Event('resize'));
   }
 }
 
