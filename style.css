@@ -256,7 +256,7 @@ main{ padding-block:10px 64px; }
   background:transparent; color:var(--accent); border:1px solid transparent; cursor:pointer;
   font-weight:600; font-size:0.95rem;
 }
-.project > .read-more{ /* ensure button sits as a footer control */
+.project .read-more{ /* ensure button sits as a footer control */
   display:flex; width:100%; justify-content:center; margin-top:1rem; padding-inline:0;
 }
 .read-more:hover, .read-more:focus-visible{
@@ -1387,8 +1387,8 @@ html.has-io .fade-in{
 }
 
 
-/* Footer-knappen nederst */
-.project > .read-more{
+/* Footer-knappen nederst - apply to any .read-more inside a .project */
+.project .read-more{
   display:flex;
   justify-content:center;
   width:100%;
