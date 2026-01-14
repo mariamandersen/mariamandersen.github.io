@@ -301,9 +301,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.read-more').forEach(btn => {
       const label = btn.querySelector('.read-more-label');
       if (!label) return;
-      label.textContent = (lang === 'en')
-        ? (btn.dataset.moreEn || 'Read more')
-        : (btn.dataset.moreNo || 'Les mer');
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        label.textContent = (lang === 'en') ? (btn.dataset.lessEn || 'Read less') : (btn.dataset.lessNo || 'Les mindre');
+      } else {
+        label.textContent = (lang === 'en') ? (btn.dataset.moreEn || 'Read more') : (btn.dataset.moreNo || 'Les mer');
+      }
     });
   }
 
@@ -447,8 +450,11 @@ function initProjectPreviews(){
     btn.type = 'button';
     btn.setAttribute('aria-expanded', 'false');
     btn.setAttribute('aria-controls', bodyId);
-    btn.dataset.moreEn = 'See more';
-    btn.dataset.moreNo = 'Les mer';
+  // default labels for collapsed/expanded state in both languages
+  btn.dataset.moreEn = 'Read more';
+  btn.dataset.moreNo = 'Les mer';
+  btn.dataset.lessEn = 'Read less';
+  btn.dataset.lessNo = 'Les mindre';
 
     const label = document.createElement('span');
     label.className = 'read-more-label';
@@ -496,6 +502,8 @@ function initProjectPreviews(){
     body.addEventListener('transitionend', onEnd);
 
     btn.setAttribute('aria-expanded', 'true');
+  // Update visible label to "less" when expanded
+  updatePreviewButtonLabels();
     proj.classList.add('expanded');
     window.dispatchEvent(new Event('resize'));
   } else {
@@ -514,7 +522,9 @@ function initProjectPreviews(){
     };
 
     body.addEventListener('transitionend', onEndClose);
-    btn.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('aria-expanded', 'false');
+  // Update visible label to "more" when collapsed
+  updatePreviewButtonLabels();
     proj.classList.remove('expanded');
     window.dispatchEvent(new Event('resize'));
   }
