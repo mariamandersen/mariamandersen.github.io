@@ -1325,6 +1325,12 @@ html.has-io .fade-in{
 
 .project.project--card .project-inner{
   padding: var(--card-pad);
+  /* Ensure the inner wrapper spans the full project grid so projects that
+     use a `.project-inner` wrapper (e.g., IN5320, IN5620) behave like the
+     others that place content directly under `.project`. This prevents the
+     inner wrapper from being constrained to the left column. */
+  width:100%;
+  grid-column: 1 / -1;
 }
 /* TL;DR rules removed */
 
