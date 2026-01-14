@@ -352,6 +352,10 @@ main{ padding-block:10px 64px; }
   .project{ grid-template-columns:1.2fr 1fr; align-items:start; }
   .project > *:not(.media):not(.carousel){ grid-column:1; }
   .project > .media, .project > .carousel{ grid-column:2; align-self:start; }
+  /* Also ensure media/carousel placed in the right column when nested inside
+     wrappers such as .project-inner or .step-media (some projects nest media).
+     This ensures carousels are visible on the right like other projects. */
+  .project .step-media, .project .media, .project .carousel { grid-column:2; align-self:start; }
 }
 
 /* Mock placeholders */
