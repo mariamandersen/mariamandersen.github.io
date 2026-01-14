@@ -1363,8 +1363,8 @@ html.has-io .fade-in{
   position:relative !important;
   z-index: 1000 !important; /* ensure body sits above other project children */
 }
-.project[data-has-preview="1"] > .read-more,
-.project.expanded[data-has-preview="1"] > .read-more{
+.project[data-has-preview="1"] .read-more,
+.project.expanded[data-has-preview="1"] .read-more{
   position:relative !important;
   z-index: 900 !important; /* button below the body */
 }
@@ -1449,7 +1449,7 @@ html.has-io .fade-in{
   position: relative !important;
   z-index: 5 !important;
 }
-.project[data-has-preview="1"] > .read-more{
+.project[data-has-preview="1"] .read-more{
   position: relative !important;
   z-index: 1 !important;
 }
