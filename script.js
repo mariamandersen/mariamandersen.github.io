@@ -268,6 +268,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   flagStepsWithMedia();
 
+  // Normalize project markup: ensure every project uses a single `.project-inner`
+  // wrapper so CSS padding is consistent. Some projects (IN5320, IN5620) already
+  // have `.project-inner`; others don't. Wrap direct children in `.project-inner`
+  // so the same padding rules apply site-wide.
+  function ensureProjectInner(){
+    document.querySelectorAll('.project.project--card').forEach(proj => {
+      if (proj.querySelector(':scope > .project-inner')) return;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'project-inner';
+      // Move all existing children into the wrapper
+      while (proj.firstChild) wrapper.appendChild(proj.firstChild);
+      proj.appendChild(wrapper);
+    });
+  }
+
+  ensureProjectInner();
+
   function flagIn5510Callouts(){
     const roots = document.querySelectorAll('#proj-in5510-no, #proj-in5510-en');
     const keys = [

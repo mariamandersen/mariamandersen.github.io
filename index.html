@@ -658,6 +658,59 @@
           </div>
 
           <!-- RESULTAT -->
+          <!-- CHATBOT: OpenAI API -->
+          <h3>Chatbotimplementasjon (OpenAI)</h3>
+          <p>
+            Som en videreføring av ChatVGS-planen valgte jeg å bygge en prototype som
+            snakker direkte mot OpenAI sitt API istedenfor å bruke en tredjeparts UI-tjeneste.
+            Dette ga oss kontroll over meldingstrøm, sikkerhetsfiltre og hvilke modeller som
+            brukes for ulike oppgaver (forklare, veilede, eller stille sokratiske spørsmål).
+            Prototypen inkluderer prompt-engineering, kontekstbevaring per elevøkt og
+            enkle verktøy for å detektere og håndtere forespørsler om ferdige besvarelser.
+          </p>
+
+          <div class="process-step has-media">
+            <div class="step-copy">
+              <h4>Prototype: OpenAI-integrasjon</h4>
+              <p>
+                Jeg implementerte en liten server-side wrapper som snakker med OpenAI (Chat
+                Completions / Responses API) og håndterer rate-limiting, logging og sikker
+                system-prompt. På klienten viser vi samtalen og la til en knapp for å be om
+                forklaringer på flere nivåer.
+              </p>
+            </div>
+
+            <div class="step-media">
+              <div class="carousel phone-carousel" aria-label="ChatVGS prototype screens">
+                <button class="car-btn car-prev" type="button" aria-label="Forrige">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+
+                <div class="carousel-viewport" tabindex="0">
+                  <figure class="slide">
+                    <img src="images/in5620/chatbot-1.png" alt="ChatVGS prototype: conversation view">
+                  </figure>
+                  <figure class="slide" hidden>
+                    <img src="images/in5620/chatbot-2.png" alt="ChatVGS prototype: prompt controls">
+                  </figure>
+                  <figure class="slide" hidden>
+                    <img src="images/in5620/chatbot-3.png" alt="ChatVGS prototype: explanation levels">
+                  </figure>
+                </div>
+
+                <button class="car-btn car-next" type="button" aria-label="Neste bilde">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+
+                <div class="dots" role="tablist" aria-label="Chat prototype screens">
+                  <button type="button" aria-label="Gå til skjerm 1"></button>
+                  <button type="button" aria-label="Gå til skjerm 2"></button>
+                  <button type="button" aria-label="Gå til skjerm 3"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <h3>Resultat</h3>
           <ul>
             <li>En sammenhengende arbeidsflyt for planlegging, inspeksjon og oppfølging</li>
@@ -1502,7 +1555,57 @@
         <p class="kicker">IN5620 • University of Oslo • 2025</p>
         <p>Short overview. Case content and process will be added here when available.</p>
         <section class="process process--timeline" aria-label="IN5620 – design process">
-          <!-- Placeholder -->
+          <!-- Prototype: OpenAI chatbot -->
+          <h3>Building the Chatbot with OpenAI</h3>
+          <p>
+            As a follow-up to the ChatVGS concept, I implemented a prototype that integrates
+            directly with the OpenAI API rather than relying on a third-party UI. This allowed
+            fine-grained control over prompts, session context per student, and safety filters.
+            The server-side wrapper handles rate limiting, request logging and a system-level
+            prompt that guides the assistant to behave as an ethical learning coach.
+          </p>
+
+          <div class="process-step has-media">
+            <div class="step-copy">
+              <h4>Prototype: OpenAI integration</h4>
+              <p>
+                The prototype includes client-side conversation UI and controls for asking for
+                explanations at different depths. On the backend we swap models and adjust
+                system prompts depending on the requested behavior (explain, quiz, or guide).
+              </p>
+            </div>
+
+            <div class="step-media">
+              <div class="carousel phone-carousel" aria-label="ChatVGS prototype screens">
+                <button class="car-btn car-prev" type="button" aria-label="Previous">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+
+                <div class="carousel-viewport" tabindex="0">
+                  <figure class="slide">
+                    <img src="images/in5620/chatbot-1.png" alt="ChatVGS conversation view">
+                  </figure>
+                  <figure class="slide" hidden>
+                    <img src="images/in5620/chatbot-2.png" alt="ChatVGS prompt controls">
+                  </figure>
+                  <figure class="slide" hidden>
+                    <img src="images/in5620/chatbot-3.png" alt="ChatVGS explanation levels">
+                  </figure>
+                </div>
+
+                <button class="car-btn car-next" type="button" aria-label="Next">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+
+                <div class="dots" role="tablist" aria-label="Chat prototype screens">
+                  <button type="button" aria-label="Go to screen 1"></button>
+                  <button type="button" aria-label="Go to screen 2"></button>
+                  <button type="button" aria-label="Go to screen 3"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </section>
       </article>
 
