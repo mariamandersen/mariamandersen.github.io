@@ -462,6 +462,14 @@ function initProjectPreviews(){
 
     scope.appendChild(btn);
 
+    // Attach direct listeners to ensure the button toggles reliably
+    btn.addEventListener('click', (e) => { e.preventDefault(); toggleProjectByButton(btn); });
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault(); toggleProjectByButton(btn);
+      }
+    });
+
     proj.dataset.previewInit = '1';
     proj.dataset.hasPreview = '1';
   });
