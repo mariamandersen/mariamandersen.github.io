@@ -517,6 +517,33 @@ figcaption{ margin-top:6px; color:var(--muted); font-size:.95rem; }
   font-weight:800; font-size:.9rem; letter-spacing:.02em; box-shadow:0 6px 16px rgba(0,0,0,.3);
 }
 
+/* Remove the dark 'card' timeline skin for IN5620 and IN5320 projects so their
+   process steps match the section background (no brown card). This overrides the
+   global timeline skin above for these specific project IDs. */
+#proj-in5620-no .process.process--timeline .process-step,
+#proj-in5620-en .process.process--timeline .process-step,
+#proj-in5320-no .process.process--timeline .process-step,
+#proj-in5320-en .process.process--timeline .process-step{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* Remove the timeline bar and numeric counter for these projects */
+#proj-in5620-no .process.process--timeline .process-step::after,
+#proj-in5620-en .process.process--timeline .process-step::after,
+#proj-in5320-no .process.process--timeline .process-step::after,
+#proj-in5320-en .process.process--timeline .process-step::after{
+  content: none !important;
+}
+#proj-in5620-no .process.process--timeline .process-step::before,
+#proj-in5620-en .process.process--timeline .process-step::before,
+#proj-in5320-no .process.process--timeline .process-step::before,
+#proj-in5320-en .process.process--timeline .process-step::before{
+  content: none !important;
+}
+
 /* Two-column: text on the LEFT, media on the RIGHT (match medball/rocket) */
 @supports selector(:has(*)){
   @media (min-width:980px){
