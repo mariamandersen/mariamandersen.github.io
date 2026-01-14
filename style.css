@@ -349,48 +349,9 @@ main{ padding-block:10px 64px; }
 /* Desktop default: text left, visuals right */
 .project{ gap:clamp(14px,3vw,40px); }
 @media (min-width:980px){
-  /* Use two equal columns so preview text and media each take 50% width */
-  .project{ grid-template-columns:1fr 1fr; align-items:start; }
-  /* Default: put direct children (copy) into the left column, media into the right */
+  .project{ grid-template-columns:1.2fr 1fr; align-items:start; }
   .project > *:not(.media):not(.carousel){ grid-column:1; }
   .project > .media, .project > .carousel{ grid-column:2; align-self:start; }
-  /* Also ensure media/carousel placed in the right column when nested inside
-     wrappers such as .project-inner or .step-media (some projects nest media).
-     This ensures carousels are visible on the right like other projects. */
-  .project .step-media, .project .media, .project .carousel { grid-column:2; align-self:start; }
-
-  /* When content is wrapped (for example JS builds a .project-inner or .project-peek),
-     make that wrapper a two-column grid so text appears left and media appears right. */
-  .project .project-inner,
-  .project .project-peek {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(12px, 2.5vw, 28px);
-    align-items: center; /* vertically center media within the row */
-    width: 100%;
-  }
-
-  /* Map common inner regions to the appropriate columns */
-  .project .peek-text,
-  .project .peek-copy,
-  .project .project-inner > .copy { grid-column: 1; }
-
-  .project .peek-media,
-  .project .project-inner .media,
-  .project .project-inner .carousel,
-  .project .project-inner .step-media { grid-column: 2; justify-self: center; }
-
-  /* Ensure the carousel fills the right column and is capped to a sane media width */
-  .project .peek-media, .project .project-inner .step-media { display:flex; align-items:center; justify-content:center; }
-  .project .peek-media .carousel,
-  .project .project-inner .carousel { width:100%; max-width:var(--media-w); }
-}
-
-/* Responsive fallback: stack preview columns on smaller viewports */
-@media (max-width:979.98px){
-  .project .project-inner, .project .project-peek { grid-template-columns: 1fr; }
-  /* keep media after the text when stacked */
-  .project .peek-media { order: 2; }
 }
 
 /* Mock placeholders */
