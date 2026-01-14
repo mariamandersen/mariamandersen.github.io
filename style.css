@@ -1428,11 +1428,13 @@ html.has-io .fade-in{
    (paste at very bottom)
 =========================== */
 
-/* Let JS own the height animation */
 .project .project-body{
+  /* Let JS own the height animation. Keep overflow hidden but do not
+     force height/transition with !important; JS needs to set inline
+     height and transition so collapses/expands animate correctly. */
   overflow: hidden !important;
-  height: auto !important;        /* no hard 0 */
-  transition: none !important;    /* JS sets transition inline when opening/closing */
+  height: auto;        /* JS will set explicit inline heights when toggling */
+  transition: none;    /* JS will set transition inline when opening/closing */
 }
 .project .project-body[hidden]{
   display: none !important;
