@@ -540,6 +540,9 @@ function initProjectPreviews(){
 
 
   document.addEventListener('click', (e) => {
+    // If a local handler already called preventDefault() we should not run the
+    // delegated handler (avoids double-toggle when buttons have their own listeners).
+    if (e.defaultPrevented) return;
     const btn = e.target.closest && e.target.closest('.read-more');
     if (!btn) return;
     e.preventDefault();
@@ -548,6 +551,7 @@ function initProjectPreviews(){
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Enter' && e.key !== ' ') return;
+    if (e.defaultPrevented) return;
     const btn = e.target.closest && e.target.closest('.read-more');
     if (!btn) return;
     e.preventDefault();
