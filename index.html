@@ -511,6 +511,64 @@
             fungerer som et forslag til hvordan KI kan integreres i skolen på en mer
             ansvarlig og pedagogisk måte.
           </p>
+
+                    <!-- RESULTAT -->
+          <!-- CHATBOT: OpenAI API -->
+          <h3>Chatbotimplementasjon (OpenAI)</h3>
+          <p>
+            Som en videreføring av ChatVGS-planen valgte jeg å bygge en prototype som
+            snakker direkte mot OpenAI sitt API istedenfor å bruke en tredjeparts UI-tjeneste.
+            Dette ga oss kontroll over meldingstrøm, sikkerhetsfiltre og hvilke modeller som
+            brukes for ulike oppgaver (forklare, veilede, eller stille sokratiske spørsmål).
+            Prototypen inkluderer prompt-engineering, kontekstbevaring per elevøkt og
+            enkle verktøy for å detektere og håndtere forespørsler om ferdige besvarelser.
+          </p>
+
+          <div class="process-step has-media">
+            <div class="step-copy">
+              <h4>Prototype: OpenAI-integrasjon</h4>
+              <p>
+                Jeg implementerte en liten server-side wrapper som snakker med OpenAI (Chat
+                Completions / Responses API) og håndterer rate-limiting, logging og sikker
+                system-prompt. På klienten viser vi samtalen og la til en knapp for å be om
+                forklaringer på flere nivåer.
+              </p>
+            </div>
+
+            <div class="step-media">
+              <div class="carousel phone-carousel" aria-label="ChatVGS prototype screens">
+                <button class="car-btn car-prev" type="button" aria-label="Forrige">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+
+                <div class="carousel-viewport" tabindex="0">
+                  <figure class="slide">
+                    <img src="images/in5620/startpage.png" alt="ChatVGS start page">
+                  </figure>
+                  <figure class="slide" hidden>
+                    <img src="images/in5620/naturfag.png" alt="ChatVGS naturfag example">
+                  </figure>
+                  <figure class="slide" hidden>
+                    <img src="images/in5620/analyse.png" alt="ChatVGS analysis view">
+                  </figure>
+                  <figure class="slide" hidden>
+                    <img src="images/in5620/skrivtekst.png" alt="ChatVGS write text example">
+                  </figure>
+                </div>
+
+                <button class="car-btn car-next" type="button" aria-label="Neste bilde">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+
+                <div class="dots" role="tablist" aria-label="Chat prototype screens">
+                  <button type="button" aria-label="Gå til skjerm 1"></button>
+                  <button type="button" aria-label="Gå til skjerm 2"></button>
+                  <button type="button" aria-label="Gå til skjerm 3"></button>
+                  <button type="button" aria-label="Gå til skjerm 4"></button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </article>
 
@@ -655,64 +713,6 @@
               </div>
             </div>
 
-          </div>
-
-          <!-- RESULTAT -->
-          <!-- CHATBOT: OpenAI API -->
-          <h3>Chatbotimplementasjon (OpenAI)</h3>
-          <p>
-            Som en videreføring av ChatVGS-planen valgte jeg å bygge en prototype som
-            snakker direkte mot OpenAI sitt API istedenfor å bruke en tredjeparts UI-tjeneste.
-            Dette ga oss kontroll over meldingstrøm, sikkerhetsfiltre og hvilke modeller som
-            brukes for ulike oppgaver (forklare, veilede, eller stille sokratiske spørsmål).
-            Prototypen inkluderer prompt-engineering, kontekstbevaring per elevøkt og
-            enkle verktøy for å detektere og håndtere forespørsler om ferdige besvarelser.
-          </p>
-
-          <div class="process-step has-media">
-            <div class="step-copy">
-              <h4>Prototype: OpenAI-integrasjon</h4>
-              <p>
-                Jeg implementerte en liten server-side wrapper som snakker med OpenAI (Chat
-                Completions / Responses API) og håndterer rate-limiting, logging og sikker
-                system-prompt. På klienten viser vi samtalen og la til en knapp for å be om
-                forklaringer på flere nivåer.
-              </p>
-            </div>
-
-            <div class="step-media">
-              <div class="carousel phone-carousel" aria-label="ChatVGS prototype screens">
-                <button class="car-btn car-prev" type="button" aria-label="Forrige">
-                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                </button>
-
-                <div class="carousel-viewport" tabindex="0">
-                  <figure class="slide">
-                    <img src="images/in5620/startpage.png" alt="ChatVGS start page">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5620/naturfag.png" alt="ChatVGS naturfag example">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5620/analyse.png" alt="ChatVGS analysis view">
-                  </figure>
-                  <figure class="slide" hidden>
-                    <img src="images/in5620/skrivtekst.png" alt="ChatVGS write text example">
-                  </figure>
-                </div>
-
-                <button class="car-btn car-next" type="button" aria-label="Neste bilde">
-                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                </button>
-
-                <div class="dots" role="tablist" aria-label="Chat prototype screens">
-                  <button type="button" aria-label="Gå til skjerm 1"></button>
-                  <button type="button" aria-label="Gå til skjerm 2"></button>
-                  <button type="button" aria-label="Gå til skjerm 3"></button>
-                  <button type="button" aria-label="Gå til skjerm 4"></button>
-                </div>
-              </div>
-            </div>
           </div>
 
           <h3>Resultat</h3>
