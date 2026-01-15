@@ -75,9 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const onScroll = () => requestUpdate();
       const onResize = () => requestUpdate();
 
-      window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', onResize);
-
+      window.addEventListener('orientationchange', onResize);
 
       railCleanups.push(() => {
         io.disconnect();
@@ -310,7 +309,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     roots.forEach(root => {
       root.querySelectorAll('p').forEach(p => {
-        const strong = p.querySelector(':scope > strong');
+        const strong = p.firstElementChild && p.firstElementChild.tagName === 'STRONG'? p.firstElementChild : null;
+
         if (!strong) return;
 
         const t = strong.textContent.trim().toLowerCase();
@@ -380,7 +380,7 @@ function initProjectPreviews(){
       scope.querySelector('p');
 
     // Candidate thumbnail (if any) — avoid accidentally grabbing site hero images
-    let imgEl = proj.querySelector('.step-media img, .carousel-viewport img, :scope img');
+    let imgEl = proj.querySelector('.step-media img, .carousel-viewport img') || proj.querySelector('img');
     if (imgEl && imgEl.closest('header')) imgEl = null;
 
     // Build peek element
@@ -505,14 +505,6 @@ function initProjectPreviews(){
     btn.appendChild(label);
 
     scope.appendChild(btn);
-
-    // Attach direct listeners to ensure the button toggles reliably
-    btn.addEventListener('click', (e) => { e.preventDefault(); toggleProjectByButton(btn); });
-    btn.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault(); toggleProjectByButton(btn);
-      }
-    });
 
     proj.dataset.previewInit = '1';
     proj.dataset.hasPreview = '1';
