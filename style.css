@@ -1792,3 +1792,15 @@ html.has-io .fade-in{
 =========================== */
 
 /* IN5510 specific highlight blocks removed so paragraphs follow project styling */
+
+.step-media img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+
+  /* viktig del */
+  max-height: 520px;
+  object-fit: contain;
+
+  margin: 1.5rem auto;
+}
