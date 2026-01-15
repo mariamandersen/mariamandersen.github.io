@@ -9,87 +9,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const langEls = document.querySelectorAll('[data-lang]');
 
   /* ------------------------------
-     DOT-RAIL
-  --------------------------------*/
-  let railCleanups = [];
-  function activateRail() {
-    railCleanups.forEach(fn => fn());
-    railCleanups = [];
+   DOT-RAIL (per language, rebind on switch)
+--------------------------------*/
+let railIO = null;
 
-    const rails = Array.from(document.querySelectorAll('.rail')).filter(rail => !rail.hidden && !rail.closest('[hidden]'));
-    
-    rails.forEach(rail => {
-      const links = Array.from(rail.querySelectorAll('a'));
-      const ids = links.map(a => a.getAttribute('href')).map(h => h && h.slice(1));
-      const sections = ids.map(id => document.getElementById(id)).filter(sec => sec && !sec.closest('[hidden]'));
-      if (!sections.length) return;
+function activateRail(lang) {
+  if (railIO) { railIO.disconnect(); railIO = null; }
 
-      const onClick = (e) => {
-        const a = e.currentTarget;
-        const id = a.getAttribute('href').slice(1);
-        const target = document.getElementById(id);
-        if (!target) return;
+  const rail = document.querySelector(`nav.rail[data-lang="${lang}"]`);
+  if (!rail) return;
 
-        e.preventDefault();
-        links.forEach(l => {
-          const on = (l === a);
-          l.classList.toggle('active', on);
-          l.setAttribute('aria-current', on ? 'location' : 'false');
-        });
-        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      };
-      links.forEach(a => a.addEventListener('click', onClick));
+  const links = Array.from(rail.querySelectorAll('a[href^="#"]'));
+  const linkById = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
 
-      const setActiveByCenter = () => {
-        let best = 0, bestDist = Infinity;
-        const mid = window.innerHeight / 2;
-        sections.forEach((sec, i) => {
-          const r = sec.getBoundingClientRect();
-          const secMid = r.top + r.height / 2;
-          const d = Math.abs(secMid - mid);
-          if (d < bestDist) { bestDist = d; best = i; }
-        });
-        links.forEach((l, i) => {
-          const on = i === best;
-          l.classList.toggle('active', on);
-          l.setAttribute('aria-current', on ? 'location' : 'false');
-        });
-      };
+  // Only observe sections that exist AND are visible (not inside hidden content)
+  const sectionEls = links
+    .map(a => document.getElementById(a.getAttribute('href').slice(1)))
+    .filter(el => el && !el.closest('[hidden]'));
 
-      const io = new IntersectionObserver(setActiveByCenter, {
-        root: null, threshold: 0, rootMargin: '-45% 0px -55% 0px'
-      });
-      sections.forEach(s => io.observe(s));
-      setActiveByCenter();
+  // Clear previous state
+  links.forEach(a => a.removeAttribute('aria-current'));
 
-      let ticking = false;
-      const requestUpdate = () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-          ticking = false;
-          setActiveByCenter();
-        });
-      };
+  railIO = new IntersectionObserver((entries) => {
+    const best = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-      const onScroll = () => requestUpdate();
-      const onResize = () => requestUpdate();
+    if (!best) return;
 
-      window.addEventListener('resize', onResize);
-      window.addEventListener('orientationchange', onResize);
+    const id = best.target.id;
+    links.forEach(a => a.removeAttribute('aria-current'));
+    const active = linkById.get(id);
+    if (active) active.setAttribute('aria-current', 'location');
+  }, {
+    root: null,
+    rootMargin: "-20% 0px -60% 0px",
+    threshold: [0.15, 0.3, 0.5, 0.7],
+  });
 
-      railCleanups.push(() => {
-        io.disconnect();
-        window.removeEventListener('scroll', onScroll);
-        window.removeEventListener('resize', onResize);
-        links.forEach(a => {
-          a.removeEventListener('click', onClick);
-          a.classList.remove('active');
-          a.setAttribute('aria-current', 'false');
-        });
-      });
-    });
-  }
+  sectionEls.forEach(el => railIO.observe(el));
+}
+
 
   /* ------------------------------
      Fade-in via IO (no fade out)
@@ -146,11 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (noContent) noContent.hidden = isEn;
     if (enContent) enContent.hidden = !isEn;
     langEls.forEach(el => { el.hidden = el.dataset.lang !== lang; });
-    document.documentElement.setAttribute('lang', isEn ? 'en' : 'nb');
+    document.documentElement.setAttribute('lang', isEn ? 'en' : 'no');
     setPressed(isEn);
-    try { localStorage.setItem('preferredLanguage', isEn ? 'en' : 'nb'); } catch {}
+    try { localStorage.setItem('preferredLanguage', isEn ? 'en' : 'no'); } catch {}
 
-    activateRail();
+    activateRail(lang);
     setupFadeIn();
     flagStepsWithMedia(); // ensure .has-media after language switch
     flagIn5510Callouts();
@@ -160,9 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const savedLang = (() => { try { return localStorage.getItem('preferredLanguage'); } catch { return null; } })();
-  setLanguage(savedLang === 'en' ? 'en' : 'nb');
+  setLanguage(savedLang === 'en' ? 'en' : 'no');
   if (btnEn) btnEn.addEventListener('click', () => setLanguage('en'));
-  if (btnNo) btnNo.addEventListener('click', () => setLanguage('nb'));
+  if (btnNo) btnNo.addEventListener('click', () => setLanguage('no'));
 
   /* ------------------------------
      Mobile menu
@@ -327,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   function updatePreviewButtonLabels(){
-    const lang = document.documentElement.getAttribute('lang') || 'nb';
+    const lang = document.documentElement.getAttribute('lang') || 'no';
     document.querySelectorAll('.read-more').forEach(btn => {
       const label = btn.querySelector('.read-more-label');
       if (!label) return;
