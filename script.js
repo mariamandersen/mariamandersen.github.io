@@ -135,9 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (noContent) noContent.hidden = isEn;
     if (enContent) enContent.hidden = !isEn;
     langEls.forEach(el => { el.hidden = el.dataset.lang !== lang; });
-    document.documentElement.setAttribute('lang', isEn ? 'en' : 'no');
+    document.documentElement.setAttribute('lang', isEn ? 'en' : 'nb');
     setPressed(isEn);
-    try { localStorage.setItem('preferredLanguage', isEn ? 'en' : 'no'); } catch {}
+    try { localStorage.setItem('preferredLanguage', isEn ? 'en' : 'nb'); } catch {}
 
     activateRail();
     setupFadeIn();
@@ -149,9 +149,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const savedLang = (() => { try { return localStorage.getItem('preferredLanguage'); } catch { return null; } })();
-  setLanguage(savedLang === 'en' ? 'en' : 'no');
+  setLanguage(savedLang === 'en' ? 'en' : 'nb');
   if (btnEn) btnEn.addEventListener('click', () => setLanguage('en'));
-  if (btnNo) btnNo.addEventListener('click', () => setLanguage('no'));
+  if (btnNo) btnNo.addEventListener('click', () => setLanguage('nb'));
 
   /* ------------------------------
      Mobile menu
@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   function updatePreviewButtonLabels(){
-    const lang = document.documentElement.getAttribute('lang') || 'no';
+    const lang = document.documentElement.getAttribute('lang') || 'nb';
     document.querySelectorAll('.read-more').forEach(btn => {
       const label = btn.querySelector('.read-more-label');
       if (!label) return;
