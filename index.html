@@ -480,13 +480,68 @@
             presis problemstilling og utviklet et konsept som svar på funnene våre.
           </p>
 
-          <p><strong>Hva vi gjorde</strong><br>
-            I discover-fasen gjennomførte vi flere semistrukturerte intervjuer med
-            videregåendeelever, samt planla og utformet spørreundersøkelser for å samle bredere
-            innsikt. Funnene ble analysert ved hjelp av affinity-diagrammer. Basert på disse
-            innsiktene utviklet vi et konsept for en etisk læringsstøttende chatbot,
-            <em>ChatVGS</em>, og spesifiserte funksjonalitet gjennom scenarier og prototyping.
+          <h3>Brukerinnsikt og analyse</h3>
+          <p>
+            <p><strong>Hva vi gjorde</strong><br>
+            For å forstå hvordan elever faktisk bruker KI i skolehverdagen, gjennomførte vi
+            semistrukturerte intervjuer med videregåendeelever. Intervjuene fokuserte på
+            <strong>bruksmønstre, usikkerhet rundt akademisk integritet og elevenes egne refleksjoner
+            rundt læring</strong>.
           </p>
+          <p>
+            Intervjudataene ble analysert ved hjelp av tematisk koding og affinity-diagrammer.
+            Dette gjorde det mulig å identifisere tydelige mønstre i hvordan KI brukes som
+            støtteverktøy – og hvor dagens praksis skaper usikkerhet og etiske gråsoner.
+          </p>
+
+          <div class="process process--timeline">
+            <section class="process-step has-media">
+              <div class="step-copy">
+                <h3>Analyse av intervjuer</h3>
+                <p><strong>Hva vi gjorde:</strong> Kodet intervjudata og grupperte utsagn i temaer som
+                  bruk i ulike fag, opplevd læringseffekt, frykt for juks og mangel på retningslinjer.</p>
+
+                <p><strong>Hva vi fant:</strong> Elever bruker KI aktivt til forklaringer, strukturering
+                  og oversettelser, men er usikre på hva som regnes som “lov” bruk. Mange opplever
+                  motstridende signaler fra lærere.</p>
+
+                <p><strong>Hva vi lærte:</strong> Mangelen på felles forståelse rundt KI skaper stress og
+                  usikkerhet hos elevene, og bidrar til skjult eller ureflektert bruk.</p>
+              </div>
+
+              <div class="step-media">
+                <div class="carousel phone-carousel" aria-label="Analyse av intervjuer">
+                  <button class="car-btn car-prev" type="button" aria-label="Forrige">
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </button>
+
+                  <div class="carousel-viewport" tabindex="0">
+                    <figure class="slide">
+                      <img src="images/in5620/Analyse1.png"
+                          alt="Affinity-diagram fra intervju 1">
+                    </figure>
+
+                    <figure class="slide" hidden>
+                      <img src="images/in5620/Analyse2.png"
+                          alt="Affinity-diagram fra intervju 2">
+                    </figure>
+                  </div>
+
+                  <button class="car-btn car-next" type="button" aria-label="Neste">
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </button>
+
+                  <div class="dots" role="tablist">
+                    <button type="button" aria-label="Bilde 1"></button>
+                    <button type="button" aria-label="Bilde 2"></button>
+                  </div>
+                </div>
+              </div>
+            </section>
 
           <p><strong>Hva vi fant ut</strong><br>
             Elever bruker KI i mange fag, særlig til forklaringer, strukturering av tekst,
@@ -501,6 +556,34 @@
             viktig det er å designe KI-systemer som aktivt motvirker passiv læring og
             tekstgenerering, og heller fungerer som veiledere.
           </p>
+
+          <section class="process-step has-media">
+            <div class="step-copy">
+              <h3>Fra innsikt til funksjonalitet</h3>
+
+              <p><strong>Hva vi gjorde:</strong> Basert på funnene fra intervjuene utviklet vi
+                funksjonsforslag som kunne støtte læring uten å erstatte elevens egen innsats.</p>
+
+              <p><strong>Designprinsipp:</strong> KI skal fungere som
+                <em>læringspartner og veileder</em> – ikke som fasitmaskin.</p>
+
+              <p><strong>Eksempler på foreslått funksjonalitet:</strong></p>
+              <ul>
+                <li>Trinnvise forklaringer tilpasset elevens nivå</li>
+                <li>Forslag til forbedring uten å skrive ferdig tekst</li>
+                <li>Tydelig markering av hva som er elevens eget arbeid</li>
+                <li>Påminnelser om kildekritikk og faktasjekk</li>
+              </ul>
+            </div>
+
+            <div class="step-media">
+              <img src="images/in5620/ForslagTilFunksjoner.png"
+                  alt="Oversikt over foreslåtte funksjoner basert på intervjuanalyse">
+            </div>
+          </section>
+
+        </div>
+
 
           <h3>Resultat</h3>
           <p>
@@ -528,8 +611,7 @@
             <div class="step-copy">
               <h4>Prototype: OpenAI-integrasjon</h4>
               <p>
-                Jeg implementerte en liten server-side wrapper som snakker med OpenAI (Chat
-                Completions / Responses API) og håndterer rate-limiting, logging og sikker
+                Jeg implementerte en liten server-side wrapper som snakker med OpenAI API og håndterer rate-limiting, logging og sikker
                 system-prompt. På klienten viser vi samtalen og la til en knapp for å be om
                 forklaringer på flere nivåer.
               </p>
