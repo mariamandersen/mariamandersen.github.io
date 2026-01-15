@@ -63,6 +63,25 @@ function activateRail(lang) {
   });
 
   sectionEls.forEach(el => railIO.observe(el));
+  requestAnimationFrame(setActiveInitial);
+
+  function setActiveInitial() {
+    const best = sectionEls
+      .map(el => {
+        const r = el.getBoundingClientRect();
+        const visible = Math.max(0, Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0));
+        const ratio = visible / Math.max(1, r.height);
+        return { el, ratio };
+      })
+      .sort((a, b) => b.ratio - a.ratio)[0];
+
+    if (!best || best.ratio <= 0) return;
+
+    links.forEach(a => a.removeAttribute('aria-current'));
+    const active = linkById.get(best.el.id);
+    if (active) active.setAttribute('aria-current', 'location');
+  }
+
 
     // Force an initial update (IO might not fire immediately)
   requestAnimationFrame(() => {
