@@ -327,9 +327,9 @@
                   <p id="car-in5510-w2-status" class="sr-only" aria-live="polite"></p>
 
                   <div class="dots" aria-label="Bilder i karusell">
-                    <button type="button" aria-label="Gå til bilde 1 av 3"></button>
-                    <button type="button" aria-label="Gå til bilde 2 av 3"></button>
-                    <button type="button" aria-label="Gå til bilde 3 av 3"></button>
+                    <button type="button" aria-label="Bilde 1 av 3" aria-current="true"></button>
+                    <button type="button" aria-label="Bilde 2 av 3"></button>
+                    <button type="button" aria-label="Bilde 3 av 3"></button>
                   </div>
                 </div>
                 <figcaption>Workshop 2 – testing og refleksjon</figcaption>
@@ -385,13 +385,13 @@
                   <p id="car-in5510-w3-status" class="sr-only" aria-live="polite"></p>
 
                   <div class="dots" aria-label="Velg bilde">
-                    <button type="button" aria-label="Gå til bilde 1"></button>
-                    <button type="button" aria-label="Gå til bilde 2"></button>
-                    <button type="button" aria-label="Gå til bilde 3"></button>
-                    <button type="button" aria-label="Gå til bilde 4"></button>
-                    <button type="button" aria-label="Gå til bilde 5"></button>
-                    <button type="button" aria-label="Gå til bilde 6"></button>
-                    <button type="button" aria-label="Gå til bilde 7"></button>
+                    <button type="button" aria-label="Bilde 1 av 7" aria-current="true"></button>
+                    <button type="button" aria-label="Bilde 2 av 7"></button>
+                    <button type="button" aria-label="Bilde 3 av 7"></button>
+                    <button type="button" aria-label="Bilde 4 av 7"></button>
+                    <button type="button" aria-label="Bilde 5 av 7"></button>
+                    <button type="button" aria-label="Bilde 6 av 7"></button>
+                    <button type="button" aria-label="Bilde 7 av 7"></button>
                   </div>
                 </div>
                 <figcaption>Workshop 3 – aktiviteter og notater</figcaption>
@@ -438,10 +438,10 @@
                   <p id="car-in5510-w4-status" class="sr-only" aria-live="polite"></p>
 
                   <div class="dots" aria-label="Bilder i karusell">
-                    <button type="button" aria-label="Gå til bilde 1"></button>
-                    <button type="button" aria-label="Gå til bilde 2"></button>
-                    <button type="button" aria-label="Gå til bilde 3"></button>
-                    <button type="button" aria-label="Gå til bilde 4"></button>
+                    <button type="button" aria-label="Bilde 1 av 4" aria-current="true"></button>
+                    <button type="button" aria-label="Bilde 2 av 4"></button>
+                    <button type="button" aria-label="Bilde 3 av 4"></button>
+                    <button type="button" aria-label="Bilde 4 av 4"></button>
                   </div>
                 </div>
                 <figcaption>Workshop 4 – planer og oppsummering</figcaption>
@@ -517,14 +517,14 @@
               </div>
 
               <div class="step-media">
-                <div class="carousel phone-carousel" aria-label="Analyse av intervjuer">
+                <div class="carousel phone-carousel" id="car-in5620-analyse" aria-label="Analyse av intervjuer">
                   <button class="car-btn car-prev" type="button" aria-label="Forrige">
                     <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2"/>
                     </svg>
                   </button>
 
-                  <div class="carousel-viewport" tabindex="0">
+                  <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-in5620-analyse-status">
                     <figure class="slide">
                       <img src="images/in5620/Analyse1.png"
                           alt="Affinity-diagram fra intervju 1">
@@ -542,9 +542,11 @@
                     </svg>
                   </button>
 
-                  <div class="dots" role="tablist">
-                    <button type="button" aria-label="Bilde 1"></button>
-                    <button type="button" aria-label="Bilde 2"></button>
+                  <p id="car-in5620-analyse-status" class="sr-only" aria-live="polite"></p>
+
+                  <div class="dots" aria-label="Velg bilde">
+                    <button type="button" aria-label="Bilde 1 av 2" aria-current="true"></button>
+                    <button type="button" aria-label="Bilde 2 av 2"></button>
                   </div>
                 </div>
               </div>
@@ -627,12 +629,12 @@
             </div>
 
             <div class="step-media">
-              <div class="carousel phone-carousel" aria-label="ChatVGS prototype screens">
+              <div class="carousel phone-carousel" id="car-in5620-ai" aria-label="ChatVGS prototype screens">
                 <button class="car-btn car-prev" type="button" aria-label="Forrige">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
 
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-in5620-ai-status">
                   <figure class="slide">
                     <img src="images/in5620/startpage.png" alt="ChatVGS start page">
                   </figure>
@@ -651,11 +653,13 @@
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
 
-                <div class="dots" role="tablist" aria-label="Chat prototype screens">
-                  <button type="button" aria-label="Gå til skjerm 1"></button>
-                  <button type="button" aria-label="Gå til skjerm 2"></button>
-                  <button type="button" aria-label="Gå til skjerm 3"></button>
-                  <button type="button" aria-label="Gå til skjerm 4"></button>
+                <p id="car-in5620-ai-status" class="sr-only" aria-live="polite"></p>
+
+                <div class="dots"   aria-label="Chat prototype screens">
+                  <button type="button" aria-label="Bilde 1 av 4" aria-current="true"></button>
+                  <button type="button" aria-label="Bilde 2 av 4"></button>
+                  <button type="button" aria-label="Bilde 3 av 4"></button>
+                  <button type="button" aria-label="Bilde 4 av 4"></button>
                 </div>
               </div>
             </div>
@@ -716,14 +720,14 @@
               </div>
 
               <div class="step-media">
-                <div class="carousel phone-carousel" aria-label="School Inspection screens">
+                <div class="carousel phone-carousel" id="car-in5320-proto" aria-label="School Inspection screens">
                   <button class="car-btn car-prev" type="button" aria-label="Forrige">
                     <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                   </button>
 
-                  <div class="carousel-viewport" tabindex="0">
+                  <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-in5320-proto-status">
                     <figure class="slide" hidden>
                       <div class="laptop-mock">
                         <img src="images/in5320/map.jpg" alt="Map view of school priorities" />
@@ -752,11 +756,13 @@
                     </svg>
                   </button>
 
-                  <div class="dots" role="tablist" aria-label="Screens in carousel">
-                    <button type="button" aria-label="Gå til skjerm 1"></button>
-                    <button type="button" aria-label="Gå til skjerm 2"></button>
-                    <button type="button" aria-label="Gå til skjerm 3"></button>
-                    <button type="button" aria-label="Gå til skjerm 4"></button>
+                  <p id="car-in5320-proto-status" class="sr-only" aria-live="polite"></p>
+
+                  <div class="dots" aria-label="Screens in carousel">
+                    <button type="button" aria-label="Bilde 1 av 4" aria-current="true"></button>
+                    <button type="button" aria-label="Bilde 2 av 4"></button>
+                    <button type="button" aria-label="Bilde 3 av 4"></button>
+                    <button type="button" aria-label="Bilde 4 av 4"></button>
                   </div>
                 </div>
               </div>
@@ -877,14 +883,14 @@
             </div>
 
             <div class="step-media">
-              <div class="carousel phone-carousel" aria-label="Figma prototype v1 – skjermer">
+              <div class="carousel phone-carousel" id="car-skybound-proto" aria-label="Figma prototype v1 – skjermer">
                 <button class="car-btn car-prev" type="button" aria-label="Forrige">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </button>
 
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-skybound-proto-status">
                   <figure class="slide">
                     <div class="phone-mock">
                       <img src="images/skybound/Green screen.png" alt="Grønn skjerm – klar for oppskyting" />
@@ -927,15 +933,17 @@
                     <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </button>
+                
+                <p id="car-skybound-proto-status" class="sr-only" aria-live="polite"></p>
 
-                <div class="dots" role="tablist" aria-label="Bilder i karusell">
-                  <button type="button" aria-label="Gå til bilde 1"></button>
-                  <button type="button" aria-label="Gå til bilde 2"></button>
-                  <button type="button" aria-label="Gå til bilde 3"></button>
-                  <button type="button" aria-label="Gå til bilde 4"></button>
-                  <button type="button" aria-label="Gå til bilde 5"></button>
-                  <button type="button" aria-label="Gå til bilde 6"></button>
-                  <button type="button" aria-label="Gå til bilde 7"></button>
+                <div class="dots" aria-label="Bilder i karusell">
+                  <button type="button" aria-label="Bilde 1 av 7" aria-current="true"></button>
+                  <button type="button" aria-label="Bilde 2 av 7"></button>
+                  <button type="button" aria-label="Bilde 3 av 7"></button>
+                  <button type="button" aria-label="Bilde 4 av 7"></button>
+                  <button type="button" aria-label="Bilde 5 av 7"></button>
+                  <button type="button" aria-label="Bilde 6 av 7"></button>
+                  <button type="button" aria-label="Bilde 7 av 7"></button>
                 </div>
               </div>
             </div>
@@ -1001,7 +1009,6 @@
         <p>
           <strong>Rolle:</strong> Prototyping (Arduino/Neopixel), interaksjonsdesign, research & test.
           <strong>Kontekst:</strong> IN1060 (vår 2022) • <strong>Målgruppe:</strong> unge voksne (20–30) som er nye i meditasjon.
-          <a href="https://www.uio.no/studier/emner/matnat/ifi/IN1060/v22/prosjekter-var-2022/connection/" target="_blank" rel="noopener">Prosjektside (UiO)</a>.
         </p>
 
         <section class="process process--timeline" aria-label="Meditasjonsball – designprosess">
@@ -1016,11 +1023,11 @@
 
           <section class="process-step">
             <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Brainstorm">
+              <div class="carousel phone-carousel" id="car-medball-ide" aria-label="Brainstorm">
                 <button class="car-btn car-prev" type="button" aria-label="Forrige">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-medball-ide-status">
                   <figure class="slide">
                     <img src="images/medball/brainstorm-form-function.png" alt="Første idémyldring rundt samspill mellom form og funksjon">
                   </figure>
@@ -1031,9 +1038,12 @@
                 <button class="car-btn car-next" type="button" aria-label="Neste">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
-                <div class="dots" role="tablist" aria-label="Bilder i karusell">
-                  <button type="button" aria-label="Gå til bilde 1"></button>
-                  <button type="button" aria-label="Gå til bilde 2"></button>
+
+                <p id="car-medball-ide-status" class="sr-only" aria-live="polite"></p>
+
+                <div class="dots"  aria-label="Brainstorm images">
+                  <button type="button" aria-label="Bilde 1 av 2" aria-current="true"></button>
+                  <button type="button" aria-label="Bilde 2 av 2"></button>
                 </div>
               </div>
             </figure>
@@ -1112,11 +1122,11 @@
 
           <section class="process-step">
             <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Prototype v1">
+              <div class="carousel phone-carousel" id="car-medball-arduino" aria-label="Prototype v1">
                 <button class="car-btn car-prev" type="button" aria-label="Forrige">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-medball-arduino-status">
                   <figure class="slide">
                     <img src="images/medball/arduino-lead.png" alt="Arduino + Neopixel på breadboard">
                   </figure>
@@ -1130,10 +1140,13 @@
                 <button class="car-btn car-next" type="button" aria-label="Neste">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
-                <div class="dots" role="tablist" aria-label="Bilder i karusell">
-                  <button type="button" aria-label="Gå til bilde 1"></button>
-                  <button type="button" aria-label="Gå til bilde 2"></button>
-                  <button type="button" aria-label="Gå til bilde 3"></button>
+
+                <p id="car-medball-arduino-status" class="sr-only" aria-live="polite"></p>
+
+                <div class="dots" aria-label="Prototype v1 images">
+                  <button type="button" aria-label="Bilde 1 av 3" aria-current="true"></button>
+                  <button type="button" aria-label="Bilde 2 av 3"></button>
+                  <button type="button" aria-label="Bilde 3 av 3"></button>
                 </div>
               </div>
             </figure>
@@ -1221,11 +1234,11 @@
 
           <section class="process-step">
             <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Idea maps">
+              <div class="carousel phone-carousel" id="car-echo-brainstorm" aria-label="Idea maps">
                 <button class="car-btn car-prev" type="button" aria-label="Forrige bilde">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-echo-brainstorm-status">
                   <figure class="slide">
                     <img src="images/echo/masculinity-femininity.jpeg" alt="Idekart som viser to tema-retninger: toxic masculinity (venstre) og toxic femininity (høyre), med kilder og koblinger">
                   </figure>
@@ -1236,9 +1249,12 @@
                 <button class="car-btn car-next" type="button" aria-label="Neste bilde">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
-                <div class="dots" role="tablist" aria-label="Bilder i karusell">
-                  <button type="button" aria-label="Gå til bilde 1"></button>
-                  <button type="button" aria-label="Gå til bilde 2"></button>
+
+                <p id="car-echo-brainstorm-status" class="sr-only" aria-live="polite"></p>
+
+                <div class="dots" aria-label="Bilder i karusell">
+                  <button type="button" aria-label="Bilde 1 av 2" aria-current="true"></button>
+                  <button type="button" aria-label="Bilde 2 av 2"></button>
                 </div>
               </div>
               <figcaption>Idékart: to polariserte verdener illustrert gjennom kilder, influensere og temaer.</figcaption>
@@ -1280,11 +1296,11 @@
 
           <section class="process-step">
             <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Evaluering v2: to kamre">
+              <div class="carousel phone-carousel" id="car-echo-ev2" aria-label="Evaluering v2: to kamre">
                 <button class="car-btn car-prev" type="button" aria-label="Forrige">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-echo-ev2-status">
                   <figure class="slide">
                     <img src="images/echo/looking-at-feed.jpeg" alt="Skjerm med Tiktok-feed som blir mer og mer radikal">
                   </figure>
@@ -1300,10 +1316,13 @@
                     <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </button>
-                <div class="dots" role="tablist" aria-label="Bilder i karusell">
-                  <button type="button" aria-label="Gå til bilde 1"></button>
-                  <button type="button" aria-label="Gå til bilde 2"></button>
-                  <button type="button" aria-label="Gå til bilde 3"></button>
+
+                <p id="car-echo-ev2-status" class="sr-only" aria-live="polite"></p>
+
+                <div class="dots" aria-label="Evaluering v2 bilder">
+                  <button type="button" aria-label="Bilde 1 av 3" aria-current="true"></button>
+                  <button type="button" aria-label="Bilde 2 av 3"></button>
+                  <button type="button" aria-label="Bilde 3 av 3"></button>
                 </div>
               </div>
             </figure>
@@ -1357,10 +1376,6 @@
             </div>
           </section>
         </section>
-
-        <p class="doc-meta">
-          <a href="files/Rapport_i_IN3010_V_2025.pdf" target="_blank" rel="noopener">Last ned full rapport (PDF)</a>
-        </p>
       </article>
     </section>
     <!-- =================== /NORWEGIAN =================== -->
@@ -1440,13 +1455,13 @@
           <!-- Workshop 1 -->
           <section class="process-step">
             <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Workshop 1 images">
+              <div class="carousel phone-carousel" id="car-in5510-w1-en" aria-label="Workshop 1 images">
                 <button class="car-btn car-prev" type="button" aria-label="Previous image">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </button>
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-in5510-w1-en-status">
                   <figure class="slide">
                     <img src="images/in5510/workshop1/workshop1-group-exercise-800.png"
                          srcset="images/in5510/workshop1/workshop1-group-exercise-800.png 800w, images/in5510/workshop1/workshop1-group-exercise-1200.png 1200w, images/in5510/workshop1/workshop1-group-exercise.png 1600w"
@@ -1477,11 +1492,14 @@
                     <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </button>
-                <div class="dots" role="tablist" aria-label="Carousel images">
-                  <button type="button" aria-label="Go to image 1"></button>
-                  <button type="button" aria-label="Go to image 2"></button>
-                  <button type="button" aria-label="Go to image 3"></button>
-                  <button type="button" aria-label="Go to image 4"></button>
+
+                <p id="car-in5510-w1-en-status" class="sr-only" aria-live="polite"></p>
+
+                <div class="dots" aria-label="Carousel images">
+                  <button type="button" aria-label="Image 1 out of 4" aria-current="true"></button>
+                  <button type="button" aria-label="Image 2 out of 4"></button>
+                  <button type="button" aria-label="Image 3 out of 4"></button>
+                  <button type="button" aria-label="Image 4 out of 4"></button>
                 </div>
               </div>
               <figcaption>Workshop 1 – insights, sketches and prioritisation</figcaption>
@@ -1496,13 +1514,13 @@
           <!-- Workshop 2 -->
           <section class="process-step">
             <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Workshop 2 images">
+              <div class="carousel phone-carousel" id="car-in5510-en-w2" aria-label="Workshop 2 images">
                 <button class="car-btn car-prev" type="button" aria-label="Previous">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </button>
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0"  aria-live="polite" aria-describedby="car-in5510-en-w2-status">
                   <figure class="slide">
                     <img src="images/in5510/workshop2/workshop2-task-distribution-800.png"
                          srcset="images/in5510/workshop2/workshop2-task-distribution-800.png 800w, images/in5510/workshop2/workshop2-task-distribution-1200.png 1200w, images/in5510/workshop2/workshop2-task-distribution.png 1600w"
@@ -1527,10 +1545,13 @@
                     <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </button>
-                <div class="dots" role="tablist" aria-label="Carousel images">
-                  <button type="button" aria-label="Go to image 1"></button>
-                  <button type="button" aria-label="Go to image 2"></button>
-                  <button type="button" aria-label="Go to image 3"></button>
+
+                <p id="car-in5510-en-w2-status" class="sr-only" aria-live="polite"></p>
+
+                <div class="dots" aria-label="Carousel images">
+                  <button type="button" aria-label="Image 1 out of 3" aria-current="true"></button>
+                  <button type="button" aria-label="Image 2 out of 3"></button>
+                  <button type="button" aria-label="Image 3 out of 3"></button>
                 </div>
               </div>
               <figcaption>Workshop 2 – testing and debrief</figcaption>
@@ -1545,13 +1566,13 @@
           <!-- Workshop 3 -->
           <section class="process-step">
             <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Workshop 3 images">
+              <div class="carousel phone-carousel" id="car-in5510-en-w3" aria-label="Workshop 3 images">
                 <button class="car-btn car-prev" type="button" aria-label="Previous image">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </button>
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-in5510-en-w3-status">
                   <figure class="slide">
                     <img src="images/in5510/workshop3/part1.png" alt="Workshop 3 – part 1" loading="lazy" decoding="async">
                   </figure>
@@ -1579,14 +1600,17 @@
                     <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </button>
-                <div class="dots" role="tablist" aria-label="Carousel images">
-                  <button type="button" aria-label="Go to image 1"></button>
-                  <button type="button" aria-label="Go to image 2"></button>
-                  <button type="button" aria-label="Go to image 3"></button>
-                  <button type="button" aria-label="Go to image 4"></button>
-                  <button type="button" aria-label="Go to image 5"></button>
-                  <button type="button" aria-label="Go to image 6"></button>
-                  <button type="button" aria-label="Go to image 7"></button>
+
+                <p id="car-in5510-en-w3-status" class="sr-only" aria-live="polite"></p>
+
+                <div class="dots" aria-label="Carousel images">
+                  <button type="button" aria-label="Image 1 out of 7" aria-current="true"></button>
+                  <button type="button" aria-label="Image 2 out of 7"></button>
+                  <button type="button" aria-label="Image 3 out of 7"></button>
+                  <button type="button" aria-label="Image 4 out of 7"></button>
+                  <button type="button" aria-label="Image 5 out of 7"></button>
+                  <button type="button" aria-label="Image 6 out of 7"></button>
+                  <button type="button" aria-label="Image 7 out of 7"></button>
                 </div>
               </div>
               <figcaption>Workshop 3 – activities and notes</figcaption>
@@ -1601,13 +1625,13 @@
           <!-- Workshop 4 -->
           <section class="process-step">
             <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Workshop 4 images">
+              <div class="carousel phone-carousel" id="car-in5510-en-w4" aria-label="Workshop 4 images">
                 <button class="car-btn car-prev" type="button" aria-label="Previous">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </button>
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-in5510-en-w4-status">
                   <figure class="slide">
                     <img src="images/in5510/workshop4/part1.png" alt="Workshop 4 – part 1" loading="lazy" decoding="async">
                   </figure>
@@ -1626,11 +1650,14 @@
                     <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </button>
-                <div class="dots" role="tablist" aria-label="Carousel images">
-                  <button type="button" aria-label="Go to image 1"></button>
-                  <button type="button" aria-label="Go to image 2"></button>
-                  <button type="button" aria-label="Go to image 3"></button>
-                  <button type="button" aria-label="Go to image 4"></button>
+
+                <p id="car-in5510-en-w4-status" class="sr-only" aria-live="polite"></p>
+
+                <div class="dots" aria-label="Carousel images">
+                  <button type="button" aria-label="Image 1 out of 4" aria-current="true"></button>
+                  <button type="button" aria-label="Image 2 out of 4"></button>
+                  <button type="button" aria-label="Image 3 out of 4"></button>
+                  <button type="button" aria-label="Image 4 out of 4"></button>
                 </div>
               </div>
               <figcaption>Workshop 4 – plans and wrap-up</figcaption>
@@ -1703,14 +1730,14 @@
               </div>
 
               <div class="step-media">
-                <div class="carousel phone-carousel" aria-label="Interview analysis">
+                <div class="carousel phone-carousel" id="car-in5620-en-ai" aria-label="Interview analysis">
                   <button class="car-btn car-prev" type="button" aria-label="Previous">
                     <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2"/>
                     </svg>
                   </button>
 
-                  <div class="carousel-viewport" tabindex="0">
+                  <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-in5620-en-ai-status">
                     <figure class="slide">
                       <img src="images/in5620/Analyse1.png" alt="Affinity mapping from interview analysis (1)">
                     </figure>
@@ -1726,9 +1753,11 @@
                     </svg>
                   </button>
 
-                  <div class="dots" role="tablist">
-                    <button type="button" aria-label="Image 1"></button>
-                    <button type="button" aria-label="Image 2"></button>
+                  <p id="car-in5620-en-ai-status" class="sr-only" aria-live="polite"></p>
+
+                  <div class="dots" aria-label="Carousel images">
+                    <button type="button" aria-label="Image 1 out of 2" aria-current="true"></button>
+                    <button type="button" aria-label="Image 2 out of 2"></button>
                   </div>
                 </div>
               </div>
@@ -1805,12 +1834,12 @@
             </div>
 
             <div class="step-media">
-              <div class="carousel phone-carousel" aria-label="ChatVGS prototype screens">
+              <div class="carousel phone-carousel" id="car-in5620-en-proto" aria-label="ChatVGS prototype screens">
                 <button class="car-btn car-prev" type="button" aria-label="Previous">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
 
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-in5620-en-proto-status">
                   <figure class="slide">
                     <img src="images/in5620/startpage.png" alt="ChatVGS start page">
                   </figure>
@@ -1829,11 +1858,13 @@
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
 
-                <div class="dots" role="tablist" aria-label="Chat prototype screens">
-                  <button type="button" aria-label="Go to screen 1"></button>
-                  <button type="button" aria-label="Go to screen 2"></button>
-                  <button type="button" aria-label="Go to screen 3"></button>
-                  <button type="button" aria-label="Go to screen 4"></button>
+                <p id="car-in5620-en-proto-status" class="sr-only" aria-live="polite"></p>
+
+                <div class="dots" aria-label="Chat prototype screens">
+                  <button type="button" aria-label="Image 1 out of 4" aria-current="true"></button>
+                  <button type="button" aria-label="Image 2 out of 4"></button>
+                  <button type="button" aria-label="Image 3 out of 4"></button>
+                  <button type="button" aria-label="Image 4 out of 4"></button>
                 </div>
               </div>
             </div>
@@ -1888,14 +1919,14 @@
             </div>
 
             <div class="step-media">
-              <div class="carousel phone-carousel" aria-label="School Inspection screens">
+              <div class="carousel phone-carousel" id="car-in5320-en-proto" aria-label="School Inspection screens">
                 <button class="car-btn car-prev" type="button" aria-label="Previous">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </button>
 
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-in5320-en-proto-status">
                   <figure class="slide" hidden>
                     <div class="laptop-mock">
                       <img src="images/in5320/map.jpg" alt="Map view of school priorities" />
@@ -1924,11 +1955,13 @@
                   </svg>
                 </button>
 
-                <div class="dots" role="tablist" aria-label="Screens in carousel">
-                  <button type="button" aria-label="Go to screen 1"></button>
-                  <button type="button" aria-label="Go to screen 2"></button>
-                  <button type="button" aria-label="Go to screen 3"></button>
-                  <button type="button" aria-label="Go to screen 4"></button>
+                <p id="car-in5320-en-proto-status" class="sr-only" aria-live="polite"></p>
+
+                <div class="dots" aria-label="Screens in carousel">
+                  <button type="button" aria-label="Image 1 out of 4" aria-current="true"></button>
+                  <button type="button" aria-label="Image 2 out of 4"></button>
+                  <button type="button" aria-label="Image 3 out of 4"></button>
+                  <button type="button" aria-label="Image 4 out of 4"></button>
                 </div>
               </div>
             </div>
@@ -2026,14 +2059,14 @@
               </div>
 
               <div class="step-media">
-                <div class="carousel phone-carousel" aria-label="Figma prototype v1 – screens">
+                <div class="carousel phone-carousel" id="car-skybound-proto-en" aria-label="Figma prototype v1 – screens">
                   <button class="car-btn car-prev" type="button" aria-label="Previous image">
                     <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                   </button>
 
-                  <div class="carousel-viewport" tabindex="0">
+                  <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-skybound-proto-en-status">
                     <figure class="slide">
                       <div class="phone-mock">
                         <img src="images/skybound/Green screen.png" alt="Green screen – ready to launch" />
@@ -2077,14 +2110,16 @@
                     </svg>
                   </button>
 
-                  <div class="dots" role="tablist" aria-label="Carousel images">
-                    <button type="button" aria-label="Go to image 1"></button>
-                    <button type="button" aria-label="Go to image 2"></button>
-                    <button type="button" aria-label="Go to image 3"></button>
-                    <button type="button" aria-label="Go to image 4"></button>
-                    <button type="button" aria-label="Go to image 5"></button>
-                    <button type="button" aria-label="Go to image 6"></button>
-                    <button type="button" aria-label="Go to image 7"></button>
+                  <p id="car-skybound-proto-en-status" class="sr-only" aria-live="polite"></p>
+
+                  <div class="dots" aria-label="Carousel images">
+                    <button type="button" aria-label="Image 1 out of 7" aria-current="true"></button>
+                    <button type="button" aria-label="Image 2 out of 7"></button>
+                    <button type="button" aria-label="Image 3 out of 7"></button>
+                    <button type="button" aria-label="Image 4 out of 7"></button>
+                    <button type="button" aria-label="Image 5 out of 7"></button>
+                    <button type="button" aria-label="Image 6 out of 7"></button>
+                    <button type="button" aria-label="Image 7 out of 7"></button>
                   </div>
                 </div>
               </div>
@@ -2172,11 +2207,11 @@
 
           <section class="process-step">
             <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Brainstorm">
+              <div class="carousel phone-carousel" id="car-medball-ide-en" aria-label="Brainstorm">
                 <button class="car-btn car-prev" type="button" aria-label="Previous">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-medball-ide-en-status">
                   <figure class="slide">
                     <img src="images/medball/brainstorm-form-function.png" alt="Initial brainstorming around form and function">
                   </figure>
@@ -2187,9 +2222,10 @@
                 <button class="car-btn car-next" type="button" aria-label="Next">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
-                <div class="dots" role="tablist" aria-label="Carousel images">
-                  <button type="button" aria-label="Go to image 1"></button>
-                  <button type="button" aria-label="Go to image 2"></button>
+                <p id="car-medball-ide-en-status" class="sr-only" aria-live="polite"></p>
+                <div class="dots" aria-label="Carousel images">
+                  <button type="button" aria-label="Image 1 out of 2" aria-current="true"></button>
+                  <button type="button" aria-label="Image 2 out of 2"></button>
                 </div>
               </div>
             </figure>
@@ -2268,11 +2304,11 @@
 
           <section class="process-step">
             <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Prototype v1">
+              <div class="carousel phone-carousel" id="car-medball-arduino-en" aria-label="Prototype v1">
                 <button class="car-btn car-prev" type="button" aria-label="Previous">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-medball-arduino-en-status">
                   <figure class="slide">
                     <img src="images/medball/arduino-lead.png" alt="Arduino + Neopixel on a breadboard">
                   </figure>
@@ -2286,10 +2322,13 @@
                 <button class="car-btn car-next" type="button" aria-label="Next">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
-                <div class="dots" role="tablist" aria-label="Carousel images">
-                  <button type="button" aria-label="Go to image 1"></button>
-                  <button type="button" aria-label="Go to image 2"></button>
-                  <button type="button" aria-label="Go to image 3"></button>
+
+                <p id="car-medball-arduino-en-status" class="sr-only" aria-live="polite"></p>
+
+                <div class="dots"   aria-label="Carousel images">
+                  <button type="button" aria-label="Image 1 out of 3" aria-current="true"></button>
+                  <button type="button" aria-label="Image 2 out of 3"></button>
+                  <button type="button" aria-label="Image 3 out of 3"></button>
                 </div>
               </div>
             </figure>
@@ -2418,13 +2457,13 @@
 
           <section class="process-step">
             <figure class="step-media">
-              <div class="carousel phone-carousel" aria-label="Evaluation v2: two chambers">
+              <div class="carousel phone-carousel" id="car-echo-ev2-en" aria-label="Evaluation v2: two chambers">
                 <button class="car-btn car-prev" type="button" aria-label="Previous">
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </button>
-                <div class="carousel-viewport" tabindex="0">
+                <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="car-echo-ev2-en-status">
                   <figure class="slide">
                     <img src="images/echo/posters.jpeg" alt="Poster wall for toxic femininity: red and black design, thematic posters about gender, power and control">
                   </figure>
@@ -2440,10 +2479,13 @@
                     <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 </button>
-                <div class="dots" role="tablist" aria-label="Carousel images">
-                  <button type="button" aria-label="Go to image 1"></button>
-                  <button type="button" aria-label="Go to image 2"></button>
-                  <button type="button" aria-label="Go to image 3"></button>
+
+                <p id="car-echo-ev2-en-status" class="sr-only" aria-live="polite"></p>
+
+                <div class="dots" aria-label="Carousel images">
+                  <button type="button" aria-label="Image 1 out of 3" aria-current="true"></button>
+                  <button type="button" aria-label="Image 2 out of 3"></button>
+                  <button type="button" aria-label="Image 3 out of 3"></button>
                 </div>
               </div>
             </figure>

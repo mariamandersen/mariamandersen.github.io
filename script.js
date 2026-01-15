@@ -16,11 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
     railCleanups.forEach(fn => fn());
     railCleanups = [];
 
-    const rails = document.querySelectorAll('.rail:not([hidden])');
+    const rails = Array.from(document.querySelectorAll('.rail'))
+    .filter(rail => !rail.hidden && !rail.closest('[hidden]'));
     rails.forEach(rail => {
       const links = Array.from(rail.querySelectorAll('a'));
       const ids = links.map(a => a.getAttribute('href')).map(h => h && h.slice(1));
-      const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+      const sections = ids.map(id => document.getElementById(id)).filter(sec => sec && !sec.closest('[hidden]'));
       if (!sections.length) return;
 
       const onClick = (e) => {
@@ -327,6 +328,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  
+
   /* ------------------------------
      Project previews (preview + read-more)
      - Builds a preview interface for each .project element by keeping the
@@ -430,7 +433,8 @@ function initProjectPreviews(){
       if (taken >= MAX_NODES || collectedText >= MAX_CHARS) break;
       const node = kids[i];
       // HARD STOP: aldri dra workshop/prosess-området inn i preview-peeken
-      if (node.id && node.id.startsWith('proj-in5510')) break;
+      if (node.matches?.('.process, .process--timeline')) break;
+      if (node.querySelector?.('.process, .process--timeline')) break;
       if (node.querySelector && node.querySelector('.process')) break;
 
       // Stop preview before callout boxes (tldr)
@@ -597,3 +601,4 @@ function initProjectPreviews(){
   const cy = document.getElementById('copyright-year');
   if (cy) cy.textContent = String(new Date().getFullYear());
 });
+
