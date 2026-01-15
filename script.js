@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     railCleanups.forEach(fn => fn());
     railCleanups = [];
 
-    const rails = Array.from(document.querySelectorAll('.rail'))
-    .filter(rail => !rail.hidden && !rail.closest('[hidden]'));
+    const rails = Array.from(document.querySelectorAll('.rail')).filter(rail => !rail.hidden && !rail.closest('[hidden]'));
+    
     rails.forEach(rail => {
       const links = Array.from(rail.querySelectorAll('a'));
       const ids = links.map(a => a.getAttribute('href')).map(h => h && h.slice(1));
@@ -62,10 +62,22 @@ document.addEventListener('DOMContentLoaded', () => {
       sections.forEach(s => io.observe(s));
       setActiveByCenter();
 
-      const onScroll = () => setActiveByCenter();
-      const onResize = () => setActiveByCenter();
+      let ticking = false;
+      const requestUpdate = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          setActiveByCenter();
+        });
+      };
+
+      const onScroll = () => requestUpdate();
+      const onResize = () => requestUpdate();
+
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', onResize);
+
 
       railCleanups.push(() => {
         io.disconnect();
@@ -275,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // so the same padding rules apply site-wide.
   function ensureProjectInner(){
     document.querySelectorAll('.project.project--card').forEach(proj => {
-      if (proj.querySelector(':scope > .project-inner')) return;
+      if (Array.from(proj.children).some(ch => ch.classList && ch.classList.contains('project-inner'))) return;
       const wrapper = document.createElement('div');
       wrapper.className = 'project-inner';
       // Move all existing children into the wrapper
@@ -352,9 +364,20 @@ function initProjectPreviews(){
 
     // Find the nodes we want to surface in the peek: heading, kicker and the
     // first paragraph (used as a short excerpt). Prefer direct children.
-    const heading = scope.querySelector(':scope > h2') || scope.querySelector('h2');
-    const kicker = scope.querySelector(':scope > .kicker') || scope.querySelector('.kicker');
-    const firstP = scope.querySelector(':scope > p') || scope.querySelector('p');
+    const directChild = (root, predicate) =>
+      Array.from(root.children).find(predicate) || null;
+
+    const heading =
+      directChild(scope, el => el.tagName === 'H2') ||
+      scope.querySelector('h2');
+
+    const kicker =
+      directChild(scope, el => el.classList.contains('kicker')) ||
+      scope.querySelector('.kicker');
+
+    const firstP =
+      directChild(scope, el => el.tagName === 'P') ||
+      scope.querySelector('p');
 
     // Candidate thumbnail (if any) — avoid accidentally grabbing site hero images
     let imgEl = proj.querySelector('.step-media img, .carousel-viewport img, :scope img');
