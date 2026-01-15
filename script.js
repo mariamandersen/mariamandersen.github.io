@@ -20,6 +20,21 @@ function activateRail(lang) {
   if (!rail) return;
 
   const links = Array.from(rail.querySelectorAll('a[href^="#"]'));
+
+  links.forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      history.pushState(null, "", `#${id}`);
+    });
+  });
+
+
   const linkById = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
 
   // Only observe sections that exist AND are visible (not inside hidden content)
@@ -48,8 +63,40 @@ function activateRail(lang) {
   });
 
   sectionEls.forEach(el => railIO.observe(el));
+
+    // Force an initial update (IO might not fire immediately)
+  requestAnimationFrame(() => {
+    const entries = sectionEls.map(el => ({
+      target: el,
+      isIntersecting: true,
+      intersectionRatio: Math.max(0, Math.min(1,
+        (window.innerHeight - Math.abs(el.getBoundingClientRect().top)) / window.innerHeight
+      ))
+    }));
+
+    const best = entries.sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!best) return;
+
+    links.forEach(a => a.removeAttribute('aria-current'));
+    const active = linkById.get(best.target.id);
+    if (active) active.setAttribute('aria-current', 'location');
+  });
+
 }
 
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('nav.rail a[href^="#"]');
+  if (!a) return;
+
+  const id = a.getAttribute('href').slice(1);
+  const target = document.getElementById(id);
+  if (!target) return;
+
+  e.preventDefault();
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  history.pushState(null, "", `#${id}`);
+});
 
   /* ------------------------------
      Fade-in via IO (no fade out)
@@ -106,7 +153,7 @@ function activateRail(lang) {
     if (noContent) noContent.hidden = isEn;
     if (enContent) enContent.hidden = !isEn;
     langEls.forEach(el => { el.hidden = el.dataset.lang !== lang; });
-    document.documentElement.setAttribute('lang', isEn ? 'en' : 'no');
+    document.documentElement.setAttribute('lang', isEn ? 'en' : 'nb');
     setPressed(isEn);
     try { localStorage.setItem('preferredLanguage', isEn ? 'en' : 'no'); } catch {}
 
