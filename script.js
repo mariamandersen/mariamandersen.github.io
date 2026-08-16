@@ -356,7 +356,7 @@ function initProjectPreviews(){
       scope.querySelector('p');
 
     // Candidate thumbnail (if any) — avoid accidentally grabbing site hero images
-    let imgEl = proj.querySelector('.step-media img, .carousel-viewport img') || proj.querySelector('img');
+    let imgEl = proj.querySelector('[data-preview-image]') || proj.querySelector('.step-media img, .carousel-viewport img') || proj.querySelector('img');
     if (imgEl && imgEl.closest('header')) imgEl = null;
 
     // Build peek element
@@ -390,6 +390,7 @@ function initProjectPreviews(){
     if (imgEl) {
       const media = document.createElement('div');
       media.className = 'peek-media';
+      if (imgEl.hasAttribute('data-preview-image')) media.classList.add('peek-media--featured');
       const thumb = document.createElement('img');
       thumb.src = imgEl.getAttribute('src');
       thumb.alt = imgEl.getAttribute('alt') || '';
