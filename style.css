@@ -1813,13 +1813,13 @@ html.has-io .fade-in{
 }
 .case-study{
   display:grid;
-  gap:clamp(22px, 3.5vw, 38px);
-  margin-top:clamp(20px, 3vw, 32px);
+  gap:clamp(18px, 2.8vw, 30px);
+  margin-top:clamp(18px, 2.5vw, 26px);
 }
 .case-section{
   display:grid;
-  gap:clamp(12px, 1.8vw, 18px);
-  padding-top:clamp(20px, 3vw, 32px);
+  gap:clamp(10px, 1.5vw, 16px);
+  padding-top:clamp(18px, 2.5vw, 26px);
   border-top:1px solid var(--line-lite);
 }
 .case-section:first-child{ padding-top:0; border-top:0; }
@@ -1828,6 +1828,20 @@ html.has-io .fade-in{
 .case-section p{ margin:0; }
 .case-copy{ display:grid; gap:10px; align-content:start; }
 .case-copy--wide{ max-width:76ch; }
+.case-section--compact{ gap:clamp(16px, 2.5vw, 28px); }
+.insight-summary{
+  display:grid;
+  gap:12px;
+  padding-left:clamp(14px, 2vw, 20px);
+  border-left:3px solid color-mix(in oklab, var(--accent) 70%, white 30%);
+}
+.insight-summary ul{
+  display:grid;
+  gap:5px;
+  margin:0;
+  padding-left:1.15rem;
+}
+.insight-summary li{ padding-left:.15rem; }
 .case-split{
   grid-template-columns:minmax(0, 1.05fr) minmax(0, .95fr);
   align-items:start;
@@ -1844,6 +1858,14 @@ html.has-io .fade-in{
   background:var(--paper-2);
 }
 .case-callout--compact{ max-width:76ch; }
+.case-callout--reflection{
+  gap:6px;
+  max-width:68ch;
+  padding:12px 16px;
+  border-left-width:3px;
+  font-size:.94rem;
+}
+.case-callout--reflection h4{ font-size:1rem; }
 .case-callout--term{
   align-self:center;
   text-align:center;
@@ -1873,6 +1895,20 @@ html.has-io .fade-in{
   box-shadow:0 3px 10px rgba(0,0,0,.07);
 }
 .concept-flow span:nth-child(even){ color:var(--accent); font-size:1.35rem; }
+.case-section--decision{
+  padding:clamp(16px, 2vw, 20px);
+  border:1px solid var(--line-lite);
+  border-left:4px solid var(--accent);
+  border-radius:12px;
+  background:color-mix(in oklab, var(--paper-2) 70%, white 30%);
+}
+.case-copy--decision{
+  grid-template-columns:minmax(190px, .65fr) minmax(0, 1fr) minmax(0, 1.15fr);
+  gap:clamp(14px, 2.5vw, 28px);
+}
+.case-copy--decision h3{ font-size:clamp(1.05rem, 1.8vw, 1.25rem); }
+.case-section--ux{ gap:clamp(8px, 1.2vw, 13px); }
+.case-section--ux .visual-sequence{ margin-block:2px; }
 .visual-sequence,
 .comparison-grid,
 .before-after,
@@ -1939,16 +1975,33 @@ html.has-io .fade-in{
 }
 .before-after{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
 .before-after img{
-  aspect-ratio:4 / 3;
+  aspect-ratio:2 / 1;
   object-fit:cover;
   object-position:top;
 }
 .visual-card--portrait img{
-  max-height:440px;
+  max-height:500px;
   object-fit:cover;
   object-position:top;
 }
 .case-section--closing{ padding-bottom:4px; }
+.case-ending-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:clamp(18px, 3vw, 32px);
+  border-top:1px solid var(--line-lite);
+}
+.case-section--ending{
+  padding-top:clamp(18px, 2.5vw, 26px);
+  border-top:0;
+}
+.case-term{
+  justify-self:start;
+  padding:.45rem .65rem;
+  border-radius:8px;
+  background:var(--paper-2);
+  color:var(--heading-brown) !important;
+}
 
 .project-peek .peek-media--featured img{
   aspect-ratio:16 / 10;
@@ -1971,6 +2024,11 @@ html.has-io .fade-in{
     text-align:center;
   }
   .concept-flow span:nth-child(even){ transform:rotate(90deg); }
+  .case-copy--decision,
+  .case-ending-grid{ grid-template-columns:1fr; }
+  .case-copy--decision{ gap:10px; }
+  .case-ending-grid{ gap:0; }
+  .case-ending-grid .case-section + .case-section{ border-top:1px solid var(--line-lite); }
 }
 
 @media (max-width:420px){
