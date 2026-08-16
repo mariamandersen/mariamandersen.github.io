@@ -358,3 +358,177 @@ When editing:
 - use full-width visuals when the image itself carries the explanation
 
 Before making major structural changes, inspect the existing HTML/CSS/JS and reuse existing patterns where possible.
+
+## Approved NIBIO case copy
+
+Use the following copy as the source text for the NIBIO case.
+
+Do not rewrite, expand or “improve” this copy unless explicitly asked.
+
+You may:
+- split paragraphs across visual layouts
+- use short captions
+- move image captions close to visuals
+- reduce repetition when the same point is already communicated clearly by an image
+
+Do not invent new facts, findings or metrics.
+
+# NIBIO
+
+**Hvordan kan NIBIO få bedre oversikt over forskningsdata og samtidig gjøre datahåndtering enklere for forskerne?**
+
+*IT-konsulent · Sommerinternship 2026*
+
+Sommeren 2026 jobbet jeg som IT-konsulent i NIBIO sammen med en annen intern. Vi skulle utforske hvordan NIBIO kunne håndtere forskningsdata bedre og utvikle en prototype på en intern datakatalog.
+
+Oppgaven var stor og åpen. Vi skjønte raskt at problemet var organisatorisk, kulturelt og teknisk.
+
+## Før vi kunne lage noe, måtte vi forstå NIBIO
+
+Vi kom inn med lite kunnskap om organisasjonen. Derfor startet vi med innsiktsarbeid.
+
+Vi leste interne rapporter, kartla systemer og snakket med IKT og informasjonsforvaltning. Vi intervjuet også forskere fra ulike deler av NIBIO for å forstå hvordan de faktisk jobbet med data.
+
+Forskerne hadde svært ulik datakompetanse. Flere møtte begreper de ikke forsto. Dokumentasjon tok tid fra forskningen, og dobbeltregistrering ble opplevd som frustrerende.
+
+Innsikten hjalp oss med å snevre inn oppgaven. Vi valgte å starte med bedre oversikt, uten å kreve store endringer i hvordan forskerne allerede jobbet.
+
+## Registrer én gang
+
+Mye av informasjonen NIBIO trenger finnes allerede i datahåndteringsplaner.
+
+Derfor koblet vi datahåndteringsplanen og datakatalogen sammen. Forskeren registrerer informasjonen ett sted. Den samme informasjonen kan deretter brukes i katalogen.
+
+Use a simple concept flow here:
+
+DMP → Datakatalog → Gjenfinning og gjenbruk
+
+Dette reduserer dobbeltregistrering og gir NIBIO en felles oversikt.
+
+## Bygge selv eller bruke noe som finnes?
+
+Vi kunne bygget et eget DMP-verktøy. Et skjema er relativt enkelt å utvikle. Utfordringen kommer når løsningen skal driftes, vedlikeholdes og endres over tid.
+
+Vi valgte FAIR Wizard. Løsningen kunne tilpasses NIBIO og hadde et API som gjorde det mulig å bruke informasjonen videre i datakatalogen. FAIR Wizard var også aktuell i arbeidet med en nasjonal DMP-løsning. Det kunne gjøre samarbeid og integrasjoner enklere senere.
+
+## En ferdig løsning trenger fortsatt design
+
+FAIR Wizard ga oss teknologien, men brukeropplevelsen måtte tilpasses NIBIO.
+
+Vi hadde sett at flere frustrasjoner med DMP-verktøy kunne spores tilbake til hvordan spørsmål og veiledning var utformet. Løsningene tok ofte utgangspunkt i informasjonen stab ønsket å samle inn.
+
+Her kunne jeg bruke UX-kompetansen min.
+
+Jeg jobbet med hvilke spørsmål forskerne skulle møte, rekkefølgen på dem og språket vi brukte. Jeg så også på når brukeren trengte hjelp og hvordan vi kunne skjule spørsmål som ikke var relevante.
+
+### Ett spørsmål av gangen
+
+Use the FAIR Wizard screenshots as a three-step visual sequence.
+
+1. `images/NIBIO/fairwizard-data-question.png`
+Caption: **Ett enkelt spørsmål**
+Supporting text: Vi spør først om prosjektet har generert data.
+
+2. `images/NIBIO/fairwizard-data-yes.png`
+Caption: **Bare relevant informasjon**
+Supporting text: Hvis svaret er ja, får forskeren veiledning og mulighet til å registrere datasett. Hvis svaret er nei, stopper det der.
+
+3. `images/NIBIO/fairwizard-dataset.png`
+Caption: **Detaljer ved behov**
+Supporting text: Detaljer om datasettet vises først når forskeren faktisk skal registrere et.
+
+Målet var å redusere kompleksiteten og gjøre planen mulig å fylle ut uten å være ekspert på dataforvaltning.
+
+### Trengte det å se mer spennende ut?
+
+FAIR Wizard har et enkelt visuelt uttrykk. Brukertestene viste at forskerne ikke la særlig vekt på dette. De ønsket først og fremst en løsning som var enkel og effektiv.
+
+Derfor prioriterte vi flyt, språk og veiledning.
+
+## Fra registrering til gjenfinning
+
+Informasjonen fra FAIR Wizard kunne hentes videre til datakatalogen.
+
+Use:
+- `images/NIBIO/fairwizard-dataset.png`
+- `images/NIBIO/catalog-project.png`
+
+Present these as a visual transition from registration to discovery.
+
+I katalogen kan forskere se hvilke prosjekter og forskningsdata som finnes, hvor data er lagret og hvem de kan kontakte.
+
+## To måter å finne informasjon på
+
+Forskerne hadde ulike behov når de søkte.
+
+### Jeg vet hva jeg leter etter
+
+Tekstsøk og filtrering passer når brukeren kjenner noen av kriteriene på forhånd.
+
+Use:
+- `images/NIBIO/filter-project-name.png`
+- `images/NIBIO/filter-project-name-active.png`
+
+Present this as a compact before/after interaction, not two large repetitive screenshots.
+
+Suggested labels:
+
+**Maria → 4 datasett**
+**Maria + Aktiv → 2 datasett**
+
+Filtre kan kombineres for å snevre inn resultatene.
+
+### Jeg vet ikke hva jeg leter etter
+
+Forskerne visste ikke alltid hva som allerede fantes i NIBIO. Lignende arbeid kunne også være beskrevet med andre fagbegreper.
+
+Derfor utforsket vi semantisk søk.
+
+Use:
+- `images/NIBIO/catalog-ai-search.png`
+
+Brukeren kan beskrive hva hen leter etter med egne ord og få forslag til prosjekter som kan være relevante.
+
+Use `catalog-overview.png` only if it adds useful context and does not repeat the filtering visuals.
+
+## Laget for å kunne bygges videre på
+
+NIBIO er i endring. Løsningen måtte kunne endres med organisasjonen.
+
+Vi prøvde derfor å unngå unødvendige avhengigheter mellom delene av systemet. Datakatalogen skulle kunne videreutvikles selv om DMP-verktøyet eller organisasjonen endret seg.
+
+Vi kalte dette **design for redesign**.
+
+## Hva jeg tar med meg
+
+Prosjektet lærte meg mye om å jobbe med en problemstilling der løsningen ikke var gitt på forhånd. Jeg måtte først forstå organisasjonen og menneskene som jobbet der.
+
+Jeg fikk også erfaring med å bygge noe nytt og tilpasse eksisterende teknologi. Det vi laget måtte fungere for brukerne i dag og være enkelt for andre å bygge videre på senere.
+
+## NIBIO asset inventory
+
+Current assets in `images/NIBIO/`:
+
+- `catalog-ai-search.png`
+- `catalog-overview.png`
+- `catalog-project.png`
+- `fairwizard-data-question.png`
+- `fairwizard-data-yes.png`
+- `fairwizard-dataset.png`
+- `filter-project-name.png`
+- `filter-project-name-active.png`
+
+Use these actual assets. Do not substitute mockups or invent additional screens.
+
+## Implementation rule
+
+When implementing NIBIO:
+- use this approved copy
+- preserve the existing portfolio visual identity
+- keep the case scannable in about 2–3 minutes
+- use visuals to reduce text
+- avoid unnecessary whitespace
+- create reusable layout classes rather than NIBIO-specific one-off CSS
+- keep the existing “Les mer” behavior working
+- make the layout responsive
+- do not edit the other case studies yet
