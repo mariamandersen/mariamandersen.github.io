@@ -532,3 +532,243 @@ When implementing NIBIO:
 - keep the existing “Les mer” behavior working
 - make the layout responsive
 - do not edit the other case studies yet
+
+## Visual redesign direction — August 2026
+
+The portfolio is moving away from the current card-based visual system.
+
+The content strategy and approved NIBIO case content remain valid. This is a change to the visual presentation and page architecture.
+
+### Overall feeling
+
+The portfolio should feel:
+- clean
+- editorial
+- considered
+- high-end
+- personal
+
+The visual reference is closer to an architecture or editorial design portfolio than a typical SaaS landing page or template-based UX portfolio.
+
+Avoid common AI-generated website aesthetics.
+
+In particular, avoid:
+- large rounded cards as the default container
+- cards nested inside cards
+- excessive border radius
+- soft shadows everywhere
+- decorative blobs
+- gradients
+- pill-shaped UI used decoratively
+- generic bento grids
+- excessive badges
+- making every section a separate component-looking box
+
+### One continuous canvas
+
+This is an important design principle.
+
+The page should feel like one continuous editorial canvas.
+
+Projects should NOT sit inside large `.project` cards with their own background, rounded corners and shadow.
+
+Instead:
+
+PAGE BACKGROUND
+→ project heading
+→ text
+→ imagery
+→ case-study sections
+→ divider / whitespace
+→ next project
+
+The page grid, typography, imagery, spacing and occasional color fields should create hierarchy.
+
+Do not use a container card to communicate where a project begins and ends.
+
+### Color palette
+
+Primary background:
+#FAF8F6
+
+Primary text / espresso:
+#2E211F
+
+Pastel blue:
+#B8DDF0
+
+Pastel pink:
+#F6D5DF
+
+The page should remain predominantly off-white.
+
+Approximate visual balance:
+- 75–80% off-white
+- espresso for typography and structure
+- pink and blue used selectively
+
+Pink and blue should not become a system of small colorful cards or badges.
+
+Prefer using them for:
+- occasional larger background fields
+- important typographic accents
+- project transitions
+- selected editorial moments
+- subtle hover states
+
+Do not add more accent colors unless explicitly requested.
+
+### Typography
+
+Typography should do more of the visual work.
+
+Use:
+- large display headings
+- much smaller metadata
+- clear scale contrast
+- comfortable body text
+- relatively narrow text measures
+
+The project name may become a major graphic element.
+
+Example:
+
+01
+NIBIO
+
+Small metadata can sit separately:
+IT-konsulent
+Sommer 2026
+NIBIO
+
+Avoid turning metadata into pills.
+
+The current body copy should remain easy to read.
+
+Do not change fonts yet unless explicitly requested. First establish the layout and hierarchy with the existing typography.
+
+### Borders, radius and shadows
+
+Default:
+- no shadow
+- no large rounded project container
+- very small or zero border radius
+- thin rules/dividers where useful
+
+Screenshots may retain subtle framing when necessary for readability.
+
+Use boxes only when a box communicates something specific.
+
+A callout should feel intentional because most content is not boxed.
+
+### Grid
+
+Use a strong responsive editorial grid.
+
+Desktop should allow:
+- asymmetric text/image layouts
+- large images
+- narrow text columns
+- small metadata columns
+- images spanning multiple columns
+- deliberate variation in image scale
+
+Do not mechanically alternate left/right layouts.
+
+Let the content determine the composition.
+
+Mobile should collapse into a clear single-column reading order.
+
+### Imagery
+
+Project imagery should become one of the main visual elements of the portfolio.
+
+Avoid placing every screenshot inside an identical frame.
+
+Allow:
+- large full-width screenshots
+- smaller supporting screenshots
+- asymmetric image sequences
+- cropped interaction details
+- different image scales within one section
+
+The work itself should provide much of the visual interest.
+
+Do not add decorative mockups when the real project imagery communicates the idea better.
+
+### Project overview
+
+Move away from traditional project cards.
+
+Selected work should feel more like an editorial index.
+
+Possible structure:
+
+UTVALGTE PROSJEKTER
+
+01
+NIBIO
+Short description
+Large project visual
+
+02
+Skybound
+Short description
+Project visual
+
+03
+Paragone
+Short description
+Project visual
+
+Projects can have different image compositions while following the same underlying grid.
+
+### Case studies
+
+Case studies should live directly on the page background.
+
+Do not wrap the entire case in a separate large card.
+
+Within a case:
+- use typography for hierarchy
+- use whitespace for grouping
+- use thin lines for separation
+- let images interrupt or span the grid
+- use pastel fields sparingly for emphasis
+
+Keep enough text to demonstrate UX reasoning.
+
+The portfolio is not intended to become a minimal image gallery.
+
+For NIBIO specifically, preserve the approved case narrative and roughly the current amount of substantive UX reasoning.
+
+### NIBIO
+
+The current NIBIO content and story remain the basis of the case.
+
+Do not rewrite the case simply because the visual system is changing.
+
+The new presentation should make the existing content feel lighter through:
+- stronger typography
+- better grid composition
+- images integrated with text
+- varied image scale
+- fewer containers
+
+Important NIBIO moments still include:
+- entering and understanding a complex organization
+- narrowing the problem
+- “registrer én gang”
+- build vs buy
+- adapting FAIR Wizard through UX work
+- progressive disclosure
+- registration → catalogue
+- traditional filtering vs semantic search
+- design for redesign
+- reflection
+
+### Core rule
+
+Do not achieve “clean” by deleting the UX reasoning.
+
+Achieve “clean” through hierarchy, typography, grid, spacing and imagery.
