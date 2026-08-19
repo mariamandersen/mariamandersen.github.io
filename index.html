@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="editorial-redesign">
+<body>
   <!-- Skip-links -->
   <a class="skip-link" href="#main" data-lang="no">Hopp til innhold</a>
   <a class="skip-link" href="#main" data-lang="en" hidden>Skip to content</a>
@@ -29,7 +29,7 @@
 
   <header>
     <div class="container bar">
-      <a class="brand" href="#main">Maria Malmstedt Andersen</a>
+      <div class="brand"></div>
 
       <!-- Simplified header controls: language toggle + contact links -->
       <div class="header-controls">
@@ -101,79 +101,69 @@
 
   <main id="main">
     <!-- Hero -->
-    <section class="hero fade-in" aria-labelledby="hero-title-no">
-      <div class="editorial-shell hero-layout">
-        <div class="hero-copy" data-lang="no">
-          <p class="eyebrow">Portefølje</p>
-          <h1 id="hero-title-no">Maria Malmstedt Andersen</h1>
-          <p class="hero-role">UX-designer med bakgrunn i informatikk og psykologi.</p>
-          <p class="lead">Jeg liker å forstå mennesker og problemene de møter. Det bruker jeg til å lage gode digitale løsninger.</p>
-          <a class="text-link" href="#selected-work">Se utvalgte prosjekter <span aria-hidden="true">↓</span></a>
-        </div>
-        <div class="hero-copy" data-lang="en" hidden>
-          <p class="eyebrow">Portfolio</p>
-          <h1>Maria Malmstedt Andersen</h1>
-          <p class="hero-role">UX designer with a background in informatics and psychology.</p>
-          <p class="lead">I enjoy understanding people and the problems they face. I use this knowledge to create good digital solutions.</p>
-        </div>
+    <section class="hero section fade-in">
+      <div class="container hero-grid">
         <figure class="hero-photo">
-          <img src="images/meg_selv.JPG" alt="Portrett av Maria Malmstedt Andersen" width="900" height="1200" loading="eager">
+          <img src="images/meg_selv.JPG"
+               alt="Portrett av Maria Malmstedt Andersen"
+               width="900" height="1200" loading="eager" />
         </figure>
-      </div>
-    </section>
 
-    <section class="selected-work editorial-shell" id="selected-work" data-lang="no" aria-labelledby="selected-work-title">
-      <header class="section-heading">
-        <p class="eyebrow">01–03</p>
-        <h2 id="selected-work-title">Utvalgte prosjekter</h2>
-      </header>
-      <div class="work-index">
-        <a class="work-entry work-entry--nibio" href="#NIBIO-Internship">
-          <span class="work-number">01</span>
-          <div class="work-copy">
-            <h3>NIBIO</h3>
-            <p>Hvordan kan NIBIO få bedre oversikt over forskningsdata og samtidig gjøre datahåndtering enklere for forskerne?</p>
-          </div>
-          <figure><img src="images/NIBIO/catalog-overview.png" alt="Oversikt over NIBIOs interne datakatalog" width="1101" height="2904" loading="lazy"></figure>
-        </a>
-        <a class="work-entry work-entry--skybound" href="#proj-rocket-no">
-          <span class="work-number">02</span>
-          <div class="work-copy">
-            <h3>Skybound</h3>
-            <p>Planleggingsapp for rakettoppskytning.</p>
-          </div>
-          <figure><img src="images/skybound/ferdig_prototype.png" alt="Ferdig prototype av Skybound" width="904" height="644" loading="lazy"></figure>
-        </a>
-        <a class="work-entry work-entry--paragone" href="#proj-in5510-no">
-          <span class="work-number">03</span>
-          <div class="work-copy">
-            <h3>Paragone</h3>
-            <p>Studentdrevet kunsthistorisk tidsskrift.</p>
-          </div>
-          <figure><img src="images/in5510/workshop1/workshop1-group-exercise-800.png" alt="Deltakere arbeider sammen i workshop" width="542" height="800" loading="lazy"></figure>
-        </a>
+        <div class="card hero-copy">
+          <!-- Add a single H1 for document semantics -->
+          <h1 class="sr-only">Maria Malmstedt Andersen – UX-designer</h1>
+
+          <h2 id="heading-hero-no" data-lang="no">Introduksjon</h2>
+          <h2 id="heading-hero-en" data-lang="en" hidden>Introduction</h2>
+
+          <p class="intro-line" data-lang="no"><strong>Hei!</strong> Mitt navn er Maria.</p>
+          <p class="intro-line" data-lang="en" hidden><strong>Hi!</strong> My name is Maria.</p>
+
+          <p class="lead" data-lang="no">Jeg liker å forstå mennesker og problemene de møter. Det bruker jeg til å lage gode digitale løsninger.</p>
+          <p class="lead" data-lang="en" hidden>I enjoy understanding people and the problems they face. I use this knowledge to create good digital solutions.</p>
+
+          <nav id="hero-contents-no" class="hero-contents" aria-label="Hopp til seksjoner på siden" data-lang="no" aria-describedby="hero-contents-desc-no">
+            <p id="hero-contents-desc-no" class="sr-only">Lenker til utvalgte prosjekter</p>
+            <ul role="list">
+              <li role="listitem"><a href="#NIBIO-Internship" aria-label="Gå til seksjonen: NIBIO Internship">Internship i NIBIO</a></li>
+              <li role="listitem"><a href="#proj-in5510-no" aria-label="Gå til seksjonen: Deltakende design">Deltakende design</a></li>
+              <li role="listitem"><a href="#proj-in5620-no" aria-label="Gå til seksjonen: Interaksjon med AI og autonome systemer">Interaksjon med AI og autonome systemer</a></li>
+              <li role="listitem"><a href="#proj-in5320-no" aria-label="Gå til seksjonen: Plattformøkosystemer">Plattformøkosystemer</a></li>
+              <li role="listitem"><a href="#proj-rocket-no" aria-label="Gå til seksjonen: Skybound planleggingsapp">Skybound – planleggingsapp</a></li>
+              <li role="listitem"><a href="#proj-medball-no" aria-label="Gå til seksjonen: Meditasjonsball">Meditasjonsball</a></li>
+              <li role="listitem"><a href="#proj-echo-no" aria-label="Gå til seksjonen: Design for demokrati">Design for demokrati</a></li>
+            </ul>
+          </nav>
+
+          <nav id="hero-contents-en" class="hero-contents" aria-label="Jump to sections on this page" data-lang="en" hidden aria-describedby="hero-contents-desc-en">
+            <p id="hero-contents-desc-en" class="sr-only">Links to selected projects</p>
+              <li role="listitem"><a href="#NIBIO-Internship" aria-label="Go to section: NIBIO Internship">Internship at NIBIO</a></li>
+              <li role="listitem"><a href="#proj-in5510-en" aria-label="Go to section: Participatory Design">Participatory Design</a></li>
+              <li role="listitem"><a href="#proj-in5620-en" aria-label="Go to section: AI and Autonomous Systems">AI and Autonomous Systems</a></li>
+              <li role="listitem"><a href="#proj-in5320-en" aria-label="Go to section: Platform Ecosystems">Platform Ecosystems</a></li>
+              <li role="listitem"><a href="#proj-rocket-en" aria-label="Go to section: Skybound Planner">Skybound – Planner</a></li>
+              <li role="listitem"><a href="#proj-medball-en" aria-label="Go to section: Meditation Ball">Meditation Ball</a></li>
+              <li role="listitem"><a href="#proj-echo-en" aria-label="Go to section: Design for Democracy">Design for Democracy</a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </section>
 
     <!-- =================== NORWEGIAN =================== -->
     <section id="content-no" lang="no">
-      <article class="project nibio-case fade-in" id="NIBIO-Internship" data-continuous-case="1" aria-labelledby="heading-NIBIO-Internship">
+      <article class="project project--card fade-in" id="NIBIO-Internship" data-has-preview="1" aria-labelledby="heading-NIBIO-Internship">
         <div class="project-inner">
-          <header class="case-opening">
-            <span class="case-number" aria-hidden="true">01</span>
-            <h2 id="heading-NIBIO-Internship">NIBIO</h2>
-            <p class="case-question"><strong>Hvordan kan NIBIO få bedre oversikt over forskningsdata og samtidig gjøre datahåndtering enklere for forskerne?</strong></p>
-            <p class="kicker">IT-konsulent · Sommerinternship 2026</p>
-            <div class="case-intro">
-              <p>Sommeren 2026 jobbet jeg som IT-konsulent i NIBIO sammen med en annen intern. Vi skulle utforske hvordan NIBIO kunne håndtere forskningsdata bedre og utvikle en prototype på en intern datakatalog.</p>
-              <p>Oppgaven var stor og åpen. Vi skjønte raskt at problemet var organisatorisk, kulturelt og teknisk.</p>
-            </div>
-          </header>
+          <h2 id="heading-NIBIO-Internship">NIBIO</h2>
+          <p class="case-question"><strong>Hvordan kan NIBIO få bedre oversikt over forskningsdata og samtidig gjøre datahåndtering enklere for forskerne?</strong></p>
+          <p class="kicker">IT-konsulent · Sommerinternship 2026</p>
+          <p>Sommeren 2026 jobbet jeg som IT-konsulent i NIBIO sammen med en annen intern. Vi skulle utforske hvordan NIBIO kunne håndtere forskningsdata bedre og utvikle en prototype på en intern datakatalog.</p>
+          <p>Oppgaven var stor og åpen. Vi skjønte raskt at problemet var organisatorisk, kulturelt og teknisk.</p>
 
           <div class="case-study">
-            <figure class="case-hero-media">
-              <img src="images/NIBIO/catalog-overview.png" alt="Oversikt over den interne datakatalogen" width="1101" height="2904">
-            </figure>
+            <div class="case-preview-source" hidden>
+              <img src="images/NIBIO/catalog-overview.png" alt="Oversikt over den interne datakatalogen" width="1101" height="2904" data-preview-image>
+            </div>
             <section class="case-section case-section--compact case-split">
               <div class="case-copy">
                 <h3>Før vi kunne lage noe, måtte vi forstå NIBIO</h3>

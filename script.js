@@ -330,7 +330,6 @@ function initProjectPreviews(){
 
   projects.forEach((proj, idx) => {
     if (proj.dataset.previewInit === '1') return;
-    if (proj.dataset.continuousCase === '1') return;
 
     const scope = proj.querySelector('.project-inner') || proj;
 
