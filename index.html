@@ -155,157 +155,130 @@
       <article class="project project--card fade-in" id="NIBIO-Internship" data-has-preview="1" aria-labelledby="heading-NIBIO-Internship">
         <div class="project-inner">
           <h2 id="heading-NIBIO-Internship">NIBIO</h2>
-          <p class="case-question"><strong>Hvordan kan NIBIO få bedre oversikt over forskningsdata og samtidig gjøre datahåndtering enklere for forskerne?</strong></p>
-          <p class="kicker">IT-konsulent · Sommerinternship 2026</p>
-          <p>Sommeren 2026 jobbet jeg som IT-konsulent i NIBIO sammen med en annen intern. Vi skulle utforske hvordan NIBIO kunne håndtere forskningsdata bedre og utvikle en prototype på en intern datakatalog.</p>
-          <p>Oppgaven var stor og åpen. Vi skjønte raskt at problemet var organisatorisk, kulturelt og teknisk.</p>
+          <p class="case-question"><strong>Hvordan kan en stor forskningsorganisasjon få bedre oversikt over egne data, uten å gi forskerne enda mer dokumentasjonsarbeid?</strong></p>
+          <p class="kicker">IT-konsulent · Sommeren 2026</p>
+          <p>Som IT-konsulent i NIBIO jobbet jeg med en stor og åpen oppgave knyttet til datahåndtering. Jeg jobbet på tvers av brukerinnsikt, design og teknologi, fra intervjuer og systemkartlegging til prototyping og programmering.</p>
 
-          <div class="case-study">
+          <div class="case-study editorial-flow">
             <div class="case-preview-source" hidden>
               <img src="images/NIBIO/catalog-overview.png" alt="Oversikt over den interne datakatalogen" width="1101" height="2904" data-preview-image>
             </div>
-            <section class="case-section case-section--compact case-split">
-              <div class="case-copy">
+            <section class="case-section editorial-section">
+              <div class="case-copy case-copy--wide">
                 <h3>Før vi kunne lage noe, måtte vi forstå NIBIO</h3>
-                <p>Vi kom inn med lite kunnskap om organisasjonen. Derfor startet vi med innsiktsarbeid.</p>
-                <p>Vi leste interne rapporter, kartla systemer og snakket med IKT og informasjonsforvaltning. Vi intervjuet også forskere fra ulike deler av NIBIO for å forstå hvordan de faktisk jobbet med data.</p>
-              </div>
-              <div class="insight-summary">
-                <ul>
-                  <li>Forskerne hadde svært ulik datakompetanse. Flere møtte begreper de ikke forsto.</li>
-                  <li>Dokumentasjon tok tid fra forskningen.</li>
-                  <li>Dobbeltregistrering ble opplevd som frustrerende.</li>
-                </ul>
-                <p>Innsikten hjalp oss med å snevre inn oppgaven. Vi valgte å starte med bedre oversikt, uten å kreve store endringer i hvordan forskerne allerede jobbet.</p>
+                <p>Oppgaven var stor og problemet viste seg raskt å være både organisatorisk, kulturelt og teknisk. Vi kom også inn med lite kunnskap om organisasjonen.</p>
+                <p>Derfor startet vi med å forstå hvordan forskerne faktisk jobbet. Vi leste interne rapporter, kartla eksisterende systemer og snakket med forskere, IKT og informasjonsforvaltning.</p>
+                <p>Forskerne hadde svært ulik datakompetanse. Flere møtte begreper de ikke forsto, dokumentasjon tok tid fra forskningen og dobbeltregistrering var spesielt frustrerende.</p>
+                <p class="editorial-emphasis">Vi kunne ikke løse alle disse problemene på én sommer. Innsiktsarbeidet hjalp oss derfor med å finne ut hvor vi kunne gjøre en konkret forbedring uten å kreve store endringer i måten forskerne allerede jobbet på.</p>
               </div>
             </section>
 
-            <section class="case-section">
+            <section class="case-section editorial-section">
               <div class="case-copy case-copy--wide">
-                <h3>Registrer én gang</h3>
-                <p>Mye av informasjonen NIBIO trenger finnes allerede i datahåndteringsplaner.</p>
-                <p>Derfor koblet vi datahåndteringsplanen og datakatalogen sammen. Forskeren registrerer informasjonen ett sted. Den samme informasjonen kan deretter brukes i katalogen.</p>
+                <h3>Kan vi bruke det som allerede finnes?</h3>
+                <p>Dobbeltregistrering var et av de tydeligste irritasjonsmomentene i intervjuene. Forskerne brukte tid på å registrere den samme eller lignende informasjon i flere systemer.</p>
+                <p>I stedet for å lage enda et sted forskerne måtte fylle inn informasjon, så vi derfor på hva som allerede fantes i organisasjonen.</p>
+                <p>Mye av informasjonen en datakatalog trenger, registreres allerede når forskeren lager en datahåndteringsplan. Det ble utgangspunktet for løsningen vår:</p>
+                <p class="editorial-statement">Registrer informasjonen én gang, og bruk den videre automatisk.</p>
               </div>
               <div class="concept-flow" aria-label="DMP til datakatalog til gjenfinning og gjenbruk">
                 <span>DMP</span><span aria-hidden="true">→</span><span>Datakatalog</span><span aria-hidden="true">→</span><span>Gjenfinning og gjenbruk</span>
               </div>
-              <p>Dette reduserer dobbeltregistrering og gir NIBIO en felles oversikt.</p>
+              <p class="editorial-reflection">For meg ble dette et viktig designprinsipp: Før jeg legger til en ny oppgave for brukeren, bør jeg undersøke om informasjonen eller handlingen allerede finnes et annet sted.</p>
             </section>
 
-            <section class="case-section case-section--decision">
-              <div class="case-copy case-copy--decision">
-                <h3>Bygge selv eller bruke noe som finnes?</h3>
-                <p>Vi kunne bygget et eget DMP-verktøy. Et skjema er relativt enkelt å utvikle. Utfordringen kommer når løsningen skal driftes, vedlikeholdes og endres over tid.</p>
-                <p>Vi valgte FAIR Wizard. Løsningen kunne tilpasses NIBIO og hadde et API som gjorde det mulig å bruke informasjonen videre i datakatalogen. FAIR Wizard var også aktuell i arbeidet med en nasjonal DMP-løsning. Det kunne gjøre samarbeid og integrasjoner enklere senere.</p>
-              </div>
-            </section>
-
-            <section class="case-section case-section--ux">
+            <section class="case-section editorial-section">
               <div class="case-copy case-copy--wide">
-                <h3>En ferdig løsning trenger fortsatt design</h3>
-                <p>FAIR Wizard ga oss teknologien, men brukeropplevelsen måtte tilpasses NIBIO.</p>
-                <p>Vi hadde sett at flere frustrasjoner med DMP-verktøy kunne spores tilbake til hvordan spørsmål og veiledning var utformet. Løsningene tok ofte utgangspunkt i informasjonen stab ønsket å samle inn.</p>
-                <p>Jeg jobbet med hvilke spørsmål forskerne skulle møte, rekkefølgen på dem og språket vi brukte. Jeg så også på når brukeren trengte hjelp og hvordan vi kunne skjule spørsmål som ikke var relevante.</p>
+                <h3>Vi trengte ikke bygge alt selv</h3>
+                <p>Vi kunne bygget et eget DMP-verktøy. Selve skjemaet var relativt enkelt å utvikle. Utfordringen kommer når en løsning skal driftes, vedlikeholdes og endres over tid.</p>
+                <p>Vi valgte derfor FAIR Wizard. Løsningen kunne tilpasses NIBIO og hadde integrasjonsmuligheter som gjorde det mulig å bruke informasjonen videre i datakatalogen. FAIR Wizard var også aktuell i arbeidet med en nasjonal DMP-løsning, noe som kunne gjøre fremtidig samarbeid og integrasjoner enklere.</p>
+                <p class="editorial-reflection">At vi kunne bygge noe selv, betydde ikke at vi burde gjøre det. For meg handler teknisk kompetanse også om å forstå når eksisterende teknologi er et bedre utgangspunkt, og hvor egen design- og utviklingsinnsats faktisk gir mest verdi.</p>
               </div>
+            </section>
 
-              <h4>Ett spørsmål av gangen</h4>
+            <section class="case-section editorial-section">
+              <div class="case-copy case-copy--wide">
+                <h3>En SaaS-løsning må også designes</h3>
+                <p>FAIR Wizard ga oss infrastrukturen, men ikke en ferdig brukeropplevelse.</p>
+                <p>Vi så på erfaringer fra andre som hadde implementert DMP-verktøy. Flere av frustrasjonene handlet om hvordan selve knowledge modellen var bygget opp. Verktøyene kunne oppleves som laget ut fra hva organisasjonen ønsket å dokumentere, fremfor hvordan forskeren forsto og jobbet med informasjonen.</p>
+                <p>Her lå mye av UX-arbeidet vårt.</p>
+                <p>Vi måtte bestemme hvilke spørsmål forskeren skulle møte, i hvilken rekkefølge, hvilket språk vi skulle bruke og når mer kompleks informasjon faktisk var nødvendig.</p>
+              </div>
               <div class="visual-sequence visual-sequence--three">
                 <figure class="visual-card">
                   <div class="visual-frame visual-frame--sequence">
                     <img src="images/NIBIO/fairwizard-data-question.png" alt="FAIR Wizard spør om prosjektet har generert data" width="1934" height="540" loading="lazy">
                   </div>
-                  <figcaption><strong>Ett enkelt spørsmål</strong><span>Vi spør først om prosjektet har generert data.</span></figcaption>
                 </figure>
                 <figure class="visual-card">
                   <div class="visual-frame visual-frame--sequence">
                     <img src="images/NIBIO/fairwizard-data-yes.png" alt="FAIR Wizard viser veiledning og valg for registrering av datasett" width="1944" height="1242" loading="lazy">
                   </div>
-                  <figcaption><strong>Bare relevant informasjon</strong><span>Hvis svaret er ja, får forskeren veiledning og mulighet til å registrere datasett. Hvis svaret er nei, stopper det der.</span></figcaption>
                 </figure>
                 <figure class="visual-card">
                   <div class="visual-frame visual-frame--sequence">
                     <img src="images/NIBIO/fairwizard-dataset.png" alt="FAIR Wizard viser detaljerte spørsmål om datasettet" width="1898" height="1354" loading="lazy">
                   </div>
-                  <figcaption><strong>Detaljer ved behov</strong><span>Detaljer om datasettet vises først når forskeren faktisk skal registrere et.</span></figcaption>
                 </figure>
               </div>
-              <p>Målet var å redusere kompleksiteten og gjøre planen mulig å fylle ut uten å være ekspert på dataforvaltning.</p>
-
-              <div class="case-callout case-callout--compact case-callout--reflection">
-                <h4>Trengte det å se mer spennende ut?</h4>
-                <p>FAIR Wizard har et enkelt visuelt uttrykk. Brukertestene viste at forskerne ikke la særlig vekt på dette. De ønsket først og fremst en løsning som var enkel og effektiv.</p>
-                <p>Derfor prioriterte vi flyt, språk og veiledning.</p>
-              </div>
-            </section>
-
-            <section class="case-section">
               <div class="case-copy case-copy--wide">
-                <h3>Fra registrering til gjenfinning</h3>
-                <p>Informasjonen fra FAIR Wizard kunne hentes videre til datakatalogen.</p>
+                <p>For eksempel trenger ikke alle forskere å fylle ut detaljer om datasett. Først spør vi om prosjektet har generert data. Bare når svaret gjør informasjonen relevant, vises de neste spørsmålene.</p>
+                <p>Det reduserer mengden informasjon brukeren må forholde seg til på én gang.</p>
+                <p class="editorial-reflection">Jeg lærte at tilpasning av en eksisterende løsning kan kreve like bevisste UX-valg som å designe et nytt grensesnitt. Brukeropplevelsen ligger også i innhold, språk, rekkefølge og logikk.</p>
               </div>
-              <div class="visual-transition">
-                <figure class="visual-card visual-card--source">
-                  <img src="images/NIBIO/fairwizard-dataset.png" alt="Registrering av datasett i FAIR Wizard" width="1898" height="1354" loading="lazy">
-                </figure>
-                <span class="visual-transition__arrow" aria-hidden="true">→</span>
-                <figure class="visual-card visual-card--result">
-                  <img src="images/NIBIO/catalog-project.png" alt="Prosjekt og forskningsdata vist i datakatalogen" width="1101" height="1066" loading="lazy">
-                </figure>
-              </div>
-              <p>I katalogen kan forskere se hvilke prosjekter og forskningsdata som finnes, hvor data er lagret og hvem de kan kontakte.</p>
             </section>
 
-            <section class="case-section">
+            <section class="case-section editorial-section">
               <div class="case-copy case-copy--wide">
-                <h3>To måter å finne informasjon på</h3>
-                <p>Forskerne hadde ulike behov når de søkte.</p>
+                <h3>Informasjonen måtte også være mulig å finne igjen</h3>
+                <p>Når informasjonen først var registrert, måtte den være nyttig for andre.</p>
+                <p>Vi utviklet derfor en prototype på en intern datakatalog. Her kunne forskere få oversikt over hva som allerede var gjort, hvilke data som fantes og hvem de kunne kontakte.</p>
               </div>
-              <div class="comparison-grid">
-                <section class="comparison-panel">
-                  <h4>Jeg vet hva jeg leter etter</h4>
-                  <p>Tekstsøk og filtrering passer når brukeren kjenner noen av kriteriene på forhånd.</p>
-                  <div class="before-after">
-                    <figure>
-                      <img src="images/NIBIO/filter-project-name.png" alt="Datakatalog filtrert på Maria med fire datasett" width="1101" height="1401" loading="lazy">
-                      <figcaption><strong>Maria → 4 datasett</strong></figcaption>
-                    </figure>
-                    <figure>
-                      <img src="images/NIBIO/filter-project-name-active.png" alt="Datakatalog filtrert på Maria og aktiv status med to datasett" width="1101" height="1401" loading="lazy">
-                      <figcaption><strong>Maria + Aktiv → 2 datasett</strong></figcaption>
-                    </figure>
-                  </div>
-                  <p>Filtre kan kombineres for å snevre inn resultatene.</p>
-                </section>
-                <section class="comparison-panel">
-                  <h4>Jeg vet ikke hva jeg leter etter</h4>
-                  <p>Forskerne visste ikke alltid hva som allerede fantes i NIBIO. Lignende arbeid kunne også være beskrevet med andre fagbegreper.</p>
-                  <p>Derfor utforsket vi semantisk søk.</p>
-                  <figure class="visual-card visual-card--portrait">
-                    <img src="images/NIBIO/catalog-ai-search.png" alt="Semantisk søk i datakatalogen" width="1101" height="3347" loading="lazy">
-                  </figure>
-                  <p>Brukeren kan beskrive hva hen leter etter med egne ord og få forslag til prosjekter som kan være relevante.</p>
-                </section>
-              </div>
+              <figure class="editorial-visual editorial-visual--overview">
+                <img src="images/NIBIO/catalog-overview.png" alt="Oversikt over den interne datakatalogen" width="1101" height="2904" loading="lazy">
+              </figure>
+              <p>Vi laget to måter å søke på fordi de støttet ulike behov.</p>
             </section>
 
-            <div class="case-ending-grid">
-              <section class="case-section case-section--ending">
-                <div class="case-copy">
-                  <h3>Laget for å kunne bygges videre på</h3>
-                  <p>NIBIO er i endring. Løsningen måtte kunne endres med organisasjonen.</p>
-                  <p>Vi prøvde derfor å unngå unødvendige avhengigheter mellom delene av systemet. Datakatalogen skulle kunne videreutvikles selv om DMP-verktøyet eller organisasjonen endret seg.</p>
-                  <p class="case-term">Vi kalte dette <strong>design for redesign</strong>.</p>
-                </div>
-              </section>
+            <section class="case-section editorial-section editorial-subsection">
+              <div class="case-copy case-copy--wide">
+                <h3>Når jeg vet hva jeg leter etter</h3>
+                <p>Når brukeren kjenner noen av kriteriene på forhånd, kan tekstsøk og filtre brukes til å snevre inn resultatene.</p>
+              </div>
+              <div class="before-after editorial-comparison">
+                <figure>
+                  <img src="images/NIBIO/filter-project-name.png" alt="Datakatalog filtrert på Maria med fire datasett" width="1101" height="1401" loading="lazy">
+                  <figcaption><strong>Maria → 4 datasett</strong></figcaption>
+                </figure>
+                <figure>
+                  <img src="images/NIBIO/filter-project-name-active.png" alt="Datakatalog filtrert på Maria og aktiv status med to datasett" width="1101" height="1401" loading="lazy">
+                  <figcaption><strong>Maria + Aktiv → 2 datasett</strong></figcaption>
+                </figure>
+              </div>
+              <p>Filtrene kan kombineres etter hva brukeren allerede vet.</p>
+            </section>
 
-              <section class="case-section case-section--ending case-section--closing">
-                <div class="case-copy">
-                  <h3>Hva jeg tar med meg</h3>
-                  <p>Prosjektet lærte meg mye om å jobbe med en problemstilling der løsningen ikke var gitt på forhånd. Jeg måtte først forstå organisasjonen og menneskene som jobbet der.</p>
-                  <p>Jeg fikk også erfaring med å bygge noe nytt og tilpasse eksisterende teknologi. Det vi laget måtte fungere for brukerne i dag og være enkelt for andre å bygge videre på senere.</p>
-                </div>
-              </section>
-            </div>
+            <section class="case-section editorial-section editorial-subsection">
+              <div class="case-copy case-copy--wide">
+                <h3>Når jeg ikke vet nøyaktig hva jeg leter etter</h3>
+                <p>Intervjuene viste også at forskerne ikke alltid kjenner navnet på prosjektet eller datasettet de trenger. De kan ha en idé, et tema eller et geografisk område og lure på om noen i NIBIO har gjort noe lignende tidligere.</p>
+                <p>Derfor utforsket vi også semantisk søk. I stedet for å være avhengig av eksakte nøkkelord kan søket bruke konteksten i spørsmålet til å finne relevant informasjon.</p>
+              </div>
+              <figure class="editorial-visual editorial-visual--search">
+                <img src="images/NIBIO/catalog-ai-search.png" alt="Semantisk søk i datakatalogen" width="1101" height="3347" loading="lazy">
+              </figure>
+              <p class="editorial-reflection">Det lærte meg å tenke på søk som mer enn én funksjon. Ulike søkemåter støtter ulike nivåer av kunnskap hos brukeren. Designet bør ta høyde for både den som vet akkurat hva hun trenger og den som fortsatt utforsker.</p>
+            </section>
+
+            <section class="case-section editorial-section case-section--closing">
+              <div class="case-copy case-copy--wide">
+                <h3>Bygg for at ting kommer til å endre seg</h3>
+                <p>NIBIO var samtidig i endring. Organisasjonen kunne endres, spørsmålene i DMP-en kunne endres og nye systemer kunne komme til senere.</p>
+                <p>Derfor ønsket vi ikke å bygge datakatalogen tett rundt én bestemt organisasjonsstruktur eller én versjon av FAIR Wizard. Løsningen ble tenkt med et mellomlag som kunne oversette informasjonen før den ble brukt videre.</p>
+                <p>Det tekniske arkitekturvalget støttet dermed det samme prinsippet som UX-arbeidet: Løsningen måtte kunne endres uten at alt måtte bygges på nytt.</p>
+                <p class="editorial-reflection editorial-reflection--final">Det er en tankegang jeg tar med meg videre. Jeg designer ikke bare for løsningen slik den ser ut i dag, men for at både brukere, organisasjoner og teknologi kommer til å endre seg.</p>
+              </div>
+            </section>
           </div>
         </div>
       </article>
