@@ -1890,7 +1890,10 @@ html.has-io .fade-in{
   max-width:none;
 }
 .case-compare--search{
-  grid-template-columns:minmax(0, 1.12fr) minmax(0, .88fr);
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  grid-template-rows:auto auto auto;
+  column-gap:clamp(22px, 4vw, 48px);
+  row-gap:clamp(14px, 2vw, 22px);
 }
 .case-compare__item{
   display:grid;
@@ -1900,6 +1903,13 @@ html.has-io .fade-in{
 }
 .case-compare__item > p{ margin:0; }
 .case-compare__item .case-copy{ width:100%; }
+.case-compare--search > .case-compare__item{ display:contents; }
+.case-compare--search > .case-compare__item:first-child > .case-copy{ grid-column:1; grid-row:1; }
+.case-compare--search > .case-compare__item:first-child > .search-media{ grid-column:1; grid-row:2; }
+.case-compare--search > .case-compare__item:first-child > .search-mode-after{ grid-column:1; grid-row:3; }
+.case-compare--search > .case-compare__item:last-child > .case-copy{ grid-column:2; grid-row:1; }
+.case-compare--search > .case-compare__item:last-child > .search-media{ grid-column:2; grid-row:2; }
+.case-compare--search > .case-compare__item:last-child > .editorial-reflection{ grid-column:2; grid-row:3; }
 .editorial-visual{ margin:0; min-width:0; }
 .editorial-visual img{
   display:block;
@@ -2162,6 +2172,55 @@ html.has-io .fade-in{
   object-fit:cover;
   object-position:top center;
 }
+#NIBIO-Internship .search-media{
+  width:100%;
+  height:auto;
+  aspect-ratio:3 / 1;
+  overflow:hidden;
+  margin:0;
+}
+#NIBIO-Internship .search-media--filters .editorial-comparison{
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:clamp(8px, 1.2vw, 14px);
+  width:100%;
+  height:100%;
+}
+#NIBIO-Internship .search-media--filters figure{
+  display:block;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+#NIBIO-Internship .search-media--filters img,
+#NIBIO-Internship .search-media--semantic img{
+  width:100%;
+  height:100%;
+  max-height:none;
+  object-fit:cover;
+}
+#NIBIO-Internship .search-media--filters img{
+  aspect-ratio:auto;
+  object-position:18% top;
+}
+#NIBIO-Internship .search-media--semantic{
+  max-width:none;
+}
+#NIBIO-Internship .search-media--semantic img{
+  aspect-ratio:auto;
+  object-position:center 12%;
+}
+#NIBIO-Internship .search-media-labels{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:clamp(8px, 1.2vw, 14px);
+  color:var(--heading-brown);
+}
+#NIBIO-Internship .search-mode-after{
+  display:grid;
+  gap:clamp(14px, 2vw, 22px);
+  align-content:start;
+}
+#NIBIO-Internship .search-mode-after p{ margin:0; }
 .case-section--closing{ padding-bottom:4px; }
 .case-ending-grid{
   display:grid;
@@ -2208,7 +2267,15 @@ html.has-io .fade-in{
   .case-ending-grid{ grid-template-columns:1fr; }
   .case-compare--equal,
   .case-compare--search{ grid-template-columns:1fr; }
+  .case-compare--search{ grid-template-rows:none; }
   .case-compare__item{ width:100%; }
+  .case-compare--search > .case-compare__item{
+    display:grid;
+  }
+  .case-compare--search > .case-compare__item > *{
+    grid-column:auto !important;
+    grid-row:auto !important;
+  }
   .case-copy--decision{ gap:10px; }
   .case-ending-grid{ gap:0; }
   .case-ending-grid .case-section + .case-section{ border-top:1px solid var(--line-lite); }
@@ -2223,6 +2290,19 @@ html.has-io .fade-in{
   .case-section.editorial-section{ padding-block:28px; }
   #NIBIO-Internship .editorial-visual--overview img{
     height:62.5vw;
+  }
+  #NIBIO-Internship .search-media{
+    aspect-ratio:3 / 2;
+  }
+  #NIBIO-Internship .search-media--filters .editorial-comparison{
+    grid-template-columns:1fr;
+    grid-template-rows:repeat(2, minmax(0, 1fr));
+  }
+  #NIBIO-Internship .search-media--filters img{
+    object-position:top center;
+  }
+  #NIBIO-Internship .search-media-labels{
+    grid-template-columns:1fr;
   }
 }
 
