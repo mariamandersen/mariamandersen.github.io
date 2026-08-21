@@ -2099,6 +2099,69 @@ html.has-io .fade-in{
   object-fit:cover;
   object-position:top;
 }
+
+/* NIBIO image hierarchy: one large result, medium support and compact details */
+#NIBIO-Internship .case-section--sequence .visual-sequence{
+  width:min(100%, 900px);
+  justify-self:start;
+  align-items:stretch;
+}
+#NIBIO-Internship .case-section--sequence .visual-card{
+  display:grid;
+  width:100%;
+}
+#NIBIO-Internship .case-section--sequence .visual-frame--sequence{
+  width:100%;
+  aspect-ratio:16 / 9;
+  padding:0;
+}
+#NIBIO-Internship .case-section--sequence .visual-frame--sequence img{
+  width:100%;
+  height:100%;
+  max-height:none;
+  object-fit:cover;
+  object-position:top center;
+}
+#NIBIO-Internship .case-section--sequence .visual-card:first-child img{
+  object-position:top left;
+}
+#NIBIO-Internship .editorial-visual--overview{
+  width:min(100%, 1000px);
+}
+#NIBIO-Internship .editorial-visual--overview img{
+  width:100%;
+  height:min(62.5vw, 620px);
+  max-height:none;
+  object-fit:cover;
+  object-position:top center;
+}
+#NIBIO-Internship .editorial-comparison{
+  align-items:start;
+}
+#NIBIO-Internship .editorial-comparison figure{
+  display:grid;
+  grid-template-rows:auto 1fr;
+  align-content:start;
+  width:100%;
+}
+#NIBIO-Internship .editorial-comparison img{
+  width:100%;
+  height:auto;
+  aspect-ratio:5 / 2;
+  object-fit:cover;
+  object-position:top center;
+}
+#NIBIO-Internship .editorial-visual--search{
+  width:min(100%, 520px);
+}
+#NIBIO-Internship .editorial-visual--search img{
+  width:100%;
+  height:auto;
+  aspect-ratio:4 / 3;
+  max-height:none;
+  object-fit:cover;
+  object-position:top center;
+}
 .case-section--closing{ padding-bottom:4px; }
 .case-ending-grid{
   display:grid;
@@ -2149,13 +2212,18 @@ html.has-io .fade-in{
   .case-copy--decision{ gap:10px; }
   .case-ending-grid{ gap:0; }
   .case-ending-grid .case-section + .case-section{ border-top:1px solid var(--line-lite); }
+  #NIBIO-Internship .case-section--sequence .visual-card,
+  #NIBIO-Internship .editorial-visual--search{
+    width:min(100%, 560px);
+  }
 }
 
 @media (max-width:600px){
   .editorial-comparison{ grid-template-columns:1fr; }
   .case-section.editorial-section{ padding-block:28px; }
-  .editorial-visual--overview img,
-  .editorial-visual--search img{ max-height:520px; }
+  #NIBIO-Internship .editorial-visual--overview img{
+    height:62.5vw;
+  }
 }
 
 @media (max-width:420px){
