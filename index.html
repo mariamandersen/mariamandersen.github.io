@@ -163,7 +163,7 @@
             <div class="case-preview-source" hidden>
               <img src="images/NIBIO/catalog-overview.png" alt="Oversikt over den interne datakatalogen" width="1101" height="2904" data-preview-image>
             </div>
-            <section class="case-section editorial-section">
+            <section class="case-section editorial-section case-section--text">
               <div class="case-copy case-copy--wide">
                 <h3>Før vi kunne lage noe, måtte vi forstå NIBIO</h3>
                 <p>Oppgaven var stor og problemet viste seg raskt å være både organisatorisk, kulturelt og teknisk. Vi kom også inn med lite kunnskap om organisasjonen.</p>
@@ -173,7 +173,7 @@
               </div>
             </section>
 
-            <section class="case-section editorial-section">
+            <section class="case-section editorial-section case-section--wide">
               <div class="case-copy case-copy--wide">
                 <h3>Kan vi bruke det som allerede finnes?</h3>
                 <p>Dobbeltregistrering var et av de tydeligste irritasjonsmomentene i intervjuene. Forskerne brukte tid på å registrere den samme eller lignende informasjon i flere systemer.</p>
@@ -187,16 +187,18 @@
               <p class="editorial-reflection">For meg ble dette et viktig designprinsipp: Før jeg legger til en ny oppgave for brukeren, bør jeg undersøke om informasjonen eller handlingen allerede finnes et annet sted.</p>
             </section>
 
-            <section class="case-section editorial-section">
+            <section class="case-section editorial-section case-section--compare">
               <div class="case-copy case-copy--wide">
                 <h3>Vi trengte ikke bygge alt selv</h3>
+              </div>
+              <div class="case-compare case-compare--equal">
                 <p>Vi kunne bygget et eget DMP-verktøy. Selve skjemaet var relativt enkelt å utvikle. Utfordringen kommer når en løsning skal driftes, vedlikeholdes og endres over tid.</p>
                 <p>Vi valgte derfor FAIR Wizard. Løsningen kunne tilpasses NIBIO og hadde integrasjonsmuligheter som gjorde det mulig å bruke informasjonen videre i datakatalogen. FAIR Wizard var også aktuell i arbeidet med en nasjonal DMP-løsning, noe som kunne gjøre fremtidig samarbeid og integrasjoner enklere.</p>
-                <p class="editorial-reflection">At vi kunne bygge noe selv, betydde ikke at vi burde gjøre det. For meg handler teknisk kompetanse også om å forstå når eksisterende teknologi er et bedre utgangspunkt, og hvor egen design- og utviklingsinnsats faktisk gir mest verdi.</p>
               </div>
+              <p class="editorial-reflection">At vi kunne bygge noe selv, betydde ikke at vi burde gjøre det. For meg handler teknisk kompetanse også om å forstå når eksisterende teknologi er et bedre utgangspunkt, og hvor egen design- og utviklingsinnsats faktisk gir mest verdi.</p>
             </section>
 
-            <section class="case-section editorial-section">
+            <section class="case-section editorial-section case-section--sequence">
               <div class="case-copy case-copy--wide">
                 <h3>En SaaS-løsning må også designes</h3>
                 <p>FAIR Wizard ga oss infrastrukturen, men ikke en ferdig brukeropplevelse.</p>
@@ -228,7 +230,7 @@
               </div>
             </section>
 
-            <section class="case-section editorial-section">
+            <section class="case-section editorial-section case-section--wide">
               <div class="case-copy case-copy--wide">
                 <h3>Informasjonen måtte også være mulig å finne igjen</h3>
                 <p>Når informasjonen først var registrert, måtte den være nyttig for andre.</p>
@@ -240,37 +242,40 @@
               <p>Vi laget to måter å søke på fordi de støttet ulike behov.</p>
             </section>
 
-            <section class="case-section editorial-section editorial-subsection">
-              <div class="case-copy case-copy--wide">
-                <h3>Når jeg vet hva jeg leter etter</h3>
-                <p>Når brukeren kjenner noen av kriteriene på forhånd, kan tekstsøk og filtre brukes til å snevre inn resultatene.</p>
+            <section class="case-section editorial-section case-section--compare case-section--search-compare">
+              <div class="case-compare case-compare--search">
+                <div class="case-compare__item">
+                  <div class="case-copy">
+                    <h3>Når jeg vet hva jeg leter etter</h3>
+                    <p>Når brukeren kjenner noen av kriteriene på forhånd, kan tekstsøk og filtre brukes til å snevre inn resultatene.</p>
+                  </div>
+                  <div class="before-after editorial-comparison">
+                    <figure>
+                      <img src="images/NIBIO/filter-project-name.png" alt="Datakatalog filtrert på Maria med fire datasett" width="1101" height="1401" loading="lazy">
+                      <figcaption><strong>Maria → 4 datasett</strong></figcaption>
+                    </figure>
+                    <figure>
+                      <img src="images/NIBIO/filter-project-name-active.png" alt="Datakatalog filtrert på Maria og aktiv status med to datasett" width="1101" height="1401" loading="lazy">
+                      <figcaption><strong>Maria + Aktiv → 2 datasett</strong></figcaption>
+                    </figure>
+                  </div>
+                  <p>Filtrene kan kombineres etter hva brukeren allerede vet.</p>
+                </div>
+                <div class="case-compare__item">
+                  <div class="case-copy">
+                    <h3>Når jeg ikke vet nøyaktig hva jeg leter etter</h3>
+                    <p>Intervjuene viste også at forskerne ikke alltid kjenner navnet på prosjektet eller datasettet de trenger. De kan ha en idé, et tema eller et geografisk område og lure på om noen i NIBIO har gjort noe lignende tidligere.</p>
+                    <p>Derfor utforsket vi også semantisk søk. I stedet for å være avhengig av eksakte nøkkelord kan søket bruke konteksten i spørsmålet til å finne relevant informasjon.</p>
+                  </div>
+                  <figure class="editorial-visual editorial-visual--search">
+                    <img src="images/NIBIO/catalog-ai-search.png" alt="Semantisk søk i datakatalogen" width="1101" height="3347" loading="lazy">
+                  </figure>
+                  <p class="editorial-reflection">Det lærte meg å tenke på søk som mer enn én funksjon. Ulike søkemåter støtter ulike nivåer av kunnskap hos brukeren. Designet bør ta høyde for både den som vet akkurat hva hun trenger og den som fortsatt utforsker.</p>
+                </div>
               </div>
-              <div class="before-after editorial-comparison">
-                <figure>
-                  <img src="images/NIBIO/filter-project-name.png" alt="Datakatalog filtrert på Maria med fire datasett" width="1101" height="1401" loading="lazy">
-                  <figcaption><strong>Maria → 4 datasett</strong></figcaption>
-                </figure>
-                <figure>
-                  <img src="images/NIBIO/filter-project-name-active.png" alt="Datakatalog filtrert på Maria og aktiv status med to datasett" width="1101" height="1401" loading="lazy">
-                  <figcaption><strong>Maria + Aktiv → 2 datasett</strong></figcaption>
-                </figure>
-              </div>
-              <p>Filtrene kan kombineres etter hva brukeren allerede vet.</p>
             </section>
 
-            <section class="case-section editorial-section editorial-subsection">
-              <div class="case-copy case-copy--wide">
-                <h3>Når jeg ikke vet nøyaktig hva jeg leter etter</h3>
-                <p>Intervjuene viste også at forskerne ikke alltid kjenner navnet på prosjektet eller datasettet de trenger. De kan ha en idé, et tema eller et geografisk område og lure på om noen i NIBIO har gjort noe lignende tidligere.</p>
-                <p>Derfor utforsket vi også semantisk søk. I stedet for å være avhengig av eksakte nøkkelord kan søket bruke konteksten i spørsmålet til å finne relevant informasjon.</p>
-              </div>
-              <figure class="editorial-visual editorial-visual--search">
-                <img src="images/NIBIO/catalog-ai-search.png" alt="Semantisk søk i datakatalogen" width="1101" height="3347" loading="lazy">
-              </figure>
-              <p class="editorial-reflection">Det lærte meg å tenke på søk som mer enn én funksjon. Ulike søkemåter støtter ulike nivåer av kunnskap hos brukeren. Designet bør ta høyde for både den som vet akkurat hva hun trenger og den som fortsatt utforsker.</p>
-            </section>
-
-            <section class="case-section editorial-section case-section--closing">
+            <section class="case-section editorial-section case-section--text case-section--closing">
               <div class="case-copy case-copy--wide">
                 <h3>Bygg for at ting kommer til å endre seg</h3>
                 <p>NIBIO var samtidig i endring. Organisasjonen kunne endres, spørsmålene i DMP-en kunne endres og nye systemer kunne komme til senere.</p>

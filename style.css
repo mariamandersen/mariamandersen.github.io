@@ -1838,6 +1838,12 @@ html.has-io .fade-in{
 }
 .editorial-section:first-of-type{ padding-top:0; }
 .editorial-section .case-copy{ gap:clamp(10px, 1.4vw, 14px); }
+.editorial-flow .case-copy,
+.editorial-flow .case-section > p{
+  width:min(100%, 960px);
+  max-width:none;
+}
+.editorial-flow .case-copy > p{ max-width:none; }
 .editorial-section > p,
 .editorial-reflection{ max-width:76ch; }
 .editorial-emphasis{
@@ -1860,6 +1866,40 @@ html.has-io .fade-in{
   font-size:clamp(1.05rem, 1.7vw, 1.2rem);
 }
 .editorial-subsection{ padding-top:clamp(24px, 4vw, 42px); }
+.case-section--text,
+.case-section--wide,
+.case-section--compare,
+.case-section--sequence{
+  grid-template-columns:minmax(0, 1fr);
+}
+.case-section--wide > .case-copy,
+.case-section--sequence > .case-copy{
+  width:min(100%, 960px);
+}
+.case-compare{
+  display:grid;
+  gap:clamp(22px, 4vw, 48px);
+  align-items:start;
+}
+.case-compare--equal{
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  width:min(100%, 1000px);
+}
+.case-compare--equal > p{
+  margin:0;
+  max-width:none;
+}
+.case-compare--search{
+  grid-template-columns:minmax(0, 1.12fr) minmax(0, .88fr);
+}
+.case-compare__item{
+  display:grid;
+  gap:clamp(14px, 2vw, 22px);
+  min-width:0;
+  align-content:start;
+}
+.case-compare__item > p{ margin:0; }
+.case-compare__item .case-copy{ width:100%; }
 .editorial-visual{ margin:0; min-width:0; }
 .editorial-visual img{
   display:block;
@@ -1869,9 +1909,8 @@ html.has-io .fade-in{
   background:white;
 }
 .editorial-visual--overview,
-.editorial-visual--search{
-  width:min(100%, 780px);
-}
+.editorial-visual--search{ width:100%; }
+.editorial-visual--overview{ width:min(100%, 1000px); }
 .editorial-visual--overview img{
   max-height:660px;
   object-fit:cover;
@@ -2104,6 +2143,9 @@ html.has-io .fade-in{
   .concept-flow span:nth-child(even){ transform:none; }
   .case-copy--decision,
   .case-ending-grid{ grid-template-columns:1fr; }
+  .case-compare--equal,
+  .case-compare--search{ grid-template-columns:1fr; }
+  .case-compare__item{ width:100%; }
   .case-copy--decision{ gap:10px; }
   .case-ending-grid{ gap:0; }
   .case-ending-grid .case-section + .case-section{ border-top:1px solid var(--line-lite); }
