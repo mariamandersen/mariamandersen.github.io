@@ -1844,27 +1844,7 @@ html.has-io .fade-in{
   max-width:none;
 }
 .editorial-flow .case-copy > p{ max-width:none; }
-.editorial-section > p,
-.editorial-reflection{ max-width:76ch; }
-.editorial-emphasis{
-  font-size:clamp(1.02rem, 1.5vw, 1.15rem);
-  font-weight:400;
-}
-.editorial-statement{
-  margin-top:clamp(4px, 1vw, 10px) !important;
-  font-size:clamp(1.25rem, 2.5vw, 1.7rem);
-  line-height:1.35;
-  font-weight:400;
-  color:var(--heading-brown) !important;
-}
-.editorial-reflection{
-  font-weight:400;
-  line-height:1.6;
-}
-.editorial-reflection--final{
-  margin-top:clamp(8px, 1.5vw, 16px) !important;
-  font-size:clamp(1.05rem, 1.7vw, 1.2rem);
-}
+.editorial-section > p{ max-width:76ch; }
 .case-section--text,
 .case-section--wide,
 .case-section--compare,
@@ -1943,21 +1923,6 @@ html.has-io .fade-in{
 .case-copy{ display:grid; gap:10px; align-content:start; }
 .case-copy--wide{ max-width:76ch; }
 .case-section--compact{ gap:clamp(16px, 2.5vw, 28px); }
-.concept-flow{
-  display:grid;
-  grid-template-columns:auto auto auto auto minmax(190px, auto);
-  align-items:center;
-  justify-content:start;
-  gap:clamp(8px, 2vw, 18px);
-  padding:clamp(10px, 2vw, 18px) 0;
-  color:var(--heading-brown);
-  font-size:clamp(1.15rem, 2.5vw, 1.65rem);
-  font-weight:400;
-}
-.concept-flow span:nth-child(odd){
-  padding:0;
-}
-.concept-flow span:nth-child(even){ color:var(--color-text-strong); font-size:1.35rem; }
 .visual-sequence,
 .before-after{ display:grid; gap:clamp(12px, 2vw, 20px); }
 .visual-sequence--three{ grid-template-columns:repeat(3, minmax(0, 1fr)); align-items:start; }
@@ -2116,14 +2081,6 @@ html.has-io .fade-in{
 
 @media (max-width:760px){
   .visual-sequence--three{ grid-template-columns:1fr; }
-  .concept-flow{
-    grid-template-columns:auto auto auto auto minmax(120px, auto);
-    justify-items:start;
-    overflow-x:auto;
-    text-align:left;
-    font-size:clamp(.98rem, 4vw, 1.2rem);
-  }
-  .concept-flow span:nth-child(even){ transform:none; }
   .case-compare--equal,
   .case-compare--search{ grid-template-columns:1fr; }
   .case-compare__item{ width:100%; }
