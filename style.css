@@ -2103,6 +2103,8 @@ html.has-io .fade-in{
 header{
   position:fixed;
   inset:0 0 auto;
+  z-index:10000;
+  isolation:isolate;
   height:54px;
   background:rgba(46,33,31,.85);
   backdrop-filter:saturate(140%) blur(10px);
