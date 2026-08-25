@@ -23,13 +23,18 @@
   <!-- Skip-links -->
   <a class="skip-link" href="#main" data-lang="no">Hopp til innhold</a>
   <a class="skip-link" href="#main" data-lang="en" hidden>Skip to content</a>
-  <!-- Skip directly to hero contents (help keyboard users reach the intro quickly) -->
-  <a class="skip-link" href="#hero-contents-no" data-lang="no">Hopp til introduksjon</a>
-  <a class="skip-link" href="#hero-contents-en" data-lang="en" hidden>Skip to introduction</a>
-
   <header>
     <div class="container bar">
-      <div class="brand"></div>
+      <a class="site-name" href="#main">Maria Malmstedt Andersen</a>
+
+      <nav class="desktop-nav" aria-label="Prosjekter / Projects">
+        <a href="#NIBIO-Internship" data-lang="no">NIBIO</a>
+        <a href="#proj-in5510-no" data-lang="no">Deltakende design</a>
+        <a href="#proj-rocket-no" data-lang="no">Skybound</a>
+        <a href="#NIBIO-Internship" data-lang="en" hidden>NIBIO</a>
+        <a href="#proj-in5510-en" data-lang="en" hidden>Participatory design</a>
+        <a href="#proj-rocket-en" data-lang="en" hidden>Skybound</a>
+      </nav>
 
       <!-- Simplified header controls: language toggle + contact links -->
       <div class="header-controls">
@@ -81,6 +86,7 @@
       <!-- Compact mobile menu for quick hero jump-links (hidden by default) -->
       <nav id="mobileMenu" class="mobile-menu" hidden aria-label="Hurtiglenker">
         <div class="mobile-list">
+          <a href="#NIBIO-Internship" data-lang="no">NIBIO</a>
           <a href="#proj-in5510-no" data-lang="no">Deltakende design</a>
           <a href="#proj-in5620-no" data-lang="no">Interaksjon med AI og autonome systemer</a>
           <a href="#proj-in5320-no" data-lang="no">Plattformøkosystemer</a>
@@ -88,6 +94,7 @@
           <a href="#proj-medball-no" data-lang="no">Meditasjonsball</a>
           <a href="#proj-echo-no" data-lang="no">Design for demokrati</a>
 
+          <a href="#NIBIO-Internship" data-lang="en" hidden>NIBIO</a>
           <a href="#proj-in5510-en" data-lang="en" hidden>Participatory Design</a>
           <a href="#proj-in5620-en" data-lang="en" hidden>AI and Autonomous Systems</a>
           <a href="#proj-in5320-en" data-lang="en" hidden>Platform Ecosystems</a>
@@ -110,17 +117,12 @@
         </figure>
 
         <div class="card hero-copy">
-          <!-- Add a single H1 for document semantics -->
-          <h1 class="sr-only">Maria Malmstedt Andersen – UX-designer</h1>
+          <p class="hero-eyebrow" data-lang="no">Hei, jeg er</p>
+          <p class="hero-eyebrow" data-lang="en" hidden>Hi, I’m</p>
+          <h1>Maria Malmstedt<br>Andersen</h1>
 
-          <h2 id="heading-hero-no" data-lang="no">Introduksjon</h2>
-          <h2 id="heading-hero-en" data-lang="en" hidden>Introduction</h2>
-
-          <p class="intro-line" data-lang="no"><strong>Hei!</strong> Mitt navn er Maria.</p>
-          <p class="intro-line" data-lang="en" hidden><strong>Hi!</strong> My name is Maria.</p>
-
-          <p class="lead" data-lang="no">Jeg liker å forstå mennesker og problemene de møter. Det bruker jeg til å lage gode digitale løsninger.</p>
-          <p class="lead" data-lang="en" hidden>I enjoy understanding people and the problems they face. I use this knowledge to create good digital solutions.</p>
+          <p class="lead" data-lang="no">UX-designer med bakgrunn i informatikk og psykologi. Jeg liker å forstå mennesker og problemene de møter. Det bruker jeg til å lage gode digitale løsninger.</p>
+          <p class="lead" data-lang="en" hidden>UX designer with a background in informatics and psychology. I enjoy understanding people and the problems they face. I use that to create good digital solutions.</p>
 
           <nav id="hero-contents-no" class="hero-contents" aria-label="Hopp til seksjoner på siden" data-lang="no" aria-describedby="hero-contents-desc-no">
             <p id="hero-contents-desc-no" class="sr-only">Lenker til utvalgte prosjekter</p>
@@ -152,12 +154,12 @@
 
     <!-- =================== NORWEGIAN =================== -->
     <section id="content-no" lang="no">
-      <article class="project project--card fade-in" id="NIBIO-Internship" data-has-preview="1" aria-labelledby="heading-NIBIO-Internship">
+      <article class="project project--card case-project case-project--blue fade-in" id="NIBIO-Internship" data-has-preview="1" aria-labelledby="heading-NIBIO-Internship">
         <div class="project-inner">
           <h2 id="heading-NIBIO-Internship">NIBIO</h2>
           <p class="case-question">Hvordan kan en stor forskningsorganisasjon få bedre oversikt over egne data, uten å gi forskerne enda mer dokumentasjonsarbeid?</p>
           <p class="kicker">IT-konsulent · Sommeren 2026</p>
-          <p>Som IT-konsulent i NIBIO jobbet jeg med en stor og åpen oppgave om datahåndtering. Arbeidet spente fra brukerinnsikt og design til prototyping og programmering.</p>
+          <p>Som IT-konsulent sommeren 2026 jobbet jeg med en stor og åpen oppgave om forskningsdatahåndtering. Vi utforsket et DMP-verktøy og en intern datakatalog. Arbeidet spente fra brukerinnsikt og design til prototyping og programmering, og problemet viste seg å være organisatorisk, kulturelt og teknisk.</p>
 
           <div class="case-study editorial-flow">
             <div class="case-preview-source" hidden>
@@ -166,7 +168,7 @@
             <section class="case-section editorial-section case-section--text">
               <div class="case-copy case-copy--wide">
                 <h3>Før vi kunne lage noe, måtte vi forstå NIBIO</h3>
-                <p>Problemet viste seg raskt å være organisatorisk, kulturelt og teknisk. Samtidig kjente vi organisasjonen dårlig. Vi leste interne rapporter, kartla systemer og snakket med forskere, IKT og informasjonsforvaltning for å forstå hvordan folk faktisk jobbet med data.</p>
+                <p>Vi kjente organisasjonen dårlig og måtte forstå den før vi kunne designe. Vi leste interne rapporter og eksisterende DMP-er, kartla systemlandskapet og snakket med forskere, IKT og informasjonsforvaltning for å forstå hvordan folk faktisk jobbet med data.</p>
                 <p>Forskerne hadde svært ulik datakompetanse. Terminologien var ofte vanskelig, dokumentasjon tok tid fra forskningen og dobbeltregistrering var spesielt frustrerende. Vi kunne ikke løse alt på én sommer. Innsikten viste hvor vi kunne skape konkret verdi uten å kreve store endringer i forskernes arbeidsmåter.</p>
               </div>
             </section>
@@ -182,9 +184,9 @@
 
             <section class="case-section editorial-section case-section--text">
               <div class="case-copy case-copy--wide">
-                <h3>Vi trengte ikke bygge alt selv</h3>
+                <h3>Vi bygget videre på det som fantes</h3>
                 <p>Vi kunne bygget et eget DMP-verktøy. Selve skjemaet var enkelt å utvikle. Drift, vedlikehold og fremtidige endringer var den større utfordringen.</p>
-                <p>Vi valgte FAIR Wizard fordi løsningen kunne tilpasses NIBIO og integreres med datakatalogen. Den var også aktuell i nasjonalt DMP-arbeid, noe som kunne gjøre senere samarbeid og integrasjoner enklere. At vi kunne bygge noe selv, betydde ikke at det var den beste produktbeslutningen. Teknisk kompetanse handler også om å vite hvor egen innsats gir mest verdi.</p>
+                <p>Vi valgte FAIR Wizard fordi løsningen kunne tilpasses NIBIO og informasjonen gjøres tilgjengelig for datakatalogen. Den støttet fremtidige integrasjoner og var aktuell i nasjonalt DMP-arbeid. At vi kunne bygge noe selv, betydde ikke at det var den beste produktbeslutningen. Valget av en eksisterende SaaS-løsning fjernet heller ikke behovet for design.</p>
               </div>
             </section>
 

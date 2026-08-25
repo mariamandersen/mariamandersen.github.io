@@ -481,7 +481,8 @@ function initProjectPreviews(){
     label.className = 'read-more-label';
     btn.appendChild(label);
 
-    scope.appendChild(btn);
+    if (proj.classList.contains('case-project')) scope.insertBefore(btn, body);
+    else scope.appendChild(btn);
 
     proj.dataset.previewInit = '1';
     proj.dataset.hasPreview = '1';
