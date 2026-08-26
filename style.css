@@ -1855,6 +1855,22 @@ html.has-io .fade-in{
 .case-section--sequence{
   grid-template-columns:minmax(0, 1fr);
 }
+.case-section--split{
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  align-items:start;
+  column-gap:clamp(22px, 4vw, 48px);
+}
+.case-section--split > .case-copy,
+.case-section--split > .editorial-visual{
+  width:100%;
+  min-width:0;
+}
+.case-section--split .editorial-visual img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
 .case-section--wide > .case-copy,
 .case-section--sequence > .case-copy{
   width:min(100%, 960px);
@@ -1986,7 +2002,7 @@ html.has-io .fade-in{
   width:min(100%, 820px);
 }
 .editorial-visual--overview img{
-  width:100%;
+  width:50%;
   height:auto;
   max-height:none;
   object-fit:contain;
@@ -2074,6 +2090,7 @@ html.has-io .fade-in{
 
 @media (max-width:760px){
   .visual-sequence--three{ grid-template-columns:1fr; }
+  .case-section--split{ grid-template-columns:1fr; }
   .case-compare--search{ grid-template-columns:1fr; }
   .case-compare__item{ width:100%; }
   .case-section--sequence .visual-card,
