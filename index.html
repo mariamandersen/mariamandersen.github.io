@@ -170,7 +170,7 @@
             </div>
             <section class="case-section editorial-section case-section--text">
               <div class="case-copy case-copy--wide">
-                <p class="case-step-label">01 · FORSTÅ KONTEKSTEN</p>
+                <p class="case-step-label">01 · FORSTÅ PROBLEMET</p>
                 <h3>Før vi kunne designe, måtte vi forstå NIBIO</h3>
                 <p>Vi startet med det som allerede fantes. Vi leste interne rapporter og tidligere DMP-er, kartla systemlandskapet og snakket med forskere, IKT og informasjonsforvaltning. Målet var å forstå både arbeidsflytene og det tekniske landskapet en ny løsning måtte passe inn i.</p>
                 <div class="case-findings">
@@ -187,22 +187,14 @@
                 <h3>Kan vi bruke det som allerede finnes?</h3>
                 <p>Dobbeltregistrering var et av de tydeligste irritasjonsmomentene. Før vi laget enda et sted forskerne måtte fylle inn informasjon, undersøkte vi derfor hvor den samme informasjonen allerede fantes.</p>
                 <p>Mye av det datakatalogen trengte, ble allerede registrert i datahåndteringsplanen. Det ga oss hovedgrepet: koble DMP-en og datakatalogen sammen, slik at informasjon kan registreres én gang og brukes videre automatisk.</p>
+                <p class="case-concept-line" aria-label="Konsept: Datahåndteringsplan til intern datakatalog til gjenfinning og gjenbruk">DMP → intern datakatalog → gjenfinning og gjenbruk</p>
                 <p>Dette ble et viktig UX-prinsipp for meg: Før jeg designer en ny oppgave for brukeren, undersøker jeg om behovet kan løses ved å bruke noe som allerede finnes.</p>
-              </div>
-            </section>
-
-            <section class="case-section editorial-section case-section--text">
-              <div class="case-copy case-copy--wide">
-                <p class="case-step-label">03 · DESIGNE FOR KONTEKSTEN</p>
-                <h3>Vi bygget videre på det som allerede fantes</h3>
-                <p>NIBIO hadde ikke ett designsystem eller ett samlet produkt vi kunne designe innenfor. Derfor tok vi utgangspunkt i organisasjonens eksisterende systemer, arbeidsflyter og tekniske rammer.</p>
-                <p>Vi kunne bygget et eget DMP-verktøy, men drift, vedlikehold og fremtidige endringer ville blitt den større utfordringen. Vi valgte FAIR Wizard fordi løsningen kunne tilpasses NIBIO, kobles til datakatalogen og støtte senere integrasjoner. Å kunne bygge noe selv betyr ikke at det er den beste produktbeslutningen.</p>
               </div>
             </section>
 
             <section class="case-section editorial-section case-section--sequence">
               <div class="case-copy case-copy--wide">
-                <p class="case-step-label">04 · PROTOTYPE, TEST, ITERER</p>
+                <p class="case-step-label">03 · PROTOTYPE, TEST, ITERER</p>
                 <h3>En ferdig løsning trenger fortsatt UX-design</h3>
                 <p>FAIR Wizard ga oss infrastrukturen. Vi måtte fortsatt designe opplevelsen forskerne faktisk møtte. Jeg jobbet med hvilke spørsmål som skulle vises, rekkefølge, språk, veiledning og når mer kompleks informasjon var relevant.</p>
               </div>
@@ -211,33 +203,45 @@
                   <div class="visual-frame visual-frame--sequence">
                     <img src="images/NIBIO/fairwizard-data-question.png" alt="FAIR Wizard spør om prosjektet har generert data" width="1934" height="540" loading="lazy">
                   </div>
+                  <figcaption>Først: Er datasett relevant?</figcaption>
                 </figure>
                 <figure class="visual-card">
                   <div class="visual-frame visual-frame--sequence">
                     <img src="images/NIBIO/fairwizard-data-yes.png" alt="FAIR Wizard viser veiledning og valg for registrering av datasett" width="1944" height="1242" loading="lazy">
                   </div>
+                  <figcaption>Deretter: Vis veiledning og valg</figcaption>
                 </figure>
                 <figure class="visual-card">
                   <div class="visual-frame visual-frame--sequence">
                     <img src="images/NIBIO/fairwizard-dataset.png" alt="FAIR Wizard viser detaljerte spørsmål om datasettet" width="1898" height="1354" loading="lazy">
                   </div>
+                  <figcaption>Til slutt: Vis detaljene som trengs</figcaption>
                 </figure>
               </div>
               <div class="case-copy case-copy--wide">
                 <div class="case-findings">
-                  <p><span class="case-mini-label">PROTOTYPE</span> Vi bygget en betinget flyt der spørsmål om datasett bare vises når de er relevante.</p>
-                  <p><span class="case-mini-label">TEST</span> Forskerne brydde seg mindre om et dekorativt grensesnitt enn vi forventet. Enkelhet, forståelig språk og effektivitet var viktigere.</p>
-                  <p><span class="case-mini-label">ITERASJON</span> Vi prioriterte derfor flyt, ordlyd og veiledning fremfor visuell pynt.</p>
+                  <p><span class="case-mini-label">DET VI GJORDE</span> Vi prototypet en betinget flyt og testet om forskerne forsto spørsmålene og kunne bevege seg effektivt gjennom dem.</p>
+                  <p><span class="case-mini-label">DET VI LÆRTE</span> Ulik datakompetanse gjorde språk og veiledning viktig. Forskerne verdsatte enkelhet og effektivitet mer enn dekorativ visuell styling.</p>
+                  <p><span class="case-mini-label">DET VI ENDRET</span> Vi justerte ordlyd, rekkefølge og veiledning, og viste detaljerte spørsmål om datasett bare når de var relevante.</p>
                 </div>
                 <p>Det minnet meg på at brukeropplevelsen ikke bare ligger i det visuelle. Innhold, rekkefølge og logikk kan være minst like viktige designmaterialer.</p>
               </div>
             </section>
 
+            <section class="case-section editorial-section case-section--text">
+              <div class="case-copy case-copy--wide">
+                <p class="case-step-label">04 · DESIGN FOR KONTEKSTEN</p>
+                <h3>Vi bygget videre på det som allerede fantes</h3>
+                <p>NIBIO hadde ikke ett designsystem eller ett samlet produkt vi kunne designe innenfor. Derfor tok vi utgangspunkt i organisasjonens eksisterende systemer, arbeidsflyter, tekniske infrastruktur og organisatoriske rammer.</p>
+                <p>Vi kunne bygget et eget DMP-grensesnitt, men drift, vedlikehold, fremtidige endringer og integrasjoner var viktigere produktvalg enn selve skjemaet. Vi valgte FAIR Wizard fordi løsningen kunne tilpasses NIBIO, kobles til datakatalogen og passe inn i senere DMP-arbeid. Å bruke en eksisterende løsning fjernet ikke behovet for UX-design.</p>
+              </div>
+            </section>
+
             <section class="case-section editorial-section case-section--split">
               <div class="case-copy case-copy--wide">
-                <p class="case-step-label">05 · FRA REGISTRERING TIL VERDI</p>
+                <p class="case-step-label">05 · FRA REGISTRERING TIL GJENFINNING</p>
                 <h3>Fra registrering til gjenfinning</h3>
-                <p>Når informasjonen først var registrert, måtte den skape verdi for andre. Vi utviklet derfor en intern datakatalog der forskere kunne se tidligere arbeid, tilgjengelige data og hvem de kunne kontakte. Slik kunne informasjonen gi bedre oversikt og gjøre gjenbruk enklere.</p>
+                <p>Når informasjonen først var registrert, måtte den skape verdi for andre. Vi utviklet derfor en intern datakatalog der forskere kunne se tidligere arbeid, tilgjengelige data, hvor de var lagret og hvem de kunne kontakte. Slik kunne informasjonen støtte oversikt, gjenbruk og samarbeid.</p>
               </div>
               <figure class="editorial-visual editorial-visual--overview">
                 <img src="images/NIBIO/catalog-overview.png" alt="Oversikt over den interne datakatalogen" width="1094" height="1066" loading="lazy">
@@ -246,7 +250,7 @@
 
             <section class="case-section editorial-section case-section--compare case-section--search-compare">
               <div class="case-copy case-copy--wide search-section-intro">
-                <p class="case-step-label">06 · UTFORSKE INFORMASJON</p>
+                <p class="case-step-label">06 · TO MÅTER Å FINNE INFORMASJON</p>
                 <h3>To måter å finne informasjon på</h3>
                 <p>Forskerne møtte katalogen med ulik kunnskap. Derfor laget vi to måter å søke på.</p>
               </div>
