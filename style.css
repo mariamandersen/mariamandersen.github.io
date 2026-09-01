@@ -2074,6 +2074,71 @@ html.has-io .fade-in{
 }
 .case-section--closing{ padding-bottom:4px; }
 
+.case-methods{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.45rem .7rem;
+  margin:.9rem 0 1.6rem;
+}
+.case-methods span{
+  font-size:.78rem;
+  line-height:1;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:color-mix(in oklab, var(--ink) 72%, transparent);
+}
+.case-methods span:not(:last-child)::after{ content:"·"; margin-left:.7rem; opacity:.45; }
+.case-step-label{
+  margin:0 0 .35rem !important;
+  font-size:.72rem;
+  line-height:1.2;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:color-mix(in oklab, var(--ink) 58%, transparent) !important;
+}
+.case-findings{ display:grid; gap:.45rem; margin:1rem 0 1.15rem; }
+.case-findings p{ margin:0; max-width:68ch; }
+.case-mini-label{
+  display:inline;
+  margin-right:.45rem;
+  font-size:.72rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:color-mix(in oklab, var(--ink) 62%, transparent);
+}
+.case-methods,
+.case-findings,
+.case-step-label,
+.case-mini-label{
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+}
+.case-section + .case-section{ margin-top:clamp(2.8rem, 5vw, 5rem); }
+
+@media (min-width:900px){
+  #NIBIO-Internship .case-section--split{
+    grid-template-columns:minmax(0, .8fr) minmax(360px, 1.2fr);
+    gap:clamp(2rem, 5vw, 4.5rem);
+    align-items:center;
+  }
+  #NIBIO-Internship .editorial-visual--overview{
+    justify-self:end;
+    width:100%;
+    max-width:620px;
+  }
+  #NIBIO-Internship .editorial-visual--overview img{
+    display:block;
+    width:100%;
+    height:auto;
+    object-fit:contain;
+  }
+}
+
 .project-peek .peek-media--featured img{
   aspect-ratio:16 / 10;
   max-height:360px;

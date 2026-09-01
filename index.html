@@ -121,8 +121,8 @@
           <p class="hero-eyebrow" data-lang="en" hidden>Hi, I’m</p>
           <h1>Maria Malmstedt<br>Andersen</h1>
 
-          <p class="lead" data-lang="no">UX-designer med bakgrunn i informatikk og psykologi. Jeg liker å forstå mennesker og problemene de møter. Det bruker jeg til å lage gode digitale løsninger.</p>
-          <p class="lead" data-lang="en" hidden>UX designer with a background in informatics and psychology. I enjoy understanding people and the problems they face. I use that to create good digital solutions.</p>
+          <p class="lead" data-lang="no">UX-designer med bakgrunn i informatikk og psykologi. Jeg liker å forstå mennesker, problemene de møter og konteksten løsningen skal bli en del av. Det bruker jeg til å lage gode digitale løsninger.</p>
+          <p class="lead" data-lang="en" hidden>UX designer with a background in informatics and psychology. I like understanding people, the problems they face and the context a solution needs to become part of. I use that to design useful digital products.</p>
 
           <nav id="hero-contents-no" class="hero-contents" aria-label="Hopp til seksjoner på siden" data-lang="no" aria-describedby="hero-contents-desc-no">
             <p id="hero-contents-desc-no" class="sr-only">Lenker til utvalgte prosjekter</p>
@@ -159,7 +159,10 @@
           <h2 id="heading-NIBIO-Internship">NIBIO</h2>
           <p class="case-question">Hvordan kan en stor forskningsorganisasjon få bedre oversikt over egne data, uten å gi forskerne enda mer dokumentasjonsarbeid?</p>
           <p class="kicker">IT-konsulent · Sommeren 2026</p>
-          <p>Som IT-konsulent sommeren 2026 jobbet jeg med en stor og åpen oppgave om forskningsdatahåndtering. Vi utforsket et DMP-verktøy og en intern datakatalog. Arbeidet spente fra brukerinnsikt og design til prototyping og programmering, og problemet viste seg å være organisatorisk, kulturelt og teknisk.</p>
+          <p>Som IT-konsulent sommeren 2026 jobbet jeg med en stor og åpen oppgave om forskningsdatahåndtering. Sammen med én annen intern gikk jeg fra kartlegging og brukerinnsikt til prototyping, brukertesting og teknisk utforsking av et DMP-verktøy og en intern datakatalog.</p>
+          <div class="case-methods" aria-label="Metoder">
+            <span>Rapporter</span><span>Systemkartlegging</span><span>Intervjuer</span><span>Prototyping</span><span>Brukertesting</span>
+          </div>
 
           <div class="case-study editorial-flow">
             <div class="case-preview-source" hidden>
@@ -167,34 +170,41 @@
             </div>
             <section class="case-section editorial-section case-section--text">
               <div class="case-copy case-copy--wide">
-                <h3>Før vi kunne lage noe, måtte vi forstå NIBIO</h3>
-                <p>Vi kjente organisasjonen dårlig og måtte forstå den før vi kunne designe. Vi leste interne rapporter og eksisterende DMP-er, kartla systemlandskapet og snakket med forskere, IKT og informasjonsforvaltning for å forstå hvordan folk faktisk jobbet med data.</p>
-                <p>Forskerne hadde svært ulik datakompetanse. Terminologien var ofte vanskelig, dokumentasjon tok tid fra forskningen og dobbeltregistrering var spesielt frustrerende. Vi kunne ikke løse alt på én sommer. Innsikten viste hvor vi kunne skape konkret verdi uten å kreve store endringer i forskernes arbeidsmåter.</p>
+                <p class="case-step-label">01 · FORSTÅ KONTEKSTEN</p>
+                <h3>Før vi kunne designe, måtte vi forstå NIBIO</h3>
+                <p>Vi startet med det som allerede fantes. Vi leste interne rapporter og tidligere DMP-er, kartla systemlandskapet og snakket med forskere, IKT og informasjonsforvaltning. Målet var å forstå både arbeidsflytene og det tekniske landskapet en ny løsning måtte passe inn i.</p>
+                <div class="case-findings">
+                  <p><span class="case-mini-label">VI SÅ</span> Varierende datakompetanse, vanskelig terminologi og mye tid brukt på dokumentasjon.</p>
+                  <p><span class="case-mini-label">TYDELIGSTE FRIKSJON</span> Den samme informasjonen ble registrert flere steder.</p>
+                  <p><span class="case-mini-label">RETNING</span> Skape verdi ved å bruke eksisterende informasjon bedre, fremfor å legge til enda en oppgave.</p>
+                </div>
               </div>
             </section>
 
             <section class="case-section editorial-section case-section--text">
               <div class="case-copy case-copy--wide">
-                <h3>Registrer én gang</h3>
-                <p>Dobbeltregistrering var et av de tydeligste irritasjonsmomentene. Før vi laget enda et sted forskerne måtte fylle inn informasjon, undersøkte vi derfor hva som allerede fantes.</p>
-                <p>Mye av informasjonen datakatalogen trenger, registreres allerede i datahåndteringsplanen. Vi koblet derfor datahåndteringsplanen og datakatalogen sammen, slik at informasjon forskeren registrerte ett sted kunne brukes videre automatisk.</p>
-                <p>For meg ble dette et viktig designprinsipp: Før jeg legger til en ny oppgave for brukeren, bør jeg undersøke om informasjonen eller handlingen allerede finnes et annet sted.</p>
+                <p class="case-step-label">02 · FRA INNSIKT TIL RETNING</p>
+                <h3>Kan vi bruke det som allerede finnes?</h3>
+                <p>Dobbeltregistrering var et av de tydeligste irritasjonsmomentene. Før vi laget enda et sted forskerne måtte fylle inn informasjon, undersøkte vi derfor hvor den samme informasjonen allerede fantes.</p>
+                <p>Mye av det datakatalogen trengte, ble allerede registrert i datahåndteringsplanen. Det ga oss hovedgrepet: koble DMP-en og datakatalogen sammen, slik at informasjon kan registreres én gang og brukes videre automatisk.</p>
+                <p>Dette ble et viktig UX-prinsipp for meg: Før jeg designer en ny oppgave for brukeren, undersøker jeg om behovet kan løses ved å bruke noe som allerede finnes.</p>
               </div>
             </section>
 
             <section class="case-section editorial-section case-section--text">
               <div class="case-copy case-copy--wide">
-                <h3>Vi bygget videre på det som fantes</h3>
-                <p>Vi kunne bygget et eget DMP-verktøy. Selve skjemaet var enkelt å utvikle. Drift, vedlikehold og fremtidige endringer var den større utfordringen.</p>
-                <p>Vi valgte FAIR Wizard fordi løsningen kunne tilpasses NIBIO og informasjonen gjøres tilgjengelig for datakatalogen. Den støttet fremtidige integrasjoner og var aktuell i nasjonalt DMP-arbeid. At vi kunne bygge noe selv, betydde ikke at det var den beste produktbeslutningen. Valget av en eksisterende SaaS-løsning fjernet heller ikke behovet for design.</p>
+                <p class="case-step-label">03 · DESIGNE FOR KONTEKSTEN</p>
+                <h3>Vi bygget videre på det som allerede fantes</h3>
+                <p>NIBIO hadde ikke ett designsystem eller ett samlet produkt vi kunne designe innenfor. Derfor tok vi utgangspunkt i organisasjonens eksisterende systemer, arbeidsflyter og tekniske rammer.</p>
+                <p>Vi kunne bygget et eget DMP-verktøy, men drift, vedlikehold og fremtidige endringer ville blitt den større utfordringen. Vi valgte FAIR Wizard fordi løsningen kunne tilpasses NIBIO, kobles til datakatalogen og støtte senere integrasjoner. Å kunne bygge noe selv betyr ikke at det er den beste produktbeslutningen.</p>
               </div>
             </section>
 
             <section class="case-section editorial-section case-section--sequence">
               <div class="case-copy case-copy--wide">
-                <h3>En ferdig løsning trenger fortsatt design</h3>
-                <p>FAIR Wizard ga oss infrastrukturen, men brukeropplevelsen avhang fortsatt av hvordan kunnskapsmodellen ble bygget. Erfaringer fra andre DMP-løsninger viste at flere frustrasjoner kunne spores til modeller laget rundt organisasjonens dokumentasjonsbehov fremfor forskernes arbeidsmåter.</p>
-                <p>Vi jobbet derfor med hvilke spørsmål forskerne skulle møte, rekkefølgen, språket og når mer kompleks informasjon faktisk var nødvendig. Det gjaldt også hvor mye veiledning brukeren trengte og når den skulle vises.</p>
+                <p class="case-step-label">04 · PROTOTYPE, TEST, ITERER</p>
+                <h3>En ferdig løsning trenger fortsatt UX-design</h3>
+                <p>FAIR Wizard ga oss infrastrukturen. Vi måtte fortsatt designe opplevelsen forskerne faktisk møtte. Jeg jobbet med hvilke spørsmål som skulle vises, rekkefølge, språk, veiledning og når mer kompleks informasjon var relevant.</p>
               </div>
               <div class="visual-sequence visual-sequence--three">
                 <figure class="visual-card">
@@ -214,13 +224,18 @@
                 </figure>
               </div>
               <div class="case-copy case-copy--wide">
-                <p>Først spør vi om prosjektet har generert data. Spørsmål om datasett vises bare når de er relevante. Det reduserer kompleksiteten brukeren møter på én gang.</p>
-                <p>Brukertestene viste også at forskerne verdsatte enkelhet og effektivitet mer enn et dekorativt grensesnitt. Derfor prioriterte vi flyt, språk og veiledning. Tilpasning av en eksisterende løsning krever bevisste UX-valg. Brukeropplevelsen ligger også i innhold, rekkefølge og logikk.</p>
+                <div class="case-findings">
+                  <p><span class="case-mini-label">PROTOTYPE</span> Vi bygget en betinget flyt der spørsmål om datasett bare vises når de er relevante.</p>
+                  <p><span class="case-mini-label">TEST</span> Forskerne brydde seg mindre om et dekorativt grensesnitt enn vi forventet. Enkelhet, forståelig språk og effektivitet var viktigere.</p>
+                  <p><span class="case-mini-label">ITERASJON</span> Vi prioriterte derfor flyt, ordlyd og veiledning fremfor visuell pynt.</p>
+                </div>
+                <p>Det minnet meg på at brukeropplevelsen ikke bare ligger i det visuelle. Innhold, rekkefølge og logikk kan være minst like viktige designmaterialer.</p>
               </div>
             </section>
 
             <section class="case-section editorial-section case-section--split">
               <div class="case-copy case-copy--wide">
+                <p class="case-step-label">05 · FRA REGISTRERING TIL VERDI</p>
                 <h3>Fra registrering til gjenfinning</h3>
                 <p>Når informasjonen først var registrert, måtte den skape verdi for andre. Vi utviklet derfor en intern datakatalog der forskere kunne se tidligere arbeid, tilgjengelige data og hvem de kunne kontakte. Slik kunne informasjonen gi bedre oversikt og gjøre gjenbruk enklere.</p>
               </div>
@@ -231,6 +246,7 @@
 
             <section class="case-section editorial-section case-section--compare case-section--search-compare">
               <div class="case-copy case-copy--wide search-section-intro">
+                <p class="case-step-label">06 · UTFORSKE INFORMASJON</p>
                 <h3>To måter å finne informasjon på</h3>
                 <p>Forskerne møtte katalogen med ulik kunnskap. Derfor laget vi to måter å søke på.</p>
               </div>
@@ -268,6 +284,7 @@
 
             <section class="case-section editorial-section case-section--text case-section--closing">
               <div class="case-copy case-copy--wide">
+                <p class="case-step-label">07 · DESIGN FOR REDESIGN</p>
                 <h3>Bygg for at ting kommer til å endre seg</h3>
                 <p>NIBIO var i endring. Organisasjonsstrukturen, spørsmålene i DMP-en og systemene kunne bli annerledes. Datakatalogen skulle derfor ikke kobles tett til én organisasjonsstruktur eller én versjon av FAIR Wizard. Et mellomlag kunne oversette informasjonen før den ble brukt videre.</p>
                 <p>Da kunne løsningen endres uten at alt måtte bygges på nytt. Jeg designer for at både brukere, organisasjoner og teknologi kommer til å endre seg.</p>
@@ -797,12 +814,10 @@
           <h2 id="heading-in5320-no">Verktøy for skoleinspeksjon</h2>
           <p class="kicker">IN5320 – Development in Platform Ecosystems · Gruppeprosjekt</p>
 
-          <p>
-            I dette prosjektet designet og prototypet vi en webbasert applikasjon for skoleinspektører
-            i det fiktive landet Edutopia, bygget på DHIS2-plattformen. Målet var å støtte mer
-            sammenhengende skoleinspeksjoner, bedre ressursoversikt og mer informert oppfølging
-            av skoler over tid.
-          </p>
+          <p>Vi designet og utviklet en webapp for skoleinspektører på DHIS2-plattformen. Jeg jobbet med å forstå brukskonteksten, prototype med DHIS2 sitt designsystem og forme en løsning som kunne bygges med plattformens eksisterende komponenter og data.</p>
+          <div class="case-methods" aria-label="Metoder og verktøy">
+            <span>Kontekstanalyse</span><span>Figma</span><span>DHIS2 Design System</span><span>Prototyping</span><span>React</span>
+          </div>
 
           <!-- PROSESS -->
           <h3>Prosess</h3>
@@ -812,7 +827,8 @@
             <!-- STEG 1 -->
             <div class="process-step">
               <div class="step-copy">
-                <h3>Forstå kontekst og plattform</h3>
+                <p class="case-step-label">01 · FORSTÅ KONTEKSTEN</p>
+                <h3>Forstå brukeren og plattformen</h3>
                 <p>
                   Vi startet med å analysere caset rundt skoleinspeksjon i Edutopia og DHIS2 som
                   nasjonal informasjonsplattform. Et sentralt fokus var å forstå eksisterende
@@ -829,7 +845,8 @@
             <!-- STEG 2 -->
             <div class="process-step has-media">
               <div class="step-copy">
-                <h3>Valg av funksjonalitet</h3>
+                <p class="case-step-label">02 · FRA BEHOV TIL FUNKSJON</p>
+                <h3>Bruke eksisterende data bedre</h3>
                 <p>
                   Basert på kravene i oppgaven valgte vi å implementere
                   <strong>School visit planner</strong> og
@@ -894,7 +911,8 @@
             <!-- STEG 3 -->
             <div class="process-step">
               <div class="step-copy">
-                <h3>Interaksjons- og informasjonsdesign</h3>
+                <p class="case-step-label">03 · PROTOTYPE I DESIGNSYSTEMET</p>
+                <h3>Designe som en del av DHIS2</h3>
                 <p>
                   Designet fokuserte på rask oversikt, gjenkjennelige mønstre og tydelige
                   prioriteringer. Vi brukte tabeller, fargekoding og prosentvise endringer
@@ -910,7 +928,8 @@
             <!-- STEG 4 -->
             <div class="process-step has-media">
               <div class="step-copy">
-                <h3>Prototyping og tekniske avveininger</h3>
+                <p class="case-step-label">04 · ITERERE OG IMPLEMENTERE</p>
+                <h3>Fra prototype til fungerende DHIS2-app</h3>
                 <p>
                   Løsningen ble utviklet som en DHIS2 web-app med fokus på gjenbruk av
                   eksisterende datamodeller, organisasjonsenheter og hendelsesprogrammer.
@@ -920,12 +939,8 @@
                   designet grensesnittet slik at det gir verdi også ved begrenset eller
                   ustabil nettverkstilgang.
                 </p>
-                <p>
-                  Fordi løsningen ble bygget ved hjelp av eksisterende DHIS2 UI-komponenter, var
-                  vi ikke avhengige av brukertesting basert på Figma. I stedet ble komponenter
-                  integrert direkte i kodebasen, og interaksjonsdesignbeslutninger ble evaluert
-                  gjennom iterativ testing i et DHIS2-appen.
-                </p>
+                <p>Vi prototypet med DHIS2 sitt designsystem i Figma og brukte de samme etablerte komponentene og mønstrene videre i implementasjonen. Det gjorde prototypen mer realistisk og reduserte avstanden mellom design og kode.</p>
+                <p>Underveis evaluerte og justerte vi interaksjonsdesignen i den faktiske DHIS2-appen. For meg ble prosjektet god trening i å designe innenfor et eksisterende produktøkosystem, fremfor å lage et nytt visuelt språk fra bunnen av.</p>
               </div>
 
               <div class="step-media">
@@ -944,11 +959,7 @@
 
           <!-- LÆRING -->
           <h3>Læring</h3>
-          <p>
-            Prosjektet ga innsikt i hvordan designbeslutninger formes av plattformbegrensninger,
-            eksisterende datastrukturer og organisatoriske realiteter. En viktig læring var
-            verdien av å designe for forbedret bruk av data – ikke bare mer datainnsamling.
-          </p>
+          <p>Prosjektet lærte meg å se designsystemet, datastrukturen og plattformen som en del av designproblemet. En ny funksjon bør føles som en naturlig del av produktet den skal inn i, både for brukeren og for teamet som skal bygge den.</p>
 
         </div>
       </article>
@@ -958,31 +969,19 @@
         <div class="project-inner">
         <h2 id="heading-skybound-no">Skybound – Planleggingsapp for rakettoppskytning</h2>
         <p class="kicker">IN2000 – vår 2025</p>
-        <p>
-          Jeg var <strong>UX-ansvarlig</strong> i et tverrfaglig team på seks. Startet med kravspesifikasjon fra PortalSpace, men trengte raskt mer innsikt i faktisk brukskontekst og behov.
-          Gjennom intervju, workshops og iterativ prototyping landet vi på en løsning som gjorde det raskere og tryggere å finne riktig oppskytningstidspunkt for en rakett.
-        </p>
+        <p>Jeg var <strong>UX-ansvarlig</strong> i et tverrfaglig team på seks. Jeg jobbet fra krav og brukerinnsikt til Figma-prototyper, testing og implementasjon. Underveis gikk vi fra en egen visuell prototype til Material 3, slik at designet passet Android-plattformen og kunne bygges med de samme komponentene.</p>
+        <div class="case-methods" aria-label="Metoder og verktøy">
+          <span>Intervju</span><span>Crazy 8</span><span>Figma</span><span>Material 3</span><span>Brukertesting</span><span>Android</span>
+        </div>
 
         <section class="process process--timeline" aria-label="Skybound – designprosess">
-          <section class="forste_innsikt" aria-label="Innsikt og brukerforståelse">
-            <section class="process-step">
-              <div class="step-copy">
-                <h3>Kravspesifikasjon → behov for ekte innsikt</h3>
-                <p>Prosjektet startet med en predefinert kravspesifikasjon definert av PortalSpace</p>
-                <p><strong>Jeg gjorde:</strong> Gikk gjennom predefinert kravspesifikasjon og skilte antakelser fra oppgaver.</p>
-                <p><strong>Hvorfor:</strong> Unngå å designe for hypotetiske behov.</p>
-                <p><strong>Hva jeg lærte:</strong> Krav beskriver ofte løsninger, ikke problemer – avklar behov tidlig.</p>
-              </div>
-            </section>
-
-            <section class="process-step">
-              <div class="step-copy">
-                <h3>Semistrukturert intervju</h3>
-                <p><strong>Jeg gjorde:</strong> Semistrukturert intervju med engasjert deltaker fra PortalSpace som ble vår hovedbruker.</p>
-                <p><strong>Hvorfor:</strong> For å forstå brukskontekst, behov og faktiske mål.</p>
-                <p><strong>Hva jeg lærte:</strong> En tilgjengelig hovedbruker gir kontinuerlig validering. Kravspesifikasjon gir mye innsikt, men et supplerende intervju gir bedre forståelse for faktisk bruk.</p>
-              </div>
-            </section>
+          <section class="process-step">
+            <div class="step-copy">
+              <p class="case-step-label">01 · FORSTÅ</p>
+              <h3>Fra krav til faktisk brukerbehov</h3>
+              <p>Vi startet med en kravspesifikasjon fra PortalSpace, men ønsket å skille antakelser fra faktiske behov. Jeg gjennomførte derfor et semistrukturert intervju med en engasjert deltaker som ble hovedbrukeren vår gjennom prosjektet.</p>
+              <p><span class="case-mini-label">INNSIKT</span> Krav beskriver ofte en foreslått løsning. Samtalen med brukeren ga oss bedre forståelse for arbeidsflyten, målene og hva som faktisk måtte bli enklere.</p>
+            </div>
           </section>
 
           <section class="process-step">
@@ -991,19 +990,17 @@
               <figcaption>Crazy-8 workshop i teamet</figcaption>
             </figure>
             <div class="step-copy">
-              <h3>Syntese + Crazy-8</h3>
-              <p><strong>Jeg gjorde:</strong> Kodet funn, delte innsikt og fasiliterte Crazy-8 workshop innad i teamet for felles forståelse.</p>
-              <p><strong>Hvorfor:</strong> Raskt utforske IA, navigasjon og flows sammen.</p>
-              <p><strong>Hva jeg lærte:</strong> Felles skissing skaper eierskap og enighet.</p>
+              <p class="case-step-label">02 · UTFORSKE</p>
+              <h3>Syntese og raske konsepter</h3>
+              <p>Jeg kodet funnene, delte innsikten med teamet og fasiliterte en Crazy 8-workshop. Vi brukte raske skisser til å utforske informasjonsarkitektur, navigasjon og ulike flows før vi investerte tid i detaljer.</p>
             </div>
           </section>
 
           <section class="process-step" id="figma-v1-no">
             <div class="step-copy">
-              <h3>Figma prototype v1</h3>
-              <p><strong>Jeg gjorde:</strong> Oversatte papirskisser til en klikkbar mobilprototype i Figma og presenterte for teamet.</p>
-              <p><strong>Hvorfor:</strong> Visualisere skjermtilstander tidlig for å avdekke hull i flyt og ordlyd før brukertest.</p>
-              <p><strong>Hva jeg lærte:</strong> Selv en enkel, klikkbar prototyp avslører antakelser raskt – den ga oss diskusjoner om navigasjon og begreper.</p>
+              <p class="case-step-label">03 · PROTOTYPE + TEST</p>
+              <h3>Fra Figma v1 til en bedre flyt</h3>
+              <p>Jeg oversatte skissene til en klikkbar Figma-prototype og testet den med hovedbrukeren. Vi kombinerte skjermprototypen med utskrifter brukeren kunne tegne og kommentere direkte på.</p>
             </div>
 
             <div class="step-media">
@@ -1071,56 +1068,32 @@
                 </div>
               </div>
             </div>
-          </section>
-
-          <section class="process-step">
-            <div class="step-copy">
-              <h3>Workshop: papir + prototype</h3>
-              <p><strong>Jeg gjorde:</strong> Lot brukeren teste, skissere og kommentere på utskrifter og i prototypen.</p>
-              <p><strong>Hvorfor:</strong> Lav- og høy-fi sammen gir ærlige tilbakemeldinger på begrep og flyt.</p>
-              <p><strong>Hva jeg lærte:</strong> Navigasjonen ble bedre når brukeren “tegnet over”.</p>
-            </div>
-          </section>
-
-          <section class="process-step">
             <figure class="step-media">
               <img src="images/skybound/interaktiv_protoype_skybound.png" alt="Interaktiv Figma-flow (v2)">
               <figcaption>Interaktiv Figma-flow (v2)</figcaption>
             </figure>
-            <div class="step-copy">
-              <h3>Interaktiv Figma-flow</h3>
-              <p><strong>Jeg gjorde:</strong> Oppdaterte prototypen med realistiske overganger/tilstander.</p>
-              <p><strong>Hvorfor:</strong> Mer rettferdig test av grensesnitt, brukervennlighet og oppgaveløsing.</p>
-              <p><strong>Hva jeg lærte:</strong> Å teste å navigere i appen viser om navigasjon fungerer som tiltenkt.</p>
-              <p><strong>Komponenter:</strong> I første Figma-prototype (v1) glemte vi å bruke Material 3. Etter workshoppen oppdaterte vi prototypen til <em>Material 3</em>-komponenter slik at utviklerne kunne gjenbruke de samme komponentene i implementasjonen.</p>
-              <p><strong>Hva jeg lærte:</strong> Å forankre designet i et etablert designsystem (som Material 3) gjør samarbeidet mellom design og utvikling smidigere og sikrer at det som designes i Figma faktisk lar seg implementere i praksis.</p>
+            <div class="case-findings">
+              <p><span class="case-mini-label">V1</span> Gjorde antakelser om navigasjon og begreper konkrete.</p>
+              <p><span class="case-mini-label">TEST</span> Brukeren tegnet over og kommenterte flyten.</p>
+              <p><span class="case-mini-label">V2</span> Vi forenklet navigasjonen og laget mer realistiske tilstander og overganger.</p>
             </div>
           </section>
 
           <section class="process-step">
             <div class="step-copy">
-              <h3>Geriljatest</h3>
-              <p><strong>Jeg gjorde:</strong> Korte oppgaver med folk uten domenekunnskap.</p>
-              <p><strong>Hvorfor:</strong> Testing av intuitivitet og første klikk. Er applikasjonen enkel å navigere for førstegangsbrukere?</p>
-              <p><strong>Hva jeg lærte:</strong> Friske øyne avslører hvor vi må forenkle. Hovedpoenget med appen var å forenkle og gjøre planlegging mer effektivt. Da må navigasjonen være så enkel som mulig, slippe unødvendige trykk.</p>
+              <p class="case-step-label">04 · DESIGNE FOR KONTEKSTEN</p>
+              <h3>Fra egen UI til Material 3</h3>
+              <p>I første Figma-versjon hadde vi laget grensesnittet uten å ta utgangspunkt i Material 3. Etter testingen oppdaterte vi prototypen med Material 3-komponenter.</p>
+              <p>Det ga et mer konsistent Android-grensesnitt og gjorde overgangen fra prototype til implementasjon enklere, fordi utviklerne kunne bruke de samme komponentene. Jeg fikk erfaring med både prototyping og produktdesign innenfor et etablert designsystem.</p>
             </div>
           </section>
 
           <section class="process-step">
             <div class="step-copy">
-              <h3>Tett samarbeid med utviklere</h3>
-              <p><strong>Jeg gjorde:</strong> Delte innsikt, vi prioriterte sammen, kvalitetssikret tilstander/feil gjennom hvert steg av prosessen.</p>
-              <p><strong>Hvorfor:</strong> Minimere design-gjeld og kode-rewrites.</p>
-              <p><strong>Hva jeg lærte:</strong> Små avklaringer tidlig sparer store endringer senere. Å involvere hele teamet i hele prosessen gir en felles forståelse for løsningen samt gjensidig læring. Alle var med på alt, jeg kodet programmerte dersom jeg hadde tid til det. Slik fikk jeg også tilhørighet til selve koden.</p>
-            </div>
-          </section>
-
-          <section class="process-step">
-            <div class="step-copy">
-              <h3>Systemtest & oppsummering</h3>
-              <p><strong>Jeg gjorde:</strong> Da prototyper var ferdig testet, funksjonalitet ble implementert i appen. Lot hovedbruker teste implementert funksjonalitet mot realistiske scenarioer.</p>
-              <p><strong>Hvorfor:</strong> Verifisere at beslutningsstøtten oppleves rask og trygg.</p>
-              <p><strong>Hva jeg lærte:</strong> Grundig designprosess tidlig kan gi mindre endringer i sluttfasen. Ettersom vi hadde jevnlig testet prototyper, kunne vi være relativt sikre på at den tiltenkte designet på appen skulle fungere optimalt i forhold til brukerbehov.</p>
+              <p class="case-step-label">05 · VALIDERE I PRODUKTET</p>
+              <h3>Fra prototype til implementert app</h3>
+              <p>Vi gjennomførte også korte geriljatester for å se om navigasjonen var forståelig uten domenekunnskap. Deretter jobbet jeg tett med utviklerne gjennom implementasjonen og kvalitetssikret tilstander og flyt.</p>
+              <p>Til slutt testet hovedbrukeren den implementerte løsningen i realistiske scenarioer. Fordi vi hadde validert designet underveis, var behovet for store endringer sent i utviklingen begrenset.</p>
             </div>
           </section>
         </section>
@@ -2012,12 +1985,10 @@
         <h2 id="heading-in5320-en">Development in Platform Ecosystems</h2>
         <p class="kicker">IN5320 • University of Oslo • 2025</p>
           <!-- TRANSLATED FROM NO: IN5320 - start -->
-          <p>
-            In this project we designed and prototyped a web application for school inspectors in the
-            fictional country of Edutopia, built on the DHIS2 platform. The aim was to support more
-            coherent inspections, improve resource overviews and enable better follow-up of schools
-            over time.
-          </p>
+          <p>We designed and developed a web app for school inspectors on the DHIS2 platform. I worked to understand the context of use, prototype with the DHIS2 design system, and shape a solution that could be built with the platform’s existing components and data.</p>
+          <div class="case-methods" aria-label="Methods and tools">
+            <span>Context analysis</span><span>Figma</span><span>DHIS2 Design System</span><span>Prototyping</span><span>React</span>
+          </div>
 
           <h3>Process</h3>
           <p>
@@ -2026,7 +1997,8 @@
             constraints of infrastructure, skills and intermittent internet access.
           </p>
 
-          <h4>Step 1  –  Understand context and platform</h4>
+          <p class="case-step-label">01 · UNDERSTAND THE CONTEXT</p>
+          <h4>Understand the user and the platform</h4>
           <p>
             We analysed the school inspection case and DHIS2 as a national information platform,
             paying particular attention to the inspectors’ dual role as data collectors and
@@ -2034,7 +2006,8 @@
             tasks.
           </p>
 
-          <h4>Step 2  –  Choose functionality</h4>
+          <p class="case-step-label">02 · TURN NEEDS INTO FUNCTIONALITY</p>
+          <h4>Make better use of existing data</h4>
           <p>
             Based on the assignment we prioritised two features: a <strong>School visit planner</strong>
             and a <strong>School resource count</strong>. These choices were driven by the need to
@@ -2101,7 +2074,8 @@
             </div>
           </div>
 
-          <h4>Step 3  –  Interaction & information design</h4>
+          <p class="case-step-label">03 · PROTOTYPE IN THE DESIGN SYSTEM</p>
+          <h4>Design as part of DHIS2</h4>
           <p>
             The interaction design prioritised quick overviews, recognizable patterns and clear
             prioritisation. We used tables, color coding and percentage changes to highlight
@@ -2109,14 +2083,10 @@
             prioritisation when planning visits.
           </p>
 
-          <h4>Step 4  –  Prototyping and technical trade-offs</h4>
-          <p>
-            The solution was implemented as a DHIS2 web app that reuses existing data models and
-            organisation units. We deliberately did not implement full offline support, instead
-            designing the UI to provide value even with limited connectivity. Many interaction
-            decisions were evaluated through iterative in-app testing rather than relying solely
-            on Figma prototypes.
-          </p>
+          <p class="case-step-label">04 · ITERATE AND IMPLEMENT</p>
+          <h4>From prototype to working DHIS2 app</h4>
+          <p>We prototyped with the DHIS2 design system in Figma and carried the same established components and patterns into implementation. This made the prototype more realistic and reduced the distance between design and code.</p>
+          <p>We evaluated and adjusted the interaction design in the working DHIS2 app. The project trained me to design within an existing product ecosystem instead of creating a new visual language from scratch.</p>
 
           <h3>Results</h3>
           <p>
@@ -2126,11 +2096,7 @@
           </p>
 
           <h3>Key learnings</h3>
-          <p>
-            The work highlighted how platform constraints and existing data structures shape design
-            choices. Designing for better use of existing data (rather than adding more) proved
-            more valuable than simply collecting additional metrics.
-          </p>
+          <p>The project taught me to treat the design system, data structure and platform as part of the design problem. A new feature should feel like a natural part of the product it joins, both for the user and for the team building it.</p>
           <!-- TRANSLATED FROM NO: IN5320 - end -->
         <section class="process process--timeline" aria-label="IN5320 – design process">
           <!-- Placeholder -->
@@ -2144,32 +2110,19 @@
           <h2 id="heading-skybound-en">Skybound – Rocket Launch Planner</h2>
           <p class="kicker">IN2000 – Spring 2025</p>
 
-          <p>
-            I was the <strong>UX lead</strong> in a cross-functional team of six. We started from a client spec (PortalSpace) but quickly needed
-            deeper insight into real context and needs. Through interviews, workshops and iterative prototyping we arrived at a solution
-            that made it faster and safer to find an optimal launch window.
-          </p>
+          <p>I was the <strong>UX lead</strong> in a cross-functional team of six. I worked from requirements and user insight through Figma prototypes, testing and implementation. We moved from a custom visual prototype to Material 3 so the design fit the Android platform and could be built with the same components.</p>
+          <div class="case-methods" aria-label="Methods and tools">
+            <span>Interview</span><span>Crazy 8</span><span>Figma</span><span>Material 3</span><span>Usability testing</span><span>Android</span>
+          </div>
 
           <section class="process process--timeline" aria-label="Skybound – design process">
-            <section class="forste_innsikt" aria-label="Research and understanding">
-              <section class="process-step">
-                <div class="step-copy">
-                  <h3>Specification → need for real insight</h3>
-                  <p>The project began with a predefined specification from PortalSpace.</p>
-                  <p><strong>What I did:</strong> Reviewed the spec and separated assumptions from tasks.</p>
-                  <p><strong>Why:</strong> Avoid designing for hypothetical needs.</p>
-                  <p><strong>What I learned:</strong> Specs often describe solutions, not problems – clarify needs early.</p>
-                </div>
-              </section>
-
-              <section class="process-step">
-                <div class="step-copy">
-                  <h3>Semi-structured interview</h3>
-                  <p><strong>What I did:</strong> Interviewed an engaged PortalSpace participant who became our primary user.</p>
-                  <p><strong>Why:</strong> Understand context, needs and goals.</p>
-                  <p><strong>What I learned:</strong> An accessible primary user enables continuous validation; the spec is useful, but interviews deepen real understanding.</p>
-                </div>
-              </section>
+            <section class="process-step">
+              <div class="step-copy">
+                <p class="case-step-label">01 · UNDERSTAND</p>
+                <h3>From requirements to real user needs</h3>
+                <p>We started with a specification from PortalSpace, but wanted to separate assumptions from real needs. I therefore conducted a semi-structured interview with an engaged participant who became our primary user throughout the project.</p>
+                <p><span class="case-mini-label">INSIGHT</span> Requirements often describe a proposed solution. The conversation gave us a better understanding of the workflow, goals and what genuinely needed to become easier.</p>
+              </div>
             </section>
 
             <section class="process-step">
@@ -2178,19 +2131,17 @@
                 <figcaption>Crazy-8 workshop</figcaption>
               </figure>
               <div class="step-copy">
-                <h3>Synthesis + Crazy-8</h3>
-                <p><strong>What I did:</strong> Coded findings, shared insights and facilitated a Crazy-8 session for shared understanding.</p>
-                <p><strong>Why:</strong> Quickly explore IA, navigation and flows together.</p>
-                <p><strong>What I learned:</strong> Sketching together builds ownership and alignment.</p>
+                <p class="case-step-label">02 · EXPLORE</p>
+                <h3>Synthesis and rapid concepts</h3>
+                <p>I coded the findings, shared the insight with the team and facilitated a Crazy 8 workshop. We used rapid sketches to explore information architecture, navigation and flows before investing time in details.</p>
               </div>
             </section>
 
             <section class="process-step" id="figma-v1-en">
               <div class="step-copy">
-                <h3>Figma prototype v1</h3>
-                <p><strong>What I did:</strong> Turned paper sketches into a clickable mobile prototype and presented it to the team.</p>
-                <p><strong>Why:</strong> Visualize early to uncover gaps in flows and wording before usability testing.</p>
-                <p><strong>What I learned:</strong> Even a simple clickable prototype quickly exposes assumptions – great for discussing navigation and concepts.</p>
+                <p class="case-step-label">03 · PROTOTYPE + TEST</p>
+                <h3>From Figma v1 to a better flow</h3>
+                <p>I translated the sketches into a clickable Figma prototype and tested it with our primary user. We combined the screen prototype with printouts the user could draw and comment on directly.</p>
               </div>
 
               <div class="step-media">
@@ -2258,58 +2209,35 @@
                   </div>
                 </div>
               </div>
-            </section>
-
-            <section class="process-step">
-              <div class="step-copy">
-                <h3>Workshop: paper + prototype</h3>
-                <p><strong>What I did:</strong> Let the user test, sketch and annotate on printouts and in the prototype.</p>
-                <p><strong>Why:</strong> Low- and high-fi together trigger honest feedback on terms and flows.</p>
-                <p><strong>What I learned:</strong> Navigation improved when the user “drew over” screens.</p>
-              </div>
-            </section>
-
-            <section class="process-step">
               <figure class="step-media">
                 <img src="images/skybound/interaktiv_protoype_skybound.png" alt="Interactive Figma flow (v2)">
                 <figcaption>Interactive Figma flow (v2)</figcaption>
               </figure>
-              <div class="step-copy">
-                <h3>Interactive Figma flow</h3>
-                <p><strong>What I did:</strong> Updated the prototype with realistic transitions/states.</p>
-                <p><strong>Why:</strong> Fairer test of interface, usability and task success.</p>
-                <p><strong>What I learned:</strong> Testing navigation shows whether the structure works as intended.</p>
-                <p><strong>Design system:</strong> We forgot to apply Material 3 in the first prototype. After the workshop we updated the prototype to use <em>Material 3</em> components so developers could implement the same components one-to-one.</p>
-                <p><strong>What I learned:</strong> Grounding the UI in a design system (Material 3) tightens the designer–developer collaboration and ensures what you design in Figma is feasible and maps cleanly to code.</p>
+              <div class="case-findings">
+                <p><span class="case-mini-label">V1</span> Made assumptions about navigation and terminology concrete.</p>
+                <p><span class="case-mini-label">TEST</span> The user drew over and commented on the flow.</p>
+                <p><span class="case-mini-label">V2</span> We simplified navigation and created more realistic states and transitions.</p>
               </div>
             </section>
 
             <section class="process-step">
               <div class="step-copy">
-                <h3>Guerrilla test</h3>
-                <p><strong>What I did:</strong> Short tasks with people without domain knowledge.</p>
-                <p><strong>Why:</strong> Validate intuitiveness and first-click. Is the app easy to navigate for first-time users?</p>
-                <p><strong>What I learned:</strong> Fresh eyes reveal where to simplify; navigation must be minimal to speed planning.</p>
+                <p class="case-step-label">04 · DESIGN FOR THE CONTEXT</p>
+                <h3>From custom UI to Material 3</h3>
+                <p>Our first Figma version did not use Material 3. After testing, we updated the prototype with Material 3 components.</p>
+                <p>This created a more consistent Android interface and made the transition from prototype to implementation easier because developers could use the same components.</p>
               </div>
             </section>
 
             <section class="process-step">
               <div class="step-copy">
-                <h3>Close collaboration with developers</h3>
-                <p><strong>What I did:</strong> Shared insights, co-prioritized, and quality-checked states/errors throughout the process.</p>
-                <p><strong>Why:</strong> Minimize design debt and code rewrites.</p>
-                <p><strong>What I learned:</strong> Early clarifications prevent big changes later; involving the whole team builds shared understanding.</p>
+                <p class="case-step-label">05 · VALIDATE IN THE PRODUCT</p>
+                <h3>From prototype to implemented app</h3>
+                <p>We ran short guerrilla tests to see whether navigation was understandable without domain knowledge. I then worked closely with developers during implementation and quality-assured states and flows.</p>
+                <p>Finally, our primary user tested the implemented solution in realistic scenarios. Because we had validated the design throughout, few major changes were needed late in development.</p>
               </div>
             </section>
 
-            <section class="process-step">
-              <div class="step-copy">
-                <h3>System test & wrap-up</h3>
-                <p><strong>What I did:</strong> When prototypes were validated, functionality was implemented and tested by the primary user on realistic scenarios.</p>
-                <p><strong>Why:</strong> Verify that the decision support feels fast and safe.</p>
-                <p><strong>What I learned:</strong> Thorough early process reduced late changes; iterative testing increased confidence in fit.</p>
-              </div>
-            </section>
           </section>
         </div>
       </article>
