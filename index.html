@@ -244,31 +244,37 @@
                 <h3>Vi designet flyten, ikke bare skjermene</h3>
                 <p>FAIR Wizard ga oss infrastrukturen. Vi måtte fortsatt designe selve brukeropplevelsen som forskerne faktisk møtte. Jeg jobbet med hvilke spørsmål som skulle vises, rekkefølge, språk, veiledning og når mer kompleks informasjon var relevant.</p>
               </div>
-              <div class="carousel single-carousel filter-carousel device-carousel scroll-carousel" id="nibio-fairwizard-carousel" aria-label="FAIR Wizard-prototype i tre steg som endres mens du scroller">
+              <div class="carousel single-carousel prototype-carousel" id="nibio-fairwizard-carousel" aria-label="FAIR Wizard-prototype i tre steg">
+                <button class="prototype-carousel__button car-prev" type="button" aria-label="Forrige prototypesteg">
+                  <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
                 <div class="carousel-viewport" tabindex="0" aria-live="polite" aria-describedby="nibio-fairwizard-status">
-                  <figure class="slide device-laptop">
-                    <div class="device-laptop__screen">
-                      <img src="images/NIBIO/fairwizard-data-question.png" alt="FAIR Wizard spør om prosjektet har generert data" width="1066" height="534" loading="lazy">
-                    </div>
-                    <div class="device-laptop__base" aria-hidden="true"></div>
+                  <figure class="slide">
+                    <img src="images/NIBIO/fairwizard-data-question.png" alt="FAIR Wizard spør om prosjektet har generert data" width="1066" height="534" loading="lazy">
                     <figcaption><span>01</span> Først: Er datasett relevant?</figcaption>
                   </figure>
-                  <figure class="slide device-laptop" hidden>
-                    <div class="device-laptop__screen">
-                      <img src="images/NIBIO/fairwizard-data-yes.png" alt="FAIR Wizard viser veiledning og valg for registrering av datasett" width="1944" height="1242" loading="lazy">
-                    </div>
-                    <div class="device-laptop__base" aria-hidden="true"></div>
+                  <figure class="slide" hidden>
+                    <img src="images/NIBIO/fairwizard-data-yes.png" alt="FAIR Wizard viser veiledning og valg for registrering av datasett" width="1944" height="1242" loading="lazy">
                     <figcaption><span>02</span> Deretter: Vis veiledning og valg</figcaption>
                   </figure>
-                  <figure class="slide device-laptop" hidden>
-                    <div class="device-laptop__screen">
-                      <img src="images/NIBIO/fairwizard-dataset.png" alt="FAIR Wizard viser detaljerte spørsmål om datasettet" width="1898" height="1354" loading="lazy">
-                    </div>
-                    <div class="device-laptop__base" aria-hidden="true"></div>
+                  <figure class="slide" hidden>
+                    <img src="images/NIBIO/fairwizard-dataset.png" alt="FAIR Wizard viser detaljerte spørsmål om datasettet" width="1898" height="1354" loading="lazy">
                     <figcaption><span>03</span> Til slutt: Vis detaljene som trengs</figcaption>
                   </figure>
                 </div>
+                <button class="prototype-carousel__button car-next" type="button" aria-label="Neste prototypesteg">
+                  <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
                 <p id="nibio-fairwizard-status" class="sr-only" aria-live="polite">Bilde 1 av 3</p>
+                <div class="dots prototype-carousel__progress" aria-label="Prototypesteg">
+                  <button type="button" aria-label="Vis prototypesteg 1" aria-current="true"></button>
+                  <button type="button" aria-label="Vis prototypesteg 2"></button>
+                  <button type="button" aria-label="Vis prototypesteg 3"></button>
+                </div>
               </div>
               <div class="case-copy case-copy--wide">
                 <p>Vi prototypet en betinget flyt og testet om forskerne forsto spørsmålene og kunne bevege seg effektivt gjennom dem. Testingen viste at ulik datakompetanse gjorde språk og veiledning særlig viktig. Forskerne verdsatte dessuten enkelhet og effektivitet mer enn dekorativ visuell styling.</p>
@@ -294,12 +300,6 @@
               <div class="case-copy case-copy--wide case-section-content">
                 <p>Resultatet var et sammenhengende konsept der informasjon går fra DMP-en til en intern datakatalog. Der kunne forskere se tidligere arbeid, tilgjengelige data, hvor de var lagret og hvem de kunne kontakte. Informasjonen som allerede måtte dokumenteres, kunne dermed også støtte oversikt, gjenbruk og samarbeid.</p>
               </div>
-              <figure class="editorial-visual editorial-visual--overview device-laptop">
-                <div class="device-laptop__screen">
-                  <img src="images/NIBIO/catalog-overview.png" alt="Oversikt over den interne datakatalogen" width="1094" height="1066" loading="lazy">
-                </div>
-                <div class="device-laptop__base" aria-hidden="true"></div>
-              </figure>
             </section>
 
             <section class="case-section editorial-section case-section--compare case-section--search-compare">

@@ -437,8 +437,16 @@ function initProjectPreviews(){
       directChild(scope, el => el.tagName === 'P') ||
       scope.querySelector('p');
 
-    // Candidate thumbnail (if any) — avoid accidentally grabbing site hero images
-    let imgEl = proj.querySelector('[data-preview-image]') || proj.querySelector('.step-media img, .carousel-viewport img') || proj.querySelector('img');
+    // Prefer an explicitly selected cover. Otherwise use the final substantial
+    // prototype/result image rather than the first process photo.
+    const previewCandidates = Array.from(proj.querySelectorAll(
+      '.step-media > img, .editorial-visual img, .carousel-viewport img'
+    ));
+    const allProjectImages = Array.from(proj.querySelectorAll('img'));
+    let imgEl = proj.querySelector('[data-preview-image]') ||
+      previewCandidates[previewCandidates.length - 1] ||
+      allProjectImages[allProjectImages.length - 1] ||
+      null;
     if (imgEl && imgEl.closest('header')) imgEl = null;
 
     // Build peek element
@@ -476,8 +484,35 @@ function initProjectPreviews(){
       const thumb = document.createElement('img');
       thumb.src = imgEl.getAttribute('src');
       thumb.alt = imgEl.getAttribute('alt') || '';
+      const sourceWidth = Number(imgEl.getAttribute('width'));
+      const sourceHeight = Number(imgEl.getAttribute('height'));
+      if (sourceWidth && sourceHeight) {
+        thumb.width = sourceWidth;
+        thumb.height = sourceHeight;
+      }
+      thumb.loading = 'lazy';
+      thumb.decoding = 'async';
       media.appendChild(thumb);
       peek.appendChild(media);
+
+      // The cover belongs to the project index only. Remove the original
+      // presentation unit so it is not repeated inside the expanded case.
+      if (!imgEl.hasAttribute('data-preview-image')) {
+        const sourceSlide = imgEl.closest('.slide');
+        if (sourceSlide) {
+          const sourceCarousel = sourceSlide.closest('.carousel');
+          const carouselSlides = sourceCarousel ? Array.from(sourceCarousel.querySelectorAll('.slide')) : [];
+          const sourceIndex = carouselSlides.indexOf(sourceSlide);
+          const indicators = sourceCarousel ? Array.from(sourceCarousel.querySelectorAll('.dots > *')) : [];
+          if (sourceIndex >= 0) indicators[sourceIndex]?.remove();
+          sourceSlide.remove();
+          if (sourceCarousel && !sourceCarousel.querySelector('.slide')) sourceCarousel.remove();
+        } else {
+          const sourceFigure = imgEl.closest('figure');
+          if (sourceFigure) sourceFigure.remove();
+          else imgEl.remove();
+        }
+      }
     }
 
     // Insert peek at the top of the scope

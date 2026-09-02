@@ -4013,3 +4013,140 @@ footer{
     justify-self:stretch;
   }
 }
+
+/* FAIR Wizard: a clean image carousel for partial-screen UI states. */
+#NIBIO-Internship .prototype-carousel{
+  position:relative;
+  width:min(100%, 1040px);
+  margin:clamp(16px, 3vw, 32px) auto;
+  padding-inline:clamp(34px, 5vw, 58px);
+}
+
+#NIBIO-Internship .prototype-carousel .carousel-viewport{
+  display:block;
+  width:100%;
+  overflow:hidden;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  cursor:grab;
+  touch-action:pan-y;
+  user-select:none;
+}
+
+#NIBIO-Internship .prototype-carousel .carousel-viewport:active{
+  cursor:grabbing;
+}
+
+#NIBIO-Internship .prototype-carousel .slide{
+  width:100%;
+  margin:0;
+  animation:nibio-slide-in .3s cubic-bezier(.2,.75,.25,1) both;
+}
+
+#NIBIO-Internship .prototype-carousel .slide[hidden]{
+  display:none !important;
+}
+
+#NIBIO-Internship .prototype-carousel .slide > img{
+  display:block;
+  width:100% !important;
+  height:clamp(300px, 52vw, 650px) !important;
+  padding:0;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  object-fit:contain;
+}
+
+#NIBIO-Internship .prototype-carousel figcaption{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:14px;
+  color:var(--color-text-muted) !important;
+  font-size:.82rem;
+  text-align:center;
+}
+
+#NIBIO-Internship .prototype-carousel figcaption span{
+  color:var(--project-accent);
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.12em;
+}
+
+#NIBIO-Internship .prototype-carousel__button{
+  position:absolute;
+  z-index:4;
+  top:46%;
+  display:grid;
+  place-items:center;
+  width:46px;
+  height:46px;
+  padding:0;
+  border:1px solid rgba(250,248,246,.22);
+  border-radius:50%;
+  background:rgba(58,43,40,.9);
+  color:var(--color-text-strong);
+  box-shadow:0 10px 28px rgba(0,0,0,.2);
+  backdrop-filter:blur(8px);
+  transform:translateY(-50%);
+}
+
+#NIBIO-Internship .prototype-carousel__button.car-prev{ left:0; }
+#NIBIO-Internship .prototype-carousel__button.car-next{ right:0; }
+
+#NIBIO-Internship .prototype-carousel__button:hover,
+#NIBIO-Internship .prototype-carousel__button:focus-visible{
+  border-color:var(--project-accent);
+  background:var(--project-accent);
+  color:#201715;
+}
+
+#NIBIO-Internship .prototype-carousel__button:disabled{
+  opacity:.18;
+  cursor:default;
+}
+
+#NIBIO-Internship .prototype-carousel__progress{
+  gap:7px;
+  margin-top:16px;
+}
+
+#NIBIO-Internship .prototype-carousel__progress button{
+  width:clamp(34px, 5vw, 58px);
+  height:3px;
+  padding:0;
+  border:0;
+  border-radius:999px;
+  background:rgba(250,248,246,.22);
+}
+
+#NIBIO-Internship .prototype-carousel__progress button[aria-current="true"]{
+  background:var(--project-accent);
+}
+
+@media (max-width:600px){
+  #NIBIO-Internship .prototype-carousel{
+    padding-inline:26px;
+  }
+
+  #NIBIO-Internship .prototype-carousel .slide > img{
+    height:clamp(240px, 76vw, 430px) !important;
+  }
+
+  #NIBIO-Internship .prototype-carousel__button{
+    width:38px;
+    height:38px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  #NIBIO-Internship .prototype-carousel .slide{
+    animation:none;
+  }
+}
