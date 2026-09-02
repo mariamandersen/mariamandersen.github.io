@@ -1,5 +1,5 @@
 /* ================================
-   ESPRESSO • OFF-WHITE • PASTELS
+   GRAPHITE • WARM WHITE • SAGE
 =================================== */
 :root{
   --color-bg:#2E211F;
@@ -8,9 +8,9 @@
   --color-text:#FAF8F6;
   --color-text-strong:#2E211F;
   --color-text-muted:#2E211F;
-  --color-pink:#F6D5DF;
-  --color-blue:#B8DDF0;
-  --color-border:#B8DDF0;
+  --color-pink:#A9B9AF;
+  --color-blue:#D4D8D1;
+  --color-border:#D4D8D1;
 
   /* Backwards-compatible aliases used by the existing layout */
   --bg:var(--color-bg); --surface:var(--color-bg); --surface-2:var(--color-blue);
@@ -416,11 +416,11 @@ figcaption{ margin-top:6px; color:var(--muted); font-size:.95rem; }
   transition:background .15s ease, border-color .15s ease, box-shadow .15s ease;
 }
 .rail a:hover::before, .rail a:focus-visible::before{ border-color:var(--accent); }
-.rail a[aria-current="true"]::before, .rail a.active::before{
+.rail a[aria-current="location"]::before, .rail a.active::before{
   background:var(--accent) !important; border-color:var(--accent) !important;
   box-shadow:0 0 0 2px color-mix(in oklab, var(--accent) 32%, transparent);
 }
-@media (max-width:1280px), (pointer:coarse){ .rail{ display:none !important; } }
+@media (max-width:900px), (pointer:coarse){ .rail{ display:none !important; } }
 
 /* Animations */
 .fade-in{ opacity:1; transform:none; }
@@ -569,6 +569,182 @@ figcaption{ margin-top:6px; color:var(--muted); font-size:.95rem; }
     .project:not(#proj-rocket-no):not(#proj-rocket-en):not(#proj-medball-no):not(#proj-medball-en):not(#proj-echo-no):not(#proj-echo-en) .process.process--timeline .process-step:has(.step-media) .step-copy{
       grid-column:1 !important; grid-row:1 !important;
     }
+  }
+}
+
+/* NIBIO filter story: swipeable, single-frame carousel. */
+#NIBIO-Internship .filter-carousel{
+  width:min(100%, 680px);
+  margin:4px auto 0;
+  padding-inline:0;
+}
+
+#NIBIO-Internship .filter-carousel .carousel-viewport{
+  display:block;
+  width:100%;
+  overflow:hidden;
+  padding:clamp(8px, 1.5vw, 14px) clamp(4px, 1vw, 10px) 4px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  cursor:grab;
+  touch-action:pan-y;
+  user-select:none;
+}
+
+#NIBIO-Internship .filter-carousel .carousel-viewport:active{
+  cursor:grabbing;
+}
+
+#NIBIO-Internship .scroll-carousel{
+  height:auto;
+  margin-block:clamp(10px, 2vw, 24px);
+}
+
+#NIBIO-Internship .scroll-carousel .carousel-viewport{
+  position:relative;
+  top:auto;
+  cursor:default;
+}
+
+#NIBIO-Internship .scroll-carousel .carousel-viewport:active{
+  cursor:default;
+}
+
+#NIBIO-Internship .filter-carousel .slide{
+  width:100%;
+  max-width:none;
+  animation:nibio-slide-in .34s cubic-bezier(.2,.75,.25,1) both;
+}
+
+#NIBIO-Internship .filter-carousel .slide[hidden]{
+  display:none !important;
+}
+
+#NIBIO-Internship .filter-carousel .car-btn{
+  top:43%;
+  width:42px;
+  height:42px;
+  border-color:rgba(250,248,246,.18);
+  background:rgba(255,255,255,.88);
+  color:var(--color-text-strong);
+  box-shadow:0 8px 22px rgba(0,0,0,.2);
+}
+
+#NIBIO-Internship .filter-carousel .car-prev{ left:0; }
+#NIBIO-Internship .filter-carousel .car-next{ right:0; }
+
+#NIBIO-Internship .filter-carousel .car-btn:disabled{
+  opacity:.22;
+}
+
+#NIBIO-Internship .filter-carousel figcaption{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:14px;
+  color:var(--color-text-muted) !important;
+  text-align:center;
+}
+
+#NIBIO-Internship .filter-carousel figcaption span{
+  color:var(--project-accent);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.12em;
+}
+
+#NIBIO-Internship .filter-carousel .dots{
+  margin-top:12px;
+}
+
+#NIBIO-Internship .filter-carousel .dots button,
+#NIBIO-Internship .filter-carousel .dots [data-slide-indicator]{
+  display:block;
+  width:22px;
+  height:3px;
+  padding:0;
+  border:0;
+  border-radius:999px;
+  background:rgba(250,248,246,.24);
+}
+
+#NIBIO-Internship .filter-carousel .dots button[aria-current="true"],
+#NIBIO-Internship .filter-carousel .dots [data-slide-indicator][aria-current="true"]{
+  background:var(--project-accent);
+}
+
+@keyframes nibio-slide-in{
+  from{ opacity:.35; transform:translateX(14px); }
+  to{ opacity:1; transform:translateX(0); }
+}
+
+@media (max-width:600px){
+  #NIBIO-Internship .filter-carousel{
+    padding-inline:0;
+  }
+
+  #NIBIO-Internship .filter-carousel .car-btn{
+    width:36px;
+    height:36px;
+  }
+
+  #NIBIO-Internship .scroll-carousel{ height:auto; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  #NIBIO-Internship .filter-carousel .slide{
+    animation:none;
+  }
+}
+
+/* Alternating project index: image and text trade sides for a clearer rhythm. */
+@media (min-width:800px){
+  #content-no > .project .project-peek,
+  #content-en > .project .project-peek{
+    display:grid;
+    grid-template-columns:minmax(0, .92fr) minmax(360px, 1.08fr);
+    align-items:center;
+    gap:clamp(32px, 5vw, 76px);
+  }
+
+  #content-no > .project .project-peek .peek-text,
+  #content-en > .project .project-peek .peek-text{
+    grid-column:1;
+    grid-row:1;
+    width:100%;
+  }
+
+  #content-no > .project .project-peek .peek-media,
+  #content-en > .project .project-peek .peek-media{
+    grid-column:2;
+    grid-row:1;
+    width:100%;
+    max-width:none;
+    margin:0 !important;
+    justify-self:stretch;
+  }
+
+  #content-no > .project:nth-child(even) .project-peek,
+  #content-en > .project:nth-child(even) .project-peek{
+    grid-template-columns:minmax(360px, 1.08fr) minmax(0, .92fr);
+  }
+
+  #content-no > .project:nth-child(even) .project-peek .peek-text,
+  #content-en > .project:nth-child(even) .project-peek .peek-text{
+    grid-column:2;
+  }
+
+  #content-no > .project:nth-child(even) .project-peek .peek-media,
+  #content-en > .project:nth-child(even) .project-peek .peek-media{
+    grid-column:1;
+  }
+
+  #content-no > .case-project .project-peek .peek-media,
+  #content-en > .case-project .project-peek .peek-media{
+    width:100%;
+    max-width:none;
   }
 }
 
@@ -2153,12 +2329,14 @@ html.has-io .fade-in{
   object-fit:contain;
 }
 
-#NIBIO-Internship .case-concept-line{
-  margin-block:.35rem !important;
-  font-size:clamp(.9rem, 1.5vw, 1rem);
-  line-height:1.5;
-  letter-spacing:.025em;
-  color:color-mix(in oklab, var(--ink) 78%, transparent);
+#NIBIO-Internship .case-phase-label{
+  font-size:.8rem;
+  letter-spacing:.18em;
+  color:var(--color-blue) !important;
+}
+
+#NIBIO-Internship .case-section--phase-start:not(:first-of-type){
+  margin-top:clamp(5rem, 9vw, 8rem);
 }
 
 #NIBIO-Internship .visual-sequence figcaption{
@@ -2170,6 +2348,89 @@ html.has-io .fade-in{
 
 #NIBIO-Internship .case-section--search-compare .search-media--semantic{
   justify-self:start;
+}
+
+#NIBIO-Internship .project-body,
+#NIBIO-Internship .editorial-section,
+#NIBIO-Internship .case-section{
+  border-top:0;
+}
+
+/* Keep images in horizontal comparison rows aligned without cropping. */
+.visual-sequence,
+.before-after{
+  align-items:stretch;
+}
+
+.visual-sequence > .visual-card,
+.before-after > figure{
+  display:grid;
+  grid-template-rows:minmax(0, 1fr) auto;
+}
+
+.visual-sequence > .visual-card > .visual-frame,
+.before-after > figure > img{
+  width:100%;
+  height:100%;
+  min-height:0;
+  object-fit:contain;
+}
+
+/* The FAIR Wizard screenshots have very different aspect ratios. Giving each
+   column its intrinsic proportion lets all three reach the same height. */
+#NIBIO-Internship .visual-sequence--three{
+  width:100%;
+  max-width:none;
+  grid-template-columns:minmax(0, 1.996fr) minmax(0, 1.565fr) minmax(0, 1.402fr);
+  gap:clamp(12px, 2vw, 24px);
+  align-items:start;
+}
+
+#NIBIO-Internship .visual-sequence--three .visual-card{
+  display:block;
+}
+
+#NIBIO-Internship .visual-sequence--three .visual-frame--sequence{
+  height:auto;
+}
+
+#NIBIO-Internship .visual-sequence--three .visual-card:nth-child(1) .visual-frame--sequence{ aspect-ratio:1066 / 534; }
+#NIBIO-Internship .visual-sequence--three .visual-card:nth-child(2) .visual-frame--sequence{ aspect-ratio:1944 / 1242; }
+#NIBIO-Internship .visual-sequence--three .visual-card:nth-child(3) .visual-frame--sequence{ aspect-ratio:1898 / 1354; }
+
+#NIBIO-Internship .visual-sequence--three .visual-frame--sequence img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+/* NIBIO screenshots are presented as editorial images, without card chrome. */
+#NIBIO-Internship figure,
+#NIBIO-Internship .visual-frame,
+#NIBIO-Internship .visual-card,
+#NIBIO-Internship .editorial-visual,
+#NIBIO-Internship .before-after{
+  background:none !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+
+#NIBIO-Internship figure img,
+#NIBIO-Internship .visual-frame img,
+#NIBIO-Internship .visual-card img,
+#NIBIO-Internship .editorial-visual img,
+#NIBIO-Internship .before-after img{
+  display:block;
+  padding:0;
+  background:none !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+
+#NIBIO-Internship .visual-frame--sequence{
+  padding:0;
 }
 
 @media (max-width:760px){
@@ -2525,4 +2786,1230 @@ main{
   .case-project .project-peek,
   .case-project .case-study{ padding:24px 20px; }
   .case-project .read-more{ margin:0 20px 24px; }
+}
+
+/* Transparent project presentation: previews and expanded cases sit directly
+   on the page background instead of inside white cards. */
+.project.project--card,
+.case-project.project{
+  background:transparent !important;
+  color:var(--color-text);
+  border-radius:0;
+  overflow:visible;
+}
+
+.project::before,
+.project.project--card::before,
+.case-project.project::before{
+  content:none !important;
+}
+
+.project.project--card h2,
+.project.project--card h3,
+.project.project--card h4,
+.case-project .project-peek h2{
+  color:var(--color-text) !important;
+}
+
+.project.project--card p,
+.project.project--card li,
+.project.project--card .kicker,
+.project.project--card figcaption,
+.project.project--card .project-peek .peek-text p,
+.case-project .project-peek .case-question,
+.case-project .project-peek .peek-text > p:not(.kicker):not(.case-question){
+  color:rgba(250,248,246,.74) !important;
+}
+
+.project.project--card .case-step-label,
+.project.project--card .case-mini-label,
+.project.project--card .case-methods span,
+.project.project--card .case-concept-line{
+  color:rgba(250,248,246,.58) !important;
+}
+
+.case-project .project-body,
+.case-project .case-study,
+.project.project--card .project-inner{
+  background:transparent !important;
+}
+
+.case-project.expanded .read-more{
+  background:var(--color-blue);
+  color:#1a1009;
+}
+
+/* Wide editorial project layout with a small page edge and clear transitions
+   between projects. */
+#content-no,
+#content-en{
+  width:100%;
+}
+
+#content-no > .project,
+#content-en > .project,
+#content-no > .case-project.project,
+#content-en > .case-project.project{
+  width:calc(100% - (2 * clamp(16px, 3vw, 48px))) !important;
+  max-width:none !important;
+  margin:0 auto !important;
+  padding:clamp(64px, 9vw, 120px) 0 !important;
+}
+
+#content-no > .project:first-child,
+#content-en > .project:first-child{
+  padding-top:clamp(32px, 5vw, 64px) !important;
+}
+
+#content-no > .project + .project,
+#content-en > .project + .project{
+  border-top:1px solid rgba(250,248,246,.22);
+}
+
+.project.project--card .project-inner{
+  width:100%;
+  padding-inline:0 !important;
+}
+
+.project .project-peek,
+.case-project .project-peek{
+  width:100%;
+  padding-inline:0;
+}
+
+.case-project .project-peek .peek-media{
+  width:min(100%, 640px);
+  max-width:640px;
+}
+
+@media (min-width:800px){
+  .project-peek .peek-media{
+    flex-basis:clamp(360px, 42vw, 640px);
+    max-width:clamp(360px, 42vw, 640px);
+  }
+}
+
+.case-project .case-study{
+  width:100%;
+  padding-inline:0;
+}
+
+.case-project .case-copy,
+.case-project .editorial-section > p{
+  max-width:90ch;
+}
+
+.project .project-body{
+  width:100%;
+}
+
+.project .read-more,
+.case-project .read-more{
+  display:inline-flex;
+  width:auto;
+  margin-inline:0;
+}
+
+@media (max-width:600px){
+  #content-no > .project,
+  #content-en > .project,
+  #content-no > .case-project.project,
+  #content-en > .case-project.project{
+    width:calc(100% - 32px) !important;
+    padding-block:52px !important;
+  }
+}
+
+/* Clear interaction feedback for buttons and compact controls. */
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]){
+  cursor:pointer;
+}
+
+button{
+  transition:background-color .18s ease, color .18s ease,
+             border-color .18s ease, box-shadow .18s ease,
+             opacity .18s ease, filter .18s ease;
+}
+
+button:not(:disabled):hover{
+  filter:brightness(1.08);
+}
+
+button:not(:disabled):active{
+  filter:brightness(.94);
+}
+
+button:focus-visible,
+[role="button"]:focus-visible{
+  outline:3px solid color-mix(in oklab, var(--accent) 72%, white 28%);
+  outline-offset:3px;
+}
+
+.project .read-more:hover{
+  background:color-mix(in oklab, var(--color-blue) 84%, white 16%);
+  box-shadow:0 6px 18px rgba(0,0,0,.2);
+}
+
+.project .read-more:active{
+  box-shadow:0 2px 8px rgba(0,0,0,.18);
+}
+
+.car-btn:not(:disabled):hover{
+  border-color:var(--accent);
+  color:var(--accent);
+  box-shadow:0 8px 24px rgba(0,0,0,.38);
+}
+
+.dots button:not(:disabled):hover{
+  border-color:var(--accent);
+  background:color-mix(in oklab, var(--accent) 45%, transparent);
+}
+
+.language-toggle button:not([aria-pressed="true"]):hover,
+.menu-toggle:hover{
+  color:var(--color-surface);
+  background:rgba(250,248,246,.1);
+}
+
+button:disabled,
+[aria-disabled="true"]{
+  cursor:not-allowed;
+}
+
+/* =========================================================
+   MODERN EDITORIAL LAYER
+   Stronger type, project rhythm and restrained interaction.
+========================================================= */
+.hero{
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  right:-12vw;
+  bottom:-28vw;
+  width:min(62vw, 820px);
+  aspect-ratio:1;
+  border:1px solid rgba(246,213,223,.14);
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.hero .hero-grid{
+  position:relative;
+  z-index:1;
+  width:calc(100% - (2 * clamp(20px, 4vw, 64px)));
+  max-width:none;
+  gap:clamp(40px, 8vw, 140px);
+}
+
+.hero-copy{
+  max-width:820px;
+}
+
+.hero-copy h1{
+  margin-bottom:clamp(24px, 3vw, 40px);
+  font-size:clamp(3.35rem, 8.6vw, 8.4rem);
+  line-height:.82;
+  letter-spacing:-.055em;
+}
+
+.hero-copy h1 span{
+  font-family:inherit;
+  font-style:normal;
+  font-weight:inherit;
+  letter-spacing:inherit;
+}
+
+.hero .hero-statement{
+  max-width:24ch;
+  font-size:clamp(1.35rem, 2.6vw, 2.25rem);
+  line-height:1.25;
+  letter-spacing:-.025em;
+}
+
+.hero-support{
+  max-width:62ch;
+  margin:18px 0 0;
+  color:rgba(250,248,246,.58);
+  font-size:clamp(.92rem, 1.25vw, 1.06rem);
+  line-height:1.7;
+}
+
+#content-no,
+#content-en{
+  counter-reset:portfolio-project;
+}
+
+#content-no > .project,
+#content-en > .project{
+  counter-increment:portfolio-project;
+  --project-accent:var(--color-blue);
+}
+
+#content-no > .project:nth-child(2),
+#content-en > .project:nth-child(2){ --project-accent:#816b58; }
+#content-no > .project:nth-child(3),
+#content-en > .project:nth-child(3){ --project-accent:#596978; }
+#content-no > .project:nth-child(4),
+#content-en > .project:nth-child(4){ --project-accent:#4f8063; }
+#content-no > .project:nth-child(5),
+#content-en > .project:nth-child(5){ --project-accent:#9a6b19; }
+#content-no > .project:nth-child(6),
+#content-en > .project:nth-child(6){ --project-accent:#397b76; }
+#content-no > .project:nth-child(7),
+#content-en > .project:nth-child(7){ --project-accent:#6f625e; }
+
+.project .project-peek .peek-text::before,
+.case-project .project-peek .peek-text::before{
+  content:counter(portfolio-project, decimal-leading-zero);
+  width:auto;
+  height:auto;
+  margin-bottom:clamp(18px, 2vw, 28px);
+  border-radius:0;
+  background:none;
+  color:var(--project-accent);
+  font-size:.76rem;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:.18em;
+}
+
+.project .project-peek h2,
+.case-project .project-peek h2{
+  max-width:18ch;
+  font-size:clamp(2.1rem, 4.8vw, 5.4rem);
+  line-height:.98;
+  letter-spacing:-.045em;
+}
+
+.project .project-peek .kicker{
+  color:var(--project-accent) !important;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.project .project-peek .peek-media img{
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+}
+
+.case-project.expanded .read-more{
+  background:transparent;
+  color:var(--color-text);
+}
+
+.project .read-more,
+.case-project .read-more{
+  position:relative;
+  padding:11px 0 10px;
+  border-radius:0;
+  border-bottom:1px solid var(--project-accent);
+  background:transparent;
+  color:var(--color-text);
+  box-shadow:none;
+}
+
+.project .read-more:hover,
+.case-project .read-more:hover,
+.case-project.expanded .read-more:hover{
+  background:transparent;
+  color:var(--project-accent);
+  box-shadow:none;
+}
+
+@media (min-width:800px){
+  #content-no > .project:nth-child(even):not(.case-project) .project-peek,
+  #content-en > .project:nth-child(even):not(.case-project) .project-peek{
+    flex-direction:row-reverse;
+  }
+
+  #content-no > .project:nth-child(even):not(.case-project) .project-peek .peek-media,
+  #content-en > .project:nth-child(even):not(.case-project) .project-peek .peek-media{
+    margin-left:0;
+    margin-right:clamp(20px, 4vw, 64px);
+  }
+}
+
+html.has-io .project.fade-in,
+html.has-io .project.fade-in.appear{
+  opacity:1 !important;
+  transform:none !important;
+  transition:none !important;
+}
+
+footer{
+  padding:clamp(72px, 11vw, 150px) clamp(20px, 4vw, 64px) 28px;
+  text-align:left;
+}
+
+.footer-cta{
+  width:100%;
+  max-width:1200px;
+  margin:0 auto clamp(72px, 9vw, 120px);
+}
+
+.footer-kicker{
+  margin:0 0 20px;
+  color:var(--color-blue);
+  font-size:.76rem;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.footer-cta h2{
+  max-width:19ch;
+  margin:0 0 clamp(30px, 5vw, 56px);
+  color:var(--color-text);
+  font-family:var(--font);
+  font-size:clamp(2.6rem, 7vw, 7rem);
+  font-weight:600;
+  line-height:.95;
+  letter-spacing:-.035em;
+}
+
+.footer-email{
+  display:inline-block;
+  padding-bottom:5px;
+  border-bottom:1px solid var(--color-pink);
+  color:var(--color-text);
+  font-size:clamp(1rem, 2vw, 1.35rem);
+  text-decoration:none;
+  transition:color .2s ease, border-color .2s ease;
+}
+
+.footer-email:hover{
+  color:var(--color-pink);
+  border-color:currentColor;
+}
+
+.footer-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:24px;
+  width:100%;
+  max-width:1200px;
+  margin-inline:auto;
+  padding-top:24px;
+  border-top:1px solid rgba(250,248,246,.15);
+}
+
+.footer-meta p,
+.footer-meta small{
+  margin:0;
+}
+
+@media (max-width:760px){
+  .hero-copy h1{ font-size:clamp(3.15rem, 16vw, 5.4rem); }
+  .footer-meta{ align-items:start; flex-direction:column; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  html.has-io .project.fade-in,
+  html.has-io .project.fade-in.appear{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+  .hero-photo img,
+  .project .project-peek .peek-media,
+  .project .read-more::after{
+    transition:none;
+  }
+}
+
+/* =========================================================
+   DARK PROFESSIONAL THEME
+   Espresso canvas, warm white typography and restrained accents.
+========================================================= */
+:root{
+  --color-bg:#2e211f;
+  --color-surface:#3a2b28;
+  --color-surface-alt:#473431;
+  --color-text:#faf8f6;
+  --color-text-strong:#faf8f6;
+  --color-text-muted:#c9bfba;
+  --color-pink:#a9b9af;
+  --color-blue:#a9b9af;
+  --color-border:rgba(250,248,246,.16);
+  --bg:var(--color-bg);
+  --surface:var(--color-surface);
+  --surface-2:var(--color-surface-alt);
+  --text:var(--color-text);
+  --muted:var(--color-text-muted);
+  --line:var(--color-border);
+  --accent:#9fb8ae;
+  --paper:var(--color-surface);
+  --paper-2:var(--color-surface-alt);
+  --ink:var(--color-text-strong);
+  --ink-muted:var(--color-text-muted);
+  --line-lite:rgba(250,248,246,.13);
+}
+
+body{
+  background:var(--color-bg);
+  color:var(--color-text);
+}
+
+header{
+  background:var(--color-bg);
+  border-bottom:1px solid rgba(250,248,246,.1);
+  box-shadow:none;
+  backdrop-filter:none;
+}
+
+.site-name,
+.desktop-nav a,
+.header-contacts a,
+.language-toggle button,
+.menu-toggle{
+  color:rgba(250,248,246,.66);
+}
+
+.site-name,
+.desktop-nav a:hover,
+.desktop-nav a:focus-visible,
+.header-contacts a:hover,
+.header-contacts a:focus-visible{
+  color:var(--color-text-strong);
+}
+
+.language-toggle{
+  border-color:rgba(250,248,246,.16);
+}
+
+.language-toggle button[aria-pressed="true"]{
+  color:var(--color-text-strong);
+  background:rgba(250,248,246,.12);
+}
+
+.language-toggle button:not([aria-pressed="true"]):hover,
+.menu-toggle:hover{
+  color:var(--color-text-strong);
+  background:rgba(250,248,246,.08);
+}
+
+.mobile-menu{
+  background:rgba(46,33,31,.97);
+  border-bottom-color:rgba(250,248,246,.1);
+}
+
+.mobile-menu a{
+  color:var(--color-text-strong);
+}
+
+.hero::after{
+  display:none;
+}
+
+.hero-copy h1,
+.hero .hero-statement{
+  color:var(--color-text-strong);
+}
+
+.hero-copy .hero-eyebrow{
+  color:#9fb8ae;
+}
+
+.hero-support{
+  color:rgba(250,248,246,.68);
+}
+
+#content-no > .project,
+#content-en > .project{
+  --project-accent:#9fb8ae;
+}
+
+#content-no > .project:nth-child(2),
+#content-en > .project:nth-child(2){ --project-accent:#c4a487; }
+#content-no > .project:nth-child(3),
+#content-en > .project:nth-child(3){ --project-accent:#9eb0c1; }
+#content-no > .project:nth-child(4),
+#content-en > .project:nth-child(4){ --project-accent:#8fb79d; }
+#content-no > .project:nth-child(5),
+#content-en > .project:nth-child(5){ --project-accent:#dab466; }
+#content-no > .project:nth-child(6),
+#content-en > .project:nth-child(6){ --project-accent:#78b5b0; }
+#content-no > .project:nth-child(7),
+#content-en > .project:nth-child(7){ --project-accent:#bda6a0; }
+
+.project.project--card,
+.case-project.project,
+.project.project--card h2,
+.project.project--card h3,
+.project.project--card h4,
+.case-project .project-peek h2{
+  color:var(--color-text-strong) !important;
+}
+
+.project.project--card p,
+.project.project--card li,
+.project.project--card .kicker,
+.project.project--card figcaption,
+.project.project--card .project-peek .peek-text p,
+.case-project .project-peek .case-question,
+.case-project .project-peek .peek-text > p:not(.kicker):not(.case-question){
+  color:var(--color-text-muted) !important;
+}
+
+.project.project--card .case-step-label,
+.project.project--card .case-mini-label,
+.project.project--card .case-methods span{
+  color:rgba(250,248,246,.58) !important;
+}
+
+#NIBIO-Internship .case-phase-label{
+  color:#9fb8ae !important;
+}
+
+#content-no > .project + .project,
+#content-en > .project + .project{
+  border-top-color:rgba(250,248,246,.16);
+}
+
+.project .read-more,
+.case-project .read-more,
+.case-project.expanded .read-more{
+  color:var(--color-text-strong);
+}
+
+.rail a::before{
+  border-color:rgba(250,248,246,.35);
+}
+
+.rail a:hover::before,
+.rail a:focus-visible::before{
+  border-color:var(--accent);
+}
+
+.car-btn{
+  background:rgba(58,43,40,.94);
+  color:var(--color-text-strong);
+  border-color:rgba(250,248,246,.17);
+  box-shadow:0 6px 20px rgba(0,0,0,.22);
+}
+
+.dots button{
+  border-color:rgba(250,248,246,.38);
+}
+
+.project .process.process--timeline .process-step{
+  background:transparent !important;
+  border-color:rgba(250,248,246,.12) !important;
+  box-shadow:none !important;
+}
+
+.project .process.process--timeline .step-copy p > strong{
+  padding:0 !important;
+  border:0 !important;
+  background:none !important;
+  color:var(--color-text-strong) !important;
+}
+
+#resetLang{
+  background:var(--color-text-strong);
+  color:var(--color-surface);
+}
+
+footer{
+  background:#241917;
+  color:var(--color-text-muted);
+  border-top:0;
+}
+
+.footer-kicker{
+  color:#9fb8ae;
+}
+
+.footer-cta h2,
+.footer-email,
+footer a{
+  color:var(--color-text-strong);
+}
+
+.footer-meta{
+  border-top-color:rgba(250,248,246,.15);
+}
+
+::selection{
+  background:rgba(169,185,175,.72);
+  color:var(--color-text-strong);
+}
+
+/* Interactive hero portrait and compact profile bubble. */
+.hero-photo{
+  position:relative;
+}
+
+.hero-photo-trigger{
+  display:block;
+  width:100%;
+  margin:0;
+  padding:0;
+  border:0;
+  background:transparent;
+  filter:none !important;
+}
+
+.hero-photo-trigger img{ transform-origin:50% 75%; }
+
+.hero-photo.is-open .hero-photo-trigger img{
+  transform:scale(1.035);
+  opacity:.2;
+}
+
+.hero-profile-bubble{
+  position:fixed;
+  z-index:20000;
+  inset:0;
+  display:grid;
+  place-items:center;
+  width:100%;
+  height:100dvh;
+  margin:0;
+  padding:clamp(24px, 5vw, 72px);
+  border:0;
+  border-radius:0;
+  background:rgba(46,33,31,.68);
+  color:var(--color-text-strong);
+  box-shadow:none;
+  backdrop-filter:blur(22px) saturate(125%);
+  animation:profile-backdrop-in .45s ease both;
+}
+
+.hero-profile-spotlight{
+  display:grid;
+  grid-template-columns:minmax(260px, .9fr) minmax(300px, 1.1fr);
+  align-items:center;
+  gap:clamp(32px, 8vw, 140px);
+  width:min(100%, 1180px);
+  height:min(86dvh, 840px);
+}
+
+.hero-profile-spotlight > img{
+  width:100%;
+  height:100%;
+  min-height:0;
+  object-fit:contain;
+  filter:drop-shadow(0 28px 45px rgba(34,40,38,.16));
+  animation:profile-image-in .7s cubic-bezier(.16,.8,.2,1) both;
+}
+
+.hero-profile-copy{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:clamp(22px, 4vw, 40px);
+  animation:profile-copy-in .65s .12s cubic-bezier(.16,.8,.2,1) both;
+}
+
+.hero-profile-copy a{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding-bottom:6px;
+  border-bottom:1px solid currentColor;
+  color:var(--color-text-strong);
+  font-family:var(--font);
+  font-size:clamp(1.7rem, 4vw, 4.4rem);
+  font-weight:600;
+  line-height:1.05;
+  letter-spacing:-.025em;
+  text-decoration:none;
+  transition:color .2s ease, gap .2s ease;
+}
+
+.hero-profile-copy a:hover{
+  color:#9fb8ae;
+}
+
+.hero-profile-close{
+  position:absolute;
+  top:clamp(18px, 3vw, 36px);
+  right:clamp(18px, 3vw, 36px);
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  padding:0;
+  border:1px solid rgba(250,248,246,.2);
+  border-radius:50%;
+  background:rgba(250,248,246,.1);
+  color:var(--color-text-strong);
+  font-size:1.7rem;
+  font-weight:300;
+  line-height:1;
+}
+
+.hero-profile-close:hover{
+  background:rgba(250,248,246,.18);
+}
+
+body.profile-open{
+  overflow:hidden;
+}
+
+@keyframes profile-backdrop-in{
+  from{ opacity:0; backdrop-filter:blur(0) saturate(100%); }
+  to{ opacity:1; backdrop-filter:blur(22px) saturate(125%); }
+}
+
+@keyframes profile-image-in{
+  from{ opacity:0; transform:translateY(32px) scale(.72); }
+  to{ opacity:1; transform:translateY(0) scale(1); }
+}
+
+@keyframes profile-copy-in{
+  from{ opacity:0; transform:translateY(24px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+@media (max-width:700px){
+  .hero-profile-spotlight{
+    grid-template-columns:1fr;
+    grid-template-rows:minmax(0, 1fr) auto;
+    gap:22px;
+    height:calc(100dvh - 96px);
+    text-align:center;
+  }
+  .hero-profile-copy{
+    align-items:center;
+    gap:18px;
+  }
+  .hero-profile-copy a{
+    justify-content:center;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .hero-photo-trigger img,
+  .hero-profile-bubble,
+  .hero-profile-spotlight > img,
+  .hero-profile-copy{
+    transition:none;
+    animation:none;
+  }
+}
+
+/* Strong, text-led hierarchy for the three NIBIO case phases. */
+#NIBIO-Internship .case-phase-label{
+  margin:0 0 clamp(18px, 2.5vw, 32px) !important;
+  font-size:clamp(2rem, 4.5vw, 4.6rem);
+  font-weight:700;
+  line-height:.95;
+  letter-spacing:-.045em;
+  text-transform:none;
+  color:#9fb8ae !important;
+}
+
+#NIBIO-Internship .case-section--phase-start{
+  padding-top:clamp(28px, 5vw, 64px);
+}
+
+#NIBIO-Internship .case-section--phase-start:not(:first-of-type){
+  margin-top:clamp(6.5rem, 12vw, 11rem);
+}
+
+#NIBIO-Internship .case-section--phase-start .case-copy > h3{
+  max-width:24ch;
+  font-size:clamp(1.45rem, 2.5vw, 2.2rem);
+  line-height:1.15;
+  letter-spacing:-.025em;
+}
+
+@media (max-width:600px){
+  #NIBIO-Internship .case-section--phase-start:not(:first-of-type){
+    margin-top:5rem;
+  }
+}
+
+/* Product presentation: restrained hardware mockups for final UI work. */
+#NIBIO-Internship .device-laptop{
+  display:block;
+  width:100%;
+  max-width:720px;
+  margin-inline:auto;
+}
+
+#NIBIO-Internship .device-laptop__screen{
+  position:relative;
+  display:grid;
+  place-items:center;
+  aspect-ratio:16 / 10;
+  padding:clamp(7px, 1.1vw, 12px);
+  overflow:hidden;
+  border:1px solid #343a38 !important;
+  border-radius:clamp(8px, 1.2vw, 13px) clamp(8px, 1.2vw, 13px) 3px 3px !important;
+  background:#171b1a !important;
+  box-shadow:0 22px 45px rgba(34,40,38,.16) !important;
+}
+
+#NIBIO-Internship .device-laptop__screen::before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  top:4px;
+  left:50%;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#59605d;
+  transform:translateX(-50%);
+}
+
+#NIBIO-Internship .device-laptop__screen img{
+  width:100% !important;
+  height:100% !important;
+  max-height:none !important;
+  object-fit:contain !important;
+  object-position:center top;
+  background:#fff !important;
+}
+
+#NIBIO-Internship .device-laptop__base{
+  position:relative;
+  z-index:2;
+  width:108%;
+  height:clamp(7px, 1.2vw, 12px);
+  margin-left:-4%;
+  border-radius:2px 2px 45% 45%;
+  background:linear-gradient(180deg, #d9dcda 0%, #aeb4b1 70%, #8f9692 100%) !important;
+  box-shadow:0 10px 18px rgba(34,40,38,.12) !important;
+}
+
+#NIBIO-Internship .device-laptop__base::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  width:14%;
+  height:42%;
+  border-radius:0 0 5px 5px;
+  background:#909793;
+  transform:translateX(-50%);
+}
+
+#NIBIO-Internship .device-laptop figcaption{
+  margin-top:clamp(12px, 1.5vw, 18px);
+}
+
+#NIBIO-Internship .search-media--semantic.device-laptop{
+  width:100%;
+  max-width:580px;
+}
+
+#NIBIO-Internship .device-laptop--compact .device-laptop__screen{
+  aspect-ratio:16 / 9;
+}
+
+/* A cleaner Android silhouette for the Skybound prototype carousel. */
+#proj-rocket-no .phone-carousel .phone-mock,
+#proj-rocket-en .phone-carousel .phone-mock{
+  position:relative;
+  isolation:isolate;
+  padding:9px !important;
+  border:1px solid #4a504e !important;
+  border-radius:34px !important;
+  background:linear-gradient(145deg, #313735, #111413) !important;
+  box-shadow:0 26px 48px rgba(34,40,38,.22), inset 0 0 0 1px rgba(255,255,255,.08) !important;
+  overflow:visible;
+}
+
+#proj-rocket-no .phone-carousel .phone-mock::before,
+#proj-rocket-en .phone-carousel .phone-mock::before{
+  z-index:3;
+  top:14px;
+  width:7px;
+  height:7px;
+  background:#111514;
+  box-shadow:0 0 0 1px rgba(255,255,255,.12);
+}
+
+#proj-rocket-no .phone-carousel .phone-mock::after,
+#proj-rocket-en .phone-carousel .phone-mock::after{
+  content:"";
+  position:absolute;
+  top:24%;
+  right:-4px;
+  width:3px;
+  height:13%;
+  border-radius:0 3px 3px 0;
+  background:#3d4341;
+}
+
+#proj-rocket-no .phone-carousel .phone-mock > img,
+#proj-rocket-en .phone-carousel .phone-mock > img{
+  border-radius:26px !important;
+  background:#fff !important;
+}
+
+@media (max-width:760px){
+  #NIBIO-Internship .device-laptop{
+    width:94%;
+  }
+
+  #NIBIO-Internship .device-laptop--compact{
+    width:100%;
+  }
+}
+
+/* Tighter editorial rhythm: keep related content visually connected. */
+#content-no > .project,
+#content-en > .project,
+#content-no > .case-project.project,
+#content-en > .case-project.project{
+  padding-block:clamp(44px, 6vw, 76px) !important;
+}
+
+#content-no > .project:first-child,
+#content-en > .project:first-child{
+  padding-top:clamp(28px, 4vw, 48px) !important;
+}
+
+.project .project-peek,
+.case-project .project-peek{
+  gap:clamp(20px, 3vw, 44px);
+  margin-bottom:clamp(14px, 2vw, 24px);
+}
+
+.project .project-peek .peek-text::before,
+.case-project .project-peek .peek-text::before{
+  margin-bottom:12px;
+}
+
+.project .project-peek h2,
+.case-project .project-peek h2{
+  margin-bottom:clamp(10px, 1.4vw, 18px);
+}
+
+.project .project-body,
+.case-project .project-body{
+  margin-top:clamp(26px, 4vw, 48px);
+}
+
+.case-section.editorial-section{
+  padding-block:clamp(18px, 3vw, 34px);
+}
+
+.case-section + .case-section{
+  margin-top:clamp(1.4rem, 3vw, 2.8rem);
+}
+
+#NIBIO-Internship .case-section--phase-start{
+  padding-top:clamp(20px, 3vw, 36px);
+}
+
+#NIBIO-Internship .case-section--phase-start:not(:first-of-type){
+  margin-top:clamp(3rem, 6vw, 5rem);
+}
+
+#NIBIO-Internship .case-phase-label{
+  margin-bottom:clamp(10px, 1.4vw, 16px) !important;
+}
+
+.project .process.process--timeline{
+  gap:clamp(18px, 3vw, 38px) !important;
+}
+
+.project .process.process--timeline .process-step{
+  padding-block:clamp(14px, 2vw, 24px) !important;
+}
+
+.project .step-copy,
+.case-copy{
+  gap:clamp(7px, 1vw, 11px);
+}
+
+footer{
+  padding-top:clamp(52px, 7vw, 92px);
+}
+
+.footer-cta{
+  margin-bottom:clamp(42px, 6vw, 72px);
+}
+
+@media (max-width:600px){
+  #content-no > .project,
+  #content-en > .project,
+  #content-no > .case-project.project,
+  #content-en > .case-project.project{
+    padding-block:38px !important;
+  }
+
+  #NIBIO-Internship .case-section--phase-start:not(:first-of-type){
+    margin-top:2.75rem;
+  }
+}
+
+/* NIBIO as an editorial case study: facts first, then anchored chapters. */
+#NIBIO-Internship .case-facts{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0, 1fr));
+  gap:clamp(18px, 3vw, 44px);
+  width:100%;
+  margin:clamp(32px, 5vw, 64px) 0 clamp(42px, 6vw, 76px);
+  padding:0;
+}
+
+#NIBIO-Internship .case-facts div{
+  min-width:0;
+}
+
+#NIBIO-Internship .case-facts dt{
+  margin:0 0 7px;
+  color:var(--project-accent);
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+#NIBIO-Internship .case-facts dd{
+  margin:0;
+  color:var(--color-text-strong);
+  font-size:clamp(.88rem, 1.2vw, 1rem);
+  font-weight:600;
+  line-height:1.4;
+}
+
+@media (min-width:900px){
+  #NIBIO-Internship .case-section--phase-start{
+    display:grid;
+    grid-template-columns:minmax(0, .46fr) minmax(0, 1fr);
+    column-gap:clamp(56px, 7vw, 104px);
+    align-items:start;
+  }
+
+  #NIBIO-Internship .case-section-heading{
+    position:sticky;
+    top:calc(var(--navbar-height) + 28px);
+    grid-column:1;
+    align-self:start;
+    min-width:0;
+  }
+
+  #NIBIO-Internship .case-section-content{
+    grid-column:2;
+    width:100%;
+    max-width:760px;
+  }
+
+  #NIBIO-Internship .case-section--phase-start > .editorial-visual{
+    grid-column:2;
+    width:100%;
+    max-width:760px;
+    margin-top:clamp(28px, 4vw, 52px);
+  }
+}
+
+#NIBIO-Internship .case-section-heading .case-phase-label{
+  margin:0 0 12px !important;
+  color:var(--project-accent) !important;
+  font-size:.72rem;
+  font-weight:700;
+  line-height:1.2;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+#NIBIO-Internship .case-section-heading h3{
+  max-width:13ch;
+  margin:0;
+  color:var(--color-text-strong) !important;
+  font-size:clamp(2.15rem, 3.2vw, 3.35rem);
+  font-weight:650;
+  line-height:1.02;
+  letter-spacing:-.045em;
+  overflow-wrap:break-word;
+  hyphens:auto;
+}
+
+@media (max-width:899px){
+  #NIBIO-Internship .case-facts{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+
+  #NIBIO-Internship .case-section-heading{
+    margin-bottom:clamp(24px, 5vw, 38px);
+  }
+
+  #NIBIO-Internship .case-section-heading h3{
+    max-width:16ch;
+  }
+}
+
+@media (max-width:520px){
+  #NIBIO-Internship .case-facts{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+}
+
+/* NIBIO process evidence: large working files, presented without device chrome. */
+#NIBIO-Internship .case-section--process-evidence{
+  gap:clamp(30px, 5vw, 64px);
+}
+
+#NIBIO-Internship .case-section--process-evidence > .case-copy{
+  max-width:760px;
+}
+
+#NIBIO-Internship .process-evidence{
+  display:grid;
+  gap:clamp(42px, 7vw, 88px);
+  width:100%;
+}
+
+#NIBIO-Internship .process-evidence__figure{
+  width:min(92%, 1180px);
+  margin:0;
+}
+
+#NIBIO-Internship .process-evidence__figure--figma{
+  justify-self:end;
+  width:min(84%, 1040px);
+}
+
+#NIBIO-Internship .process-evidence__figure img{
+  display:block;
+  width:100%;
+  height:auto;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  object-fit:contain;
+}
+
+#NIBIO-Internship .process-evidence__figure figcaption{
+  display:flex;
+  gap:12px;
+  margin-top:12px;
+  color:var(--color-text-muted) !important;
+  font-size:.82rem;
+  line-height:1.45;
+}
+
+#NIBIO-Internship .process-evidence__figure figcaption span{
+  flex:none;
+  color:var(--project-accent);
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+@media (max-width:760px){
+  #NIBIO-Internship .process-evidence__figure,
+  #NIBIO-Internship .process-evidence__figure--figma{
+    width:100%;
+    justify-self:stretch;
+  }
 }

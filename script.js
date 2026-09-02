@@ -12,9 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
    DOT-RAIL (per language, rebind on switch)
 --------------------------------*/
 let railIO = null;
+let railScrollHandler = null;
 
 function activateRail(lang) {
   if (railIO) { railIO.disconnect(); railIO = null; }
+  if (railScrollHandler) {
+    window.removeEventListener('scroll', railScrollHandler);
+    window.removeEventListener('resize', railScrollHandler);
+    railScrollHandler = null;
+  }
 
   const rail = document.querySelector(`nav.rail[data-lang="${lang}"]`);
   if (!rail) return;
@@ -29,41 +35,32 @@ function activateRail(lang) {
   // Clear previous state
   links.forEach(a => a.removeAttribute('aria-current'));
 
-  railIO = new IntersectionObserver((entries) => {
-    const best = entries
-      .filter(e => e.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-    if (!best) return;
-
+  const updateActiveRailLink = () => {
+    if (!sectionEls.length) return;
+    const marker = window.scrollY + (window.innerHeight * 0.35);
+    let activeSection = sectionEls[0];
+    sectionEls.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      if (sectionTop <= marker) activeSection = section;
+    });
     links.forEach(a => a.removeAttribute('aria-current'));
-    const active = linkById.get(best.target.id);
+    const active = linkById.get(activeSection.id);
     if (active) active.setAttribute('aria-current', 'location');
-  }, {
-    root: null,
-    rootMargin: "-20% 0px -60% 0px",
-    threshold: [0.15, 0.3, 0.5, 0.7],
-  });
+  };
 
-  sectionEls.forEach(el => railIO.observe(el));
+  let railTicking = false;
+  railScrollHandler = () => {
+    if (railTicking) return;
+    railTicking = true;
+    requestAnimationFrame(() => {
+      updateActiveRailLink();
+      railTicking = false;
+    });
+  };
 
-  // ✅ Initial highlight (no guessing)
-  requestAnimationFrame(() => {
-    const best = sectionEls
-      .map(el => {
-        const r = el.getBoundingClientRect();
-        const visible = Math.max(0, Math.min(r.bottom, innerHeight) - Math.max(r.top, 0));
-        const ratio = visible / Math.max(1, r.height);
-        return { el, ratio };
-      })
-      .sort((a, b) => b.ratio - a.ratio)[0];
-
-    if (!best || best.ratio <= 0) return;
-
-    links.forEach(a => a.removeAttribute('aria-current'));
-    const active = linkById.get(best.el.id);
-    if (active) active.setAttribute('aria-current', 'location');
-  });
+  window.addEventListener('scroll', railScrollHandler, { passive:true });
+  window.addEventListener('resize', railScrollHandler);
+  requestAnimationFrame(updateActiveRailLink);
 }
 
 
@@ -141,6 +138,46 @@ function activateRail(lang) {
   if (btnNo) btnNo.addEventListener('click', () => setLanguage('no'));
 
   /* ------------------------------
+     Hero portrait profile bubble
+  --------------------------------*/
+  const heroPhoto = document.querySelector('.hero-photo');
+  const heroPhotoTrigger = document.getElementById('hero-photo-trigger');
+  const heroProfileBubble = document.getElementById('hero-profile-bubble');
+  const heroProfileClose = heroProfileBubble?.querySelector('.hero-profile-close');
+
+  function setHeroProfileOpen(open){
+    if (!heroPhoto || !heroPhotoTrigger || !heroProfileBubble) return;
+    heroPhoto.classList.toggle('is-open', open);
+    document.body.classList.toggle('profile-open', open);
+    heroPhotoTrigger.setAttribute('aria-expanded', String(open));
+    heroProfileBubble.hidden = !open;
+  }
+
+  if (heroPhotoTrigger && heroProfileBubble) {
+    heroPhotoTrigger.addEventListener('click', () => {
+      setHeroProfileOpen(heroPhotoTrigger.getAttribute('aria-expanded') !== 'true');
+    });
+
+    heroProfileClose?.addEventListener('click', () => {
+      setHeroProfileOpen(false);
+      heroPhotoTrigger.focus();
+    });
+
+    heroProfileBubble.addEventListener('click', (event) => {
+      if (event.target.closest('a, button')) return;
+      setHeroProfileOpen(false);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (heroPhoto && !heroPhoto.contains(event.target)) setHeroProfileOpen(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setHeroProfileOpen(false);
+    });
+  }
+
+  /* ------------------------------
      Mobile menu
   --------------------------------*/
   const menuToggle = document.getElementById('menuToggle');
@@ -179,10 +216,12 @@ function activateRail(lang) {
     const prevBtn  = carousel.querySelector('.car-prev');
     const nextBtn  = carousel.querySelector('.car-next');
     const dotsWrap = carousel.querySelector('.dots');
-    const dots     = dotsWrap ? Array.from(dotsWrap.querySelectorAll('button')) : [];
+    const dots     = dotsWrap ? Array.from(dotsWrap.querySelectorAll('button, [data-slide-indicator]')) : [];
+    const statusId = viewport?.getAttribute('aria-describedby');
+    const status   = statusId ? document.getElementById(statusId) : null;
     if (!viewport || !slides.length) return;
 
-    const singleMode = carousel.classList.contains('phone-carousel');
+    const singleMode = carousel.classList.contains('phone-carousel') || carousel.classList.contains('single-carousel');
     if (!viewport.hasAttribute('tabindex')) viewport.setAttribute('tabindex', '0');
 
     let index = 0;
@@ -200,6 +239,10 @@ function activateRail(lang) {
       if (prevBtn) prevBtn.disabled = index === 0;
       if (nextBtn) nextBtn.disabled = index === slides.length - 1;
       dots.forEach((d, i) => d.setAttribute('aria-current', i === index ? 'true' : 'false'));
+      if (status) {
+        const english = document.documentElement.lang === 'en';
+        status.textContent = `${english ? 'Image' : 'Bilde'} ${index + 1} ${english ? 'of' : 'av'} ${slides.length}`;
+      }
 
       applyVisibility();
 
@@ -209,7 +252,12 @@ function activateRail(lang) {
       }
     }
 
-    function goTo(i) { index = clamp(i, 0, slides.length - 1); update(); }
+    function goTo(i) {
+      const nextIndex = clamp(i, 0, slides.length - 1);
+      if (nextIndex === index) return;
+      index = nextIndex;
+      update();
+    }
 
     applyVisibility();
     carousel.classList.add('ready');
@@ -217,12 +265,46 @@ function activateRail(lang) {
 
     if (nextBtn) nextBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); goTo(index + 1); });
     if (prevBtn) prevBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); goTo(index - 1); });
-    dots.forEach((d, i) => d.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); goTo(i); }));
+    dots.filter(d => d.matches('button')).forEach((d, i) => d.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); goTo(i); }));
 
     viewport.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1); }
       if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(index - 1); }
     });
+
+    if (singleMode) {
+      let pointerStartX = null;
+      let lastTrackpadSwipe = 0;
+      viewport.addEventListener('pointerdown', (e) => {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        pointerStartX = e.clientX;
+      });
+      viewport.addEventListener('pointerup', (e) => {
+        if (pointerStartX === null) return;
+        const distance = e.clientX - pointerStartX;
+        pointerStartX = null;
+        if (Math.abs(distance) < 42) return;
+        goTo(index + (distance < 0 ? 1 : -1));
+      });
+      viewport.addEventListener('pointercancel', () => { pointerStartX = null; });
+      viewport.addEventListener('wheel', (e) => {
+        const scrollStory = carousel.classList.contains('scroll-carousel');
+        const verticalGesture = Math.abs(e.deltaY) > Math.abs(e.deltaX);
+        const delta = verticalGesture ? e.deltaY : e.deltaX;
+        if (Math.abs(delta) < 12) return;
+
+        if (verticalGesture && !scrollStory) return;
+        const direction = delta > 0 ? 1 : -1;
+        const canChangeSlide = direction > 0 ? index < slides.length - 1 : index > 0;
+        if (!canChangeSlide) return;
+
+        e.preventDefault();
+        const now = Date.now();
+        if (now - lastTrackpadSwipe < 420) return;
+        lastTrackpadSwipe = now;
+        goTo(index + direction);
+      }, { passive:false });
+    }
 
     if (!singleMode) {
       viewport.addEventListener('scroll', () => {
@@ -425,8 +507,8 @@ function initProjectPreviews(){
     // Now gather following nodes into the peek until we reach thresholds.
     let collectedText = 0;
     let taken = 0;
-    const MAX_NODES = 8;
-    const MAX_CHARS = 900; // generous preview size to include multiple paragraphs
+    const MAX_NODES = 1;
+    const MAX_CHARS = 900; // one concise project description in the collapsed preview
 
     for (let i = anchorIndex + 1; i < kids.length; ) {
       
@@ -481,8 +563,10 @@ function initProjectPreviews(){
     label.className = 'read-more-label';
     btn.appendChild(label);
 
-    if (proj.classList.contains('case-project')) scope.insertBefore(btn, body);
-    else scope.appendChild(btn);
+    // Keep the control after the collapsible body. While collapsed, the hidden
+    // body takes no space so the button follows the preview; while expanded,
+    // the same button naturally becomes the control at the end of the case.
+    scope.appendChild(btn);
 
     proj.dataset.previewInit = '1';
     proj.dataset.hasPreview = '1';
