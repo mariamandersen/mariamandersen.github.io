@@ -2462,7 +2462,7 @@ html.has-io .fade-in{
 /* =========================================================
    FIGMA MAKE FOUNDATION
    Shared page shell + reusable rich case-study surface.
-   Only NIBIO opts into `.case-project` during this migration.
+   All projects share the `.case-project` layout.
 ========================================================= */
 
 /* Header */
@@ -3847,8 +3847,8 @@ footer{
   }
 }
 
-/* NIBIO as an editorial case study: facts first, then anchored chapters. */
-#NIBIO-Internship .case-facts{
+/* Shared editorial case study layout: facts first, then anchored chapters. */
+.case-project .case-facts{
   display:grid;
   grid-template-columns:repeat(4, minmax(0, 1fr));
   gap:clamp(18px, 3vw, 44px);
@@ -3857,11 +3857,11 @@ footer{
   padding:0;
 }
 
-#NIBIO-Internship .case-facts div{
+.case-project .case-facts div{
   min-width:0;
 }
 
-#NIBIO-Internship .case-facts dt{
+.case-project .case-facts dt{
   margin:0 0 7px;
   color:var(--project-accent);
   font-size:.68rem;
@@ -3870,7 +3870,7 @@ footer{
   text-transform:uppercase;
 }
 
-#NIBIO-Internship .case-facts dd{
+.case-project .case-facts dd{
   margin:0;
   color:var(--color-text-strong);
   font-size:clamp(.88rem, 1.2vw, 1rem);
@@ -3879,14 +3879,14 @@ footer{
 }
 
 @media (min-width:900px){
-  #NIBIO-Internship .case-section--phase-start{
+  .case-project .case-section--phase-start{
     display:grid;
     grid-template-columns:minmax(0, .46fr) minmax(0, 1fr);
     column-gap:clamp(56px, 7vw, 104px);
     align-items:start;
   }
 
-  #NIBIO-Internship .case-section-heading{
+  .case-project .case-section-heading{
     position:sticky;
     top:calc(var(--navbar-height) + 28px);
     grid-column:1;
@@ -3894,13 +3894,13 @@ footer{
     min-width:0;
   }
 
-  #NIBIO-Internship .case-section-content{
+  .case-project .case-section-content{
     grid-column:2;
     width:100%;
     max-width:760px;
   }
 
-  #NIBIO-Internship .case-section--phase-start > .editorial-visual{
+  .case-project .case-section--phase-start > .editorial-visual{
     grid-column:2;
     width:100%;
     max-width:760px;
@@ -3908,7 +3908,7 @@ footer{
   }
 }
 
-#NIBIO-Internship .case-section-heading .case-phase-label{
+.case-project .case-section-heading .case-phase-label{
   margin:0 0 12px !important;
   color:var(--project-accent) !important;
   font-size:.72rem;
@@ -3918,7 +3918,7 @@ footer{
   text-transform:uppercase;
 }
 
-#NIBIO-Internship .case-section-heading h3{
+.case-project .case-section-heading h3{
   max-width:13ch;
   margin:0;
   color:var(--color-text-strong) !important;
@@ -3931,21 +3931,21 @@ footer{
 }
 
 @media (max-width:899px){
-  #NIBIO-Internship .case-facts{
+  .case-project .case-facts{
     grid-template-columns:repeat(2, minmax(0, 1fr));
   }
 
-  #NIBIO-Internship .case-section-heading{
+  .case-project .case-section-heading{
     margin-bottom:clamp(24px, 5vw, 38px);
   }
 
-  #NIBIO-Internship .case-section-heading h3{
+  .case-project .case-section-heading h3{
     max-width:16ch;
   }
 }
 
 @media (max-width:520px){
-  #NIBIO-Internship .case-facts{
+  .case-project .case-facts{
     grid-template-columns:1fr;
     gap:18px;
   }
@@ -4149,4 +4149,21 @@ footer{
   #NIBIO-Internship .prototype-carousel .slide{
     animation:none;
   }
+}
+
+/* Detailed project evidence follows the same chapter rhythm on both languages. */
+.case-project .case-detail{ display:grid; gap:24px; min-width:0; padding-block:24px; }
+.case-project .case-detail:first-child{ padding-top:0; }
+.case-project .case-detail .case-copy{ order:0; }
+.case-project .case-detail .step-media{ order:1; width:100%; min-width:0; margin:0; }
+.case-project .case-detail .step-media > img{ display:block; width:100%; height:auto; object-fit:contain; border-radius:0; }
+.case-project .case-section-content > h3,
+.case-project .case-section-content > h4{ margin-top:24px; }
+.case-project .case-facts{ grid-template-columns:repeat(3, minmax(0, 1fr)); }
+#NIBIO-Internship .case-facts{ grid-template-columns:repeat(4, minmax(0, 1fr)); }
+@media (max-width:899px){
+  .case-project .case-facts, #NIBIO-Internship .case-facts{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width:520px){
+  .case-project .case-facts, #NIBIO-Internship .case-facts{ grid-template-columns:1fr; }
 }
