@@ -11,56 +11,57 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ------------------------------
    DOT-RAIL (per language, rebind on switch)
 --------------------------------*/
-let railIO = null;
-let railScrollHandler = null;
+let railCleanup = () => {};
 
 function activateRail(lang) {
-  if (railIO) { railIO.disconnect(); railIO = null; }
-  if (railScrollHandler) {
-    window.removeEventListener('scroll', railScrollHandler);
-    window.removeEventListener('resize', railScrollHandler);
-    railScrollHandler = null;
-  }
-
+  railCleanup();
   const rail = document.querySelector(`nav.rail[data-lang="${lang}"]`);
   if (!rail) return;
 
   const links = Array.from(rail.querySelectorAll('a[href^="#"]'));
-  const linkById = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const projects = links.map(link => ({
+    link,
+    section: document.getElementById(link.getAttribute('href').slice(1))
+  })).filter(({ section }) => section && !section.closest('[hidden]'));
+  let frame = null;
 
-  const sectionEls = links
-    .map(a => document.getElementById(a.getAttribute('href').slice(1)))
-    .filter(el => el && !el.closest('[hidden]'));
-
-  // Clear previous state
-  links.forEach(a => a.removeAttribute('aria-current'));
-
-  const updateActiveRailLink = () => {
-    if (!sectionEls.length) return;
-    const marker = window.scrollY + (window.innerHeight * 0.35);
-    let activeSection = sectionEls[0];
-    sectionEls.forEach(section => {
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-      if (sectionTop <= marker) activeSection = section;
-    });
-    links.forEach(a => a.removeAttribute('aria-current'));
-    const active = linkById.get(activeSection.id);
-    if (active) active.setAttribute('aria-current', 'location');
-  };
-
-  let railTicking = false;
-  railScrollHandler = () => {
-    if (railTicking) return;
-    railTicking = true;
-    requestAnimationFrame(() => {
-      updateActiveRailLink();
-      railTicking = false;
+  const update = () => {
+    frame = null;
+    const marker = window.innerHeight * 0.35;
+    const visible = projects.map(project => ({
+      ...project, rect: project.section.getBoundingClientRect()
+    }));
+    // A reading line works for both collapsed cards and very long case studies.
+    // In the gaps, retain the preceding project until the next reaches the line.
+    let active = null;
+    for (const project of visible) {
+      if (project.rect.top <= marker) active = project;
+    }
+    if (!active && visible[0]?.rect.top < window.innerHeight) active = visible[0];
+    if (visible.length && visible[visible.length - 1].rect.bottom <= 0) active = null;
+    links.forEach(link => {
+      if (link === active?.link) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
     });
   };
 
-  window.addEventListener('scroll', railScrollHandler, { passive:true });
-  window.addEventListener('resize', railScrollHandler);
-  requestAnimationFrame(updateActiveRailLink);
+  const schedule = () => {
+    if (frame === null) frame = requestAnimationFrame(update);
+  };
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule);
+  // Recalculate when images load or a case study expands/collapses, even
+  // when the user has not scrolled since the layout changed.
+  const observer = 'ResizeObserver' in window ? new ResizeObserver(schedule) : null;
+  projects.forEach(({ section }) => observer?.observe(section));
+  schedule();
+  railCleanup = () => {
+    window.removeEventListener('scroll', schedule);
+    window.removeEventListener('resize', schedule);
+    observer?.disconnect();
+    if (frame !== null) cancelAnimationFrame(frame);
+    links.forEach(link => link.removeAttribute('aria-current'));
+  };
 }
 
 
@@ -116,6 +117,13 @@ function activateRail(lang) {
 
   function setLanguage(lang) {
     const isEn = lang === 'en';
+    // NIBIO is shared by both project lists; keep its anchor available in either language.
+    const nibio = document.getElementById('NIBIO-Internship');
+    const activeContent = isEn ? enContent : noContent;
+    if (nibio && activeContent) {
+      nibio.setAttribute('lang', 'no');
+      activeContent.prepend(nibio);
+    }
     if (noContent) noContent.hidden = isEn;
     if (enContent) enContent.hidden = !isEn;
     langEls.forEach(el => { el.hidden = el.dataset.lang !== lang; });

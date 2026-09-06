@@ -4167,3 +4167,36 @@ footer{
 @media (max-width:520px){
   .case-project .case-facts, #NIBIO-Internship .case-facts{ grid-template-columns:1fr; }
 }
+
+/* Project rail: seven distinct targets, with the current project named. */
+.rail{ gap:2px; right:8px; }
+.rail[hidden]{ display:none !important; }
+.rail a{ box-sizing:border-box; width:40px; height:40px; padding:0; }
+.rail a::before{
+  width:8px; height:8px;
+  border-color:var(--color-text-strong);
+  background:var(--paper);
+  transition:transform .18s ease, background .18s ease, box-shadow .18s ease;
+}
+.rail a[aria-current="location"]::before{
+  transform:translate(-50%, -50%) scale(1.45);
+  box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+.rail a::after{
+  content:attr(data-label);
+  position:absolute; right:calc(100% + 4px); top:50%;
+  transform:translateY(-50%);
+  padding:7px 11px; border-radius:6px;
+  background:var(--paper); color:var(--color-text-strong);
+  border:1px solid var(--muted);
+  font-size:.875rem; font-weight:600; line-height:1.35;
+  white-space:nowrap; pointer-events:none;
+  opacity:0; visibility:hidden;
+}
+.rail a[aria-current="location"]::after,
+.rail a:hover::after,
+.rail a:focus-visible::after{ opacity:1; visibility:visible; }
+.rail:has(a:hover) a:not(:hover)::after,
+.rail:has(a:focus-visible) a:not(:focus-visible)::after{ opacity:0; visibility:hidden; }
+.rail a:focus-visible{ outline:2px solid var(--accent); outline-offset:1px; }
+@media (prefers-reduced-motion:reduce){ .rail a::before{ transition:none; } }
