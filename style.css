@@ -4286,3 +4286,43 @@ footer{
   :is(#content-no, #content-en) .case-project .case-media img{ max-height:440px; }
   .case-narrative-block + .case-narrative-block{ margin-top:8px; }
 }
+
+/* Give text and evidence their own columns without a third heading column. */
+@media (min-width:1000px){
+  :is(#content-no, #content-en) .case-project .case-section--phase-start{
+    display:block; padding-block:36px;
+  }
+  :is(#content-no, #content-en) .case-project .case-section-heading{
+    position:static; margin:0 0 24px; max-width:none;
+  }
+  :is(#content-no, #content-en) .case-project .case-section-heading h3{
+    max-width:none; font-size:clamp(1.8rem, 2.5vw, 2.6rem);
+  }
+  :is(#content-no, #content-en) .case-project .case-section-content{
+    max-width:none; gap:24px;
+  }
+  .case-narrative-block:has(> .case-media, > .case-media-group){
+    display:grid; grid-template-columns:minmax(0, .8fr) minmax(0, 1.2fr);
+    gap:clamp(28px, 4vw, 64px); align-items:center;
+  }
+  .case-narrative-block > p{ max-width:62ch; }
+  .case-narrative-block + .case-narrative-block{ margin-top:8px; }
+  :is(#content-no, #content-en) .case-project .case-section-content > p{ max-width:76ch; }
+  :is(#content-no, #content-en) .case-project .case-narrative-block > .case-media{
+    margin:0; align-self:center;
+  }
+}
+/* The cover carousel uses the same controls as the case galleries. */
+:is(#content-no, #content-en) .case-project .project-peek .peek-media--carousel{
+  display:block; width:100%; max-width:100%; height:auto; min-height:0;
+  aspect-ratio:auto; overflow:visible; padding:0; background:transparent;
+}
+:is(#content-no, #content-en) .case-project .peek-media--carousel .carousel-viewport{
+  aspect-ratio:5 / 4; max-height:520px;
+}
+:is(#content-no, #content-en) .case-project .peek-media--carousel img{
+  position:static; transform:none; filter:none;
+}
+@media (max-width:600px){
+  :is(#content-no, #content-en) .case-project .peek-media--carousel .carousel-viewport{ aspect-ratio:1 / 1; }
+}

@@ -485,7 +485,29 @@ function initProjectPreviews(){
 
     // If there's a thumbnail, add it after the text so it appears on the
     // right in wide layouts (text will be on the left).
-    if (imgEl) {
+    const previewCarousel = proj.id.startsWith('proj-rocket-')
+      ? proj.querySelector('.carousel') : null;
+    if (previewCarousel) {
+      const media = document.createElement('div');
+      media.className = 'peek-media peek-media--carousel case-media';
+      const carousel = previewCarousel.cloneNode(true);
+      carousel.classList.add('cover-carousel');
+      carousel.setAttribute('aria-label', proj.id.endsWith('-en') ? 'Skybound screens' : 'Skybound-skjermer');
+      const ids = new Map();
+      [carousel, ...carousel.querySelectorAll('[id]')].forEach(el => {
+        if (!el.id) return;
+        const oldId = el.id;
+        el.id = `${oldId}-cover`;
+        ids.set(oldId, el.id);
+      });
+      carousel.querySelectorAll('[aria-describedby], [aria-controls]').forEach(el => {
+        ['aria-describedby', 'aria-controls'].forEach(attr => {
+          if (el.hasAttribute(attr)) el.setAttribute(attr, el.getAttribute(attr).split(' ').map(id => ids.get(id) || id).join(' '));
+        });
+      });
+      media.appendChild(carousel);
+      peek.appendChild(media);
+    } else if (imgEl) {
       const media = document.createElement('div');
       media.className = 'peek-media';
       if (imgEl.hasAttribute('data-preview-image')) media.classList.add('peek-media--featured');
@@ -503,24 +525,8 @@ function initProjectPreviews(){
       media.appendChild(thumb);
       peek.appendChild(media);
 
-      // The cover belongs to the project index only. Remove the original
-      // presentation unit so it is not repeated inside the expanded case.
-      if (!imgEl.hasAttribute('data-preview-image')) {
-        const sourceSlide = imgEl.closest('.slide');
-        if (sourceSlide) {
-          const sourceCarousel = sourceSlide.closest('.carousel');
-          const carouselSlides = sourceCarousel ? Array.from(sourceCarousel.querySelectorAll('.slide')) : [];
-          const sourceIndex = carouselSlides.indexOf(sourceSlide);
-          const indicators = sourceCarousel ? Array.from(sourceCarousel.querySelectorAll('.dots > *')) : [];
-          if (sourceIndex >= 0) indicators[sourceIndex]?.remove();
-          sourceSlide.remove();
-          if (sourceCarousel && !sourceCarousel.querySelector('.slide')) sourceCarousel.remove();
-        } else {
-          const sourceFigure = imgEl.closest('figure');
-          if (sourceFigure) sourceFigure.remove();
-          else imgEl.remove();
-        }
-      }
+      // Keep the source image with its explanatory text in the expanded case.
+
     }
 
     // Insert peek at the top of the scope
