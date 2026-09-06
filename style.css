@@ -4200,3 +4200,89 @@ footer{
 .rail:has(a:focus-visible) a:not(:focus-visible)::after{ opacity:0; visibility:hidden; }
 .rail a:focus-visible{ outline:2px solid var(--accent); outline-offset:1px; }
 @media (prefers-reduced-motion:reduce){ .rail a::before{ transition:none; } }
+
+/* A shared reading column and consistently sized evidence across all cases. */
+:is(#content-no, #content-en) .case-project .case-section-content{
+  display:flex; flex-direction:column; gap:22px;
+  min-width:0; width:100%; max-width:760px;
+}
+.case-narrative-block{ display:flex; flex-direction:column; gap:24px; min-width:0; }
+.case-narrative-block + .case-narrative-block{ margin-top:16px; }
+.case-narrative-block > p{ margin:0; max-width:68ch; }
+:is(#content-no, #content-en) .case-project .case-media{
+  display:block; width:100%; max-width:100%; min-width:0;
+  margin:8px 0 12px; padding:0; align-self:stretch;
+}
+.case-media-group{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; align-items:start; }
+.case-media-group > :last-child:nth-child(odd){ grid-column:1 / -1; }
+:is(#content-no, #content-en) .case-project .case-media img{
+  display:block; width:100% !important; max-width:100% !important;
+  height:auto !important; max-height:520px; object-fit:contain !important;
+  margin:0 auto; border:0 !important; border-radius:4px !important;
+  box-shadow:none !important;
+}
+:is(#content-no, #content-en) .case-project .case-media figcaption{
+  margin:12px 0 0; font-size:.875rem; line-height:1.5;
+  color:var(--color-text-muted); text-align:left;
+}
+:is(#content-no, #content-en) .case-project .case-media .carousel,
+:is(#content-no, #content-en) .case-project .case-media.carousel{
+  position:relative; width:100%; max-width:100%; margin:0;
+  padding:0 0 46px; min-width:0;
+}
+:is(#content-no, #content-en) .case-project .case-media .carousel-viewport{
+  box-sizing:border-box; display:block; width:100%;
+  height:auto !important; min-height:0 !important; aspect-ratio:4 / 3;
+  padding:16px !important; overflow:hidden !important;
+  background:color-mix(in srgb, var(--paper) 92%, white 8%) !important;
+  border:1px solid var(--line) !important; border-radius:6px !important;
+  box-shadow:none !important;
+}
+:is(#content-no, #content-en) .case-project .case-media .slide{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  width:100% !important; height:100%; min-width:0; margin:0; gap:10px;
+}
+:is(#content-no, #content-en) .case-project .case-media .slide[hidden]{ display:none !important; }
+:is(#content-no, #content-en) .case-project .case-media .slide > img{
+  flex:1; min-height:0; height:100% !important; max-height:100%;
+}
+:is(#content-no, #content-en) .case-project .case-media .slide figcaption{
+  flex:none; margin:0; width:100%;
+}
+:is(#content-no, #content-en) .case-project .case-media .phone-mock{
+  width:auto !important; max-width:100% !important; height:100% !important;
+  aspect-ratio:9 / 19.5; margin:auto; box-sizing:border-box;
+}
+:is(#content-no, #content-en) .case-project .case-media .phone-mock > img{
+  height:100% !important; max-height:100%; object-fit:contain !important;
+}
+:is(#content-no, #content-en) .case-project .case-media .car-prev,
+:is(#content-no, #content-en) .case-project .case-media .car-next{
+  top:auto; bottom:0; transform:none; width:36px; height:36px;
+  border-radius:50%; box-shadow:none;
+}
+:is(#content-no, #content-en) .case-project .case-media .car-prev{ left:0; }
+:is(#content-no, #content-en) .case-project .case-media .car-next{ right:0; }
+:is(#content-no, #content-en) .case-project .case-media .dots{
+  position:absolute; bottom:10px; left:44px; right:44px;
+  margin:0; min-height:16px; align-items:center; flex-wrap:wrap;
+}
+:is(#content-no, #content-en) .case-project .case-media.process-evidence{
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px;
+}
+:is(#content-no, #content-en) .case-project .process-evidence__figure{
+  width:100%; max-width:100%; margin:0; transform:none;
+}
+:is(#content-no, #content-en) .case-project .process-evidence__figure img{
+  width:100%; height:240px !important; object-fit:contain;
+}
+:is(#content-no, #content-en) .case-project .case-media .device-laptop__screen{
+  min-height:0; max-height:100%; width:100%;
+}
+@media (max-width:600px){
+  .case-media-group,
+  :is(#content-no, #content-en) .case-project .case-media.process-evidence{ grid-template-columns:1fr; gap:20px; }
+  :is(#content-no, #content-en) .case-project .case-media .carousel-viewport{ padding:10px !important; aspect-ratio:1 / 1; }
+  :is(#content-no, #content-en) .case-project .case-media img{ max-height:440px; }
+  .case-narrative-block + .case-narrative-block{ margin-top:8px; }
+}
