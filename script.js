@@ -492,6 +492,28 @@ function initProjectPreviews(){
       media.className = 'peek-media peek-media--carousel case-media';
       const carousel = previewCarousel.cloneNode(true);
       carousel.classList.add('cover-carousel');
+      const coverImage = proj.querySelector('[data-cover-image]');
+      if (coverImage) {
+        const slide = document.createElement('figure');
+        slide.className = 'slide';
+        const image = coverImage.cloneNode(true);
+        image.removeAttribute('data-cover-image');
+        image.loading = 'lazy';
+        image.decoding = 'async';
+        slide.appendChild(image);
+        carousel.querySelector('.carousel-viewport').prepend(slide);
+        const dots = carousel.querySelector('.dots');
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dots.prepend(dot);
+        const count = carousel.querySelectorAll('.slide').length;
+        Array.from(dots.children).forEach((button, i) => {
+          button.setAttribute('aria-label', proj.id.endsWith('-en')
+            ? `Image ${i + 1} of ${count}` : `Bilde ${i + 1} av ${count}`);
+          button.setAttribute('aria-current', String(i === 0));
+        });
+      }
+
       carousel.setAttribute('aria-label', proj.id.endsWith('-en') ? 'Skybound screens' : 'Skybound-skjermer');
       const ids = new Map();
       [carousel, ...carousel.querySelectorAll('[id]')].forEach(el => {
