@@ -232,19 +232,8 @@ const captionStyle: React.CSSProperties = {
 
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <section style={{ marginBottom: "clamp(2.5rem, 5vw, 4.5rem)" }}>
-      <h2
-        style={{
-          fontSize: "0.72rem",
-          fontWeight: 700,
-          letterSpacing: "0.13em",
-          textTransform: "uppercase",
-          color: "var(--color-pink)",
-          marginBottom: "1.25rem",
-        }}
-      >
-        {label}
-      </h2>
+    <section className="study-chapter">
+      <h2>{label}</h2>
       {children}
     </section>
   );

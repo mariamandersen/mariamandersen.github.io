@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import portfolioHTML from "../portfolio-body.html?raw";
 import { getProject, projects as allProjects } from "../data/projects";
@@ -6,6 +6,7 @@ import { initCarousels } from "../portfolio-script";
 import SkyboundAppGallery from "../components/SkyboundAppGallery";
 import NIBIOCatalogGallery from "../components/NIBIOCatalogGallery";
 import SchoolVisitGallery from "../components/SchoolVisitGallery";
+import { formatCaseStudy } from "../components/caseStudyLayout";
 import SustainedByVoicesPage from "../components/SustainedByVoicesPage";
 
 function makePathsAbsolute(html: string): string {
@@ -55,11 +56,9 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
   const project = getProject(slug ?? "");
 
   const articleId = isEn ? project?.idEn : project?.idNo;
-  const articleHTML = articleId
-    ? makePathsAbsolute(extractArticle(portfolioHTML, articleId))
-        .replace(/(<article[^>]*class=")[^"]*(")/, '$1story-article$2')
-        .replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/, '<h1$1>$2</h1>')
-    : "";
+  const articleHTML = useMemo(() => articleId
+    ? formatCaseStudy(makePathsAbsolute(extractArticle(portfolioHTML, articleId)))
+    : "", [articleId]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -131,7 +130,7 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
             </figure>
             <div
               ref={contentRef}
-              className="project-page-content story-content"
+              className="study-content"
               dangerouslySetInnerHTML={{ __html: articleHTML }}
             />
           </div>
@@ -142,24 +141,24 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
         )}
 
         {slug === "school-visit-planner" && (
-          <div className="section">
-            <div className="container">
+          <div className="study-deliverable">
+            <div className="case-study-layout">
               <SchoolVisitGallery lang={lang} />
             </div>
           </div>
         )}
 
         {slug === "nibio" && (
-          <div className="section">
-            <div className="container">
+          <div className="study-deliverable">
+            <div className="case-study-layout">
               <NIBIOCatalogGallery lang={lang} />
             </div>
           </div>
         )}
 
         {slug === "skybound" && (
-          <div className="section">
-            <div className="container">
+          <div className="study-deliverable">
+            <div className="case-study-layout">
               <SkyboundAppGallery lang={lang} />
             </div>
           </div>
