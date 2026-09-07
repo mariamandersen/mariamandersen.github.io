@@ -46,7 +46,7 @@ export const projects: Project[] = [
     questionEn: 'How can we make rocket launch planning simpler for the user?',
     kickerNo: 'UX-ansvarlig · Android-app · IN2000 · 2025',
     kickerEn: 'UX Lead · Android App · IN2000 · 2025',
-    coverImage: '/images/skybound/android-mockup.png',
+    coverImage: '/images/skybound/skybound-cover-mockup.png',
     tags: ['Brukerinnsikt', 'Prototyping', 'Figma', 'Material 3', 'Brukertesting'],
     tagsEn: ['User Research', 'Prototyping', 'Figma', 'Material 3', 'User Testing'],
     year: '2025',
