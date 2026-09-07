@@ -485,49 +485,16 @@ function initProjectPreviews(){
 
     // If there's a thumbnail, add it after the text so it appears on the
     // right in wide layouts (text will be on the left).
-    const previewCarousel = proj.id.startsWith('proj-rocket-')
-      ? proj.querySelector('.carousel') : null;
-    if (previewCarousel) {
+    if (proj.id.startsWith('proj-rocket-')) {
       const media = document.createElement('div');
-      media.className = 'peek-media peek-media--carousel case-media';
-      const carousel = previewCarousel.cloneNode(true);
-      carousel.classList.add('cover-carousel');
-      const coverImage = proj.querySelector('[data-cover-image]');
-      if (coverImage) {
-        const slide = document.createElement('figure');
-        slide.className = 'slide';
-        const image = coverImage.cloneNode(true);
-        image.removeAttribute('data-cover-image');
-        image.loading = 'lazy';
-        image.decoding = 'async';
-        slide.appendChild(image);
-        carousel.querySelector('.carousel-viewport').prepend(slide);
-        const dots = carousel.querySelector('.dots');
-        const dot = document.createElement('button');
-        dot.type = 'button';
-        dots.prepend(dot);
-        const count = carousel.querySelectorAll('.slide').length;
-        Array.from(dots.children).forEach((button, i) => {
-          button.setAttribute('aria-label', proj.id.endsWith('-en')
-            ? `Image ${i + 1} of ${count}` : `Bilde ${i + 1} av ${count}`);
-          button.setAttribute('aria-current', String(i === 0));
-        });
-      }
-
-      carousel.setAttribute('aria-label', proj.id.endsWith('-en') ? 'Skybound screens' : 'Skybound-skjermer');
-      const ids = new Map();
-      [carousel, ...carousel.querySelectorAll('[id]')].forEach(el => {
-        if (!el.id) return;
-        const oldId = el.id;
-        el.id = `${oldId}-cover`;
-        ids.set(oldId, el.id);
-      });
-      carousel.querySelectorAll('[aria-describedby], [aria-controls]').forEach(el => {
-        ['aria-describedby', 'aria-controls'].forEach(attr => {
-          if (el.hasAttribute(attr)) el.setAttribute(attr, el.getAttribute(attr).split(' ').map(id => ids.get(id) || id).join(' '));
-        });
-      });
-      media.appendChild(carousel);
+      media.className = 'peek-media peek-media--interactive';
+      const mockup = document.createElement('iframe');
+      mockup.src = 'assets/skybound-mockup/index.html';
+      mockup.title = proj.id.endsWith('-en')
+        ? 'Skybound interactive mockup with six app screens'
+        : 'Interaktiv Skybound-mockup med seks appskjermer';
+      mockup.loading = 'lazy';
+      media.appendChild(mockup);
       peek.appendChild(media);
     } else if (imgEl) {
       const media = document.createElement('div');

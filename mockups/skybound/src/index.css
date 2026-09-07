@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@font-face {
+  font-family: "Roboto:SemiBold";
+  font-style: normal;
+  font-weight: 600;
+  src: url("https://static.figma.com/font/Roboto_wdth_wght__3") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto:Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.figma.com/font/Roboto_wdth_wght__3") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto:Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("https://static.figma.com/font/Roboto_wdth_wght__3") format("woff2");
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body{margin:0}
+.skybound-embed{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;border-radius:12px}
+.skybound-embed > :first-child,.skybound-embed > :last-child{display:none}
+.mockup-layout{display:flex;align-items:center;justify-content:center;gap:28px;width:100%}
+.mockup-phone{zoom:.48}
+.mockup-picker{max-width:190px}
+button{cursor:pointer}
+button:focus-visible{outline:2px solid #a5b4fc;outline-offset:3px}
+@media(max-width:480px){.skybound-embed{padding:18px 10px}.mockup-layout{gap:12px}.mockup-phone{zoom:.36}.mockup-picker{max-width:150px}.mockup-picker button{padding:8px}.mockup-picker p{font-size:11px}}
+@media(max-width:350px){.mockup-phone{zoom:.30}.mockup-layout{gap:8px}}
+
+.mockup-picker button p{color:#cbd5e1}.mockup-picker button p + p{color:#94a3b8}
+.mockup-picker button[aria-pressed="true"] p:first-child{color:#c7d2fe}
