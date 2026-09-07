@@ -14,7 +14,7 @@ export default function HomePage({ lang, onToggleLang }: HomePageProps) {
       {/* Header */}
       <header>
         <div className="container bar">
-          <span className="site-name">Maria Malmstedt Andersen — UX Designer</span>
+          <span className="site-name">Maria Malmstedt Andersen, UX Designer</span>
           <div className="header-controls">
             <nav className="header-contacts" aria-label="Kontakt / Contact">
               <a href="mailto:mariam300802@gmail.com" aria-label="Send e-post" title="Send e-post">

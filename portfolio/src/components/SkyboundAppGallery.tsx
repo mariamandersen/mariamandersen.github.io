@@ -61,7 +61,7 @@ function AndroidPhone({ children }: { children: React.ReactNode }) {
         padding: `${BEZEL_TOP}px ${BEZEL_SIDE}px ${BEZEL_BOT}px`,
       }}
     >
-      {/* Volume buttons — left side */}
+      {/* Volume buttons, left side */}
       {[28, 58, 90].map((top, i) => (
         <div
           key={i}
@@ -76,7 +76,7 @@ function AndroidPhone({ children }: { children: React.ReactNode }) {
           }}
         />
       ))}
-      {/* Power button — right */}
+      {/* Power button, right */}
       <div
         style={{
           position: "absolute",
@@ -166,7 +166,7 @@ export default function SkyboundAppGallery({ lang = "no" }: Props) {
     <div className="skybound-gallery">
       <div className="skybound-gallery-header">
         <h3 className="skybound-gallery-title">
-          {isEn ? "Final Design — Skybound App" : "Ferdig design — Skybound-appen"}
+          {isEn ? "Final Design: Skybound App" : "Ferdig design: Skybound-appen"}
         </h3>
         <p className="skybound-gallery-desc">
           {isEn

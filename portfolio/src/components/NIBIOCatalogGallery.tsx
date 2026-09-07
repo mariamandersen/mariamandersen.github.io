@@ -14,7 +14,7 @@ const SCREEN_W = 760;
 const SCALE    = SCREEN_W / DESIGN_W;
 const SCREEN_H = Math.round(DESIGN_H * SCALE);
 
-// MacBook Air M2 chrome — minimal bezels, notch at top
+// MacBook Air M2 chrome, minimal bezels, notch at top
 const BEZEL_T    = 6;
 const BEZEL_SIDE = 5;
 const BEZEL_BOT  = 5;
@@ -86,7 +86,7 @@ function MacBookAirM2({ children }: { children: React.ReactNode }) {
           />
         </div>
 
-        {/* Screen area — edge-to-edge with tiny bezels */}
+        {/* Screen area, edge-to-edge with tiny bezels */}
         <div
           style={{
             position: "absolute",
@@ -169,12 +169,12 @@ export default function NIBIOCatalogGallery({ lang = "no" }: Props) {
     <div className="nibio-gallery">
       <div className="nibio-gallery-header">
         <h3 className="nibio-gallery-title">
-          {isEn ? "Final Design — NIBIO Data Catalog" : "Ferdig design — NIBIO datakatalog"}
+          {isEn ? "Final Design: NIBIO Data Catalog" : "Ferdig design: NIBIO datakatalog"}
         </h3>
         <p className="nibio-gallery-desc">
           {isEn
-            ? "Interactive prototype built in Figma, showing the complete data catalog — search, filtering, and project detail views."
-            : "Interaktiv prototype laget i Figma som viser hele datakatalogens flyt — søk, filtrering og prosjektdetaljvisning."}
+            ? "Interactive prototype built in Figma, showing the complete data catalog, search, filtering, and project detail views."
+            : "Interaktiv prototype laget i Figma som viser hele datakatalogens flyt, søk, filtrering og prosjektdetaljvisning."}
         </p>
       </div>
 

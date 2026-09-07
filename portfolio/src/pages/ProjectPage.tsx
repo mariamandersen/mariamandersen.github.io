@@ -85,7 +85,7 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
       <header>
         <div className="container bar">
           <Link to="/" className="site-name">
-            Maria Malmstedt Andersen — UX Designer
+            Maria Malmstedt Andersen, UX Designer
           </Link>
           <div className="header-controls">
             <nav className="header-contacts" aria-label="Kontakt / Contact">

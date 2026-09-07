@@ -264,7 +264,7 @@
   padding-right: 0 !important;
 }
 
-/* The ::before card frame sits inside the article — let it breathe with a
+/* The ::before card frame sits inside the article, let it breathe with a
    small inset so the card edge doesn't touch the wrapper edge. */
 .project-page-content .project.project--card::before {
   inset: 0;
@@ -272,7 +272,7 @@
 }
 
 /* ─── Section headings (Problem / Prosess / Resultat) ───────
-   Compact uppercase label — not a 3.35rem display headline. */
+   Compact uppercase label, not a 3.35rem display headline. */
 .project-page-content .case-project .case-section-heading h3 {
   font-size: 0.72rem !important;
   font-weight: 700 !important;
@@ -283,7 +283,7 @@
   max-width: none !important;
 }
 
-/* No side-column — heading sits as a small label above content. */
+/* No side-column, heading sits as a small label above content. */
 .project-page-content .case-project .case-section--phase-start {
   display: block !important;
 }
@@ -737,7 +737,7 @@
 }
 
 /* ────────────────────────────────────────────────────────
-   Carousels — unified clean style for all project pages
+   Carousels, unified clean style for all project pages
    Note: NIBIO filter/scroll carousels keep their own look
    via higher-specificity #NIBIO-Internship ID selectors.
    ──────────────────────────────────────────────────────── */

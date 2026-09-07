@@ -381,7 +381,7 @@ function activateRail(lang) {
         const t = strong.textContent.trim().toLowerCase();
         // Previously we added a .tldr class to these paragraphs which caused
         // the beige background styling in the IN5510 section. Don't add the
-        // class automatically — keep markup untouched so CSS-only callouts
+        // class automatically, keep markup untouched so CSS-only callouts
         // remain deliberate in the source.
         // if (keys.some(k => t.startsWith(k))) {
         //   p.classList.add('tldr');
@@ -422,8 +422,8 @@ function initProjectPreviews(){
 
     const scope = proj.querySelector('.project-inner') || proj;
 
-    // Remove legacy TL;DR blocks if present — we will build a coherent peek
-    // Keep existing TL;DR blocks — they should appear in the preview, not be deleted
+    // Remove legacy TL;DR blocks if present, we will build a coherent peek
+    // Keep existing TL;DR blocks, they should appear in the preview, not be deleted
     // (Some projects, like IN5510, use .tldr for "Hva vi gjorde / lærte" callouts)
 
 

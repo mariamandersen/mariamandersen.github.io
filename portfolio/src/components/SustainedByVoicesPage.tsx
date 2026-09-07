@@ -23,8 +23,8 @@ export default function SustainedByVoicesPage({ lang = "no" }: Props) {
         <img
           src={img01}
           alt={isEn
-            ? "The finished Sustained by Voices installation — a human-scale abstract robot in a dark space"
-            : "Den ferdige Sustained by Voices-installasjonen — en abstrakt robot i menneskestørrelse i et mørkt rom"}
+            ? "The finished Sustained by Voices installation, a human-scale abstract robot in a dark space"
+            : "Den ferdige Sustained by Voices-installasjonen, en abstrakt robot i menneskestørrelse i et mørkt rom"}
           style={{ width: "100%", height: "clamp(320px, 55vw, 600px)", objectFit: "cover", objectPosition: "center", display: "block" }}
         />
       </figure>
@@ -42,7 +42,7 @@ export default function SustainedByVoicesPage({ lang = "no" }: Props) {
         <dl style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1rem 2rem", fontSize: "0.875rem" }}>
           {[
             { t: isEn ? "Context" : "Kontekst",       v: isEn ? "Tangible Interaction, master project" : "Tangible Interaction, masterprosjekt" },
-            { t: isEn ? "Team" : "Team",               v: isEn ? "Five master's students — informatics, design, use and interaction" : "Fem masterstudenter i informatikk: design, bruk og interaksjon" },
+            { t: isEn ? "Team" : "Team",               v: isEn ? "Five master's students in informatics, design, use and interaction" : "Fem masterstudenter i informatikk: design, bruk og interaksjon" },
             { t: isEn ? "Focus areas" : "Arbeidsområder", v: isEn ? "Concept development, interaction design, physical prototyping" : "Idéutvikling, konseptutvikling, interaksjonsdesign og fysisk prototyping" },
           ].map(({ t, v }) => (
             <div key={t}>
@@ -91,7 +91,7 @@ export default function SustainedByVoicesPage({ lang = "no" }: Props) {
           </div>
           <figcaption style={captionStyle}>
             {isEn
-              ? "AI-generated concept visualisations — exploring possible expressions and interactions."
+              ? "AI-generated concept visualisations, exploring possible expressions and interactions."
               : "AI-genererte konseptvisualiseringer – utforsking av mulige uttrykk og interaksjoner."}
           </figcaption>
         </figure>

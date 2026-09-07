@@ -4,7 +4,7 @@ import { useState } from "react";
 const SCREEN_W = 720;
 const SCREEN_H = 450; // 16:10
 
-// MacBook Air M2 — almost no bezel, notch at top
+// MacBook Air M2, almost no bezel, notch at top
 const BEZEL_T    = 6;   // tiny top strip above notch baseline (notch cuts into this)
 const BEZEL_SIDE = 5;
 const BEZEL_BOT  = 5;   // very thin chin
@@ -105,7 +105,7 @@ function MacBookAirM2({ children }: { children: React.ReactNode }) {
           />
         </div>
 
-        {/* Screen content — fills lid edge-to-edge minus tiny bezels */}
+        {/* Screen content, fills lid edge-to-edge minus tiny bezels */}
         <div
           style={{
             position: "absolute",
@@ -135,7 +135,7 @@ function MacBookAirM2({ children }: { children: React.ReactNode }) {
         }}
       />
 
-      {/* ── Base — very thin strip ── */}
+      {/* ── Base, very thin strip ── */}
       <div
         style={{
           width: BASE_W,
@@ -171,12 +171,12 @@ export default function SchoolVisitGallery({ lang = "no" }: Props) {
     <div className="nibio-gallery">
       <div className="nibio-gallery-header">
         <h3 className="nibio-gallery-title">
-          {isEn ? "Final Design — School Visit Planner" : "Ferdig design — School Visit Planner"}
+          {isEn ? "Final Design: School Visit Planner" : "Ferdig design: School Visit Planner"}
         </h3>
         <p className="nibio-gallery-desc">
           {isEn
-            ? "A webapp built on the DHIS2 platform for school inspectors — from prioritising schools on a map to logging inspections and comparing resources."
-            : "En webapp bygget på DHIS2-plattformen for skoleinspektører — fra prioritering på kart til registrering av inspeksjoner og sammenligning av ressurser."}
+            ? "A webapp built on the DHIS2 platform for school inspectors, from prioritising schools on a map to logging inspections and comparing resources."
+            : "En webapp bygget på DHIS2-plattformen for skoleinspektører, fra prioritering på kart til registrering av inspeksjoner og sammenligning av ressurser."}
         </p>
       </div>
 
