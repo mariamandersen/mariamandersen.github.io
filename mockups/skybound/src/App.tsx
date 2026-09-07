@@ -145,59 +145,17 @@ export default function App() {
           </div>
         </div>
 
-        {/* Screen picker tabs */}
-        <div className="mockup-picker flex flex-col gap-2 w-full max-w-xs">
-          <p className="text-[10px] tracking-[0.2em] uppercase text-slate-500 mb-2 font-medium">App Screens</p>
-          {screens.map((s, i) => (
-            <button
-              key={s.id}
-              onClick={() => setActive(i)}
-              aria-pressed={active === i}
-              aria-label={`${s.label}: ${s.sublabel}`}
-              className="text-left px-4 py-3 rounded-xl transition-all duration-200 group"
-              style={{
-                background: active === i
-                  ? "linear-gradient(135deg, rgba(99,102,241,0.2) 0%, rgba(139,92,246,0.15) 100%)"
-                  : "rgba(255,255,255,0.03)",
-                border: active === i
-                  ? "1px solid rgba(99,102,241,0.4)"
-                  : "1px solid rgba(255,255,255,0.05)",
-              }}
-            >
-              <div className="flex items-center gap-3">
-                <div
-                  className="w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all"
-                  style={{ background: active === i ? "#818cf8" : "rgba(255,255,255,0.15)" }}
-                />
-                <div>
-                  <p className={`text-sm font-medium transition-colors ${active === i ? "text-indigo-300" : "text-slate-400 group-hover:text-slate-300"}`}>
-                    {s.label}
-                  </p>
-                  <p className="text-[11px] text-slate-600 mt-0.5">{s.sublabel}</p>
-                </div>
-              </div>
-            </button>
-          ))}
-
-          {/* Dot nav */}
-          <div className="flex gap-2 mt-4 px-4">
-            {screens.map((s, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                aria-label={`${s.label}: ${s.sublabel}`}
-                aria-pressed={active === i}
-                className="transition-all duration-300"
-                style={{
-                  width: active === i ? 20 : 6,
-                  height: 6,
-                  borderRadius: 3,
-                  background: active === i ? "#818cf8" : "rgba(255,255,255,0.15)",
-                }}
-              />
-            ))}
-          </div>
-        </div>
+        <nav className="mockup-controls" aria-label="App screens">
+          <button type="button" aria-label="Previous screen" disabled={active === 0}
+            onClick={() => setActive(active - 1)}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14 6-6 6 6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </button>
+          <span role="status" aria-live="polite" aria-label={`Screen ${active + 1} of ${screens.length}`}>{active + 1} / {screens.length}</span>
+          <button type="button" aria-label="Next screen" disabled={active === screens.length - 1}
+            onClick={() => setActive(active + 1)}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m10 6 6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </button>
+        </nav>
       </div>
 
       {/* Footer tag */}
