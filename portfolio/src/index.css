@@ -1,0 +1,737 @@
+@import 'tailwindcss';
+
+/* ── NIBIO Figma import fonts (resolved via figma fonts resolve) ── */
+@font-face {
+  font-family: "Inter:Bold";
+  src: url("https://static.figma.com/font/Inter_1") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Inter:Regular";
+  src: url("https://static.figma.com/font/Inter_1") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Inter:Italic";
+  src: url("https://static.figma.com/font/Inter_1") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Inter:Medium";
+  src: url("https://static.figma.com/font/Inter_1") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Inter:Semi Bold";
+  src: url("https://static.figma.com/font/Inter_1") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Instrument Serif:Regular";
+  src: url("https://static.figma.com/font/InstrumentSerif-Regular_1") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* Portfolio uses its own style.css loaded from public/ */
+#root {
+  min-height: 100%;
+}
+
+/* ─── Homepage hero ─────────────────────────────────────── */
+.home-hero {
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+.home-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.home-hero-text {
+  max-width: 56ch;
+}
+
+.home-hero-photo {
+  margin: 0;
+  width: clamp(140px, 22vw, 260px);
+  flex-shrink: 0;
+}
+
+.home-hero-photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 999px;
+  object-fit: cover;
+  aspect-ratio: 3/4;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .home-hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .home-hero-photo {
+    order: -1;
+    width: clamp(100px, 30vw, 160px);
+  }
+}
+
+/* ─── Project cards grid ────────────────────────────────── */
+.home-projects {
+  padding-block: clamp(2rem, 6vw, 5rem);
+}
+
+.home-projects-heading {
+  font-size: clamp(0.75rem, 1.1vw, 0.875rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-pink);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.project-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+@media (max-width: 700px) {
+  .project-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border-radius: var(--radius, 18px);
+  overflow: hidden;
+  color: var(--color-text-strong);
+  text-decoration: none;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,.12);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.22);
+  text-decoration: none;
+}
+
+.project-card:focus-visible {
+  outline: 2px solid var(--color-pink);
+  outline-offset: 3px;
+}
+
+.project-card-image {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--color-blue);
+}
+
+.project-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 300ms ease;
+}
+
+.project-card:hover .project-card-image img {
+  transform: scale(1.04);
+}
+
+.project-card-body {
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.project-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.project-card-year {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.project-card-tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.project-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.2em 0.6em;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-pink) 18%, transparent);
+  color: var(--color-text-strong);
+  letter-spacing: 0.02em;
+}
+
+.project-card-title {
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text-strong);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+}
+
+.project-card-subtitle {
+  font-size: 0.8em;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  opacity: 0.7;
+}
+
+.project-card-question {
+  font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+  line-height: 1.55;
+  color: var(--color-text-strong);
+  opacity: 0.75;
+  margin: 0;
+  flex: 1;
+}
+
+.project-card-cta {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-pink);
+  letter-spacing: 0.03em;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+/* ─── Project page ──────────────────────────────────────── */
+.project-page-back {
+  padding-block: 1.25rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--color-border) 40%, transparent);
+}
+
+.back-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-pink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Constrain the article to the same max-width as the header so content never
+   extends edge-to-edge on wide screens. style.css overrides .project to
+   width:100%/max-width:none so we fix it at the wrapper level instead. */
+.project-page-content {
+  max-width: var(--maxw, 1040px);
+  margin-inline: auto;
+  /* Compensate for the gutter the .project article already adds so the
+     card frame aligns with the header text, not the outer viewport edge. */
+  padding-inline: var(--gutter, clamp(24px, 6vw, 88px));
+}
+
+/* Since .project-page-content now adds the horizontal padding, remove the
+   duplicate padding the style.css rule adds to the .project article itself. */
+.project-page-content .project {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* The ::before card frame sits inside the article — let it breathe with a
+   small inset so the card edge doesn't touch the wrapper edge. */
+.project-page-content .project.project--card::before {
+  inset: 0;
+  border-radius: var(--card-radius, 18px);
+}
+
+/* ─── Section headings (Problem / Prosess / Resultat) ───────
+   Compact uppercase label — not a 3.35rem display headline. */
+.project-page-content .case-project .case-section-heading h3 {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.13em !important;
+  text-transform: uppercase !important;
+  line-height: 1.3 !important;
+  color: var(--color-pink) !important;
+  max-width: none !important;
+}
+
+/* No side-column — heading sits as a small label above content. */
+.project-page-content .case-project .case-section--phase-start {
+  display: block !important;
+}
+
+.project-page-content .case-project .case-section-heading {
+  position: static !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.project-page-content .case-project .case-section-content {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* ─── Reduce vertical whitespace ────────────────────────────
+   style.css gives .editorial-section up to 54px padding; that's
+   too much on a detail page where the reader is already inside. */
+.project-page-content .editorial-section {
+  padding-block: clamp(14px, 2.5vw, 26px) !important;
+}
+
+.project-page-content .case-section + .case-section {
+  margin-top: clamp(0.6rem, 2vw, 1.2rem) !important;
+}
+
+/* NIBIO section gaps */
+.project-page-content #NIBIO-Internship .case-section--phase-start:not(:first-of-type) {
+  margin-top: clamp(1.5rem, 4vw, 2.5rem) !important;
+}
+
+.project-page-content .case-narrative-block + .case-narrative-block {
+  margin-top: clamp(16px, 2.5vw, 28px) !important;
+}
+
+/* ─── Case-media: images display correctly ───────────────────
+   These rules were scoped to #content-no/en in style.css. */
+.project-page-content .case-media {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  margin: 6px 0 10px;
+}
+
+.project-page-content .case-media img {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 560px;
+  object-fit: contain !important;
+  border-radius: 8px;
+}
+
+/* NIBIO process-evidence: two research screenshots side-by-side */
+.project-page-content .process-evidence {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(10px, 1.6vw, 18px);
+  align-items: start;
+}
+
+/* ─── Narrative blocks: text + media side-by-side ───────────
+   When a narrative block contains a media element, show them
+   as a two-column row (text left, visual right) on wide screens. */
+@media (min-width: 820px) {
+  .project-page-content .case-narrative-block:has(> .case-media, > .case-media-group) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    gap: clamp(20px, 3.5vw, 48px);
+    align-items: center;
+  }
+
+  .project-page-content .case-narrative-block > .case-media,
+  .project-page-content .case-narrative-block > .case-media-group {
+    margin: 0;
+    align-self: center;
+  }
+
+  /* Phone carousels: center within their column */
+  .project-page-content .case-narrative-block .carousel.phone-carousel {
+    margin-inline: auto;
+  }
+}
+
+/* ─── Case-media-group: horizontal image strips ─────────────
+   2 items: 2 columns. 3 items: 3 columns (show all in one row).
+   4 items: 2x2 grid. Override the odd-last-child span for 3. */
+.project-page-content .case-media-group {
+  gap: clamp(10px, 1.6vw, 18px);
+}
+
+@media (min-width: 640px) {
+  .project-page-content .case-media-group:has(> :nth-child(3):last-child) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .project-page-content .case-media-group:has(> :nth-child(3):last-child) > :last-child {
+    grid-column: auto !important;
+  }
+}
+
+/* ─── Project footer navigation ─────────────────────────── */
+.project-nav-footer {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid color-mix(in oklab, var(--color-border) 40%, transparent);
+  margin-top: clamp(2rem, 5vw, 4rem);
+}
+
+.project-nav-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-pink);
+  margin-bottom: 1.25rem;
+}
+
+.project-nav-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6em 1.2em;
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text-strong);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.project-nav-pill:hover {
+  background: var(--color-blue);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* ─── Home footer ────────────────────────────────────────── */
+.home-footer {
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+  margin-top: clamp(2rem, 5vw, 4rem);
+  border-top: 1px solid color-mix(in oklab, var(--color-border) 40%, transparent);
+  text-align: center;
+}
+
+.home-footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.home-footer-cta {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.3;
+  max-width: 46ch;
+  color: var(--color-text);
+}
+
+.home-footer-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-link-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65em 1.4em;
+  border-radius: 999px;
+  background: var(--color-pink);
+  color: var(--color-text-strong);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.footer-link-pill:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.home-footer-copy {
+  font-size: 0.8rem;
+  opacity: 0.45;
+  color: var(--color-text);
+}
+
+/* ─── Skybound App Gallery ───────────────────────────────── */
+.skybound-gallery {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  border-top: 1px solid color-mix(in oklab, var(--color-border) 40%, transparent);
+}
+
+.skybound-gallery-header {
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+}
+
+.skybound-gallery-title {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 700;
+  color: var(--color-text-strong);
+  margin: 0 0 0.5rem;
+}
+
+.skybound-gallery-desc {
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+  color: var(--color-text-strong);
+  opacity: 0.65;
+  max-width: 58ch;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.skybound-track-wrap {
+  position: relative;
+  margin-inline: calc(-1 * clamp(1rem, 4vw, 3rem));
+}
+
+.skybound-track {
+  display: flex;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  overflow-x: auto;
+  padding-inline: clamp(1rem, 4vw, 3rem);
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.skybound-track::-webkit-scrollbar {
+  display: none;
+}
+
+.skybound-phone-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  scroll-snap-align: center;
+  transition: opacity 200ms ease, transform 200ms ease;
+  opacity: 0.7;
+  border-radius: 40px;
+}
+
+.skybound-phone-btn:hover,
+.skybound-phone-btn.active {
+  opacity: 1;
+}
+
+.skybound-phone-btn.active {
+  transform: scale(1.04);
+}
+
+.skybound-track-fade-l,
+.skybound-track-fade-r {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(1rem, 4vw, 3rem);
+  pointer-events: none;
+}
+
+.skybound-track-fade-l {
+  left: 0;
+  background: linear-gradient(to right, var(--color-bg), transparent);
+}
+
+.skybound-track-fade-r {
+  right: 0;
+  background: linear-gradient(to left, var(--color-bg), transparent);
+}
+
+.skybound-dots {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+.skybound-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: color-mix(in oklab, var(--color-pink) 30%, var(--color-border));
+  cursor: pointer;
+  padding: 0;
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.skybound-dot.active {
+  background: var(--color-pink);
+  transform: scale(1.4);
+}
+
+.skybound-dot:hover {
+  background: var(--color-pink);
+  opacity: 0.8;
+}
+
+/* ── Sustained by Voices ── */
+@media (min-width: 700px) {
+  .sbv-narrative {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* ── NIBIO Catalog Gallery ── */
+.nibio-gallery {
+  margin-block: clamp(2rem, 5vw, 4rem);
+}
+
+.nibio-gallery-header {
+  margin-bottom: 1.5rem;
+}
+
+.nibio-gallery-title {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.nibio-gallery-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  max-width: 56ch;
+  line-height: 1.65;
+}
+
+.nibio-tabs {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.nibio-tab {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 99px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+  white-space: nowrap;
+}
+
+.nibio-tab.active,
+.nibio-tab:hover {
+  background: var(--color-pink);
+  border-color: var(--color-pink);
+  color: #fff;
+}
+
+.nibio-track-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.nibio-track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 0.5rem;
+}
+
+.nibio-track::-webkit-scrollbar {
+  display: none;
+}
+
+.nibio-screen-btn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  scroll-snap-align: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0.55;
+  transition: opacity 200ms ease, transform 200ms ease;
+  transform: scale(0.97);
+}
+
+.nibio-screen-btn.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nibio-screen-btn:hover {
+  opacity: 0.9;
+}
+
+.nibio-screen-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  opacity: 0.75;
+}
+
+.nibio-dots {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+.nibio-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: color-mix(in oklab, var(--color-pink) 30%, var(--color-border));
+  cursor: pointer;
+  padding: 0;
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.nibio-dot.active {
+  background: var(--color-pink);
+  transform: scale(1.4);
+}
+
+.nibio-dot:hover {
+  background: var(--color-pink);
+  opacity: 0.8;
+}
