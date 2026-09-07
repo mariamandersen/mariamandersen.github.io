@@ -735,3 +735,143 @@
   background: var(--color-pink);
   opacity: 0.8;
 }
+
+/* ────────────────────────────────────────────────────────
+   Carousels — unified clean style for all project pages
+   Note: NIBIO filter/scroll carousels keep their own look
+   via higher-specificity #NIBIO-Internship ID selectors.
+   ──────────────────────────────────────────────────────── */
+
+/* 1. Strip the heavy container box from the viewport */
+.project-page-content .carousel-viewport {
+  border: none;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  overflow: hidden;
+  /* single-mode: show one slide at a time via [hidden] attribute */
+  display: block;
+}
+
+/* 2. Images: clean, natural dimensions */
+.project-page-content .slide img {
+  border-radius: 8px;
+  border: none;
+  box-shadow: none;
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  object-position: top;
+}
+
+/* 3. Arrow buttons: dark frosted-glass circles overlaid on the image */
+.project-page-content .car-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.92);
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 4;
+  transition: background 130ms ease, opacity 130ms ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.project-page-content .car-btn:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.62);
+}
+
+.project-page-content .car-btn:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Arrows sit flush inside the image edges */
+.project-page-content .car-prev { left: 10px; }
+.project-page-content .car-next { right: 10px; }
+
+/* 4. Dots: match the Skybound/NIBIO gallery dot style */
+.project-page-content .dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.project-page-content .dots button {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: color-mix(in oklab, var(--color-pink) 30%, var(--color-border));
+  cursor: pointer;
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.project-page-content .dots button[aria-current="true"] {
+  background: var(--color-pink);
+  transform: scale(1.4);
+}
+
+.project-page-content .dots button:hover {
+  background: var(--color-pink);
+  opacity: 0.8;
+}
+
+/* 5. Phone mockups inside carousels: center them */
+.project-page-content .carousel .phone-mock {
+  margin-inline: auto;
+}
+
+/* 6. Figcaption below a carousel */
+.project-page-content .carousel + figcaption,
+.project-page-content .carousel ~ figcaption {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  opacity: 0.75;
+  font-style: italic;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* Shared case-study layout, based on Sustained by Voices. */
+.case-study-layout{max-width:var(--maxw,1040px);margin-inline:auto;padding-inline:var(--gutter,clamp(24px,6vw,88px));min-width:0}
+.story-cover{margin:0 0 clamp(2rem,5vw,4rem);border-radius:12px;overflow:hidden;background:var(--color-surface);line-height:0}
+.story-cover img{display:block;width:100%;height:clamp(320px,45vw,560px);object-fit:contain;object-position:center}
+.case-study-layout .story-content{max-width:none;padding:0}
+.story-article{width:100%;min-width:0}
+.story-article .project-inner{padding:0;max-width:none}
+.story-article h1{font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:700;line-height:1.15;margin:0 0 1rem;color:var(--color-text)}
+.story-article .case-question{font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.7;color:var(--color-text-muted);max-width:62ch;margin:0 0 1rem}
+.story-article .kicker{font-size:.875rem;color:var(--color-text-muted);margin-bottom:2rem}
+.story-article .case-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr))!important;gap:1rem 2rem!important;font-size:.875rem;margin:0 0 clamp(2.5rem,5vw,4.5rem)!important;padding:0 0 2rem;border-bottom:1px solid var(--color-border)}
+.story-article .case-facts dt{font-weight:700;color:var(--color-text);margin-bottom:.25rem}
+.story-article .case-facts dd{margin:0;color:var(--color-text-muted);line-height:1.6}
+.story-content .story-article .case-study{padding:0;margin:0}
+.story-content .story-article .case-section{display:block!important;margin:0 0 clamp(2.5rem,5vw,4.5rem)!important;padding:0!important;border:0!important}
+.story-content .story-article .case-section-heading{position:static!important;margin:0 0 1.25rem!important}
+.story-content .story-article .case-section-heading h3{font-size:.72rem!important;font-weight:700!important;letter-spacing:.13em!important;text-transform:uppercase;color:var(--color-pink)!important;line-height:1.5!important;max-width:none!important}
+.story-content .story-article .case-section-content{max-width:none;width:100%;display:flex;flex-direction:column;gap:1.5rem}
+.story-content .story-article p:not(.kicker):not(.case-question):not(.sr-only){font-size:clamp(.95rem,1.2vw,1.05rem);line-height:1.75;color:var(--color-text-muted);max-width:66ch}
+.story-content .story-article .case-narrative-block{gap:clamp(16px,3vw,40px);margin:0 0 1rem;align-items:center;min-width:0}
+.story-content .story-article .case-media{width:100%;min-width:0;max-width:100%;margin:0}
+.story-content .story-article .case-media img{max-width:100%;object-fit:contain;border-radius:8px}
+.story-content .story-article figcaption{font-size:.8rem!important;font-style:italic;line-height:1.5;opacity:.7;margin-top:.6rem}
+.story-content .story-article .carousel-viewport{box-sizing:border-box;max-width:100%;overflow:hidden!important}
+.story-content .story-article .slide[hidden]{display:none!important}
+.story-content .story-article .phone-mock>img{height:100%!important;object-fit:contain!important}
+@media(min-width:900px){.story-content .story-article .case-narrative-block:has(>.case-media,>.case-media-group){display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:899px){.story-content .story-article .case-narrative-block{display:flex;flex-direction:column;align-items:stretch}}
+@media(max-width:600px){.skybound-track-wrap{margin-inline:0;max-width:100%}.story-content .story-article .carousel-viewport{padding:0!important;width:100%!important}.story-cover img{height:320px}}
+.story-content .story-article .device-laptop__base{width:100%!important;max-width:100%;margin-inline:0!important}

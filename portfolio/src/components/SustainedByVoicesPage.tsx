@@ -16,7 +16,7 @@ export default function SustainedByVoicesPage({ lang = "no" }: Props) {
   const isEn = lang === "en";
 
   return (
-    <article className="case-project" style={{ maxWidth: "var(--maxw, 1040px)", marginInline: "auto", paddingInline: "var(--gutter, clamp(24px, 6vw, 88px))" }}>
+    <article className="case-project case-study-layout" style={{ maxWidth: "var(--maxw, 1040px)", marginInline: "auto", paddingInline: "var(--gutter, clamp(24px, 6vw, 88px))" }}>
 
       {/* ── Hero image ── */}
       <figure style={{ margin: "0 0 clamp(2rem, 5vw, 4rem)", borderRadius: 12, overflow: "hidden", lineHeight: 0 }}>

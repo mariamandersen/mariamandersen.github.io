@@ -57,6 +57,8 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
   const articleId = isEn ? project?.idEn : project?.idNo;
   const articleHTML = articleId
     ? makePathsAbsolute(extractArticle(portfolioHTML, articleId))
+        .replace(/(<article[^>]*class=")[^"]*(")/, '$1story-article$2')
+        .replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/, '<h1$1>$2</h1>')
     : "";
 
   useEffect(() => {
@@ -66,7 +68,7 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
   useEffect(() => {
     if (!contentRef.current) return;
     initCarousels(contentRef.current);
-  }, [articleHTML]);
+  }, [articleHTML, lang]);
 
   if (!project) {
     return (
@@ -122,11 +124,18 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
           </div>
         </div>
 
-        <div
-          ref={contentRef}
-          className="project-page-content"
-          dangerouslySetInnerHTML={{ __html: articleHTML }}
-        />
+        {articleHTML && (
+          <div className="case-study-layout">
+            <figure className="story-cover">
+              <img src={project.coverImage} alt={isEn ? project.titleEn : project.titleNo} loading="eager" />
+            </figure>
+            <div
+              ref={contentRef}
+              className="project-page-content story-content"
+              dangerouslySetInnerHTML={{ __html: articleHTML }}
+            />
+          </div>
+        )}
 
         {slug === "sustained-by-voices" && (
           <SustainedByVoicesPage lang={lang} />
