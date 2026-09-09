@@ -41,8 +41,9 @@ export default function SustainedByVoicesPage({ lang = "no" }: Props) {
         </p>
         <dl style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1rem 2rem", fontSize: "0.875rem" }}>
           {[
-            { t: isEn ? "Context" : "Kontekst",       v: isEn ? "Tangible Interaction, master project" : "Tangible Interaction, masterprosjekt" },
+            { t: isEn ? "Role" : "Rolle", v: isEn ? "Concept and interaction design, physical prototyping in a team" : "Konsept- og interaksjonsdesign og fysisk prototyping i team" },
             { t: isEn ? "Team" : "Team",               v: isEn ? "Five master's students in informatics, design, use and interaction" : "Fem masterstudenter i informatikk: design, bruk og interaksjon" },
+            { t: isEn ? "Context" : "Kontekst",       v: isEn ? "Tangible Interaction, master project" : "Tangible Interaction, masterprosjekt" },
             { t: isEn ? "Focus areas" : "Arbeidsområder", v: isEn ? "Concept development, interaction design, physical prototyping" : "Idéutvikling, konseptutvikling, interaksjonsdesign og fysisk prototyping" },
           ].map(({ t, v }) => (
             <div key={t}>
@@ -205,6 +206,19 @@ export default function SustainedByVoicesPage({ lang = "no" }: Props) {
               : "Utstillingsplakat. Klikk for å åpne i full størrelse."}
           </figcaption>
         </figure>
+      </Section>
+
+      <Section label={isEn ? "Reflection" : "Refleksjon"}>
+        <p style={bodyStyle}>
+          {isEn
+            ? "I enjoyed moving between shared concept development and making something physical. Simple models made it possible to discuss form, movement and response together. It is a way of working I want to bring into multidisciplinary teams: make an idea tangible early enough for others to try it and contribute."
+            : "Jeg likte å veksle mellom felles konseptutvikling og å bygge noe fysisk. Enkle modeller gjorde det mulig å diskutere form, bevegelse og respons sammen. Det er en arbeidsmåte jeg vil ta med inn i tverrfaglige team: Gjøre en idé konkret tidlig nok til at andre kan prøve den og bidra."}
+        </p>
+        <p style={{ ...bodyStyle, marginTop: "1rem" }}>
+          {isEn
+            ? "The installation expresses an idea about care, but that does not tell us how visitors interpret it. Next time, I would explore earlier whether the relationship between voice and pulse is understandable without an explanation, and let those observations inform the interaction further."
+            : "Installasjonen uttrykker en idé om omsorg, men det sier ikke i seg selv hvordan besøkende tolker den. Neste gang vil jeg undersøke tidligere om sammenhengen mellom stemme og puls er forståelig uten forklaring, og la de observasjonene påvirke interaksjonen videre."}
+        </p>
       </Section>
 
     </article>

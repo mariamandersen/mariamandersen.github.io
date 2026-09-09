@@ -56,9 +56,9 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
   const project = getProject(slug ?? "");
 
   const articleId = isEn ? project?.idEn : project?.idNo;
-  const articleHTML = useMemo(() => articleId
+  const { html: articleHTML, reflectionHTML } = useMemo(() => articleId
     ? formatCaseStudy(makePathsAbsolute(extractArticle(portfolioHTML, articleId)))
-    : "", [articleId]);
+    : { html: "", reflectionHTML: "" }, [articleId]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -161,6 +161,12 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
             <div className="case-study-layout">
               <SkyboundAppGallery lang={lang} />
             </div>
+          </div>
+        )}
+
+        {reflectionHTML && (
+          <div className="case-study-layout">
+            <div className="study-article" dangerouslySetInnerHTML={{ __html: reflectionHTML }} />
           </div>
         )}
 

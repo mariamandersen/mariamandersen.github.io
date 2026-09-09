@@ -66,8 +66,13 @@ export default function HomePage({ lang, onToggleLang }: HomePageProps) {
               <h1>{isEn ? "Hi! I'm Maria." : "Hei! Jeg er Maria."}</h1>
               <p className="hero-support">
                 {isEn
-                  ? "I enjoy understanding people, finding out what they need help with and solving problems that matter to them. As a UX designer, I use that curiosity to create solutions that make everyday life easier."
-                  : "Jeg liker å forstå mennesker, finne ut hva de trenger hjelp med og løse problemer som betyr noe for dem. Som UX-designer bruker jeg denne nysgjerrigheten til å lage løsninger som gjør hverdagen enklere."}
+                  ? "I'm a UX designer who enjoys understanding people and turning their needs into useful solutions. I thrive in multidisciplinary teams, take responsibility for moving the work forward, and enjoy bringing people together around what needs to happen next."
+                  : "Jeg er UX-designer og liker å forstå mennesker og bruke innsikten til å lage gode løsninger. Jeg trives i tverrfaglige team, tar gjerne ansvar for fremdriften og liker å samle teamet om hva vi må gjøre videre."}
+              </p>
+              <p className="hero-support">
+                {isEn
+                  ? "I especially enjoy shaping the design and testing it in practice with users and developers. I work in an agile way and like following ideas from research and design through to something people can actually use."
+                  : "Jeg liker særlig å utforme designet og teste det i praksis sammen med brukere og utviklere. Jeg jobber smidig og vil gjerne følge ideene hele veien fra brukerinnsikt og design til noe mennesker faktisk kan bruke."}
               </p>
             </div>
             <figure className="home-hero-photo">

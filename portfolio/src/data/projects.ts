@@ -20,7 +20,7 @@ export const projects: Project[] = [
   {
     slug: 'nibio',
     idNo: 'NIBIO-Internship',
-    idEn: 'NIBIO-Internship',
+    idEn: 'NIBIO-Internship-en',
     titleNo: 'NIBIO',
     titleEn: 'NIBIO',
     shortTitleNo: 'Intern datakatalog',

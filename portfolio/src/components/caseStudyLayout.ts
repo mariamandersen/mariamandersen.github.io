@@ -1,8 +1,8 @@
 /** Keep the existing project content and carousel behaviour, but use one layout. */
-export function formatCaseStudy(html: string): string {
+export function formatCaseStudy(html: string): { html: string; reflectionHTML: string } {
   const doc = new DOMParser().parseFromString(html, "text/html");
   const source = doc.querySelector(".project-inner");
-  if (!source) return "";
+  if (!source) return { html: "", reflectionHTML: "" };
 
   source.querySelectorAll(".case-preview-source").forEach(node => node.remove());
   const article = doc.createElement("article");
@@ -15,10 +15,10 @@ export function formatCaseStudy(html: string): string {
     h1.innerHTML = title.innerHTML;
     intro.append(h1);
   }
-  for (const selector of [".case-question", ".kicker", ".case-facts"]) {
+  for (const selector of [".case-question", ".case-introduction", ".kicker", ".case-facts"]) {
     const node = source.querySelector(selector);
     if (node) {
-      node.className = {".case-question": "study-summary", ".kicker": "study-context", ".case-facts": "study-facts"}[selector]!;
+      node.className = {".case-question": "study-summary", ".case-introduction": "study-summary", ".kicker": "study-context", ".case-facts": "study-facts"}[selector]!;
       intro.append(node);
     }
   }
@@ -27,6 +27,7 @@ export function formatCaseStudy(html: string): string {
   divider.className = "study-divider";
   article.append(divider);
 
+  let reflectionHTML = "";
   source.querySelectorAll(".case-section").forEach(section => {
     const chapter = doc.createElement("section");
     chapter.className = "study-chapter";
@@ -61,7 +62,12 @@ export function formatCaseStudy(html: string): string {
       });
       while (content.firstChild) chapter.append(content.firstChild);
     }
-    article.append(chapter);
+    if (section.classList.contains("case-reflection")) {
+      chapter.classList.add("study-reflection");
+      reflectionHTML = chapter.outerHTML;
+    } else {
+      article.append(chapter);
+    }
   });
-  return article.outerHTML;
+  return { html: article.outerHTML, reflectionHTML };
 }
