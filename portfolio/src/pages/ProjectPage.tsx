@@ -118,7 +118,7 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
       <main id="main">
         <nav className="project-nav-top" aria-label={isEn ? "Project navigation at top" : "Prosjektnavigasjon øverst"}>
           <div className="container project-nav-bar">
-            <Link to="/" className="project-nav-pill">{isEn ? "All projects" : "Alle prosjekter"}</Link>
+            <Link to="/" className="project-nav-pill">{isEn ? "Home" : "Hjem"}</Link>
             <div className="project-nav-links">
               {(() => {
                 const idx = allProjects.findIndex((p) => p.slug === slug);
@@ -127,10 +127,10 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
                 return (
                   <>
                     <Link to={`/prosjekt/${prev.slug}`} className="project-nav-pill" aria-label={`${isEn ? "Previous project" : "Forrige prosjekt"}: ${isEn ? prev.titleEn : prev.titleNo}`}>
-                      ← {isEn ? "Previous" : "Forrige"}
+                      ← {isEn ? "Previous project" : "Forrige prosjekt"}
                     </Link>
                     <Link to={`/prosjekt/${next.slug}`} className="project-nav-pill" aria-label={`${isEn ? "Next project" : "Neste prosjekt"}: ${isEn ? next.titleEn : next.titleNo}`}>
-                      {isEn ? "Next" : "Neste"} →
+                      {isEn ? "Next project" : "Neste prosjekt"} →
                     </Link>
                   </>
                 );
@@ -203,10 +203,10 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
                 return (
                   <>
                     <Link to={`/prosjekt/${prev.slug}`} className="project-nav-pill">
-                      ← {isEn ? prev.titleEn : prev.titleNo}
+                      ← {isEn ? "Previous project" : "Forrige prosjekt"}
                     </Link>
                     <Link to={`/prosjekt/${next.slug}`} className="project-nav-pill">
-                      {isEn ? next.titleEn : next.titleNo} →
+                      {isEn ? "Next project" : "Neste prosjekt"} →
                     </Link>
                   </>
                 );

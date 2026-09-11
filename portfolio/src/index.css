@@ -961,3 +961,5 @@
 .project-nav-pill:hover { background: var(--color-surface); border-color: var(--color-pink); transform: none; }
 .project-nav-pill:focus-visible { outline: 2px solid var(--color-pink); outline-offset: 3px; }
 @media (max-width: 480px) { .project-nav-top .project-nav-pill { padding: .65rem .7rem; font-size: .8rem; white-space: nowrap; } }
+
+@media (max-width: 480px) { .project-nav-bar { flex-wrap: wrap; } .project-nav-top .project-nav-links { margin-left: auto; } }
