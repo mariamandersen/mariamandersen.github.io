@@ -924,3 +924,20 @@
 .study-narrative:has(> .study-copy > p:nth-child(3)) { grid-template-columns: minmax(0,1fr) !important; }
 
 .study-narrative:not(:has(> p, > .study-copy)) { grid-template-columns: minmax(0,1fr) !important; }
+
+/* Recommendations keep the original wording and attribution together. */
+.recommendations-intro { color: var(--color-text-muted); line-height: 1.7; margin: 0 0 1.5rem; }
+.recommendations-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; align-items: start; }
+.recommendation { min-width: 0; padding: clamp(1.25rem,3vw,2rem); border: 1px solid var(--color-border); border-radius: 12px; background: var(--color-surface); }
+.recommendation blockquote { border: 0; margin: 0; padding: 0; }
+.recommendation blockquote p { margin: 0; font-size: 1.05rem; line-height: 1.75; color: var(--color-text); }
+.recommendation-author { margin: 1.5rem 0; }
+.recommendation-author h3 { margin: 0 0 .3rem; font-size: 1rem; color: var(--color-text); }
+.recommendation-author p { margin: 0; font-size: .875rem; line-height: 1.6; color: var(--color-text-muted); }
+.recommendation-author .recommendation-date { margin-top: .4rem; font-size: .8rem; }
+.recommendation summary { cursor: pointer; color: var(--color-pink); font-size: .875rem; padding-block: .5rem; }
+.recommendation summary:focus-visible { outline: 2px solid var(--color-pink); outline-offset: 4px; }
+.recommendation .recommendation-full { margin-top: 1rem; }
+.recommendation .recommendation-full p { font-size: .95rem; color: var(--color-text-muted); }
+.recommendation .recommendation-full p + p { margin-top: 1rem; }
+@media(max-width:699px) { .recommendations-grid { grid-template-columns: minmax(0,1fr); } }

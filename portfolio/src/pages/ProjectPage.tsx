@@ -7,6 +7,7 @@ import SkyboundAppGallery from "../components/SkyboundAppGallery";
 import NIBIOCatalogGallery from "../components/NIBIOCatalogGallery";
 import SchoolVisitGallery from "../components/SchoolVisitGallery";
 import { formatCaseStudy } from "../components/caseStudyLayout";
+import NibioRecommendations from "../components/NibioRecommendations";
 import SustainedByVoicesPage from "../components/SustainedByVoicesPage";
 
 function makePathsAbsolute(html: string): string {
@@ -164,6 +165,8 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
             </div>
           </div>
         )}
+
+        {slug === "nibio" && <NibioRecommendations lang={lang} />}
 
         {reflectionHTML && (
           <div className="case-study-layout">
