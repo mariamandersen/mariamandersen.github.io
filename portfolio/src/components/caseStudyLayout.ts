@@ -5,6 +5,18 @@ export function formatCaseStudy(html: string): { html: string; introHTML: string
   if (!source) return { html: "", introHTML: "", reflectionHTML: "" };
 
   source.querySelectorAll(".case-preview-source").forEach(node => node.remove());
+  source.querySelectorAll('[id^="nibio-fairwizard-carousel"]').forEach(carousel => {
+    const gallery = doc.createElement("div");
+    gallery.className = "case-media-group fairwizard-flow";
+    gallery.setAttribute("aria-label", carousel.getAttribute("aria-label") ?? "FAIR Wizard");
+    carousel.querySelectorAll("figure").forEach(figure => {
+      figure.removeAttribute("hidden");
+      figure.removeAttribute("aria-hidden");
+      figure.className = "";
+      gallery.append(figure);
+    });
+    carousel.replaceWith(gallery);
+  });
   const article = doc.createElement("article");
   article.className = "study-article";
   const intro = doc.createElement("section");
@@ -43,6 +55,7 @@ export function formatCaseStudy(html: string): { html: string; introHTML: string
         "case-narrative-copy": "study-copy",
         "case-media-group": "study-image-grid",
         "case-media": "study-media",
+        "fairwizard-flow": "study-fairwizard-flow",
       };
       content.querySelectorAll<HTMLElement>("*").forEach(node => {
         const classes = Array.from(node.classList);

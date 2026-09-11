@@ -941,3 +941,10 @@
 .recommendation .recommendation-full p { font-size: .95rem; color: var(--color-text-muted); }
 .recommendation .recommendation-full p + p { margin-top: 1rem; }
 @media(max-width:699px) { .recommendations-grid { grid-template-columns: minmax(0,1fr); } }
+
+/* Show the three FAIR Wizard steps together, with full-size images on demand. */
+.study-fairwizard-flow { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.study-fairwizard-flow img { aspect-ratio: 4/3; object-position: top; }
+@media (max-width: 699px) {
+  .study-fairwizard-flow { grid-template-columns: minmax(0,1fr); }
+}
