@@ -139,6 +139,12 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
           </div>
         )}
 
+        {reflectionHTML && (
+          <div className="case-study-layout">
+            <div className="study-article" dangerouslySetInnerHTML={{ __html: reflectionHTML }} />
+          </div>
+        )}
+
         {slug === "sustained-by-voices" && (
           <SustainedByVoicesPage lang={lang} />
         )}
@@ -169,11 +175,6 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
 
         {slug === "nibio" && <NibioRecommendations lang={lang} />}
 
-        {reflectionHTML && (
-          <div className="case-study-layout">
-            <div className="study-article" dangerouslySetInnerHTML={{ __html: reflectionHTML }} />
-          </div>
-        )}
 
         {/* Next project navigation */}
         <nav className="project-nav-footer section" aria-label={isEn ? "More projects" : "Flere prosjekter"}>
