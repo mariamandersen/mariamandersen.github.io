@@ -1,8 +1,8 @@
 /** Keep the existing project content and carousel behaviour, but use one layout. */
-export function formatCaseStudy(html: string): { html: string; introHTML: string; reflectionHTML: string } {
+export function formatCaseStudy(html: string): { html: string; introHTML: string; titleHTML: string; reflectionHTML: string } {
   const doc = new DOMParser().parseFromString(html, "text/html");
   const source = doc.querySelector(".project-inner");
-  if (!source) return { html: "", introHTML: "", reflectionHTML: "" };
+  if (!source) return { html: "", introHTML: "", titleHTML: "", reflectionHTML: "" };
 
   source.querySelectorAll(".case-preview-source").forEach(node => node.remove());
   source.querySelectorAll('[id^="nibio-fairwizard-carousel"]').forEach(carousel => {
@@ -34,6 +34,8 @@ export function formatCaseStudy(html: string): { html: string; introHTML: string
       intro.append(node);
     }
   }
+  const titleHTML = intro.querySelector("h1")?.outerHTML ?? "";
+  intro.querySelector("h1")?.remove();
   const introHTML = intro.outerHTML;
   const divider = doc.createElement("hr");
   divider.className = "study-divider";
@@ -94,5 +96,5 @@ export function formatCaseStudy(html: string): { html: string; introHTML: string
       article.append(chapter);
     }
   });
-  return { html: article.outerHTML, introHTML, reflectionHTML };
+  return { html: article.outerHTML, introHTML, titleHTML, reflectionHTML };
 }

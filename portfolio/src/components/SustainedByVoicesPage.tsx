@@ -24,6 +24,17 @@ export default function SustainedByVoicesPage({ lang = "no" }: Props) {
           Sustained by Voices
         </h1>
 
+      {/* ── Hero image ── */}
+      <figure style={{ margin: "0 0 clamp(2rem, 5vw, 4rem)", borderRadius: 12, overflow: "hidden", lineHeight: 0 }}>
+        <img
+          src={img01}
+          alt={isEn
+            ? "The finished Sustained by Voices installation, a human-scale abstract robot in a dark space"
+            : "Den ferdige Sustained by Voices-installasjonen, en abstrakt robot i menneskestørrelse i et mørkt rom"}
+          style={{ width: "100%", height: "clamp(320px, 55vw, 600px)", objectFit: "cover", objectPosition: "center", display: "block" }}
+        />
+      </figure>
+
         <dl className="study-facts" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1rem 2rem", fontSize: "0.875rem" }}>
           {[
             { t: isEn ? "Role" : "Rolle", v: isEn ? "Concept and interaction design, physical prototyping in a team" : "Konsept- og interaksjonsdesign og fysisk prototyping i team" },
@@ -44,21 +55,10 @@ export default function SustainedByVoicesPage({ lang = "no" }: Props) {
         </p>
       </section>
 
-      {/* ── Hero image ── */}
-      <figure style={{ margin: "0 0 clamp(2rem, 5vw, 4rem)", borderRadius: 12, overflow: "hidden", lineHeight: 0 }}>
-        <img
-          src={img01}
-          alt={isEn
-            ? "The finished Sustained by Voices installation, a human-scale abstract robot in a dark space"
-            : "Den ferdige Sustained by Voices-installasjonen, en abstrakt robot i menneskestørrelse i et mørkt rom"}
-          style={{ width: "100%", height: "clamp(320px, 55vw, 600px)", objectFit: "cover", objectPosition: "center", display: "block" }}
-        />
-      </figure>
-
       <hr style={{ border: "none", borderTop: "1px solid var(--color-border)", marginBottom: "clamp(2rem, 5vw, 4rem)" }} />
 
       {/* ── Fra tema til ideer ── */}
-      <Section label={isEn ? "From Theme to Ideas" : "Fra tema til ideer"}>
+      <Section label={isEn ? "Problem" : "Problem"}>
         <NarrativeBlock
           text={isEn
             ? "The starting point was a single theme: pulse. We each explored what pulse meant to us individually, then brought our ideas together and discussed them as a group. We moved between opening up new directions and narrowing down which ideas to pursue further."
@@ -70,7 +70,7 @@ export default function SustainedByVoicesPage({ lang = "no" }: Props) {
       </Section>
 
       {/* ── Utforsking av konsept ── */}
-      <Section label={isEn ? "Exploring Concept and Interaction" : "Utforsking av konsept og interaksjon"}>
+      <Section label={isEn ? "Process" : "Prosess"}>
         <p style={bodyStyle}>
           {isEn
             ? "Concept development took up a significant part of the project. We developed alternatives, presented them, received feedback, and adjusted. Both the body's expression and the ways of interacting with it were explored before we settled on voice as the central interaction."
@@ -180,7 +180,7 @@ export default function SustainedByVoicesPage({ lang = "no" }: Props) {
       </Section>
 
       {/* ── Resultat og utstilling ── */}
-      <Section label={isEn ? "Result and Exhibition" : "Resultat og utstilling"}>
+      <Section label={isEn ? "Result" : "Resultat"}>
         <p style={bodyStyle}>
           {isEn
             ? "Sustained by Voices was the result of a process that moved between abstract ideas and concrete exploration. From the theme of pulse, we developed an installation that brought together voice, presence, and care in a physical experience."
