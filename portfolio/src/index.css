@@ -953,3 +953,11 @@
 
 .project-nav-top { margin: 0 0 1.5rem; }
 .project-nav-top .project-nav-links { justify-content: space-between; }
+
+.project-nav-top { margin: 0 0 2rem; padding-block: 1rem; border-bottom: 1px solid var(--color-border); }
+.project-nav-bar { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+.project-nav-top .project-nav-links { gap: .5rem; flex-wrap: nowrap; }
+.project-nav-pill { color: var(--color-text); border: 1px solid var(--color-border); border-radius: 8px; }
+.project-nav-pill:hover { background: var(--color-surface); border-color: var(--color-pink); transform: none; }
+.project-nav-pill:focus-visible { outline: 2px solid var(--color-pink); outline-offset: 3px; }
+@media (max-width: 480px) { .project-nav-top .project-nav-pill { padding: .65rem .7rem; font-size: .8rem; white-space: nowrap; } }
