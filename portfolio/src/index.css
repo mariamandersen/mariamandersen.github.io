@@ -950,3 +950,6 @@
 }
 
 .study-title h1 { font-size: clamp(1.6rem,3.5vw,2.6rem); font-weight: 700; line-height: 1.15; margin: 0 0 1.5rem; color: var(--color-text); }
+
+.project-nav-top { margin: 0 0 1.5rem; }
+.project-nav-top .project-nav-links { justify-content: space-between; }

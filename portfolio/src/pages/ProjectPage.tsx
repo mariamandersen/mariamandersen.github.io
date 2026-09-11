@@ -124,6 +124,28 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
           </div>
         </div>
 
+        <nav className="project-nav-top" aria-label={isEn ? "Project navigation at top" : "Prosjektnavigasjon øverst"}>
+          <div className="container">
+            <div className="project-nav-links">
+              {(() => {
+                const idx = allProjects.findIndex((p) => p.slug === slug);
+                const prev = allProjects[(idx - 1 + allProjects.length) % allProjects.length];
+                const next = allProjects[(idx + 1) % allProjects.length];
+                return (
+                  <>
+                    <Link to={`/prosjekt/${prev.slug}`} className="project-nav-pill">
+                      ← {isEn ? prev.titleEn : prev.titleNo}
+                    </Link>
+                    <Link to={`/prosjekt/${next.slug}`} className="project-nav-pill">
+                      {isEn ? next.titleEn : next.titleNo} →
+                    </Link>
+                  </>
+                );
+              })()}
+            </div>
+          </div>
+        </nav>
+
         {articleHTML && (
           <div className="case-study-layout">
             <div className="study-article study-title" dangerouslySetInnerHTML={{ __html: titleHTML }} />
