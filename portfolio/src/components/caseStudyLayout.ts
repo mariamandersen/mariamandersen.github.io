@@ -1,8 +1,8 @@
 /** Keep the existing project content and carousel behaviour, but use one layout. */
-export function formatCaseStudy(html: string): { html: string; reflectionHTML: string } {
+export function formatCaseStudy(html: string): { html: string; introHTML: string; reflectionHTML: string } {
   const doc = new DOMParser().parseFromString(html, "text/html");
   const source = doc.querySelector(".project-inner");
-  if (!source) return { html: "", reflectionHTML: "" };
+  if (!source) return { html: "", introHTML: "", reflectionHTML: "" };
 
   source.querySelectorAll(".case-preview-source").forEach(node => node.remove());
   const article = doc.createElement("article");
@@ -15,14 +15,14 @@ export function formatCaseStudy(html: string): { html: string; reflectionHTML: s
     h1.innerHTML = title.innerHTML;
     intro.append(h1);
   }
-  for (const selector of [".case-question", ".case-introduction", ".kicker", ".case-facts"]) {
+  for (const selector of [".case-facts", ".case-question", ".case-introduction"]) {
     const node = source.querySelector(selector);
     if (node) {
       node.className = {".case-question": "study-summary", ".case-introduction": "study-summary", ".kicker": "study-context", ".case-facts": "study-facts"}[selector]!;
       intro.append(node);
     }
   }
-  article.append(intro);
+  const introHTML = intro.outerHTML;
   const divider = doc.createElement("hr");
   divider.className = "study-divider";
   article.append(divider);
@@ -57,8 +57,20 @@ export function formatCaseStudy(html: string): { html: string; reflectionHTML: s
       content.querySelectorAll(".study-media").forEach(media => {
         if (media.querySelectorAll(":scope > figure").length > 1) media.classList.add("study-image-grid");
       });
+      content.querySelectorAll<HTMLImageElement>("img").forEach(img => {
+        if (img.closest("a")) return;
+        const link = doc.createElement("a");
+        link.className = "study-image-link";
+        link.href = img.getAttribute("src") ?? "";
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.setAttribute("aria-label", `${source.parentElement?.id.endsWith("-en") ? "Open full-size image" : "Åpne bilde i full størrelse"}: ${img.alt}`);
+        img.replaceWith(link);
+        link.append(img);
+      });
       content.querySelectorAll(".study-narrative").forEach(block => {
         if (block.querySelector(":scope > .study-image-grid")) block.classList.add("study-narrative--gallery");
+        if (block.querySelector('img[src*="figma" i], img[src*="gigamap" i], img[src*="interaktiv_protoype" i]')) block.classList.add("study-narrative--wide");
       });
       while (content.firstChild) chapter.append(content.firstChild);
     }
@@ -69,5 +81,5 @@ export function formatCaseStudy(html: string): { html: string; reflectionHTML: s
       article.append(chapter);
     }
   });
-  return { html: article.outerHTML, reflectionHTML };
+  return { html: article.outerHTML, introHTML, reflectionHTML };
 }

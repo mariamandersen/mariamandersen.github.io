@@ -18,28 +18,13 @@ export default function SustainedByVoicesPage({ lang = "no" }: Props) {
   return (
     <article className="case-project case-study-layout" style={{ maxWidth: "var(--maxw, 1040px)", marginInline: "auto", paddingInline: "var(--gutter, clamp(24px, 6vw, 88px))" }}>
 
-      {/* ── Hero image ── */}
-      <figure style={{ margin: "0 0 clamp(2rem, 5vw, 4rem)", borderRadius: 12, overflow: "hidden", lineHeight: 0 }}>
-        <img
-          src={img01}
-          alt={isEn
-            ? "The finished Sustained by Voices installation, a human-scale abstract robot in a dark space"
-            : "Den ferdige Sustained by Voices-installasjonen, en abstrakt robot i menneskestørrelse i et mørkt rom"}
-          style={{ width: "100%", height: "clamp(320px, 55vw, 600px)", objectFit: "cover", objectPosition: "center", display: "block" }}
-        />
-      </figure>
-
       {/* ── Intro ── */}
       <section style={{ marginBottom: "clamp(2.5rem, 5vw, 4.5rem)" }}>
         <h1 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.6rem)", fontWeight: 700, lineHeight: 1.15, marginBottom: "1rem", color: "var(--color-text)" }}>
           Sustained by Voices
         </h1>
-        <p style={{ fontSize: "clamp(1rem, 1.5vw, 1.18rem)", lineHeight: 1.7, color: "var(--color-text-muted)", maxWidth: "62ch", marginBottom: "2rem" }}>
-          {isEn
-            ? "How can a voice keep something alive? Sustained by Voices is an interactive installation where visitors maintain the pulse of an abstract, human-scale robot by talking to it. The installation explores care through voice, attention, and presence."
-            : "Hvordan kan en stemme holde noe i live? Sustained by Voices er en interaktiv installasjon der besøkende opprettholder pulsen til en abstrakt robot i menneskestørrelse ved å snakke til den. Installasjonen utforsker omsorg gjennom stemme, oppmerksomhet og tilstedeværelse."}
-        </p>
-        <dl style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1rem 2rem", fontSize: "0.875rem" }}>
+
+        <dl className="study-facts" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1rem 2rem", fontSize: "0.875rem" }}>
           {[
             { t: isEn ? "Role" : "Rolle", v: isEn ? "Concept and interaction design, physical prototyping in a team" : "Konsept- og interaksjonsdesign og fysisk prototyping i team" },
             { t: isEn ? "Team" : "Team",               v: isEn ? "Five master's students in informatics, design, use and interaction" : "Fem masterstudenter i informatikk: design, bruk og interaksjon" },
@@ -52,7 +37,23 @@ export default function SustainedByVoicesPage({ lang = "no" }: Props) {
             </div>
           ))}
         </dl>
+        <p style={{ fontSize: "clamp(1rem, 1.5vw, 1.18rem)", lineHeight: 1.7, color: "var(--color-text-muted)", maxWidth: "62ch", marginBottom: "2rem" }}>
+          {isEn
+            ? "How can a voice keep something alive? Sustained by Voices is an interactive installation where visitors maintain the pulse of an abstract, human-scale robot by talking to it. The installation explores care through voice, attention, and presence."
+            : "Hvordan kan en stemme holde noe i live? Sustained by Voices er en interaktiv installasjon der besøkende opprettholder pulsen til en abstrakt robot i menneskestørrelse ved å snakke til den. Installasjonen utforsker omsorg gjennom stemme, oppmerksomhet og tilstedeværelse."}
+        </p>
       </section>
+
+      {/* ── Hero image ── */}
+      <figure style={{ margin: "0 0 clamp(2rem, 5vw, 4rem)", borderRadius: 12, overflow: "hidden", lineHeight: 0 }}>
+        <img
+          src={img01}
+          alt={isEn
+            ? "The finished Sustained by Voices installation, a human-scale abstract robot in a dark space"
+            : "Den ferdige Sustained by Voices-installasjonen, en abstrakt robot i menneskestørrelse i et mørkt rom"}
+          style={{ width: "100%", height: "clamp(320px, 55vw, 600px)", objectFit: "cover", objectPosition: "center", display: "block" }}
+        />
+      </figure>
 
       <hr style={{ border: "none", borderTop: "1px solid var(--color-border)", marginBottom: "clamp(2rem, 5vw, 4rem)" }} />
 

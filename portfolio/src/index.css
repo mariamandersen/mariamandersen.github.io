@@ -895,3 +895,32 @@
 .study-deliverable { margin-bottom: clamp(2.5rem,5vw,4.5rem); }
 .study-deliverable .nibio-gallery, .study-deliverable .skybound-gallery { margin-block: 0; }
 .study-deliverable h2 { font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--color-pink); margin-bottom: 1.25rem; }
+
+/* Case-study reading order and image rhythm. */
+.study-intro .study-facts, .case-project .study-facts { margin: 1.5rem 0 2rem; }
+.study-intro .study-facts > :nth-child(-n+2) { grid-column: auto; }
+.study-intro .study-facts { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.story-cover img { height: auto; max-height: 600px; object-fit: contain; }
+.study-narrative { align-items: start; }
+.study-narrative--wide { grid-template-columns: minmax(0,1fr) !important; }
+.study-image-grid { grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; }
+.study-image-grid img { width: 100%; aspect-ratio: 4/3; object-fit: contain; }
+.study-article .phone-mock { width: min(100%,280px); height: auto; min-height: 0; aspect-ratio: auto; padding: 0; border: 0; border-radius: 8px; background: none; box-shadow: none; }
+.study-article .phone-mock::before, .study-article .phone-mock::after { display: none; }
+.study-article .phone-mock img { height: auto !important; max-height: 480px; object-fit: contain; }
+.study-image-link { display: block; width: 100%; border-radius: 8px; cursor: zoom-in; }
+.study-image-link:focus-visible { outline: 2px solid var(--color-pink); outline-offset: 4px; }
+.study-image-link img { transition: opacity 150ms ease; }
+.study-image-link:hover img { opacity: .9; }
+.study-image-grid .slide > .study-image-link { height: 100%; }
+.study-chapter > p + .study-media { margin-top: 1.5rem; }
+.study-article .study-chapter > p + p, .study-copy > p + p { margin-top: 1rem !important; }
+@media (max-width: 699px) {
+  .study-intro .study-facts { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .study-intro .study-facts > :nth-child(-n+2) { grid-column: 1/-1; }
+  .study-image-grid { grid-template-columns: minmax(0,1fr); }
+}
+
+.study-narrative:has(> .study-copy > p:nth-child(3)) { grid-template-columns: minmax(0,1fr) !important; }
+
+.study-narrative:not(:has(> p, > .study-copy)) { grid-template-columns: minmax(0,1fr) !important; }

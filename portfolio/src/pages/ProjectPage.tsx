@@ -56,9 +56,9 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
   const project = getProject(slug ?? "");
 
   const articleId = isEn ? project?.idEn : project?.idNo;
-  const { html: articleHTML, reflectionHTML } = useMemo(() => articleId
+  const { html: articleHTML, introHTML, reflectionHTML } = useMemo(() => articleId
     ? formatCaseStudy(makePathsAbsolute(extractArticle(portfolioHTML, articleId)))
-    : { html: "", reflectionHTML: "" }, [articleId]);
+    : { html: "", introHTML: "", reflectionHTML: "" }, [articleId]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -125,6 +125,7 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
 
         {articleHTML && (
           <div className="case-study-layout">
+            <div className="study-article" dangerouslySetInnerHTML={{ __html: introHTML }} />
             <figure className="story-cover">
               <img src={project.coverImage} alt={isEn ? project.titleEn : project.titleNo} loading="eager" />
             </figure>
