@@ -71,8 +71,8 @@ export default function HomePage({ lang, onToggleLang }: HomePageProps) {
               </p>
               <p className="hero-support">
                 {isEn
-                  ? "I especially enjoy shaping the design and testing it in practice with users and developers. I work in an agile way and like following ideas from research and design through to something people can actually use."
-                  : "Jeg liker særlig å utforme designet og teste det i praksis sammen med brukere og utviklere. Jeg jobber smidig og vil gjerne følge ideene hele veien fra brukerinnsikt og design til noe mennesker faktisk kan bruke."}
+                  ? "What I love most about UX design is making ideas tangible in Figma, testing them with people and improving the solution through multiple iterations. I welcome critical feedback that challenges my assumptions and helps me make the product better. I work in an agile way and enjoy following ideas through to something people can actually use."
+                  : "Noe av det jeg liker aller best med UX-design, er å gjøre ideer konkrete i Figma, brukerteste og forbedre løsningen gjennom flere iterasjoner. Jeg setter pris på kritiske tilbakemeldinger som utfordrer antakelsene mine og hjelper meg å gjøre produktet bedre. Jeg jobber smidig og liker å følge ideene helt frem til noe mennesker faktisk kan bruke."}
               </p>
             </div>
             <figure className="home-hero-photo">
