@@ -192,9 +192,9 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
 
 
         {/* Next project navigation */}
-        <nav className="project-nav-footer section" aria-label={isEn ? "More projects" : "Flere prosjekter"}>
-          <div className="container">
-            <p className="project-nav-label">{isEn ? "More projects" : "Flere prosjekter"}</p>
+        <nav className="project-nav-footer" aria-label={isEn ? "Project navigation at bottom" : "Prosjektnavigasjon nederst"}>
+          <div className="container project-nav-bar">
+            <Link to="/" className="project-nav-pill">{isEn ? "Home" : "Hjem"}</Link>
             <div className="project-nav-links">
               {(() => {
                 const idx = allProjects.findIndex((p) => p.slug === slug);
@@ -202,10 +202,10 @@ export default function ProjectPage({ lang, onToggleLang }: ProjectPageProps) {
                 const next = allProjects[(idx + 1) % allProjects.length];
                 return (
                   <>
-                    <Link to={`/prosjekt/${prev.slug}`} className="project-nav-pill">
+                    <Link to={`/prosjekt/${prev.slug}`} className="project-nav-pill" aria-label={`${isEn ? "Previous project" : "Forrige prosjekt"}: ${isEn ? prev.titleEn : prev.titleNo}`}>
                       ← {isEn ? "Previous project" : "Forrige prosjekt"}
                     </Link>
-                    <Link to={`/prosjekt/${next.slug}`} className="project-nav-pill">
+                    <Link to={`/prosjekt/${next.slug}`} className="project-nav-pill" aria-label={`${isEn ? "Next project" : "Neste prosjekt"}: ${isEn ? next.titleEn : next.titleNo}`}>
                       {isEn ? "Next project" : "Neste prosjekt"} →
                     </Link>
                   </>

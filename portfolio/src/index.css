@@ -951,28 +951,12 @@
 
 .study-title h1 { font-size: clamp(1.6rem,3.5vw,2.6rem); font-weight: 700; line-height: 1.15; margin: 0 0 1.5rem; color: var(--color-text); }
 
-.project-nav-top { margin: 0 0 1.5rem; }
-.project-nav-top .project-nav-links { justify-content: space-between; }
-
-.project-nav-top { margin: 0 0 2rem; padding-block: 1rem; border-bottom: 1px solid var(--color-border); }
-.project-nav-bar { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
-.project-nav-top .project-nav-links { gap: .5rem; flex-wrap: nowrap; }
-.project-nav-pill { color: var(--color-text); border: 1px solid var(--color-border); border-radius: 8px; }
-.project-nav-pill:hover { background: var(--color-surface); border-color: var(--color-pink); transform: none; }
-.project-nav-pill:focus-visible { outline: 2px solid var(--color-pink); outline-offset: 3px; }
-@media (max-width: 480px) { .project-nav-top .project-nav-pill { padding: .65rem .7rem; font-size: .8rem; white-space: nowrap; } }
-
-@media (max-width: 480px) { .project-nav-bar { flex-wrap: wrap; } .project-nav-top .project-nav-links { margin-left: auto; } }
-
-/* Compact project navigation with comfortable touch targets. */
-.project-nav-top { padding-block: .25rem; margin-bottom: 1.25rem; }
-.project-nav-top .project-nav-pill,
-.project-nav-footer .project-nav-pill { background: transparent; border-color: transparent; border-radius: 4px; padding: .4rem .25rem; min-height: 44px; font-size: .8rem; }
-.project-nav-top .project-nav-pill:hover,
-.project-nav-footer .project-nav-pill:hover { background: transparent; border-color: transparent; color: var(--color-pink); text-decoration: underline; text-underline-offset: 4px; }
-.project-nav-top .project-nav-links { gap: .75rem; }
-.project-nav-footer { padding-block: 1rem; margin-top: 1.5rem; }
-.project-nav-footer .project-nav-label { margin-bottom: .25rem; }
-
-/* Let the project navigation sit directly on the page. */
-.project-nav-top { border: 0; background: transparent; box-shadow: none; }
+/* Shared navigation style at both ends of every case study. */
+.project-nav-top, .project-nav-footer { padding-block: .25rem; border: 0; background: transparent; box-shadow: none; }
+.project-nav-top { margin: 0 0 1.25rem; }
+.project-nav-footer { margin-top: 1.5rem; }
+.project-nav-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; }
+.project-nav-bar .project-nav-links { gap: .75rem; flex-wrap: nowrap; margin-left: auto; }
+.project-nav-bar .project-nav-pill { display: inline-flex; align-items: center; min-height: 44px; padding: .4rem .25rem; border: 0; border-radius: 4px; background: transparent; color: var(--color-text); font-size: .8rem; font-weight: 500; white-space: nowrap; text-decoration: none; }
+.project-nav-bar .project-nav-pill:hover { background: transparent; color: var(--color-pink); transform: none; text-decoration: underline; text-underline-offset: 4px; }
+.project-nav-bar .project-nav-pill:focus-visible { outline: 2px solid var(--color-pink); outline-offset: 3px; }
