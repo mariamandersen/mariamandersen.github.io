@@ -4337,3 +4337,5 @@ footer{
 }
 .peek-media--interactive iframe{display:block;width:100%;height:540px;border:0}
 @media(max-width:600px){.peek-media--interactive iframe{height:480px}}
+
+.portfolio-home .project-nav-top { border: 0; background: transparent; box-shadow: none; }
