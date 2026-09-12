@@ -973,3 +973,6 @@
 .project-nav-top .project-nav-links { gap: .75rem; }
 .project-nav-footer { padding-block: 1rem; margin-top: 1.5rem; }
 .project-nav-footer .project-nav-label { margin-bottom: .25rem; }
+
+/* Let the project navigation sit directly on the page. */
+.project-nav-top { border: 0; background: transparent; box-shadow: none; }
